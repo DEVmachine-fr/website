@@ -1,7 +1,7 @@
 ---
-short_name: marc
+short_name: Marc
 name: Marc Bouteiller
 position: Développeur
 ---
 
-FS Dev
+Développeur Full Stack
