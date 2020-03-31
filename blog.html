@@ -1,0 +1,38 @@
+---
+layout: default
+title: DEVmachine - Blog
+css: blog
+---
+
+<div style="min-height: 100vh; padding-bottom: 100px">
+
+  <section class="bg-intro">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="intro-bg">
+            <h1 class="section-heading">Bienvenue sur le blog de DEVmachine</h1>
+            <p>
+              Vous trouverez ici des ressources concernant les actualités de développement de notre équipe, mais aussi sur des sujets plus généralistes...
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="container">
+    <div class="blog-posts">
+      <ul>
+        {% for post in site.posts %}
+        <li>
+          <a href="{{ post.url }}"><div class="post-title">{{ post.postTitle }}</div></a>
+          <p class="post-excerpt">{{ post.excerpt }}</p>
+          <div class="post-info">par {{ post.author }} le {{ post.date | date: "%d/%m/%Y" }}</div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

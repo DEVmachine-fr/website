@@ -1,3 +1,660 @@
 ---
 ---
-@import "_global";
+
+@import "variables";
+@import "_navbar";
+
+// Global styling for this template
+body {
+  overflow-x: hidden;
+  @include body-font;
+}
+
+p {
+  line-height: 1.75;
+}
+
+a {
+  color: $primary;
+
+  &:hover {
+    color: darken($primary, 10%);
+  }
+}
+
+.text-primary {
+  color: $primary !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  @include heading-font;
+}
+
+// Button Styles
+.btn {
+  @include heading-font;
+  font-weight: 700;
+}
+
+.btn-xl {
+  font-size: 18px;
+  padding: 20px 40px;
+}
+
+.btn-primary {
+  background-color: $primary;
+  border-color: $primary;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: darken($primary, 7.5%) !important;
+    border-color: darken($primary, 7.5%) !important;
+    color: white;
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(254, 209, 55, .5) !important;
+  }
+}
+
+// Highlight color customization
+::-moz-selection {
+  background: $primary;
+  text-shadow: none;
+}
+
+::selection {
+  background: $primary;
+  text-shadow: none;
+}
+
+img::selection {
+  background: transparent;
+}
+
+img::-moz-selection {
+  background: transparent;
+}
+
+
+#competences {
+  .plus {
+    text-align: center;
+
+    .fa-plus {
+      color: $secondary;
+      font-size: 40px;
+      margin-top: 20px;
+    }
+  }
+
+  .competences-heading {
+    margin: 15px 0;
+    text-transform: none;
+    color: $secondary;
+    font-size: 26px;
+    font-weight: 500;
+
+    p {
+      color: #797979;
+      font-size: 20px;
+      line-height: 24px;
+      text-align: left;
+    }
+  }
+
+  .icon-activite {
+    text-align: center;
+  }
+
+  .projets {
+    width: 140px;
+    margin: 20px;
+  }
+}
+
+#savoirfaire {
+  .cycle, .technos {
+    width: inherit;
+  }
+}
+
+#demarche {
+  .postits {
+    width: 540px;
+  }
+}
+
+#valeurs {
+  .valeur {
+    color: #fc766a;
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 35px;
+    font-weight: 300;
+
+  }
+
+  p {
+    color: $secondary;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+
+  .box {
+    box-shadow: 0 8px 20px rgba(224, 224, 224, 0.5);
+    border-radius: 3px;
+    background-color: #ffffff;
+    height: 350px;
+    padding: 40px;
+
+    h4 {
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    img {
+      margin: 20px;
+    }
+
+    .collaboration-img {
+      width: 140px;
+      margin-bottom: 30px;
+    }
+
+    .engagement-img {
+      margin-bottom: 30px;
+    }
+
+    .pragmatisme-img {
+      height: 90px;
+    }
+  }
+
+  div.col-md-4 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+}
+
+.bg-light {
+  background-color: $gray-100 !important;
+  color: black;
+}
+
+.bg-intro {
+  color: white;
+  border-bottom: $primary solid 6px;
+  background-image: url("/assets/images/cover.png");
+  background-color: $secondary !important;
+  height: 520px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .intro-bg {
+    margin-top: 75px;
+  }
+
+  div {
+    color: white;
+  }
+}
+
+.circle {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  /* width and height can be anything, as long as they're equal */
+}
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Spinning, gradient circle; CSS only! */
+#advanced {
+  width: 200px;
+  height: 200px;
+  background-image: -webkit-radial-gradient(45px 45px, circle farthest-corner, $primary, $secondary);
+  animation-name: spin;
+  animation-duration: 6s; /* 3 seconds */
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.conseil {
+  position: relative;
+  margin-bottom: -115px;
+  margin-left: 50px;
+  z-index: 5;
+  font-size: 30px;
+  font-weight: 700;
+  color: white;
+}
+
+.text-align-horizontal {
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: justify;
+}
+
+footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  height: 60px;
+}
+
+.hide-logo {
+  display: none;
+}
+
+.display-logo {
+  display: block;
+}
+
+p {
+  margin-bottom: 0.2rem;
+}
+
+section {
+  padding: 75px 0;
+
+  div {
+    font-family: Poppins;
+    color: #6a7c92;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+  }
+
+  ul {
+    list-style: url("/assets/images/right-chevron-.svg");
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-top: 15px;
+  }
+
+  h1.section-heading {
+    word-break: break-word;
+    font-family: Nunito;
+    color: #ffffff;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 50px;
+  }
+
+  h2.section-heading {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    word-break: break-word;
+    font-family: Nunito;
+    font-size: 48px;
+    font-weight: 700;
+    color: $secondary;
+  }
+
+  h3.section-subheading {
+    font-style: italic;
+    margin-bottom: 25px;
+    text-transform: none;
+    font-family: Roboto !important;
+    color: $primary !important;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 500;
+    @include serif-font;
+  }
+}
+
+.annonces {
+  margin-bottom: 20px;
+}
+
+#ref {
+  .customer {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+  }
+
+  h4 {
+    color: #fc766a;
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 35px;
+    font-weight: 300;
+  }
+
+  ul, p {
+    color: #243252;
+    text-align: left;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  .d-block {
+    padding-left: 15%;
+    padding-right: 15%;
+    min-height: 610px;
+  }
+
+  .ref {
+    padding: 40px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .carousel-control-next,
+  .carousel-control-prev,
+  .carousel-indicators li {
+    filter: invert(100%);
+  }
+
+  .logo {
+    max-height: 85px;
+    max-width: 180px;
+  }
+}
+
+#contact {
+  background-color: $primary;
+
+  .section-subheading {
+    color: #ffffff !important;
+    font-family: "Poppins";
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+  }
+
+  .contact-section {
+    margin-top: 20px;
+  }
+
+  .contact {
+    color: $secondary;
+    text-align: center;
+    font-family: Nunito;
+    font-size: 48px;
+    font-weight: 700;
+  }
+}
+
+footer {
+  background-color: $secondary;
+  height: 80px;
+
+  a {
+    color: white;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 28px;
+    cursor: pointer;
+  }
+
+  .row {
+    padding-top: 20px;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media(max-width: 767.98px) {
+  nav {
+    .logo-dm {
+      width: 150px;
+    }
+  }
+  #contact {
+    .contact {
+      font-size: 26px;
+      word-break: break-all;
+    }
+
+    .section-subheading {
+      font-size: 17px;
+    }
+  }
+  section {
+    padding: 25px;
+
+    h2.section-heading, h1.section-heading {
+      font-size: 40px;
+    }
+  }
+
+  #savoir-faire {
+    .text-technos {
+      order: 12;
+    }
+
+    .img-technos {
+      order: 1;
+      margin-bottom: 10px;
+      padding: 0;
+    }
+
+    .cycle {
+      max-width: 350px;
+      margin-bottom: 15px;
+    }
+  }
+
+  #demarche {
+    .col-md-6 {
+      text-align: center;
+    }
+
+    .postits {
+      width: inherit;
+      max-width: 340px;
+    }
+  }
+  #valeurs {
+    .box {
+      height: 330px;
+      margin-top: 15px;
+      padding: 20px;
+    }
+  }
+  #ref {
+    .d-block {
+      padding-left: 5%;
+      padding-right: 5%;
+      margin-bottom: 30px;
+    }
+
+    .ref {
+      padding: 10px;
+    }
+  }
+  footer {
+    height: 100px;
+  }
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) {
+  #competences {
+    .projets {
+      width: 80px;
+      margin: 20px;
+    }
+  }
+
+  #demarche {
+    .postits {
+      width: 440px;
+    }
+  }
+  #valeurs {
+    img {
+      margin: 5px !important;
+    }
+
+    .collaboration-img {
+      width: 80px !important;
+      margin-bottom: 0px !important;
+    }
+
+    .engagement-img {
+      width: 80px !important;
+      margin-bottom: 0px;
+    }
+
+    .pragmatisme-img {
+      width: 80px !important;
+    }
+  }
+}
+
+@media(min-width: 768px) and (max-width: 1200px) {
+  #competences {
+    .projets {
+      width: 100px;
+    }
+  }
+  #demarche {
+    .postits {
+      width: 340px !important;
+    }
+  }
+}
+
+@media(min-width: 768px) {
+  section {
+    padding: 75px 0;
+  }
+}
+
+// plus grand que mobile
+@media(min-width: 1024px) {
+
+  .cycle {
+    width: 450px !important;
+  }
+  .technos {
+    width: 500px !important;
+  }
+}
+
+// plus grand que tablette
+@media(min-width: 992px) {
+  .logo-dm {
+    width: 260px;
+  }
+}
+
+
+.blog-posts {
+
+  ul {
+    width: auto;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    list-style: none;
+    padding-inline-start: 0;
+
+    li {
+      //width: 450px;
+      min-height: 150px;
+      max-height: 330px;
+      padding: 20px;
+      margin: 20px;
+
+      a {
+        text-decoration: none;
+      }
+
+      p.post-excerpt {
+        font-family: "Roboto", serif;
+      }
+
+      .post-title {
+        font-family: "Poppins", serif;
+        font-weight: 600;
+        font-size: x-large;
+      }
+
+      .post-info {
+        font-style: italic;
+        font-size: 0.8rem;
+        color: $gray-500;
+      }
+
+    }
+  }
+
+}
+
+article {
+  min-height: calc(100vh - 75px);
+  padding: 75px 20px 60px;
+
+  p {
+    text-align: justify;
+  }
+
+  h1 {
+    color: $primary;
+    font-family: 'Poppins', serif;
+  }
+
+  h2 {
+    margin-top: 30px;
+    font-size: xx-large;
+    font-family: 'Nunito', serif;
+    color: $secondary;
+  }
+
+  h3 {
+    margin-top: 20px;
+    font-size: larger;
+    font-family: 'Nunito', serif;
+    color: $third;
+  }
+
+  img {
+    max-width: 75%;
+    max-height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  article {
+    min-height: calc(100vh - 80px);
+    padding-top: 150px;
+    padding-bottom: 80px;
+  }
+}
