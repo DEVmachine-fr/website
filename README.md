@@ -1,6 +1,6 @@
 # Site Web de DEVmachine
 
-Ceci est le code source du site web de [https://www.devmachine.fr](DEVmachine).
+Ceci est le code source du site web de [DEVmachine](https://www.devmachine.fr).
 
 ## Pré-requis
 
@@ -8,22 +8,22 @@ Avoir Ruby d'installé sur son environnement. ([https://www.ruby-lang.org/](http
 
 ## Installation
 
-Le site est basé sur le générateur de site statiques [https://jekyllrb.com/](Jekyll).   
+Le site est basé sur le générateur de site statiques [Jekyll](https://jekyllrb.com/).   
 Il est donc nécessaire d'installer Jekyll au préalable.
 
       gem install bundler jekyll
     
 
-## Utilisation
+## Utilisation
 
 Pour compiler le site il suffit d'exécuter la commande:
 
-    jekyll build
+    JEKYLL_ENV=dev jekyll build
  
 Un dossier `_site` est alors créé et contient le site statique généré.
 
 Il est possible de travailler avec du Live Reload en exécutant la commande 
 
-    jekyll serve
+    JEKYLL_ENV=dev jekyll serve
 
-Un serveur démarre sur le port 4000, et le site est visible sur l'adresse : http://127.0.0.1:4000
+Un serveur démarre sur le port 4000, et le site est visible sur l'adresse : http://127.0.0.1:4000   

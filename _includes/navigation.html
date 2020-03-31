@@ -1,70 +1,85 @@
 <nav
-  class="navbar navbar-expand-lg navbar-dark fixed-top"
-  id="mainNav"
-  xmlns="http://www.w3.org/1999/html"
->
-  <div class="container">
-    <button
-      class="navbar-toggler navbar-toggler-right"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarResponsive"
-      aria-controls="navbarResponsive"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
+      class="navbar navbar-expand-lg navbar-dark fixed-top"
+      id="mainNav"
+      xmlns="http://www.w3.org/1999/html"
     >
-      Menu
-      <i class="fas fa-bars"></i>
-    </button>
-    <img src="/assets/images/devmachine.svg" class="logo-dm" width="200" />
-    <div
-      class="collapse navbar-collapse"
-      id="navbarResponsive"
-    >
-      <ul class="navbar-nav text-uppercase ml-auto">
-        <li class="nav-item">
-          <a
-            class="nav-link js-scroll-trigger"
-            href="#competences"
-            >Offre</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link js-scroll-trigger"
-            href="#savoirfaire"
-            >Savoir-faire</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link js-scroll-trigger"
-            href="#demarche"
-            >Démarche</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link js-scroll-trigger"
-            href="#nous"
-            >Nous</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link js-scroll-trigger"
-            href="#joinus"
-            >Recrutement</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link js-scroll-trigger"
-            href="#contact"
-            >Contact</a
-          >
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+      <div class="container">
+        <button
+          class="navbar-toggler navbar-toggler-right"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <a href="/">
+          <img
+            src="/assets/images/devmachine.svg"
+            class="logo-dm"
+            width="200"
+            alt="logo devmachine"
+          />
+        </a>
+        <div
+          class="collapse navbar-collapse"
+          id="navbarResponsive"
+        >
+          <ul class="navbar-nav text-uppercase ml-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link js-scroll-trigger"
+                href="#competences"
+                >Offre</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link js-scroll-trigger"
+                href="#savoirfaire"
+                >Savoir-faire</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link js-scroll-trigger"
+                href="#demarche"
+                >Démarche</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link js-scroll-trigger"
+                href="#nous"
+                >Nous</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link js-scroll-trigger"
+                href="#joinus"
+                >Recrutement</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link js-scroll-trigger"
+                href="#contact"
+                >Contact</a
+              >
+            </li>
+            <li class="nav-item">
+                <a
+                  class="nav-link"
+                  {% if page.url == "/blog.html" %}style="color: #fc766a; font-weight: bold"{% endif %}
+                  href="/blog">
+                Blog
+                </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
