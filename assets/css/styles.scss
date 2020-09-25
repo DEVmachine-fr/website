@@ -356,6 +356,9 @@ section {
   ul {
     list-style: disc;
   }
+  ul.no-bullet {
+    list-style: none;
+  }
 
   .d-block {
     padding-left: 15%;
@@ -495,7 +498,7 @@ footer {
     }
   }
   footer {
-    height: 100px;
+    height: 140px;
   }
 
 }
