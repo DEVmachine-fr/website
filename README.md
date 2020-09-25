@@ -26,4 +26,7 @@ Il est possible de travailler avec du Live Reload en exécutant la commande
 
     JEKYLL_ENV=dev jekyll serve
 
-Un serveur démarre sur le port 4000, et le site est visible sur l'adresse : http://127.0.0.1:4000   
+Un serveur démarre sur le port 4000, et le site est visible sur l'adresse : http://127.0.0.1:4000
+
+## Via docker
+docker run --rm --volume="$PWD:/srv/jekyll" -p 4000:4000 -e JEKYLL_ENV=dev -it jekyll/builder:4.0 jekyll serve --trace
