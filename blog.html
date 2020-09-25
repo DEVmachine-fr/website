@@ -1,6 +1,6 @@
 ---
 layout: default
-title: DEVmachine - Blog
+title: Blog Technique DEVmachine
 css: blog
 ---
 
@@ -27,7 +27,7 @@ css: blog
       <ul>
         {% for post in site.posts %}
         <li>
-          <a href="{{ post.url }}"><div class="post-title">{{ post.postTitle }}</div></a>
+          <a href="{{ post.url }}"><div class="post-title">{{ post.title }}</div></a>
           <p class="post-excerpt">{{ post.excerpt }}</p>
           <div class="post-info">par {{ post.author }} le {{ post.date | date: "%d/%m/%Y" }}</div>
         </li>
