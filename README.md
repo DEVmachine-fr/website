@@ -18,15 +18,15 @@ Il est donc nécessaire d'installer Jekyll au préalable.
 
 Pour compiler le site il suffit d'exécuter la commande:
 
-    JEKYLL_ENV=dev jekyll build
+    jekyll build
  
 Un dossier `_site` est alors créé et contient le site statique généré.
 
 Il est possible de travailler avec du Live Reload en exécutant la commande 
 
-    JEKYLL_ENV=dev jekyll serve
+    jekyll serve
 
 Un serveur démarre sur le port 4000, et le site est visible sur l'adresse : http://127.0.0.1:4000
 
 ## Via docker
-docker run --rm --volume="$PWD:/srv/jekyll" -p 4000:4000 -e JEKYLL_ENV=dev -it jekyll/builder:4.0 jekyll serve --trace
+docker run --rm --volume="$PWD:/srv/jekyll" -p 4000:4000 -it jekyll/builder:4.0 jekyll serve --trace
