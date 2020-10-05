@@ -28,8 +28,11 @@ css: blog
         {% for post in site.posts %}
         <li>
           <a href="{{ post.url }}"><div class="post-title">{{ post.title }}</div></a>
-          <p class="post-excerpt">{{ post.excerpt }}</p>
           <div class="post-info">par {{ post.author }} le {{ post.date | date: "%d/%m/%Y" }}</div>
+          <p class="post-excerpt">
+            {{ post.excerpt }}
+            <a href="{{ post.url }}">Lire la suite...</a>
+          </p>
         </li>
         {% endfor %}
       </ul>
