@@ -1,11 +1,10 @@
 ---
 author: Marc
-title: Ouverture du blog avec la JAMStack
+title: Le blog et sa JAMStack
 tags: jamstack jekyll blog
 ---
 
-Bienvenue sur le nouveau blog de [DEVmachine](https://www.devmachine.fr).  
-En guise d'ouverture de ce blog, nous allons donc comprendre sa mise en place avec un concept fort du moment : la **JAMStack**.   
+En guise d'ouverture de ce blog, nous allons détailler sa mise en place avec un concept fort du moment : la **JAMStack**.   
 Explications sur son lancement avec : Jekyll & M... Netlify.
 
 ## JAMStack, c'est quoi ?
