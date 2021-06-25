@@ -666,6 +666,10 @@ article {
     color: $gray-500;
   }
 
+  .anchor:target {
+    padding-top: 64px;
+  }
+
 }
 
 @media (min-width: 992px) {
@@ -673,5 +677,8 @@ article {
     min-height: calc(100vh - 80px);
     padding-top: 150px;
     padding-bottom: 80px;
+    .anchor:target {
+      padding-top: 120px;
+    }
   }
 }

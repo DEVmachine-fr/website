@@ -18,13 +18,13 @@ Après avoir pu tester l'implémentation de threejs dans un projet vue, je vous 
     - [Les modèles 3D](#models)
 - [Ressources](#ressources)
 
-## Threejs, kézako ? <a name="kesaco"></a>
+## Threejs, kézako ? <a class="anchor" name="kesaco"></a>
 
 Threejs est librairie javascript qui permet d'intégrer de la 3D dans votre site web. Cette libraire permet de créer des rendu en WebGL, CSS3D et SVG. Vous pouvez trouver des exemples sur les nombreuses possibilités qu'offre threejs [ici](https://threejs.org/examples/)
 
 Ici nous allons nous intéresser l'intégration de threejs dans un projet vue pour permettre le rendu 3D en WebGL de produits dans une liste de produits.
 
-## Initialisation du projet vue <a name="initProject"></a>
+## Initialisation du projet vue <a class="anchor" name="initProject"></a>
 
 Tout d'abord nous allons devoir installer vue-cli via `npm` si cela n'est pas déjà fait :
 {% include code-header.html %}
@@ -49,7 +49,7 @@ Pour ce qui est des dépendances, nous utiliserons bootstrap-vue pour faciliter 
 npm install --save bootstrap-vue
 npm install --save three
 ```
-## Création des composants <a name="createComponents"></a>
+## Création des composants <a class="anchor" name="createComponents"></a>
 
 Pour cette démo nous allons seulement intégrer des modèles gltf, ce format étant conseillé pour le web car moins lourd et donc plus rapide à charger. Si vous souhaitez charger d'autre format, je vous invite à consulter les exemples de **threejs** sur les imports des différents formats et adapter le code ci-dessous en fonction.
 
@@ -302,7 +302,7 @@ Vous devriez maintenant avoir ceci lorque vous lancer votre projet :
 
 ![projet après création des composants](/assets/images/threejs/threejs-1.png)
 
-## Intégration de threejs <a name="integration"></a>
+## Intégration de threejs <a class="anchor" name="integration"></a>
 
 Passons maintenant au coeur du sujet. Retournons donc dans **product-view** et commencons par importer 3 éléments :
 {% include code-header.html %}
@@ -353,7 +353,7 @@ init() {
   ...
 ```
 
-### La scène <a name="scene"></a>
+### La scène <a class="anchor" name="scene"></a>
 
 Tout d'abord, nous allons créer simple la scène 3D. Nous allons préciser que l'on ne veut pas de couleur de fond pour notre scène, comme ça nous en fond tout simplement la couleur de la page web :
 {% include code-header.html %}
@@ -362,7 +362,7 @@ this.scene = new THREE.Scene();
 this.scene.background = null;
 ```
 
-### Le renderer <a name="renderer"></a>
+### Le renderer <a class="anchor" name="renderer"></a>
 
 Nous allons ensuite générer le renderer :
 {% include code-header.html %}
@@ -386,7 +386,7 @@ const container = document.getElementById(this.containerId);
 this.renderer.setSize(container.offsetWidth, container.offsetHeight);
 container.appendChild(this.renderer.domElement);
 ```
-### La caméra <a name="camera"></a>
+### La caméra <a class="anchor" name="camera"></a>
 
 Nous allons ensuite créer la caméra et la positionner à la position enregistré dans **modelSettings.cameraPosition** :
 {% include code-header.html %}
@@ -405,7 +405,7 @@ Les champs pour la création de la caméra sont:
 * near : distance minimum pour qu'un objet soit visible au rendu
 * far : distance maximum pour qu'un object soit visible au rendu
 
-### Le contrôleur <a name="controller"></a>
+### Le contrôleur <a class="anchor" name="controller"></a>
 
 Nous allons maintenant attribuer des contrôles à la caméra pour pouvoir bouger celle-ci :
 {% include code-header.html %}
@@ -424,7 +424,7 @@ Ici on nomme target ou cible le point autour duquel la caméra tournera et vers 
 * controles.target.set permet de définir la position 3D de la cible
 * l'event listener permet d'avoir à chaque mouvement de la caméra un nouveau rendu depuis la nouvelle position de celle-ci
 
-### La lumière <a name="lights"></a>
+### La lumière <a class="anchor" name="lights"></a>
 
 Nous allons passer maintenant au lumière. Nous allons implémenter 3 types de lumières :
 * la lumière directionnelle : cette lumière éclaire tous les objets de la scène non masqué par un autre objet (quelque soit la distance) avec des rayons ayant une direction précise (tous les rayons sont donc parallèles entre deux). Ce type de lumière s'apparente à la lumière du soleil.
@@ -456,7 +456,7 @@ const light4 = new THREE.PointLight(0xc4c400, 1);
 light4.position.set(-1000, 600, 1000);
 this.scene.add(light4);
 ```
-### Les modèles 3D <a name="models"></a>
+### Les modèles 3D <a class="anchor" name="models"></a>
 
 Enfin nous allons charger notre modèle dans la scène. Une fois chargé, nous allons le positioner au niveau de la cible du contrôleur de la caméra pour que celle-ci tourne autour de l'objet, et si la propriété scale existe, on appliquera une mise à l'échelle avec celle-ci. On fait un premier rendu de l'objet (sinon on n'aura notre premier rendu que lorsque l'on bougera la caméra) : 
 {% include code-header.html %}
@@ -479,7 +479,7 @@ Et voilà ! Vous devriez désormais maintenant voir la liste de vos produits ave
 
 Attention cependant ! Bien que l'affichage de tous vos modèles en 3D directement depuis la liste des produits puissent être intéressant, cela a un coup non négligeable sur le temps de chargement, aussi vaut-il mieux réserver cela pour la fiche détaillée du produit ou prévoir un chargement asynchrone et ne charger qu'une image dans un premier temps par exemple.
 
-#### ressources <a name="ressources"></a>
+#### ressources <a class="anchor" name="ressources"></a>
 
 * [corvette by d2epetto](https://sketchfab.com/3d-models/chevrolet-corvette-c7-2b509d1bce104224b147c81757f6f43a), (https://sketchfab.com/d2epetto) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/))
 * [nissan skyline](https://sketchfab.com/3d-models/nissan-skyline-gt-r-c110-kenmeri-72-1a950b81ee274a0eb8014bd84ba047f5)
