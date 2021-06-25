@@ -20,7 +20,7 @@ Après avoir pu tester l'implémentation de threejs dans un projet vue, je vous 
 
 ## Threejs, kézako ? <a class="anchor" name="kesaco"></a>
 
-Threejs est librairie javascript qui permet d'intégrer de la 3D dans votre site web. Cette libraire permet de créer des rendu en WebGL, CSS3D et SVG. Vous pouvez trouver des exemples sur les nombreuses possibilités qu'offre threejs [ici](https://threejs.org/examples/)
+Threejs est une librairie javascript qui permet d'intégrer de la 3D dans votre site web. Cette libraire permet de créer des rendu en WebGL, CSS3D et SVG. Vous pouvez trouver des exemples sur les nombreuses possibilités qu'offre threejs [ici](https://threejs.org/examples/)
 
 Ici nous allons nous intéresser l'intégration de threejs dans un projet vue pour permettre le rendu 3D en WebGL de produits dans une liste de produits.
 
@@ -41,9 +41,9 @@ Nous allons ensuite générer notre projet :
 ```
 vue create my-project-name
 ```
-Nous garderons le paramétrage par défaut pour notre exemple, libre à vous de modifier ceux-ci en fonction de votre projet.
+Nous garderons le paramétrage par défaut pour notre exemple (libre à vous de les modifier pour votre projet).
 
-Pour ce qui est des dépendances, nous utiliserons bootstrap-vue pour faciliter la mise en page et threejs:
+Pour ce qui est des dépendances, nous utiliserons bootstrap-vue pour faciliter la mise en page et threejs :
 {% include code-header.html %}
 ```
 npm install --save bootstrap-vue
@@ -51,11 +51,11 @@ npm install --save three
 ```
 ## Création des composants <a class="anchor" name="createComponents"></a>
 
-Pour cette démo nous allons seulement intégrer des modèles gltf, ce format étant conseillé pour le web car moins lourd et donc plus rapide à charger. Si vous souhaitez charger d'autre format, je vous invite à consulter les exemples de **threejs** sur les imports des différents formats et adapter le code ci-dessous en fonction.
+Pour cette démo nous allons seulement intégrer des modèles gltf, ce format étant conseillé pour le web car moins lourd et donc plus rapide à charger. Si vous souhaitez charger d’autres formats, je vous invite à consulter les exemples de **threejs** sur les imports des différents formats et adapter le code ci-dessous en fonction.
 
 Nous allons tout d'abord créer un composant **navigation-header.vue** dans un dossier _components/navigation-header_. Celui est un simple copier-coller d'un exemple de barre de navigation de la documentation **bootstrap** :
 {% include code-header.html %}
-```
+```html
 <template>
 <div>
   <b-navbar toggleable="lg" type="dark" variant="info">
@@ -104,7 +104,7 @@ export default {
 ```
 Passons maintenant aux composant qui contiendra l'affichage 3D de notre modèle, qui sera le composant **product-view.vue** dans _components/product-view_. Nous l'initialiserons juste ici avec quelques propriétés et nous reviendrons dessus par la suite. 
 {% include code-header.html %}
-```
+```html
 <template> </template>
 <script>
 export default {
@@ -127,7 +127,7 @@ export default {
 
 Nous allons intégrer ce dernier composant dans un composant vignette **product-thumbnail.vue** dans _components/product-thumbnail_. Ce composant affichera la visualisation 3D ainsi qu'un titre et une description :
 {% include code-header.html %}
-```
+```html
 <template>
   <div class="card shadow-sm">
     <div class="product-content">
@@ -200,7 +200,7 @@ Nous aurons pour chaque modèle une propriété **obj3DSettings** pour l'afficha
 * `cameraPosition` : position de la caméra. Certains modèles peuvent être plus grand ou plus petit, il est donc intéressant de pouvoir éloigner ou approcher la caméra par défaut en fonction du modèle
 * `scale` : échelle du modèle de base. Si vous chargez des modèles venant de différentes sources, il est possible que les modèles ne soit pas à la même échelle. Vous pouvez régler ce problème en réglant la propriété scale (exemple: un scale de 2 doublera la taille de votre modèle, un scale de 0.5 le divisera par 2).
 {% include code-header.html %}
-```
+```html
 <template>
 <div>
 <navigation-header></navigation-header>
@@ -270,7 +270,7 @@ data() {
 ```
 Nous allons finalement modifier App.js pour importer **product-list.vue** :
 {% include code-header.html %}
-```
+```html
 <template>
   <div id="app">
     <product-list />
@@ -306,7 +306,7 @@ Vous devriez maintenant avoir ceci lorque vous lancer votre projet :
 
 Passons maintenant au coeur du sujet. Retournons donc dans **product-view** et commencons par importer 3 éléments :
 {% include code-header.html %}
-```
+```html
 <template> </template>
 <script>
 import * as THREE from "three";
@@ -320,7 +320,7 @@ Le premier élément est tout simplement la librairie threejs.
 
 Ajoutons ensuite certains propriétés dans **data** :
 {% include code-header.html %}
-```
+```javascript
 export default {
 name: "ProductView"
 data() {
@@ -338,7 +338,7 @@ data() {
 
 Nous allons maintenant ajouter deux méthodes à notre composant. Tout d'abord la fonction **renderScene** qui lancera la génération du rendu pour l'affichage : 
 {% include code-header.html %}
-```
+```javascript
 methods: {
     renderScene() {
       this.renderer.render(this.scene, this.camera);
@@ -348,7 +348,7 @@ methods: {
     
 Juste en dessous nous ajouterons la fonction **init**, qui créera tous les éléments dont nous avons besoin pour le rendu :
 {% include code-header.html %}
-```
+```javascript
 init() {
   ...
 ```
@@ -357,7 +357,7 @@ init() {
 
 Tout d'abord, nous allons créer simple la scène 3D. Nous allons préciser que l'on ne veut pas de couleur de fond pour notre scène, comme ça nous en fond tout simplement la couleur de la page web :
 {% include code-header.html %}
-```
+```javascript
 this.scene = new THREE.Scene();
 this.scene.background = null;
 ```
@@ -366,22 +366,22 @@ this.scene.background = null;
 
 Nous allons ensuite générer le renderer :
 {% include code-header.html %}
-```
+```javascript
 this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 ```
 Nous allons préciser l'encodage des couleurs en sortie :
 {% include code-header.html %}
-```
+```javascript
 this.renderer.outputEncoding = THREE.sRGBEncoding;
 ```
 Pour éviter une déformation de l'image, nous allons préciser le pixel ratio de l'écran :
 {% include code-header.html %}
-```
+```javascript
 this.renderer.setPixelRatio(window.devicePixelRatio);
 ```
 Nous allons ensuite configurer la taille dans laquelle doit être fait le rendu et  ajouter ensuite le renderer dans le DOM. Dans notre cas on souhaite afficher le rendu dans le contenant de **product-view**, on prendra donc le DOM de celui-ci pour déterminer la taille et insérer le renderer :
 {% include code-header.html %}
-```
+```javascript
 const container = document.getElementById(this.containerId);
 this.renderer.setSize(container.offsetWidth, container.offsetHeight);
 container.appendChild(this.renderer.domElement);
@@ -390,7 +390,7 @@ container.appendChild(this.renderer.domElement);
 
 Nous allons ensuite créer la caméra et la positionner à la position enregistré dans **modelSettings.cameraPosition** :
 {% include code-header.html %}
-```
+```javascript
 this.camera = new THREE.PerspectiveCamera(
     45,
     container.offsetWidth / container.offsetHeight,
@@ -409,7 +409,7 @@ Les champs pour la création de la caméra sont:
 
 Nous allons maintenant attribuer des contrôles à la caméra pour pouvoir bouger celle-ci :
 {% include code-header.html %}
-```
+```javascript
 const controls = new OrbitControls(this.camera, this.renderer.domElement);
 controls.minDistance = 2;
 controls.maxDistance = 5;
@@ -438,7 +438,7 @@ Il est important d'avoir plusieurs sources de lumières à différente position 
 
 Nous allons donc ajouter à notre scène une lumière directionnelle et 3 point de lumière réparties à différentes positions, chacune des ses sources avec une couleur légèrement différente :
 {% include code-header.html %}
-```
+```javascript
 const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
 directionalLight.position.set(0, 1, 0);
 directionalLight.castShadow = true;
@@ -460,7 +460,7 @@ this.scene.add(light4);
 
 Enfin nous allons charger notre modèle dans la scène. Une fois chargé, nous allons le positioner au niveau de la cible du contrôleur de la caméra pour que celle-ci tourne autour de l'objet, et si la propriété scale existe, on appliquera une mise à l'échelle avec celle-ci. On fait un premier rendu de l'objet (sinon on n'aura notre premier rendu que lorsque l'on bougera la caméra) : 
 {% include code-header.html %}
-```
+```javascript
 let loader = new GLTFLoader();
 loader.load(
     this.modelSettings.link,
