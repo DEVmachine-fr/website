@@ -20,9 +20,9 @@ Après avoir pu tester l'implémentation de threejs dans un projet vue, je vous 
 
 ## Threejs, kézako ? <a class="anchor" name="kesaco"></a>
 
-Threejs est une librairie javascript qui permet d'intégrer de la 3D dans votre site web. Cette libraire permet de créer des rendu en WebGL, CSS3D et SVG. Vous pouvez trouver des exemples sur les nombreuses possibilités qu'offre threejs [ici](https://threejs.org/examples/)
+Threejs est une librairie javascript qui permet d'intégrer de la 3D dans votre site web. Cette libraire permet de créer des rendus en WebGL, CSS3D et SVG. Vous pouvez trouver des exemples sur les nombreuses possibilités qu'offre threejs [ici](https://threejs.org/examples/)
 
-Ici nous allons nous intéresser l'intégration de threejs dans un projet vue pour permettre le rendu 3D en WebGL de produits dans une liste de produits.
+Ici nous allons nous intéresser à l'intégration de threejs dans un projet vue pour permettre le rendu 3D en WebGL de produits dans une liste de produits.
 
 ## Initialisation du projet vue <a class="anchor" name="initProject"></a>
 
@@ -31,7 +31,7 @@ Tout d'abord nous allons devoir installer vue-cli via `npm` si cela n'est pas d�
 ```
 npm install -g @vue/cli
 ```
-Vous pouvez vérifier la bonne installation en vérifiant la version de vue installé :
+Vous pouvez vérifier la bonne installation en vérifiant la version de vue installée :
 {% include code-header.html %}
 ```
 vue --version
@@ -41,7 +41,7 @@ Nous allons ensuite générer notre projet :
 ```
 vue create my-project-name
 ```
-Nous garderons le paramétrage par défaut pour notre exemple (libre à vous de les modifier pour votre projet).
+Nous garderons le paramétrage par défaut pour notre exemple (libre à vous de le modifier pour votre projet).
 
 Pour ce qui est des dépendances, nous utiliserons bootstrap-vue pour faciliter la mise en page et threejs :
 {% include code-header.html %}
@@ -53,7 +53,7 @@ npm install --save three
 
 Pour cette démo nous allons seulement intégrer des modèles gltf, ce format étant conseillé pour le web car moins lourd et donc plus rapide à charger. Si vous souhaitez charger d’autres formats, je vous invite à consulter les exemples de **threejs** sur les imports des différents formats et adapter le code ci-dessous en fonction.
 
-Nous allons tout d'abord créer un composant **navigation-header.vue** dans un dossier _components/navigation-header_. Celui est un simple copier-coller d'un exemple de barre de navigation de la documentation **bootstrap** :
+Nous allons tout d'abord créer un composants **navigation-header.vue** dans un dossier _components/navigation-header_. Le code ci-dessous est un simple copier-coller d'un exemple de barre de navigation de la documentation **bootstrap** :
 {% include code-header.html %}
 ```html
 <template>
@@ -122,8 +122,8 @@ export default {
 }
 </script>
 ```
-**containerId** sera l'id du contenant du composant dont on aura besoin pour connaitre les dimensions
-**modelSettings** contiendra les différents informations nécessaire à l'affichage du modèle dans **threejs**
+**containerId** sera l'id du contenant du composant dont on aura besoin pour connaître les dimensions
+**modelSettings** contiendra les différentes informations nécessaires à l'affichage du modèle dans **threejs**
 
 Nous allons intégrer ce dernier composant dans un composant vignette **product-thumbnail.vue** dans _components/product-thumbnail_. Ce composant affichera la visualisation 3D ainsi qu'un titre et une description :
 {% include code-header.html %}
@@ -195,10 +195,10 @@ Ensuite nous allons créer dans _views/product-list_ le composant **product-list
 
 Pour les modèles, j'ai récupéré les voitures sur sketchfab et un modèle de casque présent dans les exemples de threejs ([lien en fin d'article](#ressources)).
 
-Nous aurons pour chaque modèle une propriété **obj3DSettings** pour l'affichage 3D, avoir comme sous-propriétés :
+Nous aurons pour chaque modèle une propriété **obj3DSettings** pour l'affichage 3D, ayant comme sous-propriétés :
 * `link` : lien vers le modèle gltf
-* `cameraPosition` : position de la caméra. Certains modèles peuvent être plus grand ou plus petit, il est donc intéressant de pouvoir éloigner ou approcher la caméra par défaut en fonction du modèle
-* `scale` : échelle du modèle de base. Si vous chargez des modèles venant de différentes sources, il est possible que les modèles ne soit pas à la même échelle. Vous pouvez régler ce problème en réglant la propriété scale (exemple: un scale de 2 doublera la taille de votre modèle, un scale de 0.5 le divisera par 2).
+* `cameraPosition` : position de la caméra. Certains modèles peuvent être plus grands ou plus petits, il est donc intéressant de pouvoir éloigner ou approcher la caméra par défaut en fonction du modèle
+* `scale` : échelle du modèle de base. Si vous chargez des modèles venant de différentes sources, il est possible que les modèles ne soient pas à la même échelle. Vous pouvez régler ce problème en réglant la propriété scale (exemple : un scale de 2 doublera la taille de votre modèle, un scale de 0.5 le divisera par 2).
 {% include code-header.html %}
 ```html
 <template>
@@ -304,7 +304,7 @@ Vous devriez maintenant avoir ceci lorque vous lancer votre projet :
 
 ## Intégration de threejs <a class="anchor" name="integration"></a>
 
-Passons maintenant au coeur du sujet. Retournons donc dans **product-view** et commencons par importer 3 éléments :
+Passons maintenant au coeur du sujet. Retournons donc dans **product-view** et commençons par importer 3 éléments :
 {% include code-header.html %}
 ```html
 <template> </template>
@@ -315,10 +315,10 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 ...
 ```
 Le premier élément est tout simplement la librairie threejs.
-**OrbitControls** récupéré depuis les exemples de la libraire nous permettra de déplacer la caméra de manière circulaire autour d'un point (l'orbite de la caméra) tout en gardant la caméra dirigé vers ce point.
+**OrbitControls** - récupéré depuis les exemples de la libraire - nous permettra de déplacer la caméra de manière circulaire autour d'un point (l'orbite de la caméra) tout en gardant la caméra dirigée vers ce point.
 **GLTFLoader** nous permettra tout simplement de charger nos éléments aux formats **GLTF**
 
-Ajoutons ensuite certains propriétés dans **data** :
+Ajoutons ensuite certaines propriétés dans **data** :
 {% include code-header.html %}
 ```javascript
 export default {
@@ -332,8 +332,8 @@ data() {
 },
 ...
 ```
-* `scene` représente la scène 3D. La scène est l'élément de base, une boite vide dans laquelle nous pourrons placer nos différents éléments dans espace en 3 voir 4 dimensions si l'on veut ajouter des animations, la quatrième dimension étant le temps.
-* `camera`sera la caméra que l'on ajoutera dans la scène 3D. C'est la caméra qui détermine quelle partie de la scène sera rendu à l'affichage, en fonction notamment de sa position et de sa direction.
+* `scene` représente la scène 3D. La scène est l'élément de base, une boite vide dans laquelle nous pourrons placer nos différents éléments dans l'espace en 3 voir 4 dimensions si l'on veut ajouter des animations, la quatrième dimension étant le temps.
+* `camera` sera la caméra que l'on ajoutera dans la scène 3D. C'est la caméra qui détermine quelle partie de la scène sera rendue à l'affichage, en fonction notamment de sa position et de sa direction.
 * `renderer` est l'élément qui générera l'affichage de la scène 3D du point de vue de la caméra.
 
 Nous allons maintenant ajouter deux méthodes à notre composant. Tout d'abord la fonction **renderScene** qui lancera la génération du rendu pour l'affichage : 
@@ -355,7 +355,7 @@ init() {
 
 ### La scène <a class="anchor" name="scene"></a>
 
-Tout d'abord, nous allons créer simple la scène 3D. Nous allons préciser que l'on ne veut pas de couleur de fond pour notre scène, comme ça nous en fond tout simplement la couleur de la page web :
+Tout d'abord, nous allons créer simplement la scène 3D. Nous allons préciser que l'on ne veut pas de couleur de fond pour notre scène, ainsi nous aurons tout simplement la couleur en fond de la page web :
 {% include code-header.html %}
 ```javascript
 this.scene = new THREE.Scene();
@@ -388,7 +388,7 @@ container.appendChild(this.renderer.domElement);
 ```
 ### La caméra <a class="anchor" name="camera"></a>
 
-Nous allons ensuite créer la caméra et la positionner à la position enregistré dans **modelSettings.cameraPosition** :
+Nous allons ensuite créer la caméra et la positionner à la position enregistrée dans **modelSettings.cameraPosition** :
 {% include code-header.html %}
 ```javascript
 this.camera = new THREE.PerspectiveCamera(
@@ -400,7 +400,7 @@ this.camera = new THREE.PerspectiveCamera(
 this.camera.position.set(this.modelSettings.cameraPosition[0], this.modelSettings.cameraPosition[1], this.modelSettings.cameraPosition[2]);
 ```
 Les champs pour la création de la caméra sont:
-* fov (field of vue): degré du champ de vision de la caméra
+* fov (field of vue) : degré du champ de vision de la caméra
 * ratio : ratio entre la largeur du rendu et sa hauteur. Ici on prendra les propriétés du contenant du rendu pour éviter une déformation de l'image
 * near : distance minimum pour qu'un objet soit visible au rendu
 * far : distance maximum pour qu'un object soit visible au rendu
@@ -417,7 +417,7 @@ controls.maxDistance = 5;
 controls.target.set(0, 0, 0);
 controls.addEventListener("change", this.renderScene);
 ```
-Ici on nomme target ou cible le point autour duquel la caméra tournera et vers lequel elle est toujours orienté.
+Ici on nomme target ou cible le point autour duquel la caméra tournera et vers lequel elle est toujours orientée.
 
 * controls.minDistance est la distance minimum entre la cible et la caméra. Cela permet d'avoir un zoom maximum en somme
 * controles.maxDistance est la distance maximum entre la cible et la caméra. Cela permet donc d'avoir un zoom minimum
@@ -426,17 +426,17 @@ Ici on nomme target ou cible le point autour duquel la caméra tournera et vers 
 
 ### La lumière <a class="anchor" name="lights"></a>
 
-Nous allons passer maintenant au lumière. Nous allons implémenter 3 types de lumières :
-* la lumière directionnelle : cette lumière éclaire tous les objets de la scène non masqué par un autre objet (quelque soit la distance) avec des rayons ayant une direction précise (tous les rayons sont donc parallèles entre deux). Ce type de lumière s'apparente à la lumière du soleil.
-* le point le lumière: un point de lumière émet de la lumière depuis un seul point dans toutes les directions. Ce type de lumière s'apparente à celle d'une ampoule
+Nous allons passer maintenant aux lumières. Nous allons implémenter 3 types de lumières :
+* la lumière directionnelle : cette lumière éclaire tous les objets de la scène non masqués par un autre objet (quelque soit la distance) avec des rayons ayant une direction précise (tous les rayons sont donc parallèles entre eux). Ce type de lumière s'apparente à la lumière du soleil.
+* le point de lumière: un point de lumière émet de la lumière depuis un seul point dans toutes les directions. Ce type de lumière s'apparente à celle d'une ampoule
 
-Je vous laisse voir ci-dessous une liste non-exhaustive des types de lumières que l'on peut avoir et comment celles-ci influent sur la scène et les objets :
+Je vous laisse voir ci-dessous une liste non-exhaustive de types de lumières que l'on peut avoir et comment celles-ci influent sur la scène et les objets :
 
 ![différents types de lumières](https://docs.arnoldrenderer.com/download/attachments/38175890/image2019-7-23%2014%3A41%3A48.png?version=1&modificationDate=1563885709000&api=v2)
 
-Il est important d'avoir plusieurs sources de lumières à différente position et de différentes couleurs pour avoir un meilleur rendu, car nous sommes constamment exposées à différentes sources de lumières, chaque objet renvoyant lui même une partie de la lumière qu'il reçoit.
+Il est important d'avoir plusieurs sources de lumières à différentes positions et de différentes couleurs pour avoir un meilleur rendu, car nous sommes constamment exposés à différentes sources de lumières, chaque objet renvoyant lui même une partie de la lumière qu'il reçoit.
 
-Nous allons donc ajouter à notre scène une lumière directionnelle et 3 point de lumière réparties à différentes positions, chacune des ses sources avec une couleur légèrement différente :
+Nous allons donc ajouter à notre scène une lumière directionnelle et 3 points de lumière répartis à différentes positions, chacune de ses sources avec une couleur légèrement différente :
 {% include code-header.html %}
 ```javascript
 const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
@@ -473,11 +473,11 @@ loader.load(
     }
 );
 ```
-Et voilà ! Vous devriez désormais maintenant voir la liste de vos produits avec leur affichage en 3D : 
+Et voilà ! Vous devriez désormais voir la liste de vos produits avec leur affichage en 3D : 
 
 ![résultat finale](/assets/images/threejs/threejs-2.png)
 
-Attention cependant ! Bien que l'affichage de tous vos modèles en 3D directement depuis la liste des produits puissent être intéressant, cela a un coup non négligeable sur le temps de chargement, aussi vaut-il mieux réserver cela pour la fiche détaillée du produit ou prévoir un chargement asynchrone et ne charger qu'une image dans un premier temps par exemple.
+Attention cependant ! Bien que l'affichage de tous vos modèles en 3D directement depuis la liste des produits puisse être intéressant, cela a un coup non négligeable sur le temps de chargement, aussi vaut-il mieux réserver cela pour la fiche détaillée du produit ou prévoir un chargement asynchrone et ne charger qu'une image dans un premier temps par exemple.
 
 #### ressources <a class="anchor" name="ressources"></a>
 
