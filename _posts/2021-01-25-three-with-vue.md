@@ -28,7 +28,7 @@ Nous verrons tout d'abord comment créer le projet en Vue.js avec les composants
     - navigation-header
       - `navigation-header.vue` : bandeau de navigation en haut de page (à titre d'exemple).
     - product-thumbnail
-      - `product-thumbnail.vue` :  vignette produit avec les différentes informations lié à celui-ci.
+      - `product-thumbnail.vue` :  vignette produit avec les différentes informations liées à celle-ci.
     - product-view
       - `product-view.vue` :  vue 3D du produit.
 - views
@@ -450,8 +450,8 @@ Ici, on nomme target ou cible le point autour duquel la caméra tournera et vers
 ### La lumière <a class="anchor" name="lights"></a>
 
 Nous allons passer maintenant aux lumières. Nous allons implémenter 2 types de lumières :
-* la lumière directionnelle : cette lumière éclaire tous les objets de la scène non masqués par un autre objet (quelque soit la distance) avec des rayons ayant une direction précise (tous les rayons sont donc parallèles entre eux). Ce type de lumière s'apparente à la lumière du soleil.
-* le point de lumière: un point de lumière émet de la lumière depuis un seul point dans toutes les directions. Ce type de lumière s'apparente à celle d'une ampoule.
+* `la lumière directionnelle` : cette lumière éclaire tous les objets de la scène non masqués par un autre objet (quelque soit la distance) avec des rayons ayant une direction précise (tous les rayons sont donc parallèles entre eux). Ce type de lumière s'apparente à la lumière du soleil.
+* `le point de lumière` : un point de lumière émet de la lumière depuis un seul point dans toutes les directions. Ce type de lumière s'apparente à celle d'une ampoule.
 
 Ci-dessous une liste non-exhaustive de types de lumières que l'on peut avoir et comment celles-ci influent sur la scène et les objets :
 
@@ -503,8 +503,8 @@ Et voilà ! Vous devriez désormais voir la liste de vos produits avec leur affi
 
 Attention cependant ! Bien que l'affichage de tous vos modèles en 3D directement depuis la liste des produits puisse être intéressant, cela a un coût non négligeable sur le temps de chargement, aussi vaut-il mieux réserver cela pour la fiche détaillée du produit ou prévoir un chargement asynchrone et ne charger qu'une image dans un premier temps par exemple.
 
-#### ressources <a class="anchor" name="ressources"></a>
+## Ressources <a class="anchor" name="ressources"></a>
 
-* [corvette by d2epetto](https://sketchfab.com/3d-models/chevrolet-corvette-c7-2b509d1bce104224b147c81757f6f43a), (https://sketchfab.com/d2epetto) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/))
+* [corvette by d2epetto](https://sketchfab.com/3d-models/chevrolet-corvette-c7-2b509d1bce104224b147c81757f6f43a)
 * [nissan skyline](https://sketchfab.com/3d-models/nissan-skyline-gt-r-c110-kenmeri-72-1a950b81ee274a0eb8014bd84ba047f5)
 * [damage helmet demo](https://threejs.org/examples/?q=gltf#webgl_loader_gltf)
