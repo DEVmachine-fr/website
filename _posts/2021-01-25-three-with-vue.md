@@ -1,15 +1,17 @@
 ---
 author: Gwenolé
-title: Implémentation Threejs dans un projet vue
-categories: threejs vue
+title: Implémentation Three.js dans un projet Vue.js
+categories: Three.js Vue.js
 ---
 
-Après avoir pu tester l'implémentation de threejs dans un projet vue, je vous partage ici un tutoriel pour pouvoir débuter simplement avec comme objectif l'affichage de modèles 3D dans des vignettes produits.
 
-- [Threejs, kézako ?](#kesaco)
-- [Initialisation du projet vue](#initProject)
+Nous vous partageons ici un tutoriel pour pouvoir débuter simplement l’implémentation de Three.js dans un projet Vue.js avec comme illustration l’affichage de modèles 3D dans des vignettes produits.
+
+- [Introduction](#introduction)
+- [Three.js, kézako ?](#kesaco)
+- [Initialisation du projet Vue.js](#initProject)
 - [Création des composants](#createComponents)
-- [Intégration de threejs](#integration)
+- [Intégration de Three.js](#integration)
     - [La scène](#scene)
     - [Le renderer](#renderer)
     - [La caméra](#camera)
@@ -18,20 +20,41 @@ Après avoir pu tester l'implémentation de threejs dans un projet vue, je vous 
     - [Les modèles 3D](#models)
 - [Ressources](#ressources)
 
-## Threejs, kézako ? <a class="anchor" name="kesaco"></a>
+## Introduction <a class="anchor" name="introduction"></a>
 
-Threejs est une librairie javascript qui permet d'intégrer de la 3D dans votre site web. Cette libraire permet de créer des rendus en WebGL, CSS3D et SVG. Vous pouvez trouver des exemples sur les nombreuses possibilités qu'offre threejs [ici](https://threejs.org/examples/)
+Nous verrons tout d'abord comment créer le projet en Vue.js avec les composants dont nous aurons besoin. Le projet aura comme structure :
 
-Ici nous allons nous intéresser à l'intégration de threejs dans un projet vue pour permettre le rendu 3D en WebGL de produits dans une liste de produits.
+- components
+    - navigation-header
+      - `navigation-header.vue` : bandeau de navigation en haut de page (à titre d'exemple).
+    - product-thumbnail
+      - `product-thumbnail.vue` :  vignette produit avec les différentes informations lié à celui-ci.
+    - product-view
+      - `product-view.vue` :  vue 3D du produit.
+- views
+    - product-list
+      - `product-list.vue` : affichage de la liste des produits.
 
-## Initialisation du projet vue <a class="anchor" name="initProject"></a>
+Nous présenterons ensuite  plusieurs notions 3D lors de leur intégration avec Three.js :
 
-Tout d'abord nous allons devoir installer vue-cli via `npm` si cela n'est pas déjà fait :
+- la scène et son rendu
+- la caméra et son contrôle
+- la gestion de la lumière
+
+## Three.js, kézako ? <a class="anchor" name="kesaco"></a>
+
+Three.js est une librairie Javascript qui permet d'intégrer de la 3D dans votre site web. Cette libraire permet de créer des rendus en WebGL, CSS3D et SVG. Vous pouvez trouver des exemples sur les nombreuses possibilités qu'offre Three.js [ici](https://threejs.org/examples/).
+
+Nous allons nous intéresser à du rendu WebGL pour ce tutoriel.
+
+## Initialisation du projet Vue.js <a class="anchor" name="initProject"></a>
+
+Tout d'abord, nous allons devoir installer vue-cli via `npm` si cela n'est pas déjà fait :
 {% include code-header.html %}
 ```
 npm install -g @vue/cli
 ```
-Vous pouvez vérifier la bonne installation en vérifiant la version de vue installée :
+Vous pouvez vérifier la bonne installation en affichant la version de Vue.js installée :
 {% include code-header.html %}
 ```
 vue --version
@@ -43,17 +66,17 @@ vue create my-project-name
 ```
 Nous garderons le paramétrage par défaut pour notre exemple (libre à vous de le modifier pour votre projet).
 
-Pour ce qui est des dépendances, nous utiliserons bootstrap-vue pour faciliter la mise en page et threejs :
+Pour ce qui est des dépendances, nous utiliserons bootstrap-vue pour faciliter la mise en page et Three.js :
 {% include code-header.html %}
 ```
 npm install --save bootstrap-vue
 npm install --save three
 ```
-## Création des composants <a class="anchor" name="createComponents"></a>
+## Création des composants Vue.js <a class="anchor" name="createComponents"></a>
 
-Pour cette démo nous allons seulement intégrer des modèles gltf, ce format étant conseillé pour le web car moins lourd et donc plus rapide à charger. Si vous souhaitez charger d’autres formats, je vous invite à consulter les exemples de **threejs** sur les imports des différents formats et adapter le code ci-dessous en fonction.
+Pour ce tutoriel, nous allons uniquement intégrer des modèles gltf, ce format étant conseillé pour le web car moins lourd et donc plus rapide à charger. Si vous souhaitez charger d’autres formats, je vous invite à consulter les exemples de **Three.js** sur les imports des différents formats et adapter le code ci-dessous en fonction.
 
-Nous allons tout d'abord créer un composants **navigation-header.vue** dans un dossier _components/navigation-header_. Le code ci-dessous est un simple copier-coller d'un exemple de barre de navigation de la documentation **bootstrap** :
+Nous allons tout d'abord créer un composant **navigation-header.vue** dans un dossier _components/navigation-header_. Le code ci-dessous est un simple copier-coller d'un exemple de barre de navigation de la documentation **bootstrap** :
 {% include code-header.html %}
 ```html
 <template>
@@ -102,7 +125,7 @@ export default {
 };
 </script>
 ```
-Passons maintenant aux composant qui contiendra l'affichage 3D de notre modèle, qui sera le composant **product-view.vue** dans _components/product-view_. Nous l'initialiserons juste ici avec quelques propriétés et nous reviendrons dessus par la suite. 
+Passons maintenant au composant qui contiendra l'affichage 3D de notre modèle, qui sera le composant **product-view.vue** dans _components/product-view_. Nous l'initialiserons juste ici avec quelques propriétés et nous reviendrons dessus par la suite. 
 {% include code-header.html %}
 ```html
 <template> </template>
@@ -123,7 +146,7 @@ export default {
 </script>
 ```
 **containerId** sera l'id du contenant du composant dont on aura besoin pour connaître les dimensions
-**modelSettings** contiendra les différentes informations nécessaires à l'affichage du modèle dans **threejs**
+**modelSettings**. Il contiendra les différentes informations nécessaires à l'affichage du modèle dans **Three.js**
 
 Nous allons intégrer ce dernier composant dans un composant vignette **product-thumbnail.vue** dans _components/product-thumbnail_. Ce composant affichera la visualisation 3D ainsi qu'un titre et une description :
 {% include code-header.html %}
@@ -191,13 +214,13 @@ export default {
 </style>
 ```
 
-Ensuite nous allons créer dans _views/product-list_ le composant **product-list.vue**. Ce composant intégrera le composant de navigation et créera une liste de composants **product-thumbnail**. Pour cette démonstration, nous initialiserons cette liste directement dans le composant.
+Ensuite, nous allons créer dans _views/product-list_ le composant **product-list.vue**. Ce composant intégrera le composant de navigation et créera une liste de composants **product-thumbnail**. Pour cette démonstration, nous initialiserons cette liste directement dans le composant.
 
-Pour les modèles, j'ai récupéré les voitures sur sketchfab et un modèle de casque présent dans les exemples de threejs ([lien en fin d'article](#ressources)).
+Pour les modèles, nous récupérons les voitures sur sketchfab et un modèle de casque présent dans les exemples de Three.js ([lien en fin d'article](#ressources)).
 
 Nous aurons pour chaque modèle une propriété **obj3DSettings** pour l'affichage 3D, ayant comme sous-propriétés :
-* `link` : lien vers le modèle gltf
-* `cameraPosition` : position de la caméra. Certains modèles peuvent être plus grands ou plus petits, il est donc intéressant de pouvoir éloigner ou approcher la caméra par défaut en fonction du modèle
+* `link` : lien vers le modèle gltf.
+* `cameraPosition` : position de la caméra. Certains modèles peuvent être plus grands ou plus petits, il est donc intéressant de pouvoir éloigner ou approcher la caméra par défaut en fonction du modèle.
 * `scale` : échelle du modèle de base. Si vous chargez des modèles venant de différentes sources, il est possible que les modèles ne soient pas à la même échelle. Vous pouvez régler ce problème en réglant la propriété scale (exemple : un scale de 2 doublera la taille de votre modèle, un scale de 0.5 le divisera par 2).
 {% include code-header.html %}
 ```html
@@ -298,11 +321,11 @@ export default {
 }
 </style>
 ```
-Vous devriez maintenant avoir ceci lorque vous lancer votre projet :
+Vous devriez maintenant avoir ceci lorsque vous lancez votre projet :
 
 ![projet après création des composants](/assets/images/threejs/threejs-1.png)
 
-## Intégration de threejs <a class="anchor" name="integration"></a>
+## Intégration de Three.js <a class="anchor" name="integration"></a>
 
 Passons maintenant au coeur du sujet. Retournons donc dans **product-view** et commençons par importer 3 éléments :
 {% include code-header.html %}
@@ -314,7 +337,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 ...
 ```
-Le premier élément est tout simplement la librairie threejs.
+Le premier élément est tout simplement la librairie Three.js.
 **OrbitControls** - récupéré depuis les exemples de la libraire - nous permettra de déplacer la caméra de manière circulaire autour d'un point (l'orbite de la caméra) tout en gardant la caméra dirigée vers ce point.
 **GLTFLoader** nous permettra tout simplement de charger nos éléments aux formats **GLTF**
 
@@ -332,7 +355,7 @@ data() {
 },
 ...
 ```
-* `scene` représente la scène 3D. La scène est l'élément de base, une boite vide dans laquelle nous pourrons placer nos différents éléments dans l'espace en 3 voir 4 dimensions si l'on veut ajouter des animations, la quatrième dimension étant le temps.
+* `scene` représente la scène 3D. La scène est l'élément de base, une boite vide dans laquelle nous pourrons placer nos différents éléments dans l'espace en 3 voire 4 dimensions si l'on veut ajouter des animations, la quatrième dimension étant le temps.
 * `camera` sera la caméra que l'on ajoutera dans la scène 3D. C'est la caméra qui détermine quelle partie de la scène sera rendue à l'affichage, en fonction notamment de sa position et de sa direction.
 * `renderer` est l'élément qui générera l'affichage de la scène 3D du point de vue de la caméra.
 
@@ -399,11 +422,11 @@ this.camera = new THREE.PerspectiveCamera(
 );
 this.camera.position.set(this.modelSettings.cameraPosition[0], this.modelSettings.cameraPosition[1], this.modelSettings.cameraPosition[2]);
 ```
-Les champs pour la création de la caméra sont:
-* fov (field of vue) : degré du champ de vision de la caméra
-* ratio : ratio entre la largeur du rendu et sa hauteur. Ici on prendra les propriétés du contenant du rendu pour éviter une déformation de l'image
-* near : distance minimum pour qu'un objet soit visible au rendu
-* far : distance maximum pour qu'un object soit visible au rendu
+Les champs pour la création de la caméra sont :
+* `fov (field of view)` : degré du champ de vision de la caméra.
+* `ratio` : ratio entre la largeur du rendu et sa hauteur. Ici on prendra les propriétés du contenant du rendu pour éviter une déformation de l'image.
+* `near` : distance minimum pour qu'un objet soit visible au rendu.
+* `far` : distance maximum pour qu'un object soit visible au rendu.
 
 ### Le contrôleur <a class="anchor" name="controller"></a>
 
@@ -417,7 +440,7 @@ controls.maxDistance = 5;
 controls.target.set(0, 0, 0);
 controls.addEventListener("change", this.renderScene);
 ```
-Ici on nomme target ou cible le point autour duquel la caméra tournera et vers lequel elle est toujours orientée.
+Ici, on nomme target ou cible le point autour duquel la caméra tournera et vers lequel elle est toujours orientée.
 
 * controls.minDistance est la distance minimum entre la cible et la caméra. Cela permet d'avoir un zoom maximum en somme
 * controles.maxDistance est la distance maximum entre la cible et la caméra. Cela permet donc d'avoir un zoom minimum
@@ -426,11 +449,11 @@ Ici on nomme target ou cible le point autour duquel la caméra tournera et vers 
 
 ### La lumière <a class="anchor" name="lights"></a>
 
-Nous allons passer maintenant aux lumières. Nous allons implémenter 3 types de lumières :
+Nous allons passer maintenant aux lumières. Nous allons implémenter 2 types de lumières :
 * la lumière directionnelle : cette lumière éclaire tous les objets de la scène non masqués par un autre objet (quelque soit la distance) avec des rayons ayant une direction précise (tous les rayons sont donc parallèles entre eux). Ce type de lumière s'apparente à la lumière du soleil.
-* le point de lumière: un point de lumière émet de la lumière depuis un seul point dans toutes les directions. Ce type de lumière s'apparente à celle d'une ampoule
+* le point de lumière: un point de lumière émet de la lumière depuis un seul point dans toutes les directions. Ce type de lumière s'apparente à celle d'une ampoule.
 
-Je vous laisse voir ci-dessous une liste non-exhaustive de types de lumières que l'on peut avoir et comment celles-ci influent sur la scène et les objets :
+Ci-dessous une liste non-exhaustive de types de lumières que l'on peut avoir et comment celles-ci influent sur la scène et les objets :
 
 ![différents types de lumières](https://docs.arnoldrenderer.com/download/attachments/38175890/image2019-7-23%2014%3A41%3A48.png?version=1&modificationDate=1563885709000&api=v2)
 
@@ -458,7 +481,7 @@ this.scene.add(light4);
 ```
 ### Les modèles 3D <a class="anchor" name="models"></a>
 
-Enfin nous allons charger notre modèle dans la scène. Une fois chargé, nous allons le positioner au niveau de la cible du contrôleur de la caméra pour que celle-ci tourne autour de l'objet, et si la propriété scale existe, on appliquera une mise à l'échelle avec celle-ci. On fait un premier rendu de l'objet (sinon on n'aura notre premier rendu que lorsque l'on bougera la caméra) : 
+Enfin, nous allons charger notre modèle dans la scène. Une fois chargé, nous allons le positionner au niveau de la cible du contrôleur de la caméra pour que celle-ci tourne autour de l'objet, et si la propriété scale existe, on appliquera une mise à l'échelle avec celle-ci. On fait un premier rendu de l'objet (sinon on n'aura notre premier rendu que lorsque l'on bougera la caméra) : 
 {% include code-header.html %}
 ```javascript
 let loader = new GLTFLoader();
@@ -477,7 +500,8 @@ Et voilà ! Vous devriez désormais voir la liste de vos produits avec leur affi
 
 ![résultat finale](/assets/images/threejs/threejs-2.png)
 
-Attention cependant ! Bien que l'affichage de tous vos modèles en 3D directement depuis la liste des produits puisse être intéressant, cela a un coup non négligeable sur le temps de chargement, aussi vaut-il mieux réserver cela pour la fiche détaillée du produit ou prévoir un chargement asynchrone et ne charger qu'une image dans un premier temps par exemple.
+
+Attention cependant ! Bien que l'affichage de tous vos modèles en 3D directement depuis la liste des produits puisse être intéressant, cela a un coût non négligeable sur le temps de chargement, aussi vaut-il mieux réserver cela pour la fiche détaillée du produit ou prévoir un chargement asynchrone et ne charger qu'une image dans un premier temps par exemple.
 
 #### ressources <a class="anchor" name="ressources"></a>
 
