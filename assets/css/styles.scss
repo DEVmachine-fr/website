@@ -3,6 +3,7 @@
 
 @import "variables";
 @import "_navbar";
+@import "code";
 
 // Global styling for this template
 body {
@@ -61,7 +62,7 @@ h6 {
 
   &:active,
   &:focus {
-    box-shadow: 0 0 0 0.2rem rgba(254, 209, 55, .5) !important;
+    box-shadow: 0 0 0 0.2rem rgba(254, 209, 55,.5) !important;
   }
 }
 
@@ -110,8 +111,7 @@ img::-moz-selection {
       text-align: left;
     }
   }
-
-  .icon-activite {
+  .icon-activite{
     text-align: center;
   }
 
@@ -122,7 +122,7 @@ img::-moz-selection {
 }
 
 #savoirfaire {
-  .cycle, .technos {
+  .cycle, .technos{
     width: inherit;
   }
 }
@@ -132,7 +132,6 @@ img::-moz-selection {
     width: 540px;
   }
 }
-
 #valeurs {
   .valeur {
     color: #fc766a;
@@ -187,16 +186,15 @@ img::-moz-selection {
   }
 
 }
-
-.bg-light {
+.bg-light{
   background-color: $gray-100 !important;
   color: black;
 }
 
-.bg-intro {
+.bg-intro{
   color: white;
   border-bottom: $primary solid 6px;
-  background-image: url("/assets/images/cover.png");
+  background-image:  url("/assets/images/cover.png");
   background-color: $secondary !important;
   height: 520px;
   background-position: top;
@@ -221,12 +219,8 @@ img::-moz-selection {
 
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* Spinning, gradient circle; CSS only! */
@@ -239,8 +233,7 @@ img::-moz-selection {
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
-
-.conseil {
+.conseil{
   position: relative;
   margin-bottom: -115px;
   margin-left: 50px;
@@ -250,12 +243,11 @@ img::-moz-selection {
   color: white;
 }
 
-.text-align-horizontal {
+.text-align-horizontal{
   margin-top: auto;
   margin-bottom: auto;
   text-align: justify;
 }
-
 footer {
   left: 0;
   bottom: 0;
@@ -265,11 +257,9 @@ footer {
   text-align: center;
   height: 60px;
 }
-
 .hide-logo {
   display: none;
 }
-
 .display-logo {
   display: block;
 }
@@ -387,7 +377,6 @@ section {
 
 #contact {
   background-color: $primary;
-
   .section-subheading {
     color: #ffffff !important;
     font-family: "Poppins";
@@ -395,11 +384,9 @@ section {
     font-weight: 600;
     line-height: 30px;
   }
-
   .contact-section {
     margin-top: 20px;
   }
-
   .contact {
     color: $secondary;
     text-align: center;
@@ -408,11 +395,9 @@ section {
     font-weight: 700;
   }
 }
-
 footer {
   background-color: $secondary;
   height: 80px;
-
   a {
     color: white;
     font-family: Poppins;
@@ -421,14 +406,13 @@ footer {
     line-height: 28px;
     cursor: pointer;
   }
-
   .row {
     padding-top: 20px;
   }
 }
 
 // Small devices (landscape phones, 576px and up)
-@media(max-width: 767.98px) {
+@media(max-width:767.98px) {
   nav {
     .logo-dm {
       width: 150px;
@@ -446,7 +430,6 @@ footer {
   }
   section {
     padding: 25px;
-
     h2.section-heading, h1.section-heading {
       font-size: 40px;
     }
@@ -456,13 +439,11 @@ footer {
     .text-technos {
       order: 12;
     }
-
     .img-technos {
       order: 1;
       margin-bottom: 10px;
       padding: 0;
     }
-
     .cycle {
       max-width: 350px;
       margin-bottom: 15px;
@@ -473,7 +454,6 @@ footer {
     .col-md-6 {
       text-align: center;
     }
-
     .postits {
       width: inherit;
       max-width: 340px;
@@ -500,7 +480,6 @@ footer {
   footer {
     height: 140px;
   }
-
 }
 
 // Medium devices (tablets, 768px and up)
@@ -517,6 +496,37 @@ footer {
       width: 440px;
     }
   }
+  #valeurs {
+    img {
+      margin: 5px !important;
+    }
+    .collaboration-img {
+      width: 80px !important;
+      margin-bottom: 0px !important;
+    }
+    .engagement-img {
+      width: 80px !important;
+      margin-bottom: 0px;
+    }
+    .pragmatisme-img {
+      width: 80px !important;
+    }
+  }
+}
+
+@media(min-width:768px) and (max-width: 1200px) {
+  #competences {
+    .projets {
+      width: 100px;
+    }
+  }
+
+  #demarche {
+    .postits {
+      width: 340px !important;
+    }
+  }
+
   #valeurs {
     img {
       margin: 5px !important;
@@ -538,27 +548,13 @@ footer {
   }
 }
 
-@media(min-width: 768px) and (max-width: 1200px) {
-  #competences {
-    .projets {
-      width: 100px;
-    }
-  }
-  #demarche {
-    .postits {
-      width: 340px !important;
-    }
-  }
-}
-
-@media(min-width: 768px) {
+@media(min-width:768px) {
   section {
     padding: 75px 0;
   }
 }
-
 // plus grand que mobile
-@media(min-width: 1024px) {
+@media(min-width:1024px) {
 
   .cycle {
     width: 450px !important;
@@ -569,7 +565,7 @@ footer {
 }
 
 // plus grand que tablette
-@media(min-width: 992px) {
+@media(min-width:992px) {
   .logo-dm {
     width: 260px;
   }
@@ -597,12 +593,13 @@ footer {
         text-decoration: none;
       }
 
-      p.post-excerpt {
-        font-family: "Roboto", serif;
+      p {
+        font-family: Poppins, serif;
+        text-align: justify;
       }
 
       .post-title {
-        font-family: "Poppins", serif;
+        font-family: "Nunito", serif;
         font-weight: 600;
         font-size: x-large;
       }
@@ -621,6 +618,15 @@ footer {
 article {
   min-height: calc(100vh - 75px);
   padding: 75px 20px 60px;
+  font-family: Poppins, serif;
+  list-style: url(/assets/images/right-chevron-.svg);
+
+  .post-info {
+    font-style: italic;
+    font-size: 0.8rem;
+    color: $gray-500;
+    margin-bottom: 1rem;
+  }
 
   p {
     text-align: justify;
@@ -647,17 +653,32 @@ article {
 
   img {
     max-width: 75%;
-    max-height: 200px;
+    max-height: 300px;
     display: block;
     margin-left: auto;
     margin-right: auto;
   }
+
+  blockquote {
+    border-left: 3px $gray-200 solid;
+    padding-left: 5px;
+    font-style: italic;
+    color: $gray-500;
+  }
+
+  .anchor:target {
+    padding-top: 64px;
+  }
+
 }
 
 @media (min-width: 992px) {
-  article {
+  article{
     min-height: calc(100vh - 80px);
     padding-top: 150px;
     padding-bottom: 80px;
+    .anchor:target {
+      padding-top: 120px;
+    }
   }
 }

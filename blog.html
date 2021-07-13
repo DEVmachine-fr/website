@@ -1,6 +1,6 @@
 ---
 layout: default
-title: DEVmachine - Blog
+title: Blog Technique DEVmachine
 css: blog
 ---
 
@@ -13,7 +13,7 @@ css: blog
           <div class="intro-bg">
             <h1 class="section-heading">Bienvenue sur le blog de DEVmachine</h1>
             <p>
-              Vous trouverez ici des ressources concernant les actualités de développement de notre équipe, mais aussi sur des sujets plus généralistes...
+              Vous trouverez ici des ressources concernant les actualités de développement de l'équipe, et aussi des sujets plus généralistes...
             </p>
           </div>
         </div>
@@ -27,9 +27,12 @@ css: blog
       <ul>
         {% for post in site.posts %}
         <li>
-          <a href="{{ post.url }}"><div class="post-title">{{ post.postTitle }}</div></a>
-          <p class="post-excerpt">{{ post.excerpt }}</p>
+          <a href="{{ post.url }}"><div class="post-title">{{ post.title }}</div></a>
           <div class="post-info">par {{ post.author }} le {{ post.date | date: "%d/%m/%Y" }}</div>
+          <p class="post-excerpt">
+            {{ post.excerpt }}
+            <a href="{{ post.url }}">Lire la suite...</a>
+          </p>
         </li>
         {% endfor %}
       </ul>
