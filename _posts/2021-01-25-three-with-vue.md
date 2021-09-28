@@ -35,7 +35,7 @@ Nous verrons tout d'abord comment créer le projet en Vue.js avec les composants
     - product-list
       - `product-list.vue` : affichage de la liste des produits.
 
-Nous présenterons ensuite  plusieurs notions 3D lors de leur intégration avec Three.js :
+Nous présenterons ensuite plusieurs notions 3D lors de leur intégration avec Three.js :
 
 - la scène et son rendu
 - la caméra et son contrôle
