@@ -78,7 +78,7 @@ Nous allons maintenant modifier le composant app pour afficher une carte Mapbox
 
 Tout d'abord, Mapbox nécessite une clé d'utilisation si vous souhaitez aller plus loin et utiliser leurs API ou SDK. Vous pouvez créer un compte pour avoir votre propre clé.
 
-Nous n'utiliserons dans notre cas les API Mapbox, nous pouvons donc nous contenter dans *app.modules.ts* d'importer le module *NgxMapboxGLModule* comme ceci : 
+Nous n'utiliserons dans notre cas les API Mapbox, nous pouvons donc nous contenter dans **app.modules.ts** d'importer le module **NgxMapboxGLModule** comme ceci : 
 {% include code-header.html %}
 ```javascript
 ...
@@ -90,7 +90,7 @@ import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
   ],
 ```
 
-Si vous souhaitez prendre en compte une clé Mapbox, il vous faudra modifier *app.module.ts* comme suit avec vos clés :
+Si vous souhaitez prendre en compte une clé Mapbox, il vous faudra modifier **app.module.ts** comme suit avec vos clés :
 {% include code-header.html %}
 ```javascript
 ...
@@ -105,7 +105,7 @@ import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
   ],
 ```
 
-On ajoute ensuite la variable style dans *app.component.ts* :
+On ajoute ensuite la variable style dans **app.component.ts** :
 {% include code-header.html %}
 ```javascript
   style = {
@@ -132,11 +132,11 @@ On ajoute ensuite la variable style dans *app.component.ts* :
 ```
 
 Voyons plus en détail ce que nous avons renseigné. le composant Mapbox a donc une variable style qui contient plusieurs informations :
-- *sources* dans laquelle chaque propriété est une source de données dans laquelle on retrouve les propriétés type pour le type de données et data pour le chemin utilisé pour récupérer ces données
-- *version* qui sera la version de Mapbox que l'on veut utiliser
-- *layers* contenant des couches de données à afficher. on y remplira ici un id pour l'identifier, le type de layer que l'on a, la source de donnée que l'on souhaite utiliser (déclarée dans *sources*), les styles à appliquer (la propriété paint et layout)
+- **sources** dans laquelle chaque propriété est une source de données dans laquelle on retrouve les propriétés type pour le type de données et data pour le chemin utilisé pour récupérer ces données
+- **version** qui sera la version de Mapbox que l'on veut utiliser
+- **layers** contenant des couches de données à afficher. on y remplira ici un id pour l'identifier, le type de layer que l'on a, la source de donnée que l'on souhaite utiliser (déclarée dans **sources**), les styles à appliquer (la propriété paint et layout)
 
-Nous allons ajouter quelques styles dans *app.component.scss* pour que la carte prenne l'ensemble de la page : 
+Nous allons ajouter quelques styles dans **app.component.scss** pour que la carte prenne l'ensemble de la page : 
 {% include code-header.html %}
 ```css
 mgl-map {
@@ -145,8 +145,8 @@ mgl-map {
 }
 ```
 
-Nous allons également ajouter les styles fournies avec la librairie *ngx-mapbox-gl* pour avoir un affichage propre (vous pouvez surcharger les styles ensuite si vous le souhaitez).
-Pour cela, dans *angular.json* nous allons modifier la propriété *styles* comme ceci :
+Nous allons également ajouter les styles fournies avec la librairie **ngx-mapbox-gl** pour avoir un affichage propre (vous pouvez surcharger les styles ensuite si vous le souhaitez).
+Pour cela, dans **angular.json** nous allons modifier la propriété **styles** comme ceci :
 {% include code-header.html %}
 ```json
             "styles": [
@@ -156,7 +156,7 @@ Pour cela, dans *angular.json* nous allons modifier la propriété *styles* comm
             ],
 ```
 
-Nous allons ensuite modifier le html de *app.component.html* pour intégrer la carte Mapbox :
+Nous allons ensuite modifier le html de **app.component.html** pour intégrer la carte Mapbox :
 {% include code-header.html %}
 ```html
 <mgl-map
@@ -167,9 +167,9 @@ Nous allons ensuite modifier le html de *app.component.html* pour intégrer la c
 </mgl-map>
 ```
 
-On a en paramètre du composant le style définie dans *app.component.ts* précédemment, le niveau de zoom souhaité et les coordonnées de l'endroit sur lequel nous voulons centrer la carte.
+On a en paramètre du composant le style définie dans **app.component.ts** précédemment, le niveau de zoom souhaité et les coordonnées de l'endroit sur lequel nous voulons centrer la carte.
 
-On ajoute ensuite la variable *global* à la fin de *polyfills.ts* pour le bon fonctionnement de notre application ( vous trouverez plus d'explication à ce sujet [ici](https://github.com/angular/angular-cli/issues/9827#issuecomment-386154063)) :
+On ajoute ensuite la variable **global** à la fin de **polyfills.ts** pour le bon fonctionnement de notre application ( vous trouverez plus d'explication à ce sujet [ici](https://github.com/angular/angular-cli/issues/9827#issuecomment-386154063)) :
 {% include code-header.html %}
 ```javascript
 (window as any).global = window;
@@ -191,13 +191,13 @@ Nous allons maintenant ajouter un autre jeu de données geojson de polygones à 
 Pour cela nous allons dans notre exemple récupérer les limites communales de rennes métropole en polygones (lien [ici](https://data.rennesmetropole.fr/explore/dataset/limites-communales-referentielles-de-rennes-metropole-polygones/table/?disjunctive.nom&location=10,48.08726,-1.73378&basemap=0a029a&dataChart=eyJxdWVyaWVzIjpbeyJjb25maWciOnsiZGF0YXNldCI6ImxpbWl0ZXMtY29tbXVuYWxlcy1yZWZlcmVudGllbGxlcy1kZS1yZW5uZXMtbWV0cm9wb2xlLXBvbHlnb25lcyIsIm9wdGlvbnMiOnsiZGlzanVuY3RpdmUubm9tIjp0cnVlfX0sImNoYXJ0cyI6W3siYWxpZ25Nb250aCI6dHJ1ZSwidHlwZSI6ImNvbHVtbiIsImZ1bmMiOiJBVkciLCJ5QXhpcyI6Im9iamVjdGlkIiwic2NpZW50aWZpY0Rpc3BsYXkiOnRydWUsImNvbG9yIjoiIzY2YzJhNSJ9XSwieEF4aXMiOiJub20iLCJtYXhwb2ludHMiOjUwLCJzb3J0IjoiIn1dLCJ0aW1lc2NhbGUiOiIiLCJkaXNwbGF5TGVnZW5kIjp0cnVlLCJhbGlnbk1vbnRoIjp0cnVlfQ%3D%3D)).
 
 Téléchargez le jeu de données au format json (vous pouvez le télécharger sous d'autre format, mais il faudra alors configurer Angular pour la lecture de ce type d'extension).
-Nous le nommerons dans notre cas *communes-rennes.json*.
+Nous le nommerons dans notre cas **communes-rennes.json**.
 
 Nous allons maintenant modifier ce json dans l'outil de votre choix pour y ajouter deux propriétés pour chaque commune :
-- *color* qui contiendra un code couleur (exemple : "#03FF98")
-- *nbHabitant* qui contiendra le nombre d'habitant de la commune (ici on mettra des chiffres aléatoires pour ne pas s'embêter)
+- **color** qui contiendra un code couleur (exemple : "#03FF98")
+- **nbHabitant** qui contiendra le nombre d'habitant de la commune (ici on mettra des chiffres aléatoires pour ne pas s'embêter)
 
-On va ajouter une propriété *cursorStyle* dans *app.component.ts* pour changer le style du curseur lorsque l'on passe sur les communes, mais également un objet source pour notre json :
+On va ajouter une propriété **cursorStyle** dans **app.component.ts** pour changer le style du curseur lorsque l'on passe sur les communes, mais également un objet source pour notre json :
 {% include code-header.html %}
 ```javascript
   cursorStyle: string;
@@ -207,7 +207,7 @@ On va ajouter une propriété *cursorStyle* dans *app.component.ts* pour changer
   };
 ```
 
-On ajoute cette propriété dans *app.component.html* et l'on changera également le niveau de zoom à 10 :
+On ajoute cette propriété dans **app.component.html** et l'on changera également le niveau de zoom à 10 :
 {% include code-header.html %}
 ```html
 <mgl-map
@@ -219,7 +219,7 @@ On ajoute cette propriété dans *app.component.html* et l'on changera égalemen
 </mgl-map>
 ```
 
-Toujours dans *app.component.html*, on ajoute ensuite notre layer :
+Toujours dans **app.component.html**, on ajoute ensuite notre layer :
 {% include code-header.html %}
 ```html
 <mgl-map
@@ -245,16 +245,16 @@ Toujours dans *app.component.html*, on ajoute ensuite notre layer :
 ```
 
 dans mgl-layer on définit :
-- *id* l'id unique du layer.
-- *type* le type de layer que l'on souhaite utiliser. le type *fill-extrusion* nous permettra d'extruder, c'est à dire donner une hauteur à nos polygones pour avoir visualisation 3D de ceux-ci.
-- *source* la source que l'on veut utiliser pour ce layer. Nous utiliserons donc *communesRennes* créée précédent pour utiliser notre json.
-- *paint* les styles à appliquer à notre jeux de données. Ici on va :
-  - faire en sorte que l'extrusion prenne la couleur de la propriété *color* de notre json (*fill-extrusion-color*)
-  - faire que la hauteur de l'extrusion (*fill-extrusion-height*) dépendent du nombre d'habitant si elle existe (propriété *nbHabitant*)
-  - faire que l'extrusion commence à une hauteur de 0 (*fill-extrusion-base*)
-  - régler l'opacité des modèles générés (*fill-extrusion-opacity*)
+- **id** l'id unique du layer.
+- **type** le type de layer que l'on souhaite utiliser. le type **fill-extrusion** nous permettra d'extruder, c'est à dire donner une hauteur à nos polygones pour avoir visualisation 3D de ceux-ci.
+- **source** la source que l'on veut utiliser pour ce layer. Nous utiliserons donc **communesRennes** créée précédent pour utiliser notre json.
+- **paint** les styles à appliquer à notre jeux de données. Ici on va :
+  - faire en sorte que l'extrusion prenne la couleur de la propriété **color** de notre json (**fill-extrusion-color**)
+  - faire que la hauteur de l'extrusion (**fill-extrusion-height**) dépendent du nombre d'habitant si elle existe (propriété **nbHabitant**)
+  - faire que l'extrusion commence à une hauteur de 0 (**fill-extrusion-base**)
+  - régler l'opacité des modèles générés (**fill-extrusion-opacity**)
 
-On associe également les évènements *mouseEnter* et *mouseLeave* à la modification de la valeur de *cursorStyle*.
+On associe également les évènements **mouseEnter** et **mouseLeave** à la modification de la valeur de **cursorStyle**.
 
 Vous devriez maintenant avoir un résultat semblable à ceci :
 
@@ -267,10 +267,10 @@ Et le curseur de votre souris devrait changer lorsque vous passez sur le layer d
 Nous allons maintenant faire en sorte d'afficher certaines informations lorsque l'on clique sur un élément de notre nouveau layer.
 
 Pour cela nous allons ajouter deux propriétés :
-- *selectedElement* de type *GeoJsonProperties* qui contiendra les propriétés de l'élément sélectionné présent dans notre fichier json
-- *selectedLngLat* de type *LngLat* qui correspond au coordonnées de notre clique.
+- **selectedElement** de type **GeoJsonProperties** qui contiendra les propriétés de l'élément sélectionné présent dans notre fichier json
+- **selectedLngLat** de type **LngLat** qui correspond au coordonnées de notre clique.
 
-Nous allons ajouter la fonction *onClick* qui prendra un paramètre de type *MapLayerMouseEvent*.
+Nous allons ajouter la fonction **onClick** qui prendra un paramètre de type **MapLayerMouseEvent**.
 
 Pour commencer, importons ces 3 nouveaux types :
 {% include code-header.html %}
@@ -286,7 +286,7 @@ Déclarons ensuite nos variables :
   selectedLngLat: LngLat;
 ```
 
-Et créons notre fonction *onClick* :
+Et créons notre fonction **onClick** :
 {% include code-header.html %}
 ```javascript
   onClick(evt: MapLayerMouseEvent) {
@@ -295,7 +295,7 @@ Et créons notre fonction *onClick* :
   };
 ```
 
-Dans *app.component.html* nous allons maintenant associer l'évènement *click* à notre fonction dans le composant du layer :
+Dans **app.component.html** nous allons maintenant associer l'évènement **click** à notre fonction dans le composant du layer :
 {% include code-header.html %}
 ```html
       <mgl-layer
