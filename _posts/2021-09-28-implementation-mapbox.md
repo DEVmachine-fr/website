@@ -13,16 +13,16 @@ Nous vous partageons ici un tutoriel pour découvrir comment implémenter Mapbox
 - [Intégration de Mapbox GL js](#integration)
     - [Mise en place du fond de carte](#initmap)
     - [Ajout d'un layer](#addlayer)
-    - [Ajout évènement au clic](#clickevent)
+    - [Ajout d'un évènement au clic](#clickevent)
 - [Conclusion](#conclusion)
 
 ## Introduction <a class="anchor" name="introduction"></a>
 
 Nous verrons tout d'abord comment créer le projet en Angular avec les librairies dont nous aurons besoin. Nous n'aurons pas pour ce tutoriel à créer de nouveau composant.
 
-Nous allons ensuite voir comment implémenter une carte Mapbox avec un fond de carte, et nous allons ensuite ajouter une couche de données - aussi appelé layer - que nous allons exploiter pour faire ressortir certaines données sur notre carte.
+Nous allons ensuite voir comment implémenter une carte Mapbox avec un fond de carte, et nous allons ensuite ajouter une couche de données - aussi appelée layer - que nous allons exploiter pour faire ressortir certaines données sur notre carte.
 
-Nous allons également ajouter une intéraction avec nos layer pour récupérer les informations qui nous intéresse dans le jeu de données associé.
+Nous allons également ajouter une interaction avec nos layer pour récupérer les informations qui nous intéressent dans le jeu de données associé.
 
 ## Mapbox GL js, kézako ? <a class="anchor" name="kesaco"></a>
 
@@ -32,7 +32,7 @@ Mapbox GL js s'appuie pour l'affichage 2D sur leafleet et sur three.js pour la 3
 
 ## Initialisation du projet <a class="anchor" name="initProject"></a>
 
-Dans notre exemple, nous utiliserons node 14 et Mapbox GL js 7. Pour vérifier la version de node utilisée et les versions installé via nvm (Node Version Manager), on lance la commande :
+Dans notre exemple, nous utiliserons node 14 et Mapbox GL js 7. Pour vérifier la version de node utilisée et les versions installées via nvm (Node Version Manager), on lance la commande :
 {% include code-header.html %}
 ```
 nvm list
@@ -62,7 +62,7 @@ ensuite on génère notre projet angular :
 ng new angular-mapbox
 ```
 
-Nous installons ensuite les librairies dont nous aurons besoin, mapbox-gl, @types/mapbox-gl et ngx-mapbox-gl ( ce dernier permet de faciliter l'intégration de Mapbox en tant que composant angular) :
+Nous installons ensuite les librairies dont nous aurons besoin, mapbox-gl, @types/mapbox-gl et ngx-mapbox-gl (ce dernier permet de faciliter l'intégration de Mapbox en tant que composant angular) :
 {% include code-header.html %}
 ```
 npm install mapbox-gl --save
@@ -250,7 +250,7 @@ dans mgl-layer on définit :
 - **source** la source que l'on veut utiliser pour ce layer. Nous utiliserons donc **communesRennes** créée précédent pour utiliser notre json.
 - **paint** les styles à appliquer à notre jeux de données. Ici on va :
   - faire en sorte que l'extrusion prenne la couleur de la propriété **color** de notre json (**fill-extrusion-color**)
-  - faire que la hauteur de l'extrusion (**fill-extrusion-height**) dépendent du nombre d'habitant si elle existe (propriété **nbHabitant**)
+  - faire que la hauteur de l'extrusion (**fill-extrusion-height**) dépende du nombre d'habitants si elle existe (propriété **nbHabitant**)
   - faire que l'extrusion commence à une hauteur de 0 (**fill-extrusion-base**)
   - régler l'opacité des modèles générés (**fill-extrusion-opacity**)
 
@@ -268,7 +268,7 @@ Nous allons maintenant faire en sorte d'afficher certaines informations lorsque 
 
 Pour cela nous allons ajouter deux propriétés :
 - **selectedElement** de type **GeoJsonProperties** qui contiendra les propriétés de l'élément sélectionné présent dans notre fichier json
-- **selectedLngLat** de type **LngLat** qui correspond au coordonnées de notre clique.
+- **selectedLngLat** de type **LngLat** qui correspond au coordonnées de notre clic.
 
 Nous allons ajouter la fonction **onClick** qui prendra un paramètre de type **MapLayerMouseEvent**.
 
@@ -331,8 +331,8 @@ Vous devriez pouvoir avoir un rendu comme ci-dessous sur votre projet :
 ## Conclusion <a class="anchor" name="conclusion"></a>
 
 Mapbox permet une implémentation simple et rapide de vos jeux de données cartographiques et vous permet de les mettre plus en avant grâce à la 3D, sans nécessiter une compréhension poussée dans ces domaines.
-Nous avons vu ici un exemple simple, mais il est possible d'avoir des jeux de données dynamiques, ajouter des animations etc...
+Nous avons vu ici un exemple simple, mais il est possible d'avoir des jeux de données dynamiques, ajouter des animations, etc.
 
 Cependant la simplicité de la librairie vous limitera peut-être selon vos besoins.
-En effet la librairie est développé par la société Mapbox et l'orientation des fonctionnalités à apporter est donc déterminée par les besoins clients de leur plateforme et non ceux de la communauté.
-De plus la simplification de l'intégration dans Angular par exemple est elle maintenue par la communauté, donc pour certaines fonctionnalitées il est possible que vous soyez dépendant des besoins de Mapbox dans l'avenir et de l'implication de la communauté pour simplifier l'utilisation de ces nouvelles fonctionnalités.
+En effet la librairie est développée par la société Mapbox et l'orientation des fonctionnalités à apporter est donc déterminée par les besoins clients de leur plateforme et non ceux de la communauté.
+De plus la simplification de l'intégration dans Angular par exemple est elle maintenue par la communauté, donc pour certaines fonctionnalités il est possible que vous soyez dépendant des besoins de Mapbox dans l'avenir et de l'implication de la communauté pour simplifier l'utilisation de ces nouvelles fonctionnalités.
