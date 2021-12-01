@@ -340,8 +340,8 @@ De plus la simplification de l'intégration dans Angular par exemple est elle ma
 
 ## Ressources <a class="anchor" name="ressources"></a>
 
-Site de Mapbox : https://www.mapbox.com/mapbox-gljs
-Site de leaftlet : https://leafletjs.com/
-Site de threejs : https://threejs.org/
-Lien github de nvm : https://github.com/nvm-sh/nvm
-Lien github du code source : https://github.com/gerard-g-dm/angular-mapbox
+* [Site de Mapbox](https://www.mapbox.com/mapbox-gljs)
+* [Site de leaftlet](https://leafletjs.com/)
+* [Site de threejs](https://threejs.org/)
+* [Lien github de nvm](https://github.com/nvm-sh/nvm)
+* [Lien github du code source](https://github.com/gerard-g-dm/angular-mapbox)
