@@ -15,6 +15,7 @@ Nous vous partageons ici un tutoriel pour découvrir comment implémenter Mapbox
     - [Ajout d'un layer](#addlayer)
     - [Ajout d'un évènement au clic](#clickevent)
 - [Conclusion](#conclusion)
+- [Ressources](#ressources)
 
 ## Introduction <a class="anchor" name="introduction"></a>
 
@@ -26,13 +27,13 @@ Nous allons également ajouter une interaction avec nos layer pour récupérer l
 
 ## Mapbox GL js, kézako ? <a class="anchor" name="kesaco"></a>
 
-Mapbox GL js est une librairie javascript développée par la société Mapbox. Cette librairie permet la visualisation de données cartographiques 2D ou 3D sur votre site ou votre application web.
+[Mapbox GL](https://www.mapbox.com/mapbox-gljs) js est une librairie javascript développée par la société Mapbox. Cette librairie permet la visualisation de données cartographiques 2D ou 3D sur votre site ou votre application web.
 
-Mapbox GL js s'appuie pour l'affichage 2D sur leafleet et sur three.js pour la 3D.
+Mapbox GL js s'appuie sur [leaflet](https://leafletjs.com/) pour l'affichage 2D et sur [three.js](https://threejs.org/) pour la 3D
 
 ## Initialisation du projet <a class="anchor" name="initProject"></a>
 
-Dans notre exemple, nous utiliserons node 14 et Mapbox GL js 7. Pour vérifier la version de node utilisée et les versions installées via nvm (Node Version Manager), on lance la commande :
+Dans notre exemple, nous utiliserons node 14 et Mapbox GL js 7. Pour vérifier la version de node utilisée et les versions installées via [nvm (Node Version Manager)](https://github.com/nvm-sh/nvm), on lance la commande :
 {% include code-header.html %}
 ```
 nvm list
@@ -336,3 +337,10 @@ Nous avons vu ici un exemple simple, mais il est possible d'avoir des jeux de do
 Cependant la simplicité de la librairie vous limitera peut-être selon vos besoins.
 En effet la librairie est développée par la société Mapbox et l'orientation des fonctionnalités à apporter est donc déterminée par les besoins clients de leur plateforme et non ceux de la communauté.
 De plus la simplification de l'intégration dans Angular par exemple est elle maintenue par la communauté, donc pour certaines fonctionnalités il est possible que vous soyez dépendant des besoins de Mapbox dans l'avenir et de l'implication de la communauté pour simplifier l'utilisation de ces nouvelles fonctionnalités.
+
+## Ressources <a class="anchor" name="ressources"></a>
+
+Site de Mapbox : https://www.mapbox.com/mapbox-gljs
+Site de leaftlet : https://leafletjs.com/
+Site de threejs : https://threejs.org/
+Lien github de nvm : https://github.com/nvm-sh/nvm
