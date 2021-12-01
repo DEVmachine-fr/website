@@ -1,0 +1,78 @@
+---
+author: Gwenolé
+title: Introduction à la blockchain dans le développement web
+categories: blockchain
+---
+
+
+Nous parlerons ici de ce qu'est la blockchain et comment elle peut amener une nouvelle façon de penser le développement applicatif.
+
+- [Introduction](#introduction)
+- [La blockchain, kézako ?](#kesaco)
+    - [les blocs](#bloc)
+    - [les noeuds](#noeud)
+    - [sécurité et transparence](#avantages)
+- [Exemple d'implémentation de la blockchain](#examples)
+    - [Validation de transaction](#transaction)
+    - [L'authentification](#authentication)
+    - [La propriété virtuel](#properties)
+- [Conclusion](#conclusion)
+
+## Introduction <a class="anchor" name="introduction"></a>
+
+Vous avez sans doute entendu parler des blockchains si vous vous êtes intéressés aux cryptomonnaies, mais les cryptomonnaies ne sont qu'une des utilisations possibles d'une blockchain.
+
+Nous allons d'abord expliquer qu'est ce qu'une blockchain, puis nous allons montrer des exemples concrets d'implémentation des blockchains dans le développement applicatif.
+
+## La blockchain, kézako ? <a class="anchor" name="kesaco"></a>
+
+La blockchain est une technologie de stockage et de transmission d'informations de manière décentralisée.
+
+Dans une application web classique par exemple, le stockage et la transmission des informations est géré par une partie serveur, elle-même géré par la société gérant l'application ou par un tier travaillant pour celle-ci. Dans ce type de système, l'information est centralisé, car seul le ou les intermédiaires gérant l'application ont une vision et un controle globale sur les informations.
+On est donc dépendant de cet intermédiaire pour notamment la sécurité et la visibilité de celle-ci.
+
+### les blocs <a class="anchor" name="bloc"></a>
+
+Dans une blockchain, les informations sont stockées sous forme de bloc chainé. Un bloc possède de la donnée et un parent. C'est grâce à ce parent que l'on peut assurer la non altération des données.
+
+En effet les blocs ayant un ordre défini, il est impossible d'insérer de fausses transactions par exemple dans un bloc, car en comparant ce bloc avec le bloc ayant le même parent dans les autres noeuds, il n'y aura pas de correspondance.
+
+### les noeuds <a class="anchor" name="noeud"></a>
+
+Dans une blockchain, nous avons un réseau de noeud - qui peuvent être n'importe quel type de support électronique - qui partage les informations.
+Lors d'une transmission d'informations par exemple, cette information ne sera pas diffusé à un serveur mais à un ensemble de noeuds qui pourront transmettre l'information à leur tour. Cela rend la falsification d'informations plus difficile, car en attaquant un noeud et en changeant les informations y étant contenu, les autres noeuds pourront invalider celles-ci en les comparant à leurs propres informations.
+
+### Sécurité et transparence <a class="anchor" name="avantages"></a>
+
+La blockchain permet donc une meilleure protection contre l'altération des informations du réseau, mais aussi une plus grande transparence. En effet les informations étant partagées par un ensemble de noeuds, aucun intermédiaire n'est requis, et donc aucune action de filtrage de l'information n'est possible. Cela pourrait permettre par exemple un meilleur suivi des transactions de marchandises qui peuvent avoir de nombreux intermédiaires avant le consommateur final, donc plus de difficulté pour tracer la provenance des produits.
+
+
+## Exemple d'implémentation de la blockchain <a class="anchor" name="examples"></a>
+
+Nous allons voir ici quelques exemples déjà bien éprouvés de l'utilisation de la blockchain dans le monde du web.
+
+### Validation de transaction <a class="anchor" name="transaction"></a>
+
+La transparence, la sécurité et l'absence d'intermédiaire pour les transactions ont permis de développer ce que l'on appelle la finance décentralisé (**DeFi**).
+
+La **DeFi** permet de faire des achats, ventes, prêts, contrats, transferts d'argent etc... sur une blockchain. Ainsi la liste des opérations est connu de tous les noeuds (transparence des transactions) et devient donc non-altérable.
+
+Si vous combinez avec cela une ou des monnaies propres à la blockchain, les fameuses cryptomonnaies, vous avez une monnaie universelle dont le prix ne dépend pas de l'état de santé économique d'un gouvernement, mais bien de l'état de santé économique de votre réseau **DeFi** (bien que parfois les deux soient liés).
+
+Nous ne citerons pas ici d'exemple de plateforme de **DeFi**, mais sachez qu'il en existe une multitude, chacune avec ses avantages et ses inconvénients (frais de transactions, choix des cryptomonnaies utilisables, rendement etc...)
+
+### L'authentification <a class="anchor" name="authentication"></a>
+
+Si la blockchain est assez sécurisé et transparente pour la **DeFi**, alors elle s'adapte tout aussi bien aux problématiques d'authentification.
+
+En effet l'absence d'entité centrale de vérification et l'impossibilité de falsifier les données des blocs permet de garantir l'identité d'une entité.
+
+Cela peut servir pour empêcher l'usurpation d'identité, comme le permet **Civic** par exemple, une plateforme qui permet aux utilisateurs d'enregistrer et de valider leurs informations personnelles d'identité et de verrouiller leur identité afin d'en empêcher le vol et les activités frauduleuses.
+
+Cela permet également de lutter contre la contrefaçon de produits, chaque étant identifié sur la blockchain son authenticité peut être vérifié. **BlockVerify** est l'une de ces solutions développé pour cette problématique
+
+### La propriété virtuel <a class="anchor" name="properties"></a>
+
+
+
+## Conclusion <a class="anchor" name="conclusion"></a>
