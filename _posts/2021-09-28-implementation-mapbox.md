@@ -344,3 +344,4 @@ Site de Mapbox : https://www.mapbox.com/mapbox-gljs
 Site de leaftlet : https://leafletjs.com/
 Site de threejs : https://threejs.org/
 Lien github de nvm : https://github.com/nvm-sh/nvm
+Lien github du code source : https://github.com/gerard-g-dm/angular-mapbox
