@@ -1,6 +1,6 @@
 ---
 author: Gwenolé
-title: Introduction à la blockchain dans le développement web
+title: Introduction à la blockchain
 categories: blockchain
 ---
 
@@ -22,25 +22,29 @@ Nous parlerons ici de ce qu'est la blockchain et comment elle peut amener une no
 
 Vous avez sans doute entendu parler des blockchains si vous vous êtes intéressés aux cryptomonnaies, mais les cryptomonnaies ne sont qu'une des utilisations possibles d'une blockchain.
 
-Nous allons d'abord expliquer qu'est ce qu'une blockchain, puis nous allons montrer des exemples concrets d'implémentation des blockchains dans le développement applicatif.
+Nous allons d'abord expliquer ici qu'est ce qu'une blockchain, puis nous allons montrer des exemples concrets d'implémentation de blockchains dans le développement applicatif.
 
 ## La blockchain, kézako ? <a class="anchor" name="kesaco"></a>
 
 La blockchain est une technologie de stockage et de transmission d'informations de manière décentralisée.
 
-Dans une application web classique par exemple, le stockage et la transmission des informations est géré par une partie serveur, elle-même géré par la société gérant l'application ou par un tier travaillant pour celle-ci. Dans ce type de système, l'information est centralisé, car seul le ou les intermédiaires gérant l'application ont une vision et un controle globale sur les informations.
+Dans une application web classique par exemple, le stockage et la transmission des informations sont gérés par une partie serveur, elle-même gérée par la société gérant l'application ou par un tier travaillant pour celle-ci. Dans ce type de système, l'information est centralisée, car seul le ou les intermédiaires gérant l'application ont une vision et un contrôle globale sur les informations.
 On est donc dépendant de cet intermédiaire pour notamment la sécurité et la visibilité de celle-ci.
+
+La blockchain ne passe plus par un tier pour cela mais par des noeuds. Ces noeuds partagent les mêmes informations dans ce que l'on appelle des blocs.
+
+Nous allons voir maintenant plus en détails les notions de bloc et de noeud et expliquer les avantages que cela apporte.
+
+### les noeuds <a class="anchor" name="noeud"></a>
+
+Dans une blockchain, nous avons un réseau de noeud - qui peuvent être n'importe quel type de support électronique - qui partage les informations.
+Lors d'une transmission d'informations par exemple, cette information ne sera pas diffusé à un serveur mais à un ensemble de noeuds qui pourront transmettre l'information à leur tour. Cela rend la falsification d'informations plus difficile, car en attaquant un noeud et en changeant les informations y étant contenu, les autres noeuds pourront invalider celles-ci en les comparant à leurs propres informations.
 
 ### les blocs <a class="anchor" name="bloc"></a>
 
 Dans une blockchain, les informations sont stockées sous forme de bloc chainé. Un bloc possède de la donnée et un parent. C'est grâce à ce parent que l'on peut assurer la non altération des données.
 
 En effet les blocs ayant un ordre défini, il est impossible d'insérer de fausses transactions par exemple dans un bloc, car en comparant ce bloc avec le bloc ayant le même parent dans les autres noeuds, il n'y aura pas de correspondance.
-
-### les noeuds <a class="anchor" name="noeud"></a>
-
-Dans une blockchain, nous avons un réseau de noeud - qui peuvent être n'importe quel type de support électronique - qui partage les informations.
-Lors d'une transmission d'informations par exemple, cette information ne sera pas diffusé à un serveur mais à un ensemble de noeuds qui pourront transmettre l'information à leur tour. Cela rend la falsification d'informations plus difficile, car en attaquant un noeud et en changeant les informations y étant contenu, les autres noeuds pourront invalider celles-ci en les comparant à leurs propres informations.
 
 ### Sécurité et transparence <a class="anchor" name="avantages"></a>
 
