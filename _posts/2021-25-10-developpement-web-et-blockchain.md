@@ -28,7 +28,7 @@ Nous allons d'abord expliquer ici qu'est ce qu'une blockchain, puis nous allons 
 
 La blockchain est une technologie de stockage et de transmission d'informations de manière décentralisée.
 
-Dans une application web classique par exemple, le stockage et la transmission des informations sont gérés par une partie serveur, elle-même gérée par la société gérant l'application ou par un tier travaillant pour celle-ci. Dans ce type de système, l'information est centralisée, car seul le ou les intermédiaires gérant l'application ont une vision et un contrôle globale sur les informations.
+Dans une application web classique, le stockage et la transmission des informations sont gérés par une partie serveur, elle-même gérée par la société gérant l'application ou par un tier travaillant pour celle-ci. Dans ce type de système, l'information est centralisée, car seul le ou les intermédiaires gérant l'application ont une vision et un contrôle globale sur les informations.
 On est donc dépendant de cet intermédiaire pour notamment la sécurité et la visibilité de celle-ci.
 
 La blockchain ne passe plus par un tier pour cela mais par des noeuds. Ces noeuds partagent les mêmes informations dans ce que l'on appelle des blocs.
