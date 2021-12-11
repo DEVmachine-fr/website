@@ -35,7 +35,7 @@ Nous verrons tout d'abord comment créer le projet en Vue.js avec les composants
     - product-list
       - `product-list.vue` : affichage de la liste des produits.
 
-Nous présenterons ensuite  plusieurs notions 3D lors de leur intégration avec Three.js :
+Nous présenterons ensuite plusieurs notions 3D lors de leur intégration avec Three.js :
 
 - la scène et son rendu
 - la caméra et son contrôle
@@ -508,3 +508,4 @@ Attention cependant ! Bien que l'affichage de tous vos modèles en 3D directemen
 * [corvette by d2epetto](https://sketchfab.com/3d-models/chevrolet-corvette-c7-2b509d1bce104224b147c81757f6f43a)
 * [nissan skyline](https://sketchfab.com/3d-models/nissan-skyline-gt-r-c110-kenmeri-72-1a950b81ee274a0eb8014bd84ba047f5)
 * [damage helmet demo](https://threejs.org/examples/?q=gltf#webgl_loader_gltf)
+* [Lien github du code source](https://github.com/gerard-g-dm/vue-threejs)
