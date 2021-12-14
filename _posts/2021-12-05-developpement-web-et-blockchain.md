@@ -20,9 +20,9 @@ Nous parlerons ici de ce qu'est la blockchain et comment elle peut amener une no
 
 ## Introduction <a class="anchor" name="introduction"></a>
 
-Vous avez sans doute entendu parler des blockchains si vous vous êtes intéressés aux cryptomonnaies, mais les cryptomonnaies ne sont qu'une des utilisations possibles d'une blockchain.
+Vous avez sans doute entendu parler des blockchains si vous vous êtes intéressés aux cryptomonnaies.
 
-Nous allons d'abord expliquer ici qu'est ce qu'une blockchain, puis nous allons montrer des exemples concrets d'implémentation de blockchains dans le développement applicatif.
+Nous allons d'abord expliquer ici ce qu'est une blockchain, puis nous allons montrer des exemples concrets d'implémentation de blockchains dans le développement applicatif.
 
 ## La blockchain, kézako ? <a class="anchor" name="kesaco"></a>
 
@@ -38,7 +38,12 @@ Nous allons voir maintenant plus en détails les notions de bloc et de noeud et 
 ### les noeuds <a class="anchor" name="noeud"></a>
 
 Dans une blockchain, nous avons un réseau de noeud - qui peuvent être n'importe quel type de support électronique - qui partage les informations.
-Lors d'une transmission d'informations par exemple, cette information ne sera pas diffusé à un serveur mais à un ensemble de noeuds qui pourront transmettre l'information à leur tour. Cela rend la falsification d'informations plus difficile, car en attaquant un noeud et en changeant les informations y étant contenu, les autres noeuds pourront invalider celles-ci en les comparant à leurs propres informations.
+Lors d'une transmission de données par exemple, celles-ci ne seront pas diffusées à un serveur mais à un ensemble de noeuds qui les enregistreront et qui pourront transmettre ces données à leur tour. Cela rend la falsification d'informations plus difficile, car en attaquant un noeud et en changeant les informations y étant contenu, les autres noeuds pourront invalider celles-ci en les comparant à leurs propres données, et l'on ne consulte jamais un seul noeud.
+
+Voici un exemple de transmission d'informations avec l'un des noeuds corrompus :
+
+![transmission informations](/assets/images/blockchain/blockchain-1.svg)
+
 
 ### les blocs <a class="anchor" name="bloc"></a>
 
@@ -46,9 +51,16 @@ Dans une blockchain, les informations sont stockées sous forme de bloc chainé.
 
 En effet les blocs ayant un ordre défini, il est impossible d'insérer de fausses transactions par exemple dans un bloc, car en comparant ce bloc avec le bloc ayant le même parent dans les autres noeuds, il n'y aura pas de correspondance.
 
+Voici un schéma de la validation d'un bloc représentant 3 noeuds avec la même chaîne de bloc mais avec un bloc frauduleux qui s'est inséré dans l'un des noeuds : 
+
+![validation bloc](/assets/images/blockchain/blockchain-2.svg)
+
+On peut aisément identifier le bloc inséré dans le noeud corrompu en comparant les parents de chaque bloc. Le noeud 1 et 3 ont comme parent pour le bloc 2 le bloc 1, alors que le noeud 2 a le bloc inséré en parent pour le bloc 2.
+
 ### Sécurité et transparence <a class="anchor" name="avantages"></a>
 
-La blockchain permet donc une meilleure protection contre l'altération des informations du réseau, mais aussi une plus grande transparence. En effet les informations étant partagées par un ensemble de noeuds, aucun intermédiaire n'est requis, et donc aucune action de filtrage de l'information n'est possible. Cela pourrait permettre par exemple un meilleur suivi des transactions de marchandises qui peuvent avoir de nombreux intermédiaires avant le consommateur final, donc plus de difficulté pour tracer la provenance des produits.
+La blockchain permet donc une meilleure protection contre l'altération des informations du réseau, mais aussi une plus grande transparence.
+En effet les informations étant partagées par un ensemble de noeuds, aucun intermédiaire n'est requis, et donc aucune action de filtrage de l'information n'est possible. Cela pourrait permettre par exemple un meilleur suivi des transactions de marchandises qui peuvent avoir de nombreux intermédiaires avant le consommateur final, donc plus de difficulté pour tracer la provenance des produits.
 
 
 ## Exemple d'implémentation de la blockchain <a class="anchor" name="examples"></a>
@@ -61,33 +73,33 @@ La transparence, la sécurité et l'absence d'intermédiaire pour les transactio
 
 La **DeFi** permet de faire des achats, ventes, prêts, contrats, transferts d'argent etc... sur une blockchain. Ainsi la liste des opérations est connu de tous les noeuds (transparence des transactions) et devient donc non-altérable.
 
-Si vous combinez avec cela une ou des monnaies propres à la blockchain, les fameuses cryptomonnaies, vous avez une monnaie universelle dont le prix ne dépend pas de l'état de santé économique d'un gouvernement, mais bien de l'état de santé économique de votre réseau **DeFi** (bien que parfois les deux soient liés).
-
 Nous ne citerons pas ici d'exemple de plateforme de **DeFi**, mais sachez qu'il en existe une multitude, chacune avec ses avantages et ses inconvénients (frais de transactions, choix des cryptomonnaies utilisables, rendement etc...)
 
 ### L'authentification <a class="anchor" name="authentication"></a>
 
-Si la blockchain est assez sécurisé et transparente pour la **DeFi**, alors elle s'adapte tout aussi bien aux problématiques d'authentification.
+Si la blockchain est assez sécurisée et transparente pour la **DeFi**, alors elle s'adapte tout aussi bien aux problématiques d'authentification.
 
 En effet l'absence d'entité centrale de vérification et l'impossibilité de falsifier les données des blocs permet de garantir l'identité d'une entité.
 
-Cela peut servir pour empêcher l'usurpation d'identité, comme le permet **Civic** par exemple, une plateforme qui permet aux utilisateurs d'enregistrer et de valider leurs informations personnelles d'identité et de verrouiller leur identité afin d'en empêcher le vol et les activités frauduleuses.
+Cela peut servir pour empêcher l'usurpation d'identité, comme le permet [Civic](https://www.civic.com/) par exemple, une plateforme qui permet aux utilisateurs d'enregistrer et de valider leurs informations personnelles d'identité et de verrouiller leur identité afin d'en empêcher le vol et les activités frauduleuses.
 
-Cela permet également de lutter contre la contrefaçon de produits, chaque étant identifié sur la blockchain son authenticité peut être vérifié. **BlockVerify** est l'une de ces solutions développé pour cette problématique
+Cela permet également de lutter contre la contrefaçon de produits, chacun étant identifié sur la blockchain son authenticité peut être vérifié. **AWS** a d'ailleurs déjà mise en place [un outil basé sur la blockchain](https://aws.amazon.com/blockchain/blockchain-for-supply-chain-track-and-trace/) pour cette problématique
 
-### La propriété virtuel <a class="anchor" name="properties"></a>
+### La propriété virtuelle <a class="anchor" name="properties"></a>
 
 Si vous suivez de près ou de loin le monde de la blockchain, le terme NFT (pour "Non Fungible Token" ou en français "Token Non Fongible") ne doit pas vous être étranger.
 
 Un NFT est un token numérique sur la blockchain qui possède des caractéristiques propres et qui est unique et non reproductible (cela est garantie par la blockchain).
 
 Le principe du NFT a déjà connu diverses utilisations, comme par exemple :
-- des oeuvres numériques dont la propriété est enregistré sur la blockchain. Cela peut être une peinture numérique comme un album par exemple.
-- des objets virtuels dans des univers virtuels. Si vous avez entendu parler des metaverses qui désigne un univers virtuel parallèle dans le cas présent, les NFT y jouent un rôle important car chaque objet que vous pouvez y posséder peut être un NFT, ce qui garantie son unicité mais également sa valeur (il peut y avoir un nombre limité de NFT partageant les mêmes caractéristiques par exemple).
+- des oeuvres numériques dont la propriété est enregistrée sur la blockchain. Cela peut être une peinture numérique comme un album par exemple.
+- des objets virtuels dans des univers virtuels. Si vous avez entendu parler des metaverses, terme qui désigne un univers virtuel parallèle dans le cas présent, les NFT y jouent un rôle important car chaque objet que vous pouvez y posséder peut être un NFT, ce qui garantie son unicité mais également sa valeur (il peut y avoir un nombre limité de NFT partageant les mêmes caractéristiques par exemple).
 - la correspondance avec des objets réels. Ainsi lors de l'achat d'un objet réel, vous pouvez valider la transaction sur la blockchain et ainsi avoir la preuve numérique que cet objet vous appartient.
 
 ## Conclusion <a class="anchor" name="conclusion"></a>
 
 La blockchain est sans doute l'une des technologies les plus marquantes de ces dernières années, et nous ne sommes sans doute qu'au prémisse des changements que cela apportera à l'avenir.
 
-Beaucoup d'institution et d'investisseur commence à s'y intéresser maintenant que la technologie a pu faire ses preuves, et l'engouement pour les nouvelles opportunités que la blockchain permet ne cessent de croître. Il n'y a qu'à regarder la levée de fond de la société Sorare, qui lance un jeu de cartes de joueurs de football à collectionner sous forme de NFT, qui s'est élevée à 680 millions d'euros, rien que ça.
+Beaucoup d'institution et d'investisseur commence à s'y intéresser maintenant que la technologie a pu faire ses preuves, et l'engouement pour les nouvelles opportunités que la blockchain permet ne cessent de croître.
+
+Pour s'en convaincre, il suffit de regarder la levée de fond de la société [Sorare](https://sorare.com/), qui lance un jeu de cartes de joueurs de football à collectionner sous forme de NFT, qui s'est élevée à 680 millions d'euros, rien que ça.
