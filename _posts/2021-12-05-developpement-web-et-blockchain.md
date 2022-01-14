@@ -16,7 +16,7 @@ Nous parlerons ici de ce qu'est la blockchain et comment elle peut amener une no
     - [Validation de transaction](#transaction)
     - [Les contrats intelligents](#contract)
     - [L'authentification](#identification)
-    - [La propriété virtuel](#properties)
+    - [La propriété virtuelle](#properties)
 - [Conclusion](#conclusion)
 
 ## Introduction <a class="anchor" name="introduction"></a>
@@ -63,6 +63,7 @@ On peut aisément identifier le bloc inséré dans le nœud corrompu en comparan
 La blockchain permet donc une meilleure protection contre l'altération des informations du réseau, mais aussi une plus grande transparence.
 En effet les informations étant partagées par un ensemble de nœuds, aucun intermédiaire n'est requis, et donc aucune action de filtrage de l'information n'est possible. Cela pourrait permettre par exemple un meilleur suivi des transactions de marchandises qui peuvent avoir de nombreux intermédiaires avant le consommateur final, donc plus de difficulté pour tracer la provenance des produits.
 
+Attention cependant, une blockchain n'est pas exempte de toute faille. Une attaque connue est celle des 51%, qui consiste à posséder plus de la moitié de la capacité de validation pour pouvoir valider des transactions corrompues. Ce genre d'attaque est difficilement envisageable maintenant sur les principales blockchains, celles-ci ayant un réseau de nœuds trop important pour que l'on puisse posséder plus de la moitié des nœuds, mais les nouveaux réseaux de blockchain y sont exposés si aucune sécurité supplémentaire n'est mise en place.
 
 ## Exemple d'implémentation de la blockchain <a class="anchor" name="examples"></a>
 
@@ -112,3 +113,7 @@ La blockchain est sans doute l'une des technologies les plus marquantes de ces d
 Beaucoup d'institutions et d'investisseurs commencent à s'y intéresser maintenant que la technologie a pu faire ses preuves, et l'engouement pour les nouvelles opportunités que la blockchain permet ne cesse de croître.
 
 Pour s'en convaincre, il suffit de regarder la levée de fond de la société [Sorare](https://sorare.com/), qui lance un jeu de cartes de joueurs de football à collectionner sous forme de NFT, qui s'est élevée à 680 millions d'euros, rien que ça.
+
+Malgré un bel avenir, les réseaux blockchain peuvent également avoir un impact énergétique important, par exemple via la méthode de *Proof Of Work* nécessitant de la puissance de calcul machine pour la validation. D'autres méthodes de validation ont depuis fait leur apparition pour diminuer cet impact, ainsi que des méthodes pour que cette consommation énergétique soit utilisée à bon escient (des calculateurs qui servent également de chauffage par exemple)
+
+Un autre problème est la saturation du réseau. En effet avec l'intérêt grandissant pour les blockchains et un nombre limité de transactions par seconde, les frais de ces transactions sont de plus en plus élevés pour valider celles-ci.
