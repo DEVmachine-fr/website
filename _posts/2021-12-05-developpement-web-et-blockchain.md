@@ -114,6 +114,6 @@ Beaucoup d'institutions et d'investisseurs commencent à s'y intéresser mainten
 
 Pour s'en convaincre, il suffit de regarder la levée de fond de la société [Sorare](https://sorare.com/), qui lance un jeu de cartes de joueurs de football à collectionner sous forme de NFT, qui s'est élevée à 680 millions d'euros, rien que ça.
 
-Malgré un bel avenir, les réseaux blockchain peuvent également avoir un impact énergétique important, par exemple via la méthode de *Proof Of Work* nécessitant de la puissance de calcul machine pour la validation. D'autres méthodes de validation ont depuis fait leur apparition pour diminuer cet impact, ainsi que des méthodes pour que cette consommation énergétique soit utilisée à bon escient (des calculateurs qui servent également de chauffage par exemple)
+Malgré un bel avenir, les réseaux blockchains peuvent également avoir un impact énergétique important, notamment via la méthode de validation par *Proof Of Work* qui nécessite une forte puissance de calcul. D'autres méthodes de validation ont depuis fait leur apparition pour diminuer cet impact (e.g *Proof Of Stake*), ainsi que des méthodes pour réutiliser cette consommation énergétique (des calculateurs qui servent également de chauffage par exemple).
 
-Un autre problème est la saturation du réseau. En effet avec l'intérêt grandissant pour les blockchains et un nombre limité de transactions par seconde, les frais de ces transactions sont de plus en plus élevés pour valider celles-ci.
+Un autre problème est la saturation du réseau : l'utilisation de plus en plus importante de la blockchain et la limitation du nombre de transactions par seconde entraîne une augmentation du coût de validation des transactions.
