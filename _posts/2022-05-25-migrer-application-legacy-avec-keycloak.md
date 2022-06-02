@@ -6,6 +6,7 @@ categories: legacy keycloak migration oidc oauh2 sso ldap java angular authentif
 
 Comment faire évoluer une application legacy sans exploser mon budget et attendre de nombreux mois voir plus d'une année pour voir mes évolutions ? Comment ne pas tout refaire d’un coup et apporter de la valeur rapidement ?
 
+
 - [Introduction](#introduction)
 - [Mise en place du service d'authentification SSO](#mise-en-place-sso)
     - [1ère étape : intégration du service d'authentification à l'application existante](#integration-legacy)
