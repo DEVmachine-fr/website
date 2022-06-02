@@ -1,10 +1,10 @@
 ---
 author: Simon
-title: Comment faire évoluer une application legacy sans exploser mon budget ?
+title: Comment préparer la migration d'une application legacy grâce à Keycloak ?
 categories: legacy keycloak migration oidc oauh2 sso ldap java angular authentification
 ---
 
-Comment faire évoluer une application legacy sans exploser mon budget et attendre de nombreux mois voir plus d'une année pour voir mes évolutions ? Comment ne pas tout refaire d’un coup et apporter de la valeur rapidement ?
+Comment faire évoluer une application legacy sans exploser mon budget et attendre de nombreux mois pour déployer des évolutions ? Comment ne pas tout refaire d’un coup et apporter de la valeur rapidement ?
 
 
 - [Introduction](#introduction)
@@ -16,12 +16,12 @@ Comment faire évoluer une application legacy sans exploser mon budget et atten
 
 ## Introduction <a class="anchor" name="introduction"></a>
 
-Nous devions faire évoluer une application du service publique réalisée avec des **technologies  obsolètes** (framework et dépendances non mis à jour, nombreuses CVE) pour y ajouter de **nouvelles fonctionnalités**. Pour des raisons de priorité et de moyens, il a été décidé de ne pas tout refaire en premier lieu. Cette application est server-side : la génération des pages est réalisée côté serveur.
+Nous devions faire évoluer une application du service public réalisée avec des **technologies  obsolètes** (framework et dépendances non mis à jour, nombreuses CVE) pour y ajouter de **nouvelles fonctionnalités**. Pour des raisons de priorité et de moyens, il a été décidé de ne pas tout refaire en premier lieu. Cette application est server-side : la génération des pages est réalisée côté serveur.
 
 ![Architecture initiale](/assets/images/migrer-application-legacy-avec-keycloak/architecture-V1.drawio.png)
 *Architecture initiale*
 
-Nous avons choisi de réaliser les nouvelles fonctionnalités dans un **socle technique plus pérenne.** Il y aura donc 2 applications et il faudra passer de l'une à l'autre de manière transparente afin de maintenir la **simplicité de navigation** pour un utilisateur. Il nous fallait donc mettre en place un **service d'authentification SSO** pour avoir à se connecter qu'une seule fois et faire en sorte d'avoir la même charte graphique sur la nouvelle application. Cette nouvelle application sera client-side : les pages seront crées côté client et les requêtes seront envoyées sur le serveur quand cela sera nécessaire.
+Nous avons choisi de réaliser les nouvelles fonctionnalités dans un **socle technique plus pérenne.** Il y aura donc 2 applications et il faudra passer de l'une à l'autre de manière transparente afin de maintenir la **simplicité de navigation** pour un utilisateur. Il nous fallait donc mettre en place un **service d'authentification SSO** pour avoir à se connecter qu'une seule fois et faire en sorte d'avoir la même charte graphique sur les nouveaux services (nouvelle application). Cette nouvelle application sera client-side : les pages seront créées côté client et les requêtes seront envoyées sur le serveur quand cela sera nécessaire.
 
 ![Architecture cible avec serveur SSO](/assets/images/migrer-application-legacy-avec-keycloak/architecture-V2.drawio.png)
 *Architecture cible avec serveur SSO*
@@ -30,16 +30,16 @@ Cette stratégie permettra de basculer les fonctionnalités déjà réalisées d
 
 ## Mise en place du service d'authentification SSO <a class="anchor" name="mise-en-place-sso"></a>
 
-Nous avons choisi d'utiliser la solution **Keycloak Server**, un serveur de gestion des identités et des accès open source qui permet de gérer **l'authentification unique** avec plusieurs protocoles (OpenID Connect, OAuth 2.0 et SAML2.0). Il prend en charge la connexion à des annuaires externes type LDAP ou Active Directory. Nous allons créer un **domaine** (ou royaume) pour définir l'ensemble des utilisateurs, leurs rôles et les applications auxquels ils auront accès.
+Nous avons choisi d'utiliser la solution **Keycloak Server**, un serveur de gestion des identités et des accès open-source qui permet de gérer **l'authentification unique** avec plusieurs protocoles (OpenID Connect, OAuth 2.0 et SAML2.0). Il prend en charge la connexion à des annuaires externes type LDAP ou Active Directory. Nous allons créer un **domaine** (ou royaume) pour définir l'ensemble des utilisateurs, leurs rôles et les applications auxquelles ils auront accès.
 
 ![Ajouter un domaine](/assets/images/migrer-application-legacy-avec-keycloak/domaine.png)
 *Ajouter un domaine*
 
-Nous choisirons le protocole **OpenID Connect** pour l'ensemble des clients définit par la suite. 
-L'application existante fournit son propre système authentification : 
+Nous choisirons le protocole **OpenID Connect** pour l'ensemble des clients définis par la suite. 
+L'application existante fournit son propre système d'authentification : 
 - un **formulaire** sur la page d'accueil permet à l'utilisateur de saisir son adresse mail ainsi que son mot de passe
 - un mécanisme de **session HTTP** maintient les données de l'utilisateur connecté côté serveur
-- une partie **gestion des utilisateurs** permet aux administrateurs de créer et modifier des utilisateurs et de changer leurs permissions
+- une **gestion des utilisateurs** permet aux administrateurs de créer et modifier des utilisateurs et de changer leurs permissions
 
 ### 1ère étape : intégration du service d'authentification à l'application existante <a class="anchor" name="integration-legacy"></a>
 
@@ -85,7 +85,7 @@ Le client Keycloak "service-public.legacy" doit avoir avoir accès aux API d'Adm
 ![Activation du Service Accounts](/assets/images/migrer-application-legacy-avec-keycloak/service-account-enabled.png)
 *Activation du Service Accounts*
 
-Puis, il faut assigner les rôles "manage-users", "view-authorization", "view-users"  du client "realm-management" dans la partie "Service Account Roles" :
+Puis, il faut assigner les rôles "manage-users", "view-authorization", "view-users" du client "realm-management" dans la partie "Service Account Roles" :
 
 ![Rôles à assigner](/assets/images/migrer-application-legacy-avec-keycloak/service-account-roles.png)
 *Rôles à assigner*
@@ -131,7 +131,7 @@ La documentation est accessible ici :
 
 ### 3ème étape : configuration du nouveau service <a class="anchor" name="configuration-nouveau-service"></a>
 
-Le point d’entrée de l’application se fera sur le nouveau service. Il est composé d’une partie frontend : l’application web et d’une partie backend : l’API. Pour la partie frontend, nous devrons déclarer un nouveau client dans le même domaine Keycloak :
+Le point d’entrée de l’application se fera sur le nouveau service. Il est composé d’une partie frontend : l’application web et d’une partie backend, l’API. Pour la partie frontend, nous devrons déclarer un nouveau client dans le même domaine Keycloak :
 
 ![Création du nouveau client](/assets/images/migrer-application-legacy-avec-keycloak/create-nouveau.png)
 *Création du nouveau client*
@@ -189,12 +189,12 @@ keycloak:
   bearer-only: true
 ```
 
-## Conlusion <a class="anchor" name="conclusion"></a>
+## Conclusion <a class="anchor" name="conclusion"></a>
 
 Depuis que cette solution est mise en œuvre, l’ajout de nouvelles fonctionnalités s’est fait de manière beaucoup plus sereine et nous avons pu migrer certaines anciennes fonctionnalités au fil de l’eau dès qu’il y avait besoin de les faire évoluer.
 
 La gestion des utilisateurs a pu être également complètement revue dans un module séparé sans impacter le système existant.
 
-Le service Keycloak a eu un rôle crucial dans cette mise en œuvre, nous nous sommes rendu compte à quel point le service était complet et adaptable selon les besoins avec un haut niveau de customisation.
+Le service Keycloak a eu un rôle crucial dans cette mise en œuvre, nous nous sommes rendus compte à quel point le service était complet et adaptable selon les besoins avec un haut niveau de customisation.
 
 Enfin, cette réalisation confirme l’importance de décomposer son architecture en plusieurs services avec une utilité spécifique afin de limiter les impacts lors d’évolutions ou de migrations.
