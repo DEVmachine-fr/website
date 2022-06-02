@@ -25,11 +25,11 @@ Nous avons choisi de réaliser les nouvelles fonctionnalités dans un **socle te
 ![Architecture cible avec serveur SSO](/assets/images/migrer-application-legacy-avec-keycloak/architecture-V2.drawio.png)
 *Architecture cible avec serveur SSO*
 
-Cette stratégie permettra de basculer les fonctionnalités déjà réalisée dans la nouvelle application à terme.
+Cette stratégie permettra de basculer les fonctionnalités déjà réalisées dans la nouvelle application à terme.
 
 ## Mise en place du service d'authentification SSO <a class="anchor" name="mise-en-place-sso"></a>
 
-Nous avons choisi d'utiliser la solution **Keycloak Server**, un serveur de gestion des identités et des accès open source qui permet de gérer **l'authentification unique** avec plusieurs protocoles (OpenID Connect, OAuth 2.0 et SAML2.0). Il prend en charge la connexion à des annuaires externes type LDAP ou Active Directory : ce qui nous sera utile par la suite. Nous allons créer un **domaine** (ou royaume) pour définir l'ensemble des utilisateurs, leurs rôles et les applications auxquels ils auront accès.
+Nous avons choisi d'utiliser la solution **Keycloak Server**, un serveur de gestion des identités et des accès open source qui permet de gérer **l'authentification unique** avec plusieurs protocoles (OpenID Connect, OAuth 2.0 et SAML2.0). Il prend en charge la connexion à des annuaires externes type LDAP ou Active Directory. Nous allons créer un **domaine** (ou royaume) pour définir l'ensemble des utilisateurs, leurs rôles et les applications auxquels ils auront accès.
 
 ![Ajouter un domaine](/assets/images/migrer-application-legacy-avec-keycloak/domaine.png)
 *Ajouter un domaine*
@@ -37,7 +37,6 @@ Nous avons choisi d'utiliser la solution **Keycloak Server**, un serveur de gest
 Nous choisirons le protocole **OpenID Connect** pour l'ensemble des clients définit par la suite. 
 L'application existante fournit son propre système authentification : 
 - un **formulaire** sur la page d'accueil permet à l'utilisateur de saisir son adresse mail ainsi que son mot de passe
-- une connexion à un **annuaire LDAP** permet de vérifier la véracité des informations saisies par l'utilisateur
 - un mécanisme de **session HTTP** maintient les données de l'utilisateur connecté côté serveur
 - une partie **gestion des utilisateurs** permet aux administrateurs de créer et modifier des utilisateurs et de changer leurs permissions
 
@@ -62,11 +61,9 @@ Un framework de sécurité était déjà en place : **Shiro qui permet de contr
 http://<client-host>/callback?logoutendpoint=true
 ```
 
-Maintenant que l'authentification est gérée par Keycloak, nous pouvons configurer un provider LDAP pour que ce dernier aille vérifier la présence des utilisateurs dans l'annuaire. [https://www.keycloak.org/docs/latest/server_admin/#_ldap](https://www.keycloak.org/docs/latest/server_admin/#_ldap)
-
 ### 2ème étape : provisionnement des utilisateurs dans le service d'authentification <a class="anchor" name="provisionnement-utilisateurs"></a>
 
-À présent, le service d'authentification vérifie l'accès aux utilisateurs (email et mot de passe) depuis l'annuaire. Il faut donc adapter la gestion utilisateurs existante pour que l'annuaire soit provisionné sur l'**ajout d'un utilisateur** et supprimer l'**authentification** et la modification du mot de passe. Pour cela, nous utilisons l'**API Admin de Keycloak**.
+À présent, le service d'authentification vérifie l'accès aux utilisateurs (email et mot de passe) depuis sa base de données. Il faut donc adapter la gestion utilisateurs existante pour que la base de données soit provisionnée sur l'**ajout d'un utilisateur** et supprimer l'**authentification** et la modification du mot de passe. Pour cela, nous utilisons l'**API Admin de Keycloak**.
 Le client Keycloak "service-public.legacy" doit avoir avoir accès aux API d'Admin et avoir les rôles de gestion des utilisateurs. Nous devons donc activer "Service Accounts Enabled" dans la configuration Keycloak du client. 
 
 ![Activation du Service Accounts](/assets/images/migrer-application-legacy-avec-keycloak/service-account-enabled.png)
@@ -138,6 +135,8 @@ Cette nouvelle application est réalisée avec le framework Angular. Nous utilis
     }
 }
 ```
+
+
 
 ## Conlusion <a class="anchor" name="conclusion"></a>
 
