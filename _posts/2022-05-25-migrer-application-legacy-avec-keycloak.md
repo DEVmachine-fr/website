@@ -152,7 +152,7 @@ Cette nouvelle application est réalisée avec le framework Angular. Nous utilis
 }
 ```
 
-Côté backend, il suffira de vérifier que le Bearer token fournit est bien issue du domaine du serveur Keycloak. Ce backend est réalisé avec Spring Boot, nous devons donc ajouter la dépendance suivante :
+Côté backend, il suffira de vérifier que le Bearer token fourni est bien issu du domaine du serveur Keycloak. Ce backend est réalisé avec Spring Boot, nous devons donc ajouter la dépendance suivante :
 ```xml
 <!-- License Apache 2.0 -->
 <dependency>
