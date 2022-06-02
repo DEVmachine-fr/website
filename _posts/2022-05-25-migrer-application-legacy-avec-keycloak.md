@@ -55,6 +55,21 @@ Côté application, si l'utilisateur souhaite se connecter (bouton Se Connecter)
 
 Un framework de sécurité était déjà en place : **Shiro qui permet de contrôler l'authentification et les autorisations**. Pour compléter ce framework et proposer ces endpoints, nous utilisons la **bibliothèque pac4j**.
 
+```xml
+<!-- License Apache 2.0 -->
+<dependency>
+    <groupId>io.buji</groupId>
+    <artifactId>buji-pac4j</artifactId>
+    <version>7.0.0</version>
+</dependency>
+<!-- License Apache 2.0 -->
+<dependency>
+    <groupId>org.pac4j</groupId>
+    <artifactId>pac4j-oidc</artifactId>
+    <version>5.4.3</version>
+</dependency>
+```
+
 À présent, il faut activer "**Backchannel Logout Session Required**" dans la configuration du client pour indiquer au service Keycloak d'appeler une URL pour invalider la session de l'utilisateur. Cette URL est à renseigner dans "Backchannel Logout URL" : 
 
 ```
@@ -77,10 +92,11 @@ Puis, il faut assigner les rôles "manage-users", "view-authorization", "view-us
 Keycloak fournit une bibliothèque Java pour utiliser son API : **keycloak-admin-client** dans la même version que celle du service pour garantir la compatibilité.
 
 ```xml
+<!-- License Apache 2.0 -->
 <dependency>
- <groupId>org.keycloak</groupId>
- <artifactId>keycloak-admin-client</artifactId>
- <version>18.0.0</version>
+    <groupId>org.keycloak</groupId>
+    <artifactId>keycloak-admin-client</artifactId>
+    <version>18.0.0</version>
 </dependency>
 ```
 
@@ -136,7 +152,41 @@ Cette nouvelle application est réalisée avec le framework Angular. Nous utilis
 }
 ```
 
+Côté backend, il suffira de vérifier que le Bearer token fournit est bien issue du domaine du serveur Keycloak. Ce backend est réalisé avec Spring Boot, nous devons donc ajouter la dépendance suivante :
+```xml
+<!-- License Apache 2.0 -->
+<dependency>
+    <groupId>org.keycloak</groupId>
+    <artifactId>keycloak-spring-boot-starter</artifactId>
+    <version>18.0.0</version>
+</dependency>
+```
 
+Spécifier l'adapter :
+```xml
+<dependencyManagement>
+    <dependencies>
+        <!-- License Apache 2.0 -->
+        <dependency>
+            <groupId>org.keycloak.bom</groupId>
+            <artifactId>keycloak-adapter-bom</artifactId>
+            <version>18.0.0</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+```
+
+Et intégrer la configuration suivante :
+```yaml
+keycloak:
+  enabled: true
+  auth-server-url: <URL Serveur Keycloak>
+  realm: service-public.usagers
+  resource: service-public.nouveau.backend
+  bearer-only: true
+```
 
 ## Conlusion <a class="anchor" name="conclusion"></a>
 
