@@ -4,6 +4,8 @@ title: Comment faire évoluer une application legacy sans exploser mon budget ?
 categories: legacy keycloak migration oidc oauh2 sso ldap java angular authentification
 ---
 
+Nous avons fait évoluer la partie legacy en y ajoutant du SSO pour l’authentification et créé la nouvelle application de zéro en y ajoutant également le SSO. Cette nouvelle application utilise la même charte graphique et a le même menu que l’application legacy, l’utilisateur peut donc naviguer entre les applications en ayant l’impression d’en utiliser qu’une seule.
+
 - [Introduction](#introduction)
 - [Mise en place du service d'authentification SSO](#mise-en-place-sso)
     - [1ère étape : intégration du service d'authentification à l'application existante](#integration-legacy)
