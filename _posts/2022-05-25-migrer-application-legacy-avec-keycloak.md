@@ -21,7 +21,7 @@ Nous devions faire évoluer une application du service public réalisée avec de
 ![Architecture initiale](/assets/images/migrer-application-legacy-avec-keycloak/architecture-V1.drawio.png)
 *Architecture initiale*
 
-Nous avons choisi de réaliser les nouvelles fonctionnalités dans un **socle technique plus pérenne.** Il y aura donc 2 applications et il faudra passer de l'une à l'autre de manière transparente afin de maintenir la **simplicité de navigation** pour un utilisateur. Il nous fallait donc mettre en place un **service d'authentification SSO** pour avoir à se connecter qu'une seule fois et faire en sorte d'avoir la même charte graphique sur les nouveaux services (nouvelle application). Cette nouvelle application sera client-side : les pages seront créées côté client et les requêtes seront envoyées sur le serveur quand cela sera nécessaire.
+Nous avons choisi de réaliser les nouvelles fonctionnalités dans un **socle technique plus pérenne.** Il y aura donc 2 applications et il faudra passer de l'une à l'autre de manière transparente afin de maintenir la **simplicité de navigation** pour un utilisateur. Il nous fallait donc mettre en place un **service d'authentification SSO** pour n'avoir à se connecter qu'une seule fois et faire en sorte d'avoir la même charte graphique sur les nouveaux services (nouvelle application). Cette nouvelle application sera client-side : les pages seront créées côté client et les requêtes seront envoyées sur le serveur quand cela sera nécessaire.
 
 ![Architecture cible avec serveur SSO](/assets/images/migrer-application-legacy-avec-keycloak/architecture-V2.drawio.png)
 *Architecture cible avec serveur SSO*
