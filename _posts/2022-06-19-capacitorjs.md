@@ -1,6 +1,6 @@
 ---
 author: Marc
-title: Application cross platform et marque blanche avec Capacitor
+title: Application multi plateformes et marque blanche avec Capacitor
 categories: capacitor js angular ci cd
 ---
 
@@ -29,7 +29,7 @@ npm install @capacitor/cli --save-dev
 npx cap init
 ```
 
-L'initialisation va créer un fichier avec quelques configurations par défaut. Dans ce fichier, on va retrouver des propriétés d'assez haut niveau permettant de configurer les plateformes ciblées (commme par exemple l'id unique de l'application ou le nom de l'application). Ce fichier peut être statique (JSON) ou dynamique (TypeScript).
+L'initialisation va créer un fichier avec quelques configurations par défaut. Dans ce fichier, on va retrouver des propriétés d'assez haut niveau permettant de configurer les plateformes ciblées (commme par exemple l'id unique de l'application ou le nom de l'application). Ce fichier peut être statique (JSON) ou dynamique (Javascript/TypeScript).
 
 Une fois Capacitor ajouté à notre projet, il suffit de lui ajouter une "capacité", Android ou iOS dans notre cas. Il faudra au préalable compiler notre webapp pour qu'elle soit synchronisée. 
 
@@ -39,11 +39,11 @@ npx cap add android
 npx cap add ios
 ```
 
-Ces dernières 2 commandes vont créer les workspaces natifs de chaque environnement : un workspace AndroidStudio pour Android, un workspace XCode pour iOS.
+Ces 2 dernières commandes vont créer les workspaces natifs de chaque environnement : un workspace **AndroidStudio** pour **Android**, un workspace **XCode** pour **iOS**.
 
-A partir de cette étape, Capacitor ne nous fournit plus d'outil pour builder ou déployer les applications natives. **Capacitor ne nous dispense pas d'avoir des connaissances de ces différents environnements.** Il faudra recourir à des modifications dans les fichiers `AndroidManifest.xml` ou encore `Info.plist` pour modifier le comportement des applications. Capacitor encourage à utiliser l'outillage dédié à chaque p 
+A partir de cette étape, Capacitor ne nous fournit plus d'outil pour builder ou déployer les applications natives. **Capacitor ne nous dispense pas d'avoir des connaissances de ces différents environnements.** Il faudra recourir à des modifications dans les fichiers `AndroidManifest.xml` ou encore `Info.plist` pour modifier le comportement des applications. Capacitor encourage à utiliser l'outillage dédié de chaque plateforme.
 
-La CLI nous permet néanmoins de lancer les applications en local (en ayant au préalable configurer les environnments de développement de chaque plateforme).
+La CLI nous permet néanmoins de lancer les applications en local (en ayant au préalable configurer les environnments de développement desdites plateforme).
 
 ```bash
 npx cap run android # Test de l'apk sur un device virtuel ou physique
@@ -59,7 +59,7 @@ npx cap sync # synchronisation des plateformes détectées
 ### Tout est plugin
 
 Pour intéragir avec les APIs natives, il faut passer par des plugins.
-L'équipe Capacitor maintient une liste de plugins officiels, couvrant les cas d'utilisation les plus courant, de la gestion de la **Status Bar** aux **Push Notifications** en passant par le **SplashScreen**.
+L'équipe Capacitor maintient une liste de plugins officiels, couvrant les cas d'utilisation les plus courant, de la gestion de la **Status Bar** aux **Push Notifications** en passant par le **Splash Screen**.
 
 Certains de ces plugins vont même pouvoir être configuré via le fichier de configuration (`capacitor.config.(json|ts)`). D'autres, par contre vont demander (via leur documentation), d'aller ajouter manuellement certaines permissions dans les fichiers de configuration `AndroidManifest.xml` ou `Info.plist`.
 
@@ -93,7 +93,7 @@ public transferNotification(schema: PushNotificationSchema): void {
 
 Capacitor permet également de développer ses propres plugins et fournit pour cela un outillage dans chaque environnement pour faire **le pont** entre la plateforme retenue et les informations transitant en javascript.
 
-La dépôt [capacitor-community](https://github.com/capacitor-community) référence un grand nombre de plugins non officiels et non maintenus par l'équipe Capacitor. 
+Le dépôt [capacitor-community](https://github.com/capacitor-community) référence un grand nombre de plugins non officiels et non maintenus par l'équipe Capacitor. 
 
 Auto-proclamé successeur du projet Apache Cordova, Capacitor est de fait compatible avec de nombreux plugins Cordova.
 
@@ -105,7 +105,7 @@ On comprends alors qu'il va être difficile de synchroniser tous ces workspaces,
 
 ### Automatisation manuelle
 
-La première étape assez naturelle a été de reproduire les étapes citées plus haut par des scripts bashs. Ce qui ressemblerait à l'ensemble de ces commandes ("inlinées"): 
+La première étape assez naturelle a été de reproduire les étapes citées plus haut par des scripts bashs. Ce qui ressemblerait à l'ensemble de ces commandes (mises bout à bout): 
 
 ```bash
 rm -Rf .apps/workspaces/android # ce répertoire est configurable
@@ -137,13 +137,13 @@ sed -i 's/versionName [0-9a-zA-Z -_]*/versionName "'"$versionName"'"/' ./apps/wo
 sed -i 's/versionCode [0-9a-zA-Z -_]*/versionCode '$versionCode'/' ./apps/workspaces/android/app/build.gradle
 ```
 
-L'utilisation ici (limité pour l'exemple) montre à quel point cela peut être verbeux,peu lisible et dépendant d'autres outils,comme `xmlstarlet` ou `sed` ici, qui demandent d'autres compétences.
+L'utilisation ici (limitée pour l'exemple) montre à quel point cela peut être verbeux, peu lisible et dépendant d'autres outils, comme `xmlstarlet` ou encore `sed`, qui demandent d'autres compétences.
 
 ### Capacitor Configure
 
 Capacitor, par l'intermédiaire de ses guides, propose un outil d'automatisation de la configuration : **Capacitor Configure**. Il se décompose en 2 modules, **@capacitor/project** et **@capacitor/configure**.
 
-Le module **project** permet d'automatiser ces actions de manière programmatique. Il s'appuie sur d'autres librairies pour pouvoir configurer les workspace AndroidStudio et XCode.
+Le module **project** permet d'automatiser ces actions de manière programmatique. Il s'appuie sur d'autres librairies pour pouvoir configurer les workspaces AndroidStudio et XCode.
 Voici un exemple permettant de configurer les **Entitlements** pour chaque type de build iOS.
 
 ```typescript
@@ -168,7 +168,7 @@ addApsEntitlement()
 ```
 
 
-Le module **configure** quant à lui, s'appuie sur **@capacitor/project** pour permettre de faire de la configuration en mode déclaratif,  Cela se présente sous forme d'un ficher YAML.
+Le module **configure** quant à lui, s'appuie sur **@capacitor/project** pour permettre de faire de la configuration en mode déclaratif. Cela se présente sous forme d'un ficher YAML :
 
 
 ```yaml
@@ -205,15 +205,15 @@ platforms:
                 <uses-feature android:name="android.hardware.location.gps" />
 ```
 
-On voit bien dans cet exemple que l'injection des permissions est plus simple et compréhensible.
+On voit bien dans cet exemple que l'ajout de propriétés simples comme les versions ou bien l'injection des permissions, est plus simple et compréhensible.
 
 ### Cas à la marge
 
 Malheureusement, tout ne peux pas être fait. L'ajout de fichiers sources dans les workspaces n'est pas encore supporté dans ces outils.
 
- Car ce qu'on ne voit pas dans les exemples précédents, c'est que pour ajouter le support des **PushNotification**, il faut ajouter un fichier dans le workspace XCode (et Android, mais c'est plus simple). Pour cela, il ne suffit pas de déplacer un fichier... Non, non, non! Dans XCode chaque fichier est indexé dans le workspace (qui se fait automatiquement via l'ajout en drag & drop par exemple, difficile à automatiser). 
+ Car ce qu'on ne voit pas dans les exemples précédents, c'est que pour ajouter le support des **PushNotification**, il faut ajouter un fichier dans le workspace XCode (et Android, mais c'est plus simple). Pour cela, il ne suffit pas de copier le fichier dans le bon répertoire... Non, non, non! Dans XCode chaque fichier est indexé dans le workspace (qui se fait automatiquement via l'ajout en drag & drop par exemple, difficile à automatiser). 
  
- Heureusement, il existe une libraire **nodejs** au nom bien choisi `xcode` !    
+ Heureusement, il existe une libraire **nodejs** au nom bien choisi de `xcode` !    
  Malheureusement, la documentation est très pauvre, et il faudra progresser à taton pour arriver à ses fins...
 
  ```javascript
