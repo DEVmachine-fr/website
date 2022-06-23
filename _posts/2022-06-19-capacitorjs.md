@@ -207,7 +207,7 @@ platforms:
 
 On voit bien dans cet exemple que l'ajout de propriétés simples comme les versions ou bien l'injection des permissions, est plus simple et compréhensible.
 
-### Cas à la marge
+### Cas particuliers
 
 Malheureusement, tout ne peux pas être fait. L'ajout de fichiers sources dans les workspaces n'est pas encore supporté dans ces outils.
 
@@ -250,7 +250,7 @@ Capacitor nous apporte une facilité pour produire des applications hybrides, qu
 
 Cela ne nous dispense pas d'une connaissance des plateformes cibles. Il faudra faire attention au comportement des plugins selon les plateformes (firebase par défaut pour les push notifications Android, contre ajout d'un plugin pour iOS).
 
-Enfin les outils d'automatisations sont encore jeunes et un peu capricieux, mais nous accordent de reproduire la génération sans devoir persister nos workspaces. 
+Enfin les outils d'automatisations sont encore jeunes et un peu capricieux, mais nous accordent de reproduire la génération d'applications sans devoir persister nos workspaces. Il faudra cependant jongler avec les différents outils pour couvrir l'ensemble de la configuration. 
 
 ## Sources et liens utiles <a class="anchor" name="ressources"></a>
 
