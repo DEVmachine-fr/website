@@ -82,6 +82,8 @@ http://<client-host>/callback?logoutendpoint=true
 À présent, le service d'authentification vérifie l'accès aux utilisateurs (email et mot de passe) depuis sa base de données. Il faut donc adapter la gestion utilisateurs existante pour que la base de données soit provisionnée sur l'**ajout d'un utilisateur** et supprimer l'**authentification** et la modification du mot de passe. Pour cela, nous utilisons l'**API Admin de Keycloak**.
 Le client Keycloak "service-public.legacy" doit avoir avoir accès aux API d'Admin et avoir les rôles de gestion des utilisateurs. Nous devons donc activer "Service Accounts Enabled" dans la configuration Keycloak du client. 
 
+**Note** : Il faut éviter d'exposer l'API admin de Keycloak sur internet pour des raisons de sécurité. Seul le service doit pouvoir y accéder.
+
 ![Activation du Service Accounts](/assets/images/migrer-application-legacy-avec-keycloak/service-account-enabled.png)
 *Activation du Service Accounts*
 
@@ -188,6 +190,10 @@ keycloak:
   resource: service-public.nouveau.backend
   bearer-only: true
 ```
+
+Nous précisons ici `bearer-only: true` pour indiquer que l'accès à l'API se fait seulement après une vérification du Bearer Token. Cela permet d'éviter les rédirections pour que l'utilisateur s'authentifie.
+
+**Note**: Depuis la réalisation de la migration, l'adapter Keycloak est passé deprecated [https://www.keycloak.org/2022/02/adapter-deprecation](https://www.keycloak.org/2022/02/adapter-deprecation). Il faut donc préférer l'utilisation de Spring Security avec OpenID Connect.
 
 ## Conclusion <a class="anchor" name="conclusion"></a>
 
