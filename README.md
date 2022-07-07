@@ -16,6 +16,10 @@ Il est donc nécessaire d'installer Jekyll au préalable.
 
 ## Utilisation
 
+Pour installer les dépendances :
+
+    bundle install
+
 Pour compiler le site il suffit d'exécuter la commande:
 
     jekyll build
