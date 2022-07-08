@@ -3,6 +3,7 @@
 
 @import "variables";
 @import "_navbar";
+@import "_footer";
 
 // SCSS FOR EACH PAGE
 @import "_index";
@@ -17,6 +18,14 @@ button.dm-btn {
   text-align: center;
   border-radius: 4px;
   padding: 6px 36px;
+  border-color: transparent;
+
+  // Pour les boutons avec chevrons
+  span.fas {
+    font-size: 12px;
+    color: $white;
+    margin-left: .8rem;
+  }
 
   &.dm-btn-blue {
     background-color: $secondary;
@@ -24,13 +33,22 @@ button.dm-btn {
     a {
       color: $white;
     }
-  }
-  &.dm-btn-white {
+  }&.dm-btn-white {
     background-color: $white;
     border-color: $secondary;
     color: $secondary;
+  
     a {
       color: $secondary;
+    }
+  }
+  &.dm-btn-orange {
+    background-color: $primary;
+    color: $white;
+    font-size: 18px;
+
+    a {
+      color: $white;
     }
   }
 }

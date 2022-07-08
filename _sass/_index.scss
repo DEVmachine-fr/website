@@ -1,27 +1,65 @@
+h1.section-heading, h2.section-subheading {
+  font-family: 'Nunito';
+  text-align: center;
+  width: 100%;
+}
+
 h1.section-heading {
+  color: $secondary;
   font-weight: 900;
   font-size: 40px;
   line-height: 35px;
   margin: 20px 0;
-  text-align: center;
+}
+
+h2.section-subheading {
+  color: $third;
 }
 
 section.intro {
-  font-family: 'Nunito';
-  font-style: normal;
   color: $secondary;
 
   p {
     color: $third;
   }
 
-  img {
-    width: 100%;
+  div.shape-container {
+    $HEIGHT: 20rem;
+    $SHAPE: polygon(
+      10% .5rem,
+      90% 0,
+      100% 3rem,
+      90% calc(#{$HEIGHT} - 6rem),
+      25% 100%,
+      0 9rem,
+    );
+    position: relative;
+    padding: 0;
+    
+    div.bg-orange {
+      z-index: -1;
+      position: absolute;
+      top: 1rem;
+      height: $HEIGHT;
+      width: 100%;
+      background-color: $primary;
+      clip-path: $SHAPE;
+      transform: rotate(-1deg);
+    }
+    div.image-container {
+      clip-path: $SHAPE;
+      img {
+        width: 100%;
+        height: $HEIGHT;
+        object-fit: cover;
+      }
+    }
   }
 }
 
 // PILIERS
 section.piliers {
+  margin-top: 4rem;
   color: $secondary;
 
   div.piliers-item {
@@ -45,13 +83,49 @@ section.piliers {
 }
 
 // IMAGES
+$HEIGHT: 40rem;
+$SHAPE: polygon(0 .5rem,
+  30% 2rem,
+  60% 1rem,
+  80% 0,
+  100% 3rem,
+  100% 100%,
+  66% calc(#{$HEIGHT} - 1rem),
+  33% calc(#{$HEIGHT} - 3rem),
+  0 100%
+);
+
 section.images {
-  margin: 50px 15px;
-  div.blue-img-container {
-    height: 200px;
-    width: 100%;
-    background-color: $light-blue;
-    clip-path: polygon(0 10%, 30% 20%, 60% 10%, 80% 0,  100% 20%, 100% 100%, 0 100%);
+  position: relative;
+  margin: 5rem 0;
+
+  div.shape-container {
+    height: $HEIGHT;
+    position: absolute;
+    margin: 0 1%;
+    width: 98%;
+    z-index: -1;
+
+    &.bg-blue {
+      top: -1rem;
+      background-color: $light-blue;
+      clip-path: $SHAPE;
+    }
+    &.bg-pink {
+      bottom: -1rem;
+      background-color: $light-pink;
+      clip-path: $SHAPE;
+    }
+  }
+
+  div.img-container {
+    clip-path: $SHAPE;
+
+    img {
+      width: 100%;
+      height: $HEIGHT;
+      object-fit: cover;
+    }
   }
 }
 
@@ -59,11 +133,133 @@ section.images {
 section.b2b {
   color: $secondary;
 
-  h2 {
-    color: $third;
-  }
-
   ul {
     list-style-type: none;
+
+    li {
+      span.fas {
+        margin: 0 10px 5px 0;
+        color: $primary;
+      }
+    }
+  }
+}
+
+// PRESTATIONS
+section.prestations {
+  text-align: center;
+
+  div.questions {
+    margin-top: 4rem;
+    
+    // TODO: merge d'images
+    background-image: url("/assets/images/website/prestations/woman.svg");
+    background-repeat: no-repeat;
+    background-position: 40% 70%;
+    
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem 0;
+
+    div.question-item-container {
+      // max 2 items par ligne
+      flex-basis: 50%;
+      
+      div.question-item {
+        background-color: $white;
+        max-width: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid $light-grey;
+        border-radius: 8px;
+        padding: 5px 10px;
+        box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.08);
+
+        p {
+          margin: 0;
+          margin-right: 1rem;
+        }
+
+
+        span.fas {
+          color: $primary;
+        }
+      }
+
+      // Custom padding pour ne pas les aligner
+      &:nth-of-type(1) {
+        padding-top: 0;
+        padding-left: 0;
+      }
+      &:nth-of-type(2) {
+        padding-top: 1rem;
+        padding-right: 7rem;
+      }
+      &:nth-of-type(3) {
+        padding-top: 1rem;
+        padding-left: 2rem;
+      }
+      &:nth-of-type(4) {
+        padding-top: 4rem;
+        padding-right: 3rem;
+      }
+      &:nth-of-type(5) {
+        padding-top: 2rem;
+        padding-left: 0;
+      }
+      &:nth-of-type(6) {
+        padding-top: 4rem;
+        padding-right: 9rem;
+      }
+    }
+  }
+
+  button.dm-btn {
+    margin-top: 2rem;
+  }
+
+  div.img-container {
+    text-align: right;
+    
+    img {
+      width: 140px;
+      margin-right: 2rem;
+    }
+  }
+}
+
+// SAVOIR FAIRE
+section.savoir-faire {
+  background-color: $light-pink;
+  text-align: center;
+
+  div.skill-items {
+    display: flex;
+    flex-wrap: wrap;
+
+    div.skill-item {
+      margin-top: 2rem;
+
+      img {
+        width: 100px;
+      }
+
+      h3 {
+        color: $primary;
+        font-weight: 600;
+      }
+
+      p {
+        color: $secondary;
+        font-weight: 500;
+      }
+    }
+  }
+
+  button.dm-btn {
+    margin-top: 2rem;
   }
 }
