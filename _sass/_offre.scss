@@ -1,0 +1,58 @@
+section#offre-intro {
+  background-color: $light-pink;
+  padding: 4rem 0;
+}
+
+// VISION
+// section#offre-vision {}
+
+// PRESTATIONS
+section#offre-prestations {
+  background-color: $lighter-blue;
+  p.impots {
+    color: $third;
+  }
+
+  div.prestation {
+    padding: 2rem 3rem;
+    border-radius: 32px;
+    align-items: center;
+    margin-top: 2rem;
+
+    &:nth-of-type(odd) {
+      background-color: $secondary;
+      color: $white;
+      box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.15);
+      
+      p.description {
+        color: $third;
+      }
+    }
+
+    h1.title {
+      font-size: 2rem;
+    }
+    p.description {
+      font-weight: 500;
+    }
+
+    div.logo-entreprise {
+      display: inline-block;
+      width: 100px;
+      border: 1px solid $third;
+      border-radius: 10px;
+      padding: .4rem;
+      margin: 0 .4rem;
+    }
+
+  }
+}
+
+// MISE EN OEUVRE
+section#offre-mise-oeuvre {
+  h2.title {
+    margin: 1rem auto;
+    font-weight: 800;
+    color: $primary;
+  }
+}
