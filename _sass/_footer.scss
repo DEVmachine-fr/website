@@ -1,0 +1,22 @@
+footer {
+  background-color: $secondary;
+
+  div.links-container {
+    a {
+      color: $white;
+    }
+  }
+
+  div.bottom-container {
+    a {
+      color: $light-grey;
+    }
+    #mentions-btn {
+      color: $light-grey;
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+}

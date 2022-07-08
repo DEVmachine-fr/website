@@ -30,6 +30,10 @@ Il est possible de travailler avec du Live Reload en exécutant la commande
 
     jekyll serve
 
+ou
+
+    bundle exec jekyll serve
+
 Un serveur démarre sur le port 4000, et le site est visible sur l'adresse : http://127.0.0.1:4000
 
 ## Via docker
