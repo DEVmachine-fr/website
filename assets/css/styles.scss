@@ -7,6 +7,9 @@
 
 // SCSS FOR EACH PAGE
 @import "_index";
+@import "_offre";
+@import "_savoir-faire";
+@import "_dev-machine";
 
 // Global styling for this template
 body {
@@ -49,6 +52,39 @@ button.dm-btn {
 
     a {
       color: $white;
+    }
+  }
+}
+
+// TITRES
+
+h1.section-heading,
+h2.section-subheading {
+  font-family: 'Nunito';
+  text-align: center;
+  width: 100%;
+}
+
+h1.section-heading {
+  color: $secondary;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 35px;
+  margin: 20px 0;
+}
+
+h2.section-subheading {
+  color: $third;
+}
+
+// LISTES FLECHES
+ul.arrow-list {
+  list-style-type: none;
+
+  li {
+    span.fas {
+      margin: 0 10px 5px 0;
+      color: $primary;
     }
   }
 }

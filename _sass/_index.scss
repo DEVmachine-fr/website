@@ -1,22 +1,4 @@
-h1.section-heading, h2.section-subheading {
-  font-family: 'Nunito';
-  text-align: center;
-  width: 100%;
-}
-
-h1.section-heading {
-  color: $secondary;
-  font-weight: 900;
-  font-size: 40px;
-  line-height: 35px;
-  margin: 20px 0;
-}
-
-h2.section-subheading {
-  color: $third;
-}
-
-section.intro {
+section#index-intro {
   color: $secondary;
 
   p {
@@ -49,7 +31,6 @@ section.intro {
     div.image-container {
       clip-path: $SHAPE;
       img {
-        width: 100%;
         height: $HEIGHT;
         object-fit: cover;
       }
@@ -58,7 +39,7 @@ section.intro {
 }
 
 // PILIERS
-section.piliers {
+section#index-piliers {
   margin-top: 4rem;
   color: $secondary;
 
@@ -72,12 +53,26 @@ section.piliers {
       max-width: 70%;
     }
 
-    // Bordures quand 2 lignes 2 colonnes
+    // Bordures en croix quand 2 lignes 2 colonnes (défaut)
     &:nth-child(odd) {
       border-right: 1px solid $light-grey;
     }
     &:first-child, &:nth-child(2) {
       border-bottom: 1px solid $light-grey;
+    }
+
+    // Bordure pour séparer les lignes en mode mobile
+    @media (max-width: $md-size) {
+      border-right: none !important;
+      border-bottom: none !important;
+
+      border-top: 1px solid $light-grey;
+      padding-top: 1rem;
+      
+      &:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
     }
   }
 }
@@ -95,7 +90,8 @@ $SHAPE: polygon(0 .5rem,
   0 100%
 );
 
-section.images {
+// PHOTOS
+section#index-images {
   position: relative;
   margin: 5rem 0;
 
@@ -130,29 +126,18 @@ section.images {
 }
 
 // B2B / B2C
-section.b2b {
+section#index-b2b {
   color: $secondary;
-
-  ul {
-    list-style-type: none;
-
-    li {
-      span.fas {
-        margin: 0 10px 5px 0;
-        color: $primary;
-      }
-    }
-  }
 }
 
 // PRESTATIONS
-section.prestations {
+section#index-prestations {
   text-align: center;
 
   div.questions {
     margin-top: 4rem;
     
-    // TODO: merge d'images
+    // TODO: merge d'images svg
     background-image: url("/assets/images/website/prestations/woman.svg");
     background-repeat: no-repeat;
     background-position: 40% 70%;
@@ -215,6 +200,33 @@ section.prestations {
         padding-right: 9rem;
       }
     }
+
+    // En mode réduit, on met les items à gauche et l'image à droite
+    @media (max-width: $md-size) {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      gap: .5rem 0;
+      background-position: 100% 50%;
+
+      div.question-item-container {
+        padding: 0 !important;
+      }
+    }
+
+    @media (min-width: $sm-size) and (max-width: $md-size) {
+      div.question-item {
+        float: left !important;
+      }
+    }
+
+    // En mode phone, on retire l'image et on centre
+    @media (max-width: $sm-size) {
+      background: none;
+      div.question-item {
+        float: none !important;
+        margin: auto;
+      }
+    }
   }
 
   button.dm-btn {
@@ -232,7 +244,7 @@ section.prestations {
 }
 
 // SAVOIR FAIRE
-section.savoir-faire {
+section#index-savoir-faire {
   background-color: $light-pink;
   text-align: center;
 
