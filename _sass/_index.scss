@@ -305,4 +305,12 @@ section#index-savoir-plus {
       transform: translate(-50%, 0);
     }
   }
+
+  button.dm-btn {
+    // pas de texte sur ce btn, on recentre le chevron
+    span {
+      margin-left: 0;
+      font-size: 20px;
+    }
+  }
 }

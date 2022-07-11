@@ -27,8 +27,13 @@ body {
 button.dm-btn {
   text-align: center;
   border-radius: 4px;
-  padding: 6px 36px;
   border-color: transparent;
+  padding: 0;
+
+  a {
+    display: inline-block;
+    padding: .3rem 1rem;
+  }
 
   // Pour les boutons avec chevrons
   span.fas {
@@ -43,11 +48,11 @@ button.dm-btn {
     a {
       color: $white;
     }
-  }&.dm-btn-white {
+  }
+  &.dm-btn-white {
     background-color: $white;
     border-color: $secondary;
     color: $secondary;
-  
     a {
       color: $secondary;
     }
@@ -56,7 +61,6 @@ button.dm-btn {
     background-color: $primary;
     color: $white;
     font-size: 18px;
-
     a {
       color: $white;
     }
