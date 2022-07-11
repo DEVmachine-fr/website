@@ -1,0 +1,39 @@
+$blue-bg: rgba(106, 191, 252, 0.1);
+
+section#contact-intro {
+  background-color: $blue-bg;
+}
+
+section#contact-items {
+  div.container {
+    background-image: url("/assets/images/website/dm-group.jpg");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 16px;
+    padding: 3rem;
+    
+    div.row {
+      flex-wrap: nowrap;
+      justify-content: space-evenly;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      padding: 5rem 3rem;
+
+      img {
+        margin: 0 auto 2rem;
+        max-width: 100%;
+        width: 3rem;
+      }
+      p {
+        text-align: center;
+        color: $secondary;
+      }
+      a {
+        color: $secondary;
+        text-decoration: underline;
+        font-weight: 600;
+      }
+    }
+  }
+}
