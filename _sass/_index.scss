@@ -4,12 +4,6 @@ body.main-bg {
 }
 
 section#index-intro {
-  color: $secondary;
-
-  p {
-    color: $third;
-  }
-
   div.shape-container {
     $HEIGHT: 20rem;
     $SHAPE: polygon(
