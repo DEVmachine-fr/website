@@ -1,0 +1,51 @@
+---
+layout: default
+title: Blog Technique DEVmachine
+permalink: /blog/
+---
+
+<section id="blog-intro">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div>
+          <h1 class="section-heading">Bienvenue sur le blog de DEVmachine !</h1>
+          <p>Vous trouverez ici des ressources concernant les actualités de développement de l'équipe, et aussi des sujets plus généralistes...</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <img class="w-100" alt="Team DEVmachine" src="/assets/images/website/dm-group.jpg"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="blog-posts-container">
+  <div class="container">
+    <div class="col-12 blog-posts">
+      {% for post in site.posts %}
+      <div class="col-lg-6 col-md-12 m-0 p-3 blog-post-container">
+        <div class="blog-post h-100">
+          <div class="heading">
+            <h4>{{ post.title }}</h4>
+            <p class="post-info">par {{ post.author }}, le {{ post.date | date: "%d/%m/%Y" }}</p>
+          </div>
+
+          <div class="post-excerpt">{{ post.excerpt }}</div>
+
+          <!-- div vide pour pousser le btn en bas -->
+          <div class="empty-space"></div>
+
+          <div class="btn-container">
+            <button type="button" class="dm-btn dm-btn-orange d-inline-flex align-items-center">
+              <a href="{{ post.url }}">Lire la suite</a>
+              <span aria-hidden="true" class="fas fa-chevron-right"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
