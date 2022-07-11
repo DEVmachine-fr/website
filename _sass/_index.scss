@@ -93,7 +93,6 @@ $SHAPE: polygon(0 .5rem,
 // PHOTOS
 section#index-images {
   position: relative;
-  margin: 5rem 0;
 
   div.shape-container {
     height: $HEIGHT;
@@ -235,10 +234,11 @@ section#index-prestations {
 
   div.img-container {
     text-align: right;
+    margin-top: -3rem;
+    margin-right: 4rem;
     
     img {
       width: 140px;
-      margin-right: 2rem;
     }
   }
 }
