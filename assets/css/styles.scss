@@ -83,8 +83,8 @@ h2.section-subheading {
 h1.section-heading {
   color: $secondary;
   font-weight: 900;
-  font-size: 40px;
-  line-height: 35px;
+  font-size: 50px;
+  line-height: 45px;
   margin: 20px 0;
 }
 
@@ -92,8 +92,12 @@ h2.section-subheading {
   color: $third;
 }
 
+// TEXT COLORS
 .text-orange {
   color: $primary !important;
+}
+.text-grey {
+  color: $third !important;
 }
 
 // LISTES FLECHES CUSTOM (pour les ul + articles)
