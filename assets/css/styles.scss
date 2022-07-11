@@ -12,6 +12,11 @@
 @import "_dev-machine";
 @import "_contact";
 @import "_blog";
+@import "_recrutement";
+
+// SCSS FOR BLOG
+@import "code";
+@import "_post";
 
 // Global styling for this template
 body {
@@ -87,14 +92,15 @@ h2.section-subheading {
   color: $primary !important;
 }
 
-// LISTES FLECHES
-ul.arrow-list {
+// LISTES FLECHES CUSTOM (pour les ul + articles)
+ul.arrow-list, article.post-content ul {
   list-style-type: none;
 
   li {
-    span.fas {
-      margin: 0 10px 5px 0;
-      color: $primary;
-    }
+    background-image: url(/assets/images/circle-arrow-right.svg);
+    background-repeat: no-repeat;
+    line-height: 23px;
+    padding-left: 30px;
+    margin-bottom: 3px;
   }
 }
