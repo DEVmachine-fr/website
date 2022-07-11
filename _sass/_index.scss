@@ -1,3 +1,8 @@
+// background fondu pour la page d'accueil
+body.main-bg {
+  background: linear-gradient(180deg, rgba(252, 118, 106, 0.1) 0, rgba(252, 118, 106, 0) 30rem);
+}
+
 section#index-intro {
   color: $secondary;
 
@@ -274,5 +279,30 @@ section#index-savoir-faire {
 
   button.dm-btn {
     margin-top: 2rem;
+  }
+}
+
+section#index-savoir-plus {
+  $size: 15rem;
+
+  div.img-container {
+    position: relative;
+
+    img.julien {
+      border-radius: 50%;
+      object-fit: cover;
+      width: $size;
+      height: $size;
+    }
+
+    img.circle {
+      position: absolute;
+      width: $size;
+      top: -.5rem;
+      // Trick pour center l'image en asbolute
+      // Left à 45% pour ne pas centrer parfaitement
+      left: calc(50% - 1rem);
+      transform: translate(-50%, 0);
+    }
   }
 }

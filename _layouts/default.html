@@ -8,7 +8,9 @@
 
     {% include analytics.html %}
   </head>
-  <body>
+  <body
+    {% if page.url == "/" %} class="main-bg" {% endif %}
+  >
     {% include navigation.html %}
 
     {{ content }}
