@@ -1,3 +1,60 @@
+$green-bg: rgba(106, 252, 138, 0.1);
+
 section#dm-intro {
-  background-color: rgba(106, 252, 138, 0.1);
+  background-color: $green-bg;
+}
+
+div.dm-item {
+  padding: 1rem 0;
+}
+
+section#dm-servir {
+  h2.section-subheading {
+    font-size: 1.6rem;
+  }
+}
+
+section#dm-rse {
+  background-color: $green-bg;
+  h2.section-subheading {
+    font-size: 1.6rem;
+  }
+
+  div.rse-item {
+    background-color: $secondary;
+    color: $white;
+    padding: 2rem 3rem;
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 32px;
+    margin: 3rem 0;
+
+    p.title {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    img.leaf {
+      width: 2rem;
+    }
+
+    div.rse-subitems {
+      margin-top: 1rem;
+      p {
+        text-align: center;
+        font-size: 1.2rem;
+      }
+    }
+
+    &#environnemental {
+      div.rse-subitems>p {
+        max-width: 30%;
+      }
+    }
+
+    &#societal {
+      div.rse-subitems > p {
+        max-width: 40%;
+      }
+    }
+  }
 }

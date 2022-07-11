@@ -10,6 +10,8 @@
 @import "_offre";
 @import "_savoir-faire";
 @import "_dev-machine";
+@import "_contact";
+@import "_blog";
 
 // Global styling for this template
 body {
@@ -56,8 +58,12 @@ button.dm-btn {
   }
 }
 
-// TITRES
+// PADDING POUR CHAQUE BLOC
+section {
+  padding: 3rem 0;
+}
 
+// TITRES
 h1.section-heading,
 h2.section-subheading {
   font-family: 'Nunito';
@@ -75,6 +81,10 @@ h1.section-heading {
 
 h2.section-subheading {
   color: $third;
+}
+
+.text-orange {
+  color: $primary !important;
 }
 
 // LISTES FLECHES
