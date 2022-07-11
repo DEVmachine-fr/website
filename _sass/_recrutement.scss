@@ -1,0 +1,63 @@
+section#recrutement-intro {
+  background-color: #FFF1F0;
+}
+
+section#recrutement-posts {
+  div.recrutement-posts {
+    display: flex;
+    flex-wrap: wrap;
+
+    div.recrutement-post {
+      border: 1px solid $light-grey;
+      box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+
+      div.heading {
+        border-bottom: 1px solid $light-grey;
+        padding: 1rem;
+
+        p {
+          margin: 0;
+          color: $light-grey;
+        }
+      }
+
+      div.contract-data, p.description {
+        padding: 1rem;
+        padding-bottom: 0;
+      }
+
+      div.contract-data {
+        column-gap: .6rem;
+
+        span {
+          padding: .2rem .8rem;
+          border-radius: 10px;
+          font-weight: 400;
+  
+          &.contract-cdi {
+            background-color: #D1FAE5;
+            color: #065F46;
+          }
+          
+          &.contract-full-time {
+            background-color: #F3F4F6;
+            color: #4B5563;
+          }
+        }
+      }
+
+
+      div.empty-space {
+        flex-grow: 2;
+      }
+
+      div.btn-container {
+        text-align: right;
+        padding: 1rem;
+      }
+    }
+  }
+}
