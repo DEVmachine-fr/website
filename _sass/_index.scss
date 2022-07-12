@@ -50,13 +50,13 @@ section#index-piliers {
   color: $secondary;
 
   div.piliers-item {
+    padding: 1rem;
     img {
-      width: 100px;
+      width: 30%;
     }
-
     div.piliers-text {
-      margin-left: 10px;
-      max-width: 70%;
+      margin-left: 1rem;
+      width: 70%;
     }
 
     // Bordures en croix quand 2 lignes 2 colonnes (défaut)
@@ -206,13 +206,13 @@ section#index-prestations {
       
       button.question-item {
         background-color: $white;
-        max-width: 350px;
+        max-width: 22rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
         border: 1px solid $light-grey;
         border-radius: 8px;
-        padding: 5px 10px;
+        padding: .3rem 1rem;
         box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.08);
         margin: 0;
 
@@ -265,14 +265,14 @@ section#index-prestations {
       flex-wrap: nowrap;
       gap: .5rem 0;
       background-position: 100% 50%;
-
+      // on réinitialise les padding
       div.question-item-container {
         padding: 0 !important;
       }
     }
 
     @media (min-width: $sm-size) and (max-width: $md-size) {
-      div.question-item {
+      button.question-item {
         float: left !important;
       }
     }
@@ -280,9 +280,9 @@ section#index-prestations {
     // En mode phone, on retire l'image et on centre
     @media (max-width: $sm-size) {
       background: none;
-      div.question-item {
+      button.question-item {
         float: none !important;
-        margin: auto;
+        margin: auto !important;
       }
     }
   }
@@ -321,7 +321,7 @@ section#index-savoir-faire {
       margin-top: 2rem;
 
       img {
-        width: 100px;
+        width: 7rem;
       }
 
       h3 {
@@ -369,7 +369,7 @@ section#index-savoir-plus {
     // pas de texte sur ce btn, on recentre le chevron
     span {
       margin-left: 0;
-      font-size: 20px;
+      font-size: 1.5rem;
     }
   }
 }

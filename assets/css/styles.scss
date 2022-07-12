@@ -40,7 +40,7 @@ button.dm-btn {
 
   // Pour les boutons avec chevrons
   span.fas {
-    font-size: 12px;
+    font-size: .9rem;
     color: $white;
     margin-left: .8rem;
   }
@@ -59,10 +59,11 @@ button.dm-btn {
     a {
       color: $secondary;
     }
-  }&.dm-btn-orange {
+  }
+  &.dm-btn-orange {
     background-color: $primary;
     color: $white;
-    font-size: 18px;
+    font-size: 1rem;
   
     a {
       color: $white;
@@ -141,7 +142,7 @@ section.intro {
 }
 
 // LISTES FLECHES CUSTOM (pour les ul + articles)
-ul.arrow-list, article.post-content ul {
+ul.arrow-list, article.post-content ul, article.post-content ol {
   list-style-type: none;
   // on retire la marge de base de "ul"
   padding-inline-start: 0;
