@@ -36,29 +36,33 @@ order: 2
     </div>
 
     <div class="row col-lg-8 offset-lg-2 col-md-12">
-      <h2>Qualité</h2>
-      <p class="text-grey">Nous ne faisons aucun compromis sur la qualité de nos livrables, dans une vision court et moyen terme, pour à la fois satisfaire les utilisateurs, mais aussi permettre à nos clients de pouvoir continuer à investir dans de nouveaux services à leur apporter plutôt que dans de la correction ou de la mise à jour technique des solutions.</p>
-      <ul class="arrow-list">
-        <li>Nous diffusons continuellement auprès des équipes projet des bonnes pratiques de conception et de développement</li>
-        <li>Merge requests</li>
-        <li>Commentaires de code</li>
-      </ul>
-    </div>
-    
-    <div class="row col-lg-8 offset-lg-2 col-md-12">
-      <h2>Efficacité</h2>
-    </div>
-    
-    <div class="row col-lg-8 offset-lg-2 col-md-12">
-      <h2>Technicité</h2>
-    </div>
-    
-    <div class="row col-lg-8 offset-lg-2 col-md-12">
-      <h2>Industrialisation</h2>
-    </div>
-    
-    <div class="row col-lg-8 offset-lg-2 col-md-12">
-      <h2>Éco-conception</h2>
+      <!-- Custom plugin -->
+      {% accordion savoir-faire %}
+        {% collapsible Qualité %}
+          <p class="text-grey">Nous ne faisons aucun compromis sur la qualité de nos livrables, dans une vision court et moyen terme, pour à la fois satisfaire les utilisateurs, mais aussi permettre à nos clients de pouvoir continuer à investir dans de nouveaux services à leur apporter plutôt que dans de la correction ou de la mise à jour technique des solutions.</p>
+          <ul class="arrow-list">
+            <li>Nous diffusons continuellement auprès des équipes projet des bonnes pratiques de conception et de développement</li>
+            <li>Merge requests</li>
+            <li>Commentaires de code</li>
+          </ul>
+        {% endcollapsible %}
+      
+        {% collapsible Efficacité %}
+          <p>test</p>
+        {% endcollapsible %}
+      
+        {% collapsible Technicité %}
+          <p>test</p>
+        {% endcollapsible %}
+      
+        {% collapsible Industrialisation %}
+          <p>test</p>
+        {% endcollapsible %}
+      
+        {% collapsible Éco-conception %}
+          <p>test</p>
+        {% endcollapsible %}
+      {% endaccordion %}
     </div>
   </div>
 </section>
