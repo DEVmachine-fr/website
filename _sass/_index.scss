@@ -35,11 +35,24 @@ section#index-intro {
       }
     }
   }
+
+  @media (max-width: $md-size) {
+    // pour que l'image avec le clip-path ne soit pas trop petite,
+    // on agrandit le container
+    div.container {
+      max-width: 98vw;
+    }
+  }
+  @media (max-width: $sm-size) {
+    // quand l'image est dessous, petite marge
+    div.shape-container {
+      margin-top: 2rem;
+    }
+  }
 }
 
 // PILIERS
 section#index-piliers {
-  margin-top: 4rem;
   color: $secondary;
 
   div.piliers-item {
@@ -77,7 +90,7 @@ section#index-piliers {
 }
 
 // IMAGES
-$HEIGHT: 40rem;
+$HEIGHT: calc(min(40rem, 80vh));
 $SHAPE: polygon(0 .5rem,
   30% 2rem,
   60% 1rem,
@@ -114,12 +127,58 @@ section#index-images {
   }
 
   div.img-container {
+    width: 100vw;
     clip-path: $SHAPE;
+    display: flex;
+    flex-wrap: wrap;
+    height: $HEIGHT;
 
-    img {
-      width: 100%;
-      height: $HEIGHT;
-      object-fit: cover;
+    
+    div {
+      position: relative;
+      width: 33%;
+      height: 50%;
+      z-index: 0;
+
+      img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      // Déplacement des img pour ne pas tout aligner
+      &:nth-of-type(4) {
+        top: -5%;
+        left: -5%;
+        img {
+          height: 110%;
+        }
+      }
+      &:nth-of-type(5) {
+        z-index: 1;
+        top: -10%;
+        left: -5%;
+        img {
+          height: 120%;
+          width: 120%;
+        }
+      }
+      &:nth-of-type(6) {
+        top: -3%;
+        img {
+          height: 110%;
+        }
+      }
+
+      // En mode phone on retire 2 images (sinon trop chargé)
+      @media (max-width: $sm-size) {
+        width: 50%;
+        left: 0 !important;
+        &:nth-of-type(3), &:nth-of-type(5) {
+          display: none;
+        }
+      }
     }
   }
 }
@@ -137,7 +196,7 @@ section#index-prestations {
     margin-top: 4rem;
     
     // TODO: merge d'images svg
-    background-image: url("/assets/images/website/prestations/woman.svg");
+    background-image: url("/assets/images/website/page-index/prestations/woman.svg");
     background-repeat: no-repeat;
     background-position: 40% 70%;
     
@@ -238,7 +297,13 @@ section#index-prestations {
     margin-right: 4rem;
     
     img {
-      width: 140px;
+      width: 8rem;
+    }
+
+    // pas de marge en mode phone
+    @media (max-width: $sm-size) {
+      margin-top: 0;
+      img { width: 5rem }
     }
   }
 }

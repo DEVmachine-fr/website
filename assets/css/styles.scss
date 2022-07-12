@@ -83,13 +83,27 @@ h2.section-subheading {
 h1.section-heading {
   color: $secondary;
   font-weight: 900;
-  font-size: 50px;
-  line-height: 45px;
-  margin: 20px 0;
+  font-size: 3rem;
+  line-height: 2.7rem;
+  margin: 1.5rem 0;
+  
+  @media (max-width: $sm-size) {
+    font-size: 2rem;    
+    line-height: 1.7rem;
+  }
 }
 
 h2.section-subheading {
   color: $third;
+  font-weight: 800;
+}
+
+// Intro de chaque page
+section.intro {
+  div.btn-container {
+    justify-content: center;
+    gap: 1rem;
+  }
 }
 
 // TEXT COLORS
@@ -103,6 +117,11 @@ h2.section-subheading {
 // LISTES FLECHES CUSTOM (pour les ul + articles)
 ul.arrow-list, article.post-content ul {
   list-style-type: none;
+
+  // on retire la marge de base de "ul" sur phone
+  @media (max-width: $sm-size) {
+    padding-inline-start: 0;
+  }
 
   li {
     background-image: url(/assets/images/circle-arrow-right.svg);

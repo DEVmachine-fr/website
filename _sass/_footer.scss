@@ -2,12 +2,14 @@ footer {
   background-color: $secondary;
 
   div.links-container {
+    gap: 1rem;
     a {
       color: $white;
     }
   }
 
   div.bottom-container {
+    gap: 1rem;
     a {
       color: $light-grey;
     }
