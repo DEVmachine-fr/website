@@ -2,15 +2,23 @@
 layout: default
 ---
 <section id="post-header">
-  <div class="container text-center">
-    <h1 class="section-heading">{{ page.title}}</h1>
-    <p class="text-orange">par {{ page.author }} le {{ page.date | date: "%d/%m/%Y" }}</p>
+  <div class="container">
+    <button class="dm-btn">
+      <a href="/blog">
+        <span aria-hidden="true" class="fas fa-chevron-left"></span><span>Retour</span>
+      </a>
+    </button>
+    <div class="text-center">
+      <h1 class="section-heading">{{ page.title}}</h1>
+      <p class="text-orange">par {{ page.author }} le {{ page.date | date: "%d/%m/%Y" }}</p>
+      <div class="text-left text-grey">{{ page.excerpt }}</div>
+    </div>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <article class="post-content">{{ content }}</article>
+    <article class="post-content">{{ page.content | remove: page.excerpt }}</article>
   </div>
 </section>
 
