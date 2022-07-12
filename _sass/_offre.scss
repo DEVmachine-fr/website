@@ -1,50 +1,122 @@
 section#offre-intro {
   background-color: $light-pink;
-  padding: 4rem 0;
 }
 
 // VISION
-// section#offre-vision {}
+section#offre-vision {
+  // TODO: merge d'images svg
+  background-image: url('/assets/images/website/page-offre/rouage.svg');
+  background-repeat: no-repeat;
+  background-position: 40% 70%;
+}
 
 // PRESTATIONS
 section#offre-prestations {
   background-color: $lighter-blue;
   p.impots {
-    color: $third;
+    font-weight: 600;
   }
 
   div.prestation {
     padding: 2rem 3rem;
     border-radius: 32px;
     align-items: center;
-    margin-top: 2rem;
+    margin: 2rem auto 0;
 
-    &:nth-of-type(odd) {
-      background-color: $secondary;
-      color: $white;
-      box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.15);
-      
-      p.description {
-        color: $third;
-      }
+    div.info {
+      width: 70%;
+    }
+    div.illustration {
+      width: 20%;
     }
 
     h1.title {
       font-size: 2rem;
+      font-weight: 600;
     }
     p.description {
       font-weight: 500;
     }
 
-    div.logo-entreprise {
-      display: inline-block;
-      width: 100px;
-      border: 1px solid $third;
-      border-radius: 10px;
-      padding: .4rem;
-      margin: 0 .4rem;
+    div.logo-entreprise-container {
+      gap: .3rem;
+      justify-content: start;
+      
+      @media (max-width: $sm-size) {
+        justify-content: center;
+      }
+
+      div.logo-entreprise {
+        display: inline-flex;
+        align-items: center;
+        column-gap: .4rem;
+        justify-content: space-evenly;
+        border: 1px solid $third;
+        border-radius: 10px;
+        padding: .4rem;
+
+        img {
+          max-width: 1.5rem;
+        }
+        p {
+          font-size: 1.5rem;
+          margin-bottom: 0;
+        }
+      }
     }
 
+    // FOND BLEU
+    &:nth-of-type(odd) {
+      background-color: $secondary;
+      box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.15);
+      
+      h1.title {
+        color: $white;
+      }
+      .description {
+        color: $light-grey;
+      }
+      .logo-entreprise p {
+        color: $white;
+      }
+      div.illustration {
+        margin-left: 10%;
+      }
+    }
+
+    // FOND BLANC
+    &:nth-of-type(even) {
+      h1.title {
+        color: $secondary;
+      }
+      .description {
+        color: $third;
+      }
+      .logo-entreprise p {
+        color: $secondary;
+      }
+      div.illustration {
+        margin-right: 10%;
+      }
+    }
+
+    @media (max-width: $sm-size) {
+      h1.title {
+        font-size: 1.4rem;
+      }
+      p.description {
+        line-height: 1.2rem;
+      }
+      div.logo-entreprise p {
+        font-size: 1.2rem;
+      }
+      div.info {
+        width: 100%;
+      }
+      div.illustration {
+        display: none;
+      }
+    }
   }
 }
 
@@ -54,5 +126,14 @@ section#offre-mise-oeuvre {
     margin: 1rem auto;
     font-weight: 800;
     color: $primary;
+  }
+  p {
+    color: $secondary;
+    text-align: justify;
+
+    // marge minimale
+    @media (max-width: $sm-size) {
+      margin: 0 1.5rem;  
+    }
   }
 }
