@@ -4,25 +4,28 @@ permalink: /offre/
 title: Offre
 order: 1
 ---
-<section id="offre-intro">
+<section id="offre-intro" class="intro">
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-sm-12">
         <div class="intro-bg">
           <h1 class="section-heading">Notre offre de services</h1>
-          <p>
-            <b>L’équipe DEVmachine répond aux besoins de ses clients en termes de Systèmes d’Informations, de plateformes Web, ou d’applications mobiles.</b><br/>
-            Qu’ils s’agissent de leurs solutions B2B ou B2C, et quel que soit leur domaine d’activité, nous construisons avec eux une solution globale, au service de leurs utilisateurs, qui soit pérenne, performante et sécurisée.
+          <p><b>L’équipe DEVmachine répond aux besoins de ses clients en termes de Systèmes d’Informations, de plateformes Web, ou d’applications mobiles.</b></p>
+          <p class="text-grey">Qu’ils s’agissent de leurs solutions B2B ou B2C, et quel que soit leur domaine d’activité, nous construisons avec eux une solution globale, au service de leurs utilisateurs, qui soit pérenne, performante et sécurisée.</p>
           </p>
         </div>
-        <button type="button" class="dm-btn dm-btn-blue">
-          <a href="/offre">Parcourir notre offre</a>
-        </button>
-        <button type="button" class="dm-btn dm-btn-white">
-          <a href="/dm">Le savoir-fair DEVmachine</a>
-        </button>
+
+        <div class="row btn-container">
+          <button type="button" class="dm-btn dm-btn-blue">
+            <a href="/offre">Parcourir notre offre</a>
+          </button>
+          <button type="button" class="dm-btn dm-btn-white">
+            <a href="/dm">Le savoir-faire DEVmachine</a>
+          </button>
+        </div>
+
       </div>
-      <div class="col-md-6 col-sm-12 shape-container">
+      <div class="col-md-6 col-sm-12 right-img">
         <div class="image-container">
           <img class="w-100" alt="Team DEVmachine" src="/assets/images/website/dm-group.jpg"/>
         </div>
@@ -40,6 +43,7 @@ order: 1
     </div>
     <div class="row mt-5">
       <div>
+        <p><b>TODO (pas clair sur la maquette)</b></p>
         <p>Centrée utilisateur</p>
         <p>Pérennité technique de la solution développée</p>
         <p>Amélioration continue</p>
@@ -56,128 +60,142 @@ order: 1
       <h1 class="section-heading">Prestations de services</h1>
     </div>
     <div class="row col-lg-10 offset-lg-1 col-md-12">
-      <p class="impots mt-3">En regard à ses compétences et expériences, <b>DEVmachine est agréée CII</b> (Crédit Impôt Innovation) pour les années 2021 à 2025.<br/>Ce dispositif permet à nos clients de bénéficier de <b>20% de crédit d’impôt</b> sur les sociétés pour les dépenses engagées dans les prestations que nous réalisons pour eux.</p>
+      <p class="text-grey mt-3 text-justify impots">En regard à ses compétences et expériences, <b>DEVmachine est agréée CII</b> (Crédit Impôt Innovation) pour les années 2021 à 2025.<br/>Ce dispositif permet à nos clients de bénéficier de <b>20% de crédit d’impôt</b> sur les sociétés pour les dépenses engagées dans les prestations que nous réalisons pour eux.</p>
     </div>
 
+    <!-- Liste des prestations -->
     <div class="row prestation col-lg-10 offset-lg-1 col-md-12">
-      <div class="info col-8">
+      <div class="info">
         <h1 class="title">1 - J’ai une idée mais je ne sais pas comment exprimer mon besoin</h1>
         <p class="description">Que vous soyez start-up, ou pas, vous innovez dans votre domaine d’activité, et souhaitez formaliser plus largement le besoin d’une idée principale, définir votre produit.</p>
         
-        <div class="logo-entreprise">
-          <img class="w-100" alt="" src="/assets/images/website/dm-group.jpg" />
+        <div class="row logo-entreprise-container">
+          <div class="logo-entreprise">
+            <img alt="" src="/assets/images/website/page-offre/fake-logo.svg" />
+            <p>entreprise</p>
+          </div>
         </div>
       </div>
 
-      <div class="illustration col-3 offset-1">
+      <div class="illustration">
         <img class="w-100" alt="" src="/assets/images/website/dm-group.jpg" />
       </div>
     </div>
 
     <div class="row prestation col-lg-10 offset-lg-1 col-md-12">
-      <div class="illustration col-3">
+      <div class="illustration">
         <img class="w-100" alt="" src="/assets/images/website/dm-group.jpg" />
       </div>
 
-      <div class="info col-8 offset-1">
+      <div class="info">
         <h1 class="title">2 - Je souhaite faire développer une nouvelle solution, faire évoluer / maintenir voire infogérer une solution existante</h1>
-        <p class="description">
-          <ul class="arrow-list">
-            <li>Développement délégué</li>
-            <li>MVP ou versions plus complètes</li>
-            <li>Sur cahier des charges ou backlog produit avec une équipe dédiée sur une période</li>
-            <li>Choix de solution technique adaptée (ROI)</li>
-            <li>Développement fonctionnel, intégration de briques techniques, développement de connecteurs</li>
-            <li>TMA : de quelques jours par an à plusieurs jours par mois, nous sommes aussi en capacité d’infogérer la solution ou de traiter la relation avec votre hébergeur tiers.</li>
-          </ul>
-        </p>
-        
-        <div class="logo-entreprise">
-          <img class="w-100" alt="" src="/assets/images/website/dm-group.jpg" />
-        </div>
-        <div class="logo-entreprise">
-          <img class="w-100" alt="" src="/assets/images/website/dm-group.jpg" />
+        <ul class="arrow-list description">
+          <li>Développement délégué</li>
+          <li>MVP ou versions plus complètes</li>
+          <li>Sur cahier des charges ou backlog produit avec une équipe dédiée sur une période</li>
+          <li>Choix de solution technique adaptée (ROI)</li>
+          <li>Développement fonctionnel, intégration de briques techniques, développement de connecteurs</li>
+          <li>TMA : de quelques jours par an à plusieurs jours par mois, nous sommes aussi en capacité d’infogérer la solution ou de traiter la relation avec votre hébergeur tiers.</li>
+        </ul>
+
+        <div class="row logo-entreprise-container">
+          <div class="logo-entreprise">
+            <img alt="" src="/assets/images/website/page-offre/fake-logo.svg" />
+            <p>entreprise</p>
+          </div>
+          <div class="logo-entreprise">
+            <img alt="" src="/assets/images/website/page-offre/fake-logo.svg" />
+            <p>entreprise</p>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="row prestation col-lg-10 offset-lg-1 col-md-12">
-      <div class="info col-8">
+      <div class="info">
         <h1 class="title">3 - Je souhaite renforcer mon équipe de développement pour accélérer la mise à disposition de ma solution</h1>
-        <p class="description">
-          <ul class="arrow-list">
-            <li>Co-développement</li>
-            <li>Compétences, bonnes pratiques, disponibilité, bénéficier d’une équipe de très haut niveau</li>
-          </ul>
-        </p>
-        
-        <div class="logo-entreprise">
-          <img class="w-100" alt="" src="/assets/images/website/dm-group.jpg" />
+        <ul class="arrow-list description">
+          <li>Co-développement</li>
+          <li>Compétences, bonnes pratiques, disponibilité, bénéficier d’une équipe de très haut niveau</li>
+        </ul>
+
+        <div class="row logo-entreprise-container">
+          <div class="logo-entreprise">
+            <img alt="" src="/assets/images/website/page-offre/fake-logo.svg" />
+            <p>entreprise</p>
+          </div>
         </div>
       </div>
 
-      <div class="illustration col-3 offset-1">
+      <div class="illustration">
         <img class="w-100" alt="" src="/assets/images/website/dm-group.jpg" />
       </div>
     </div>
 
     <div class="row prestation col-lg-10 offset-lg-1 col-md-12">
-      <div class="illustration col-3">
+      <div class="illustration">
         <img class="w-100" alt="" src="/assets/images/website/dm-group.jpg" />
       </div>
 
-      <div class="info col-8 offset-1">
+      <div class="info">
         <h1 class="title">4 - Je souhaite désengorger ma dette technique, challenger ma stack technique</h1>
-        <p class="description">
-          <ul class="arrow-list">
-            <li>Expertise technique</li>
-            <li>Etude d’impact</li>
-            <li>Re-développement, re-conception, re-architecture</li>
-          </ul>
-        </p>
-        
-        <div class="logo-entreprise">
-          <img class="w-100" alt="" src="/assets/images/website/dm-group.jpg" />
+        <ul class="arrow-list description">
+          <li>Expertise technique</li>
+          <li>Etude d’impact</li>
+          <li>Re-développement, re-conception, re-architecture</li>
+        </ul>
+
+        <div class="row logo-entreprise-container">
+          <div class="logo-entreprise">
+            <img alt="" src="/assets/images/website/page-offre/fake-logo.svg" />
+            <p>entreprise</p>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="row prestation col-lg-10 offset-lg-1 col-md-12">
-      <div class="info col-8">
+      <div class="info">
         <h1 class="title">5 - Je souhaite industrialiser et fluidifier la production logicielle de mes projets pour accélérer le time-to-market</h1>
-        <p class="description">
-          <ul class="arrow-list">
-            <li>Industrialisation, agilité</li>
-            <li>CI, Gitlab, Jenkins, Scrum, Kanban, …</li>
-          </ul>
-        </p>
-        
-        <div class="logo-entreprise">
-          <img class="w-100" alt="" src="/assets/images/website/dm-group.jpg" />
+        <ul class="arrow-list description">
+          <li>Industrialisation, agilité</li>
+          <li>CI, Gitlab, Jenkins, Scrum, Kanban, …</li>
+        </ul>
+
+        <div class="row logo-entreprise-container">
+          <div class="logo-entreprise">
+            <img alt="" src="/assets/images/website/page-offre/fake-logo.svg" />
+            <p>entreprise</p>
+          </div>
         </div>
       </div>
 
-      <div class="illustration col-3 offset-1">
+      <div class="illustration">
         <img class="w-100" alt="" src="/assets/images/website/dm-group.jpg" />
       </div>
     </div>
 
     <div class="row prestation col-lg-10 offset-lg-1 col-md-12">
-      <div class="illustration col-3">
+      <div class="illustration">
         <img class="w-100" alt="" src="/assets/images/website/dm-group.jpg" />
       </div>
 
-      <div class="info col-8 offset-1">
+      <div class="info">
         <h1 class="title">6 - Je souhaite déployer dans le Cloud, ou sur les stores, et automatiser les déploiements</h1>
-        <p class="description">
-          <ul class="arrow-list">
-            <li>DevOps</li>
-            <li>AWS, GCP, Alibaba, Azure, PlayStore, AppStore</li>
-          </ul>
-        </p>
-        
-        <div class="logo-entreprise">
-          <img class="w-100" alt="" src="/assets/images/website/dm-group.jpg" />
+        <ul class="arrow-list description">
+          <li>DevOps</li>
+          <li>AWS, GCP, Alibaba, Azure, PlayStore, AppStore</li>
+        </ul>
+
+        <div class="row logo-entreprise-container">
+          <div class="logo-entreprise">
+            <img alt="" src="/assets/images/website/page-offre/fake-logo.svg" />
+            <p>entreprise</p>
+          </div>
+          <div class="logo-entreprise">
+            <img alt="" src="/assets/images/website/page-offre/fake-logo.svg" />
+            <p>entreprise</p>
+          </div>
         </div>
       </div>
     </div>
