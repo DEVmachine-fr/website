@@ -204,7 +204,7 @@ section#index-prestations {
       // max 2 items par ligne
       flex-basis: 50%;
       
-      div.question-item {
+      button.question-item {
         background-color: $white;
         max-width: 350px;
         display: flex;
@@ -214,15 +214,21 @@ section#index-prestations {
         border-radius: 8px;
         padding: 5px 10px;
         box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.08);
+        margin: 0;
 
-        p {
-          margin: 0;
-          margin-right: 1rem;
-        }
+        a {
+          color: $secondary;
+          display: flex;
+          align-items: center;
 
+          span.fas {
+            color: $primary;
+            font-size: 1.4rem;
+          }
 
-        span.fas {
-          color: $primary;
+          &:hover {
+            text-decoration: none;
+          }
         }
       }
 
@@ -249,7 +255,7 @@ section#index-prestations {
       }
       &:nth-of-type(6) {
         padding-top: 4rem;
-        padding-right: 9rem;
+        padding-right: 7rem;
       }
     }
 
