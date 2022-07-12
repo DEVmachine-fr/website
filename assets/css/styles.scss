@@ -107,6 +107,7 @@ h2.section-subheading {
   font-size: 2rem;
   line-height: 1.7rem;
   font-weight: 800;
+  margin-bottom: 2rem;
 
   @media (max-width: $sm-size) {
     font-size: 1.5rem;
@@ -131,6 +132,9 @@ section.intro {
 // TEXT COLORS
 .text-orange {
   color: $primary !important;
+}
+.text-blue {
+  color: $secondary  !important;
 }
 .text-grey {
   color: $third !important;

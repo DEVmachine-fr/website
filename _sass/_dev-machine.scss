@@ -4,13 +4,49 @@ section#dm-intro {
   background-color: $green-bg;
 }
 
-div.dm-item {
-  padding: 1rem 0;
+section#dm-force {
+  div.dm-item {
+    padding: 1rem 0;
+
+    h2 {
+      font-weight: 800;
+    }
+
+    // on inverse l'ordre en mode phone pour mettre l' image sous le texte
+    @media (max-width: $sm-size) {
+      &.sm-reverse {
+        flex-direction: column-reverse;
+      }
+    }
+  }
 }
 
 section#dm-servir {
   h2.section-subheading {
     font-size: 1.6rem;
+
+    @media (max-width: $sm-size) {
+      font-size: 1.3rem;
+    }
+  }
+
+  div.dm-item {
+    padding: 2rem 0;
+
+    h2 {
+      color: $secondary;
+      font-weight: 600;
+    }
+    p, ul > li {
+      color: $third;
+    }
+
+    // on inverse l'ordre en mode phone pour mettre l' image sous le texte
+    @media (max-width: $sm-size) {
+      &.sm-reverse {
+        flex-direction: column-reverse;
+      }
+    }
   }
 }
 
@@ -18,6 +54,10 @@ section#dm-rse {
   background-color: $green-bg;
   h2.section-subheading {
     font-size: 1.6rem;
+
+    @media (max-width: $sm-size) {
+      font-size: 1.3rem;
+    }
   }
 
   div.rse-item {
@@ -37,23 +77,35 @@ section#dm-rse {
       width: 2rem;
     }
 
+    img.circle {
+      position: absolute;
+      top: -0.5rem;
+      left: -2rem;
+    }
+
     div.rse-subitems {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5% 1rem;
       margin-top: 1rem;
+      justify-content: space-evenly;
+
       p {
         text-align: center;
         font-size: 1.2rem;
+        max-width: 35%;
+        line-height: 1.2rem;
       }
     }
 
-    &#environnemental {
-      div.rse-subitems>p {
-        max-width: 30%;
-      }
-    }
+    @media (max-width: $sm-size) {
+      padding: 2rem .2rem;
 
-    &#societal {
-      div.rse-subitems > p {
-        max-width: 40%;
+      p.title {
+        margin-left: 2rem;
+      }
+      img.circle {
+        left: .1rem;
       }
     }
   }
