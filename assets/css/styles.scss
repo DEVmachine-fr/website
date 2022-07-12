@@ -70,12 +70,18 @@ button.dm-btn {
 // PADDING POUR CHAQUE BLOC
 section {
   padding: 3rem 0;
+  @media (max-width: $sm-size) {
+    padding: 1rem 0;
+  }
+}
+
+* {
+  font-family: 'Nunito';
 }
 
 // TITRES
 h1.section-heading,
 h2.section-subheading {
-  font-family: 'Nunito';
   text-align: center;
   width: 100%;
 }
@@ -95,7 +101,14 @@ h1.section-heading {
 
 h2.section-subheading {
   color: $third;
+  font-size: 2rem;
+  line-height: 1.7rem;
   font-weight: 800;
+
+  @media (max-width: $sm-size) {
+    font-size: 1.5rem;
+    line-height: 1.2rem;
+  }
 }
 
 // Intro de chaque page
@@ -103,6 +116,12 @@ section.intro {
   div.btn-container {
     justify-content: center;
     gap: 1rem;
+  }
+  @media (max-width: $sm-size) {
+    // quand l'image est dessous, petite marge
+    div.right-img {
+      margin-top: 2rem;
+    }
   }
 }
 
@@ -117,11 +136,8 @@ section.intro {
 // LISTES FLECHES CUSTOM (pour les ul + articles)
 ul.arrow-list, article.post-content ul {
   list-style-type: none;
-
-  // on retire la marge de base de "ul" sur phone
-  @media (max-width: $sm-size) {
-    padding-inline-start: 0;
-  }
+  // on retire la marge de base de "ul"
+  padding-inline-start: 0;
 
   li {
     background-image: url(/assets/images/circle-arrow-right.svg);
