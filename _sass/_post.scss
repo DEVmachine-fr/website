@@ -1,10 +1,24 @@
 section#post-header {
   background-color: $light-purple;
+
+  button.dm-btn {
+    background-color: transparent;
+    color: $third;
+    a, span.fas {
+      color: $third;
+    }
+    span.fas {
+      margin-left: 0;
+      margin-right: .8rem;
+    }
+  }
 }
 
 article.post-content {
   position: relative;
   font-family: Poppins, serif;
+  // Pour autoriser les mots (notamment les liens) à revenir à la ligne
+  word-wrap: break-word;
 
   p {
     text-align: justify;
@@ -44,8 +58,8 @@ article.post-content {
     color: $gray-500;
   }
 
-  // On style le sommaire
-  ul:first-of-type {
+  // On style le sommaire (premier ul)
+  & > ul:first-of-type {
     border: 1px solid $light-grey;
     border-radius: 8px;
     box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.08);
@@ -56,12 +70,12 @@ article.post-content {
     }
   }
   
-  // En mode PC, on met le menu à gauche
+  // En mode grand écran, on met le menu à gauche
   $margin: 20rem;
   @media (min-width: $md-size) {
     margin-left: $margin;
 
-    ul:first-of-type {
+    & > ul:first-of-type {
       position: absolute;
       width: $margin;
       left: calc(-2rem - #{$margin});

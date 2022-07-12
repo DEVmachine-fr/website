@@ -59,11 +59,11 @@ button.dm-btn {
     a {
       color: $secondary;
     }
-  }
-  &.dm-btn-orange {
+  }&.dm-btn-orange {
     background-color: $primary;
     color: $white;
     font-size: 18px;
+  
     a {
       color: $white;
     }
