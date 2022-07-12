@@ -29,7 +29,7 @@
           id="navbarResponsive"
         >
           <ul class="navbar-nav text-uppercase ml-auto">
-            {% assign sorted_pages = site.pages | sort:"order" %}
+            {% assign sorted_pages = site.html_pages | sort:"order" %}
             {% for navPage in sorted_pages %}
              {% unless navPage.exclude-nav %}
                 <li class="nav-item">
