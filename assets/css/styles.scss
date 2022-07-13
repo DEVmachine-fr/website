@@ -62,6 +62,36 @@ section {
   @media (max-width: $sm-size) {
     padding: 1rem 0;
   }
+
+  // Intro de chaque page
+  &.intro {
+    // margin-top pour la navbar
+    margin-top: 4rem;
+
+    div.container > div.row {
+      align-items: center;
+    }
+    h1, p {
+      text-align: left;
+    }
+    img {
+      max-height: 40vh;
+    }
+    div.btn-container {
+      justify-content: start;
+      margin: 0;
+      gap: 1rem;
+    }
+    @media (max-width: $sm-size) {
+      // quand l'image est dessous, petite marge
+      div.right-img {
+        margin-top: 2rem;
+      }
+      div.btn-container {
+        justify-content: center;
+      }
+    }
+  }
 }
 
 * {
@@ -98,33 +128,6 @@ h2.section-subheading {
   @media (max-width: $sm-size) {
     font-size: 1.5rem;
     line-height: 1.2rem;
-  }
-}
-
-// Intro de chaque page
-section.intro {
-  div.container > div.row {
-    align-items: center;
-  }
-  h1, p {
-    text-align: left;
-  }
-  img {
-    max-height: 40vh;
-  }
-  div.btn-container {
-    justify-content: start;
-    margin: 0;
-    gap: 1rem;
-  }
-  @media (max-width: $sm-size) {
-    // quand l'image est dessous, petite marge
-    div.right-img {
-      margin-top: 2rem;
-    }
-    div.btn-container {
-      justify-content: center;
-    }
   }
 }
 
