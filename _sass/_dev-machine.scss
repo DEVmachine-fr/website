@@ -123,11 +123,6 @@ section#dm-rse {
         position: absolute;
         left: 15%;
 
-        // @media (max-width: $sm-size) {
-          // left: 0;
-          // width: 30rem;
-        // }
-
         ul {
           margin-bottom: 0;
           li:not(:last-child) {
@@ -145,18 +140,11 @@ section#dm-rse {
     div.rse-subitems {
       display: flex;
       flex-wrap: wrap;
-      gap: 5% 1rem;
+      align-items: center;
+
+      text-align: center;
       margin-top: 1rem;
-      justify-content: space-evenly;
-
-      p, span {
-        text-align: center;
-        font-size: 1.2rem;
-        max-width: 35%;
-        line-height: 1.2rem;
-
-        & > p { max-width: initial }
-      }
+      row-gap: 1rem;
     }
 
     @media (max-width: $sm-size) {
