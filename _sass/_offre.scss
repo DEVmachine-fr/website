@@ -5,7 +5,7 @@ section#offre-intro {
 // VISION
 section#offre-vision {
   // TODO: merge d'images svg
-  background-image: url('/assets/images/website/page-offre/rouage.svg');
+  background-image: url('/assets/images/website/page-offre/vision/rouage.svg');
   background-repeat: no-repeat;
   background-position: 40% 70%;
 }
@@ -18,7 +18,7 @@ section#offre-prestations {
   }
 
   div.prestation {
-    padding: 2rem 3rem;
+    padding: 2rem 0;
     border-radius: 32px;
     align-items: center;
     margin: 2rem auto 0;
@@ -29,7 +29,6 @@ section#offre-prestations {
     div.illustration {
       width: 20%;
     }
-
     h1.title {
       font-size: 2rem;
       font-weight: 600;
@@ -40,6 +39,7 @@ section#offre-prestations {
 
     div.logo-entreprise-container {
       gap: .3rem;
+      margin: 0;
       justify-content: start;
       
       @media (max-width: $sm-size) {
@@ -67,6 +67,8 @@ section#offre-prestations {
 
     // FOND BLEU
     &:nth-of-type(odd) {
+      padding-left: 3rem;
+      padding-right: 3rem;
       background-color: $secondary;
       box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.15);
       
@@ -98,6 +100,16 @@ section#offre-prestations {
       div.illustration {
         margin-right: 10%;
       }
+    }
+
+    // Cas particuliers pour certaines images
+    div.illustration.growing {
+      width: 28%;
+      margin-right: 2%;
+    }
+    div.illustration.time, div.illustration.thinking {
+      width: 28%;
+      margin-left: 2%;
     }
 
     @media (max-width: $sm-size) {
