@@ -1,26 +1,23 @@
 @import "swing.scss";
+
 // Styling for the navbar
 #mainNav {
+  background-color: $white;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .1), 0 6px 10px 0 rgba(0, 0, 0, .07), 0 1px 18px 0 rgba(0, 0, 0, .06);
+  min-height: 4rem;
+
+  // btn mode phone
   .navbar-toggler {
     font-size: 12px;
     right: 0;
-    padding: 13px;
+    padding: .8rem;
     text-transform: uppercase;
     color: white;
     border: 0;
     background-color: $primary;
     @include heading-font;
   }
-  .navbar-brand {
-    color: $primary;
-    @include script-font;
-    &.active,
-    &:active,
-    &:focus,
-    &:hover {
-      color: darken($primary, 10%);
-    }
-  }
+
   .navbar-nav {
     .nav-item {
       .nav-link {
@@ -33,10 +30,6 @@
         &.active,
         &:hover {
           color: $secondary;
-          //-webkit-transform: scale(1.2);
-          //-ms-transform: scale(1.2);
-          //transform: scale(1.2);
-
           -webkit-animation: swing 1s ease;
           animation: swing 1s ease;
           -webkit-animation-iteration-count: 1;
@@ -46,35 +39,33 @@
     }
   }
 }
-@media(min-width:992px) {
+
+// Mode grand écran
+@media(min-width: $md-size) {
   #mainNav {
-    padding-top: 25px;
-    padding-bottom: 25px;
-    -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
-    -moz-transition: padding-top 0.3s, padding-bottom 0.3s;
-    transition: padding-top 0.3s, padding-bottom 0.3s;
-    border: none;
-    //background-color: transparent;
-    .navbar-brand {
-      font-size: 1.75em;
-      -webkit-transition: all 0.3s;
-      -moz-transition: all 0.3s;
-      transition: all 0.3s;
-    }
+    padding: 1rem 0;
     .navbar-nav {
       .nav-item {
         .nav-link {
-          padding: 1.1em 1em !important;
+          padding: 0 1rem !important;
         }
       }
     }
-    &.navbar-shrink {
-      padding-top: 0;
-      padding-bottom: 0;
-      background-color: $gray-900;
-      .navbar-brand {
-        font-size: 1.25em;
-        padding: 12px 0;
+  }
+}
+
+// data-scroll ajouté grâce au script "scroll-listener.js"
+html[data-scroll='0'] {
+  // Pas d'ombre quand le scroll est en haut
+  #mainNav {
+    box-shadow: none;
+  }
+  
+  // Style spécial sur la première page (sauf phone)
+  @media (min-width: $md-size) {
+    body.main-bg {
+      #mainNav {
+        background-color: transparent;
       }
     }
   }
