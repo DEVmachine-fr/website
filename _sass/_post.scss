@@ -1,13 +1,12 @@
 section#post-header {
   background-color: $light-purple;
 
-  button.dm-btn {
+  a.dm-btn {
     background-color: transparent;
     color: $third;
-    a, span.fas {
-      color: $third;
-    }
+    
     span.fas {
+      color: $third;
       margin-left: 0;
       margin-right: .8rem;
     }
