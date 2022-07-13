@@ -1,5 +1,8 @@
 section#blog-intro {
   background-color: $light-purple;
+  img {
+    max-height: 35vh;
+  }
 }
 
 section#blog-posts-container {
