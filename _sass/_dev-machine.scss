@@ -17,6 +17,10 @@ section#dm-force {
       &.sm-reverse {
         flex-direction: column-reverse;
       }
+      // on diminue la taille des img
+      img {
+        max-width: 70%;
+      }
     }
   }
 }
@@ -46,6 +50,10 @@ section#dm-servir {
       &.sm-reverse {
         flex-direction: column-reverse;
       }
+      // on inverse l'ordre en mode phone pour mettre l' image sous le texte
+      img {
+        max-width: 70%;
+      }
     }
   }
 }
@@ -74,13 +82,50 @@ section#dm-rse {
     }
 
     img.leaf {
-      width: 2rem;
+      width: 3rem;
     }
 
     img.circle {
       position: absolute;
       top: -0.5rem;
       left: -2rem;
+    }
+
+    &#environnemental {
+      position: relative;
+
+      p.info:hover {
+        cursor: help;
+        & ~ #environnemental-items {
+          display: initial;
+        }
+      }
+
+      #environnemental-items {
+        display: none;
+        background-color: white;
+        color: $secondary;
+
+        width: 90%;
+        max-width: 30rem;
+
+        box-shadow: 4px 4px 20px rgba(0, 0, 0, .1);
+        border-radius: 8px;
+        padding: 1rem 2rem;
+
+        position: absolute;
+        top: 75%;
+        left: 15%;
+
+        ul {
+          margin-bottom: 0;
+        }
+      }
+    }
+    &#societal {
+      background-image: url("/assets/images/website/page-dm/rse/Confettis.svg");
+      background-repeat: no-repeat;
+      background-position: 100% 0;
     }
 
     div.rse-subitems {
