@@ -4,10 +4,17 @@ section#offre-intro {
 
 // VISION
 section#offre-vision {
-  // TODO: merge d'images svg
   background-image: url('/assets/images/website/page-offre/vision/rouage.svg');
   background-repeat: no-repeat;
   background-position: 40% 70%;
+}
+
+// SEPARATION IMAGE
+section#offre-separate {
+  padding: 0;
+  height: 1rem;
+  background-image: url('/assets/images/website/page-offre/separation/Wall.svg');
+  background-repeat: no-repeat;
 }
 
 // PRESTATIONS
