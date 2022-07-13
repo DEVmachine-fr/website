@@ -48,6 +48,7 @@ section#index-intro {
 // PILIERS
 section#index-piliers {
   color: $secondary;
+  padding-bottom: 0; // pour l'effet avec la feuille
 
   div.piliers-item {
     padding: 1rem;
@@ -81,6 +82,16 @@ section#index-piliers {
       }
     }
   }
+
+  img.leaf {
+    width: 12rem;
+    margin-top: -4rem;
+    margin-bottom: -.3rem;
+
+    @media (max-width: $sm-size) {
+      display: none;
+    }
+  }
 }
 
 // IMAGES
@@ -106,7 +117,7 @@ section#index-images {
     position: absolute;
     margin: 0 1%;
     width: 98%;
-    z-index: -1;
+    z-index: 0;
 
     &.bg-blue {
       top: -1rem;
@@ -132,7 +143,7 @@ section#index-images {
       position: relative;
       width: 33%;
       height: 50%;
-      z-index: 0;
+      z-index: 1;
 
       img {
         position: absolute;
@@ -189,10 +200,9 @@ section#index-prestations {
   div.questions {
     margin-top: 4rem;
     
-    // TODO: merge d'images svg
     background-image: url("/assets/images/website/page-index/prestations/woman.svg");
     background-repeat: no-repeat;
-    background-position: 40% 70%;
+    background-position: 40% 50%;
     
     text-align: left;
     display: flex;
@@ -251,8 +261,8 @@ section#index-prestations {
         padding-left: 0;
       }
       &:nth-of-type(6) {
-        padding-top: 4rem;
-        padding-right: 7rem;
+        padding-top: 5rem;
+        padding-right: 4rem;
       }
     }
 
@@ -284,23 +294,23 @@ section#index-prestations {
     }
   }
 
-  button.dm-btn {
+  a.dm-btn {
     margin-top: 2rem;
   }
 
   div.img-container {
     text-align: right;
-    margin-top: -3rem;
-    margin-right: 4rem;
+    margin: -3rem 4rem -3rem 0;
     
     img {
-      width: 8rem;
+      width: 10rem;
     }
-
-    // pas de marge en mode phone
+    
     @media (max-width: $sm-size) {
-      margin-top: 0;
-      img { width: 5rem }
+      margin: initial;
+      img {
+        display: none;
+      }
     }
   }
 }
@@ -310,15 +320,13 @@ section#index-savoir-faire {
   background-color: $light-pink;
   text-align: center;
 
-  div.skill-items {
-    display: flex;
-    flex-wrap: wrap;
+  div.skill-item-container {
+    row-gap: 2rem;
 
     div.skill-item {
-      margin-top: 2rem;
-
       img {
-        width: 7rem;
+        height: 5rem;
+        margin-bottom: .3rem;
       }
 
       h3 {
@@ -329,39 +337,19 @@ section#index-savoir-faire {
       p {
         color: $secondary;
         font-weight: 500;
+        // pour que le texte soit moins large que le titre
+        max-width: 60%;
+        margin: auto;
       }
     }
-  }
 
-  button.dm-btn {
+  }
+  a.dm-btn {
     margin-top: 2rem;
   }
 }
 
 section#index-savoir-plus {
-  $size: 15rem;
-
-  div.img-container {
-    position: relative;
-
-    img.julien {
-      border-radius: 50%;
-      object-fit: cover;
-      width: $size;
-      height: $size;
-    }
-
-    img.circle {
-      position: absolute;
-      width: $size;
-      top: -.5rem;
-      // Trick pour center l'image en asbolute
-      // Left à 45% pour ne pas centrer parfaitement
-      left: calc(50% - 1rem);
-      transform: translate(-50%, 0);
-    }
-  }
-
   a.dm-btn {
     // pas de texte sur ce btn, on recentre le chevron
     span {
