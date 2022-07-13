@@ -92,12 +92,18 @@ section#dm-rse {
     }
 
     &#environnemental {
-      position: relative;
+      @media (min-width: $sm-size) {
+        span.info {
+          position: relative;
+          color: $primary;
 
-      p.info:hover {
-        cursor: help;
-        & ~ #environnemental-items {
-          display: initial;
+          // Affichage de bloc popup pour grand écran
+          &:hover {
+            cursor: help;
+            & > #environnemental-items {
+              display: initial;
+            }
+          }
         }
       }
 
@@ -105,20 +111,28 @@ section#dm-rse {
         display: none;
         background-color: white;
         color: $secondary;
+        text-align: left;
 
-        width: 90%;
-        max-width: 30rem;
+        width: 90vw;
+        max-width: 35rem;
 
         box-shadow: 4px 4px 20px rgba(0, 0, 0, .1);
         border-radius: 8px;
         padding: 1rem 2rem;
 
         position: absolute;
-        top: 75%;
         left: 15%;
+
+        // @media (max-width: $sm-size) {
+          // left: 0;
+          // width: 30rem;
+        // }
 
         ul {
           margin-bottom: 0;
+          li:not(:last-child) {
+            margin-bottom: 1rem;
+          }
         }
       }
     }
@@ -135,11 +149,13 @@ section#dm-rse {
       margin-top: 1rem;
       justify-content: space-evenly;
 
-      p {
+      p, span {
         text-align: center;
         font-size: 1.2rem;
         max-width: 35%;
         line-height: 1.2rem;
+
+        & > p { max-width: initial }
       }
     }
 
