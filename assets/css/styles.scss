@@ -103,14 +103,27 @@ h2.section-subheading {
 
 // Intro de chaque page
 section.intro {
+  div.container > div.row {
+    align-items: center;
+  }
+  h1, p {
+    text-align: left;
+  }
+  img {
+    max-height: 40vh;
+  }
   div.btn-container {
-    justify-content: center;
+    justify-content: start;
+    margin: 0;
     gap: 1rem;
   }
   @media (max-width: $sm-size) {
     // quand l'image est dessous, petite marge
     div.right-img {
       margin-top: 2rem;
+    }
+    div.btn-container {
+      justify-content: center;
     }
   }
 }
