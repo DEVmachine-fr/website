@@ -1,15 +1,15 @@
 ---
 layout: default
 ---
-<section id="post-header">
+<section id="post-intro" class="intro">
   <div class="container">
     <a class="dm-btn" href="/blog">
       <span aria-hidden="true" class="fas fa-chevron-left"></span>Retour
     </a>
-    <div class="text-center">
-      <h1 class="section-heading">{{ page.title}}</h1>
-      <p class="text-orange">par {{ page.author }} le {{ page.date | date: "%d/%m/%Y" }}</p>
-      <div class="text-left text-grey">{{ page.excerpt }}</div>
+    <div>
+      <h1 class="text-center section-heading">{{ page.title}}</h1>
+      <p class="text-center text-orange">par {{ page.author }} le {{ page.date | date: "%d/%m/%Y" }}</p>
+      <div class="text-grey">{{ page.excerpt }}</div>
     </div>
   </div>
 </section>

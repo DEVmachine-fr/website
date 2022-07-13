@@ -6,24 +6,12 @@ body.main-bg {
 section#index-intro {
   div.shape-container {
     $HEIGHT: 20rem;
-
     $SHAPE: polygon(
       10% .5rem,
       90% 0,
       100% 3rem,
       90% calc(#{$HEIGHT} - 6rem),
       25% 100%,
-      0 9rem,
-    );
-
-    $SM-SHAPE: polygon(
-      5% .5rem,
-      90% 0,
-      100% 2rem,
-      99% calc(#{$HEIGHT} - 6rem),
-      85% calc(#{$HEIGHT} - 2rem),
-      25% 100%,
-      5% calc(#{$HEIGHT} - 5rem),
       0 9rem,
     );
 
@@ -50,10 +38,26 @@ section#index-intro {
 
     // another shape for phone
     @media (max-width: $sm-size) {
-      div.image-container, div.bg-orange {
+      $SM-HEIGHT: 15rem;
+      $SM-SHAPE: polygon(
+        5% .5rem,
+        90% 0,
+        100% 2rem,
+        97% calc(#{$HEIGHT} - 8rem),
+        80% calc(#{$HEIGHT} - 3rem),
+        25% 100%,
+        10% calc(#{$HEIGHT} - 5rem),
+        0 9rem,
+      );
+      div.image-container {
         clip-path: $SM-SHAPE;
+        img {
+          height: $SM-HEIGHT;
+        }
       }
       div.bg-orange {
+        clip-path: $SM-SHAPE;
+        height: $SM-HEIGHT;
         top: 0.4rem;
         left: -0.2rem;
       }
