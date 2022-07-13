@@ -27,47 +27,32 @@ body {
   @include body-font;
 }
 
-button.dm-btn {
+a.dm-btn {
+  display: inline-block;
   text-align: center;
   border-radius: 4px;
-  border-color: transparent;
-  padding: 0;
-
-  a {
-    display: inline-block;
-    padding: .3rem 1rem;
-  }
-
+  border: 1px solid transparent;
+  padding: .5rem 1.5rem .4rem;
+  
   // Pour les boutons avec chevrons
   span.fas {
     font-size: .9rem;
     color: $white;
     margin-left: .8rem;
-  }
+  } 
 
   &.dm-btn-blue {
-    background-color: $secondary;
     color: $white;
-    a {
-      color: $white;
-    }
+    background-color: $secondary;
   }
   &.dm-btn-white {
-    background-color: $white;
-    border-color: $secondary;
     color: $secondary;
-    a {
-      color: $secondary;
-    }
+    background-color: transparent;
+    border-color: $secondary;
   }
   &.dm-btn-orange {
-    background-color: $primary;
     color: $white;
-    font-size: 1rem;
-  
-    a {
-      color: $white;
-    }
+    background-color: $primary;
   }
 }
 

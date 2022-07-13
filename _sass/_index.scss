@@ -204,31 +204,28 @@ section#index-prestations {
       // max 2 items par ligne
       flex-basis: 50%;
       
-      button.question-item {
+      a.question-item {
         background-color: $white;
+        color: $secondary;
+        margin: 0;
+        padding: .3rem 1rem;
         max-width: 22rem;
+
         display: flex;
         align-items: center;
         justify-content: space-between;
+
         border: 1px solid $light-grey;
         border-radius: 8px;
-        padding: .3rem 1rem;
         box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.08);
-        margin: 0;
 
-        a {
-          color: $secondary;
-          display: flex;
-          align-items: center;
+        span.fas {
+          color: $primary;
+          font-size: 1.4rem;
+        }
 
-          span.fas {
-            color: $primary;
-            font-size: 1.4rem;
-          }
-
-          &:hover {
-            text-decoration: none;
-          }
+        &:hover {
+          text-decoration: none;
         }
       }
 
@@ -272,7 +269,7 @@ section#index-prestations {
     }
 
     @media (min-width: $sm-size) and (max-width: $md-size) {
-      button.question-item {
+      a.question-item {
         float: left !important;
       }
     }
@@ -280,7 +277,7 @@ section#index-prestations {
     // En mode phone, on retire l'image et on centre
     @media (max-width: $sm-size) {
       background: none;
-      button.question-item {
+      a.question-item {
         float: none !important;
         margin: auto !important;
       }
@@ -365,7 +362,7 @@ section#index-savoir-plus {
     }
   }
 
-  button.dm-btn {
+  a.dm-btn {
     // pas de texte sur ce btn, on recentre le chevron
     span {
       margin-left: 0;
