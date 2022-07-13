@@ -24,6 +24,9 @@ div.dm-accordion {
     &:focus {
       outline: none;
     }
+    &:hover {
+      cursor: pointer;
+    }
    
     span.collapse-title {
       font-size: 2rem;
