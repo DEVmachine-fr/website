@@ -27,6 +27,8 @@ section#index-intro {
       background-color: $primary;
       clip-path: $SHAPE;
       transform: rotate(-1deg);
+      // max 40vh (comme pour les imgs, définis dans style.scss)
+      max-height: 40vh;
     }
     div.image-container {
       clip-path: $SHAPE;
