@@ -4,9 +4,143 @@ section#offre-intro {
 
 // VISION
 section#offre-vision {
-  background-image: url('/assets/images/website/page-offre/vision/rouage.svg');
-  background-repeat: no-repeat;
-  background-position: 40% 70%;
+  div.items-container {
+    min-height: 20rem;
+    background-image: url('/assets/images/website/page-offre/vision/rouage.svg');
+    background-repeat: no-repeat;
+    background-position: 40%;
+
+    div.items-row {
+      // espace entre les lignes d'items
+      &:first-child {
+        margin-top: 2rem;
+      }
+      &:not(:first-child) {
+        margin-top: 4rem;
+        @media (max-width: $sm-size) {
+          margin-top: 2rem;
+        }
+      }
+      &:last-child {
+        margin-top: 7rem;
+        @media (max-width: $md-size) {
+          margin-top: 2rem;
+        }
+      }
+      // en mode phone
+      @media (max-width: $sm-size) {
+        // on met une marge entre les deux du même blocs
+        row-gap: 2rem;
+      }
+
+      div.item {
+        width: fit-content;
+
+        color: $secondary;
+        font-weight: 600;
+        font-size: 20px;
+
+        // flex pour aligner le texte avec le "i"
+        display: flex;
+        flex-shrink: 1;
+        flex-wrap: nowrap;
+        align-items: center;
+
+        // Custom positions
+        &#item-1 {
+          max-width: 13rem;
+          margin: auto;
+        }
+        &#item-2 {
+          max-width: 18rem;
+          margin: auto;
+        }
+        &#item-3 {
+          max-width: 15rem;
+        }&#item-4 {
+          max-width: 16rem;
+          margin-left: 10rem;
+        }
+        &#item-5 {
+          margin: auto;
+        }
+
+        span.info-icon {
+          flex-shrink: 0; // on ne modifie pas la taille du i
+          $size: 1.5rem;
+          font-size: 18px;
+          border: 1px solid $primary;
+          color: $primary;
+          width: $size;
+          height: $size;
+          justify-content: center;
+          display: inline-flex;
+          align-items: center;
+          border-radius: 50%;
+          margin-left: .8rem;
+
+          // apparition de l'info bulle au survol du "i"
+          &:hover {
+            cursor: help;
+            & + span.info-data {
+              display: initial;
+            }
+          }
+        }
+
+        // info bulle
+        span.info-data {
+          display: none;
+          background-color: white;
+          color: $secondary;
+          border: 1px solid $secondary;
+          text-align: left;
+          width: fit-content;
+          max-width: 30rem;
+          font-size: 16px;
+        
+          box-shadow: 4px 4px 20px rgba(0, 0, 0, .1);
+          border-radius: 8px;
+          padding: .5rem 1rem;
+        
+          position: absolute;
+          top: 2rem;
+          z-index: 2;
+        }
+
+        // en mode réduit, on met les items aux extremités
+        @media (max-width: $md-size) {
+          margin: initial !important;
+          max-width: initial !important;
+          &#item-2, &#item-4 {
+            text-align: right;
+          }
+          &#item-5 {
+            // le dernier reste centrée
+            margin: auto !important;
+          }
+        }
+
+        @media (max-width: $sm-size) {
+          text-align: left !important;
+        }
+
+      }
+    }
+
+    // en mode réduit, fond + petit
+    @media (max-width: $md-size) {
+      background-size: 25%;
+      background-position: 45% 40%;
+    }
+
+    // en mode phone, fond au dessus des items
+    @media (max-width: $sm-size) {
+      background-size: 12rem;
+      background-position: 50% 0%;
+      padding: 8rem 1rem;
+    }
+  }
 }
 
 // SEPARATION IMAGE
