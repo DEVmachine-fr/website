@@ -7,3 +7,8 @@ section#savoir-faire-piliers {
     color: $secondary;
   }
 }
+
+section#index-savoir-plus.bg-pink {
+  // CSS de cette section définie dans _index.scss 
+  background-color: $light-pink;
+}
