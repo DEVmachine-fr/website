@@ -103,31 +103,32 @@ h1.section-heading,
 h2.section-subheading {
   text-align: center;
   width: 100%;
+  line-height: 120%;
+  
+  @media (max-width: $sm-size) {
+    line-height: initial;
+  }
 }
 
 h1.section-heading {
   color: $secondary;
   font-weight: 900;
   font-size: 3rem;
-  line-height: 2.7rem;
   margin: 1.5rem 0;
   
   @media (max-width: $sm-size) {
-    font-size: 2rem;    
-    line-height: 1.7rem;
+    font-size: 2rem;
   }
 }
 
 h2.section-subheading {
   color: $third;
   font-size: 2rem;
-  line-height: 1.7rem;
   font-weight: 800;
   margin-bottom: 2rem;
 
   @media (max-width: $sm-size) {
     font-size: 1.5rem;
-    line-height: 1.2rem;
   }
 }
 
