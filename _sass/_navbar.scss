@@ -2,8 +2,12 @@
 
 // Styling for the navbar
 #mainNav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   background-color: $white;
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .1), 0 6px 10px 0 rgba(0, 0, 0, .07), 0 1px 18px 0 rgba(0, 0, 0, .06);
+  // min-height pour avoir + grand pour le menu déroulant sur téléphone 
   min-height: 4rem;
 
   // btn mode phone

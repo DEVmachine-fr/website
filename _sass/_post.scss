@@ -81,4 +81,11 @@ article.post-content {
       top: 0;
     }
   }
+
+  // Trick: remonter un peu les anchor sinon pbm avec la sticky navbar
+  a.anchor {
+    position: relative;
+    // taille de la navbar
+    top: -4rem;
+  }
 }

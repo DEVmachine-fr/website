@@ -65,9 +65,7 @@ section {
 
   // Intro de chaque page
   &.intro {
-    // margin-top pour la navbar
-    margin-top: 4rem;
-
+    margin-top: 0;
     div.container > div.row {
       align-items: center;
     }
