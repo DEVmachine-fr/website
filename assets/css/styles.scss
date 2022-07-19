@@ -27,7 +27,7 @@ body {
   @include body-font;
 }
 
-a.dm-btn {
+a.dm-btn, button.dm-btn {
   display: inline-block;
   text-align: center;
   border-radius: 4px;
