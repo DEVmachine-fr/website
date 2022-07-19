@@ -75,43 +75,10 @@ section#index-intro {
   }
 }
 
-// PILIERS
-section#index-piliers {
+// B2B / B2C
+section#index-b2b {
   color: $secondary;
   padding-bottom: 0; // pour l'effet avec la feuille
-
-  div.piliers-item {
-    padding: 1rem;
-    img {
-      width: 30%;
-    }
-    div.piliers-text {
-      margin-left: 1rem;
-      width: 70%;
-    }
-
-    // Bordures en croix quand 2 lignes 2 colonnes (défaut)
-    &:nth-child(odd) {
-      border-right: 1px solid $light-grey;
-    }
-    &:first-child, &:nth-child(2) {
-      border-bottom: 1px solid $light-grey;
-    }
-
-    // Bordure pour séparer les lignes en mode mobile
-    @media (max-width: $md-size) {
-      border-right: none !important;
-      border-bottom: none !important;
-
-      border-top: 1px solid $light-grey;
-      padding-top: 1rem;
-      
-      &:first-child {
-        border-top: none;
-        padding-top: 0;
-      }
-    }
-  }
 
   img.leaf {
     width: 12rem;
@@ -136,7 +103,6 @@ $SHAPE: polygon(0 .5rem,
   33% calc(#{$HEIGHT} - 3rem),
   0 100%
 );
-
 // PHOTOS
 section#index-images {
   position: relative;
@@ -218,14 +184,48 @@ section#index-images {
   }
 }
 
-// B2B / B2C
-section#index-b2b {
+// PILIERS
+section#index-piliers {
   color: $secondary;
+
+  div.piliers-item {
+    padding: 1rem;
+    img {
+      width: 30%;
+    }
+    div.piliers-text {
+      margin-left: 1rem;
+      width: 70%;
+    }
+
+    // Bordures en croix quand 2 lignes 2 colonnes (défaut)
+    &:nth-child(odd) {
+      border-right: 1px solid $light-grey;
+    }
+    &:first-child, &:nth-child(2) {
+      border-bottom: 1px solid $light-grey;
+    }
+
+    // Bordure pour séparer les lignes en mode mobile
+    @media (max-width: $md-size) {
+      border-right: none !important;
+      border-bottom: none !important;
+
+      border-top: 1px solid $light-grey;
+      padding-top: 1rem;
+      
+      &:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+    }
+  }
 }
 
 // PRESTATIONS
 section#index-prestations {
   text-align: center;
+  padding-top: 2rem;
 
   div.questions {
     margin-top: 4rem;
@@ -279,12 +279,11 @@ section#index-prestations {
         padding-right: 7rem;
       }
       &:nth-of-type(3) {
-        padding-top: 1rem;
+        padding-top: 2rem;
         padding-left: 2rem;
       }
       &:nth-of-type(4) {
-        padding-top: 4rem;
-        padding-right: 3rem;
+        padding-top: 1rem;
       }
       &:nth-of-type(5) {
         padding-top: 2rem;
