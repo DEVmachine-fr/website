@@ -11,7 +11,7 @@ Avoir Ruby d'installé sur son environnement. ([https://www.ruby-lang.org/](http
 Le site est basé sur le générateur de site statiques [Jekyll](https://jekyllrb.com/).   
 Il est donc nécessaire d'installer Jekyll au préalable.
 
-      gem install bundler jekyll
+    gem install bundler jekyll
     
 
 ## Utilisation
