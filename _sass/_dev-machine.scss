@@ -45,6 +45,30 @@ section#dm-servir {
       color: $third;
     }
 
+    img.bretagne {
+      width: 60%;
+    }
+    div.produit-bretagne {
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      column-gap: 1rem;
+
+      border: 1px solid $third;
+      padding: 1rem;
+      border-radius: 16px;
+
+      img {
+        max-width: 100%;
+        width: 5rem;
+        height: 5rem;
+      }
+      p {
+        text-align: justify;
+        margin-bottom: 0;
+      }
+    }
+
     // on inverse l'ordre en mode phone pour mettre l' image sous le texte
     @media (max-width: $sm-size) {
       &.sm-reverse {
