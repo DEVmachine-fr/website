@@ -27,7 +27,7 @@ body {
   @include body-font;
 }
 
-a.dm-btn {
+a.dm-btn, button.dm-btn {
   display: inline-block;
   text-align: center;
   border-radius: 4px;
@@ -65,9 +65,7 @@ section {
 
   // Intro de chaque page
   &.intro {
-    // margin-top pour la navbar
-    margin-top: 4rem;
-
+    margin-top: 0;
     div.container > div.row {
       align-items: center;
     }
