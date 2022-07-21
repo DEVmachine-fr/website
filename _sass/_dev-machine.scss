@@ -48,25 +48,8 @@ section#dm-servir {
     img.bretagne {
       width: 60%;
     }
-    div.produit-bretagne {
-      margin-top: 1.5rem;
-      display: flex;
-      align-items: center;
-      column-gap: 1rem;
-
-      border: 1px solid $third;
-      padding: 1rem;
-      border-radius: 16px;
-
-      img {
-        max-width: 100%;
-        width: 5rem;
-        height: 5rem;
-      }
-      p {
-        text-align: justify;
-        margin-bottom: 0;
-      }
+    img.produit-bretagne {
+      width: 50%;
     }
 
     // on inverse l'ordre en mode phone pour mettre l' image sous le texte
@@ -115,38 +98,39 @@ section#dm-rse {
       left: -2rem;
     }
 
-    &#environnemental {
-      @media (min-width: $sm-size) {
-        span.info {
-          position: relative;
-          color: $primary;
+    span.info {
+      position: relative;
 
-          // Affichage de bloc popup pour grand écran
-          &:hover {
-            cursor: help;
-            & > #environnemental-items {
-              display: initial;
-            }
-          }
+      // Affichage de bloc popup pour grand écran
+      &:hover {
+      color: $primary;
+        cursor: help;
+        & > div.rse-onhover-items {
+          display: initial;
         }
       }
 
-      #environnemental-items {
+      div.rse-onhover-items {
+        position: absolute;
+        left: 0;
+        width: 200%;
+        max-width: 35rem;
+
         display: none;
-        z-index: 1;
+        z-index: 2;
+
         background-color: white;
         color: $secondary;
         text-align: left;
-
-        width: 90vw;
-        max-width: 35rem;
 
         box-shadow: 4px 4px 20px rgba(0, 0, 0, .1);
         border-radius: 8px;
         padding: 1rem 2rem;
 
-        position: absolute;
-        left: 15%;
+        // Certaines popup dépassent à droite
+        &.shift-left {
+          left: -50%;
+        }
 
         ul {
           margin-bottom: 0;
@@ -154,12 +138,37 @@ section#dm-rse {
             margin-bottom: 1rem;
           }
         }
+
+        // En mode moyen, on réduit la taille
+        @media (max-width: $md-size) {
+          max-width: 25rem;
+          &.shift-left {
+            left: 0;
+          }
+        }
+
+        // En mode phone, on centre
+        @media (max-width: $sm-size) {
+          max-width: 100%;
+        }
       }
     }
+
+
     &#societal {
-      background-image: url("/assets/images/website/page-dm/rse/Confettis.svg");
-      background-repeat: no-repeat;
-      background-position: 100% 0;
+      position: relative;
+
+      img.confettis {
+        z-index: 0;
+        position: absolute;
+        top: 1rem;
+        left: 0;
+        transform: scaleX(-1);
+      }
+
+      p.title, div.rse-subitems {
+        z-index: 1;
+      }
     }
 
     div.rse-subitems {
