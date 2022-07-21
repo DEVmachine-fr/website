@@ -296,7 +296,6 @@ section#offre-prestations {
       padding-left: 3rem;
       padding-right: 3rem;
       background-color: transparent;
-      border: 1px solid $secondary;
       justify-content: space-between;
       img {
         width: 90%;
@@ -329,7 +328,21 @@ section#offre-prestations {
       div.illustration {
         display: none;
       }
+
+      &.cii {
+        flex-direction: column;
+        row-gap: 2rem;
+        div.illustration {
+          width: 40%;
+          display: initial;
+        }
+      }
     }
+  }
+
+  hr.separate {
+    margin-top: 3rem;
+    border-color: $secondary;
   }
 }
 
