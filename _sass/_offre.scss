@@ -66,8 +66,7 @@ section#offre-vision {
           margin: 0 12rem 0 4rem;
         }
         &#item-4 {
-          max-width: 16rem;
-          margin-left: 14rem;
+          margin: 0 3rem 0 13rem;
         }
         &#item-5 {
           margin: auto;
@@ -190,9 +189,6 @@ section#offre-separate {
 // PRESTATIONS
 section#offre-prestations {
   background-color: $lighter-blue;
-  p.impots {
-    font-weight: 600;
-  }
 
   div.prestation {
     position: relative;
@@ -301,6 +297,10 @@ section#offre-prestations {
       padding-right: 3rem;
       background-color: transparent;
       border: 1px solid $secondary;
+      justify-content: space-between;
+      img {
+        width: 90%;
+      }
     }
 
     // Cas particuliers pour certaines images
