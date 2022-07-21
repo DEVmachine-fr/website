@@ -133,13 +133,13 @@ section#index-images {
     display: flex;
     flex-wrap: wrap;
     height: $HEIGHT;
-
+    position: relative;
+    z-index: 1;
     
     div {
       position: relative;
       width: 33%;
       height: 50%;
-      z-index: 1;
 
       img {
         position: absolute;
