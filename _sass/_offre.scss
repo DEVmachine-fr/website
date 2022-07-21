@@ -203,14 +203,21 @@ section#offre-prestations {
         justify-content: space-evenly;
         border: 1px solid $third;
         border-radius: 10px;
-        padding: .4rem;
+        padding: .3rem .8rem;
+        min-height: 4rem;
 
         img {
-          max-width: 1.5rem;
+          width: 6rem;
         }
-        p {
-          font-size: 1.5rem;
-          margin-bottom: 0;
+
+        // pour que les logos ressortent bien
+        &.bg-blue {
+          background-color: $secondary;
+          border: 1px solid $secondary;
+        }
+        &.bg-white {
+          background-color: $white;
+          border: 1px solid $white
         }
       }
     }
