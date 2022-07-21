@@ -69,8 +69,11 @@ section {
     div.container > div.row {
       align-items: center;
     }
-    h1, p {
+    h1 {
       text-align: left;
+    }
+    p, li {
+      text-align: justify;
     }
     img {
       max-height: 40vh;
