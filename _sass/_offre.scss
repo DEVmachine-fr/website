@@ -259,7 +259,7 @@ section#offre-prestations {
     }
 
     // FOND BLEU
-    &:nth-of-type(odd) {
+    &.bg-blue {
       padding-left: 3rem;
       padding-right: 3rem;
       background-color: $secondary;
@@ -280,7 +280,7 @@ section#offre-prestations {
     }
 
     // FOND BLANC
-    &:nth-of-type(even) {
+    &.bg-transparent {
       h1.title {
         color: $secondary;
       }
@@ -293,6 +293,14 @@ section#offre-prestations {
       div.illustration {
         margin-right: 10%;
       }
+    }
+
+    // SPECIAL CII
+    &.cii {
+      padding-left: 3rem;
+      padding-right: 3rem;
+      background-color: transparent;
+      border: 1px solid $secondary;
     }
 
     // Cas particuliers pour certaines images
