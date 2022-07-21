@@ -8,7 +8,7 @@ section#offre-vision {
     min-height: 20rem;
     background-image: url('/assets/images/website/page-offre/vision/rouage.svg');
     background-repeat: no-repeat;
-    background-position: 40%;
+    background-position: center;
 
     div.items-row {
       // espace entre les lignes d'items
@@ -35,6 +35,7 @@ section#offre-vision {
 
       div.item {
         width: fit-content;
+        position: relative;
 
         color: $secondary;
         font-weight: 600;
@@ -45,6 +46,11 @@ section#offre-vision {
         flex-shrink: 1;
         flex-wrap: nowrap;
         align-items: center;
+        text-align: right;
+
+        p {
+          margin-bottom: 0;
+        }
 
         // Custom positions
         &#item-1 {
@@ -56,10 +62,12 @@ section#offre-vision {
           margin: auto;
         }
         &#item-3 {
-          max-width: 15rem;
-        }&#item-4 {
+          max-width: 17rem;
+          margin: 0 12rem 0 4rem;
+        }
+        &#item-4 {
           max-width: 16rem;
-          margin-left: 10rem;
+          margin-left: 14rem;
         }
         &#item-5 {
           margin: auto;
@@ -96,7 +104,6 @@ section#offre-vision {
           border: 1px solid $secondary;
           text-align: left;
           width: fit-content;
-          max-width: 30rem;
           font-size: 16px;
         
           box-shadow: 4px 4px 20px rgba(0, 0, 0, .1);
@@ -104,27 +111,56 @@ section#offre-vision {
           padding: .5rem 1rem;
         
           position: absolute;
+          left: 0;
           top: 2rem;
           z-index: 2;
+
+          ul {
+            margin-bottom: 0;
+          }
+
+          &.bigger {
+            min-width: 25rem;
+          }
+          &.center {
+            left: 50%;
+          }
+          &.lower {
+            top: 4rem;
+          }
         }
 
         // en mode réduit, on met les items aux extremités
         @media (max-width: $md-size) {
           margin: initial !important;
-          max-width: initial !important;
-          &#item-2, &#item-4 {
-            text-align: right;
+          &#item-3 {
+            text-align: left;
+            max-width: 14rem;
           }
           &#item-5 {
             // le dernier reste centrée
-            margin: auto !important;
+            margin: 2rem auto 0 !important;
           }
         }
 
         @media (max-width: $sm-size) {
+          width: 100%;
+          justify-content: space-between;
+          align-items: baseline;
           text-align: left !important;
-        }
+          max-width: initial !important;
+          &#item-5 {
+            margin-top: 0 !important;
+          }
 
+          // Les infos bulles prennent toute la places
+          span.info-data {
+            width: 100% !important;
+            top: 2rem !important;
+            left: 0!important;
+            min-width: 0 !important;
+          }
+        }
       }
     }
 
