@@ -3,7 +3,8 @@ section#savoir-faire-intro {
 }
 
 section#savoir-faire-piliers {
-  li {
+  p, li {
+    text-align: justify;
     color: $secondary;
   }
 }
