@@ -143,7 +143,12 @@ h2.section-subheading {
 
 // LISTES FLECHES CUSTOM (pour les ul + articles)
 ul.arrow-list, article.post-content ul, article.post-content ol {
+  // on retire le style
   list-style-type: none;
+  & > ul {
+    // on retire le style aussi si plusieurs étages
+    list-style-type: none;
+  }
   // on retire la marge de base de "ul"
   padding-inline-start: 0;
 
