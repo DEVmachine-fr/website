@@ -16,13 +16,12 @@ section#offre-vision {
         margin-top: 2rem;
       }
       &:not(:first-child) {
-        margin-top: 4rem;
+        margin-top: 6rem;
         @media (max-width: $sm-size) {
           margin-top: 2rem;
         }
       }
       &:last-child {
-        margin-top: 7rem;
         @media (max-width: $md-size) {
           margin-top: 2rem;
         }
