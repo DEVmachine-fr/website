@@ -20,8 +20,11 @@ section#blog-posts-container {
       div.heading {
         border-bottom: 1px solid $light-grey;
         padding: 1rem;
-    
-        p {
+        p.title {
+          font-size: 1.5rem;
+          font-weight: 600;
+        }
+        p.description {
           margin: 0;
           color: $light-grey;
         }
