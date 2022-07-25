@@ -15,6 +15,10 @@ module Jekyll
         # increment for the next collapsible
         context["collapsed_idx"] = idx + 1
 
+        # fist one is open
+        collapsed = idx == 1 ? '' : 'collapsed'
+        show = idx == 1 ? 'show' : ''
+
         site = context.registers[:site]
         content = super
 
@@ -22,13 +26,13 @@ module Jekyll
           <div class="accordion-container">
             <div id="#{headingID}">
               <h2 class="mb-0">
-                <button class="accordion-btn collapsed" data-toggle="collapse" data-target="##{collapsedID}" aria-expanded="false" aria-controls="#{collapsedID}">
+                <button class="accordion-btn #{collapsed}" data-toggle="collapse" data-target="##{collapsedID}" aria-expanded="false" aria-controls="#{collapsedID}">
                   <span class="collapse-title">#{@title}</span>
                   <span aria-hidden="true" class="fas fa-chevron-up"></span>
                 </button>
               </h2>
             </div>
-            <div id="#{collapsedID}" class="accordion-content collapse" aria-labelledby="#{headingID}" data-parent="##{accordionID}">
+            <div id="#{collapsedID}" class="accordion-content collapse #{show}" aria-labelledby="#{headingID}" data-parent="##{accordionID}">
               #{content}
             </div>
           </div>

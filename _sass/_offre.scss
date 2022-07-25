@@ -106,7 +106,7 @@ section#offre-vision {
         
           box-shadow: 4px 4px 20px rgba(0, 0, 0, .1);
           border-radius: 8px;
-          padding: .5rem 1rem;
+          padding: 1rem 1rem .5rem 1rem;
         
           position: absolute;
           left: 0;
@@ -115,6 +115,9 @@ section#offre-vision {
 
           ul {
             margin-bottom: 0;
+            li {
+              font-weight: 100;
+            }
           }
 
           &.bigger {

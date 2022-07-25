@@ -90,6 +90,17 @@ section#recrutement-posts {
             width: 1.5rem;
           }
         }
+        
+        // Mode phone: boutons en 2 lignes
+        @media (max-width: $sm-size) {
+          flex-direction: column;
+          row-gap: 1rem;
+
+          a {
+            width: 80%;
+            justify-content: center;
+          }
+        }
       }
     }
   }

@@ -2,7 +2,7 @@ footer {
   background-color: $secondary;
 
   div.links-container {
-    gap: 1rem;
+    gap: 1rem 2rem;
     a {
       color: $white;
     }
@@ -19,6 +19,14 @@ footer {
         cursor: pointer;
         text-decoration: underline;
       }
+    }
+  }
+
+  @media (max-width: $sm-size) {
+    padding: 0 .5rem;
+    div.bottom-container {
+      flex-direction: column;
+      text-align: center;
     }
   }
 }
