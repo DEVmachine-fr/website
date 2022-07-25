@@ -270,7 +270,9 @@ section#index-prestations {
 
       border: 1px solid $light-grey;
       border-radius: 8px;
-      box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.08);
+      box-shadow: 4px 4px 0px rgba(0, 0, 0, .08);
+
+      transition: box-shadow .2s;
 
       span.fas {
         color: $primary;
@@ -279,6 +281,7 @@ section#index-prestations {
 
       &:hover {
         text-decoration: none;
+        box-shadow: 4px 4px 0px rgba(0, 0, 0, .5);
       }
     }
 
@@ -361,6 +364,12 @@ section#index-savoir-faire {
 
 section#index-savoir-plus {
   a.dm-btn {
+    transition: box-shadow .2s;
+
+    &:hover {
+      box-shadow: 4px 4px 0px rgba(0, 0, 0, .5);
+    }
+
     // pas de texte sur ce btn, on recentre le chevron
     span {
       margin-left: 0;
