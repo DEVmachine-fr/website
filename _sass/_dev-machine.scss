@@ -100,7 +100,7 @@ section#dm-rse {
 
     span.info {
       position: relative;
-
+      font-size: 1.4rem;
       // Affichage de bloc popup pour grand écran
       &:hover {
       color: $primary;
@@ -119,6 +119,7 @@ section#dm-rse {
         display: none;
         z-index: 2;
 
+        font-size: initial;
         background-color: white;
         color: $secondary;
         text-align: left;
@@ -154,6 +155,24 @@ section#dm-rse {
       }
     }
 
+    &#social {
+      div.rse-subitems {
+        justify-content: space-between;
+        margin: 0 -3rem;
+        span.info {
+          max-width: 14rem;
+        }
+      }
+    }
+
+    &#environnemental {
+      div.rse-subitems {
+        justify-content: space-between;
+        span.info {
+          max-width: 20rem;
+        }
+      }
+    }
 
     &#societal {
       position: relative;
@@ -179,6 +198,17 @@ section#dm-rse {
       text-align: center;
       margin-top: 1rem;
       row-gap: 1rem;
+    }
+
+    @media (max-width: $md-size) {
+      &#social, &#environnemental, &#societal {
+        div.rse-subitems {
+          margin: initial;
+          span.info {
+            max-width: initial;
+          }
+        }
+      }
     }
 
     @media (max-width: $sm-size) {
