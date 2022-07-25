@@ -16,11 +16,9 @@
     font-size: 12px;
     right: 0;
     padding: .8rem;
-    text-transform: uppercase;
     color: white;
     border: 0;
     background-color: $primary;
-    @include heading-font;
   }
 
   .navbar-nav {
@@ -31,7 +29,6 @@
         padding: 0.75em 0;
         letter-spacing: 1px;
         color: $secondary;
-        @include heading-font;
         &.active,
         &:hover {
           color: $secondary;
