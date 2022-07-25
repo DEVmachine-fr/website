@@ -30,8 +30,8 @@ order: 5
       <div class="col-lg-6 col-md-12 m-0 p-3">
         <div class="blog-post h-100">
           <div class="heading">
-            <h4>{{ post.title }}</h4>
-            <p>par {{ post.author }}, le {{ post.date | date: "%d/%m/%Y" }}</p>
+            <p class="title">{{ post.title }}</p>
+            <p class="description">par {{ post.author }}, le {{ post.date | date: "%d/%m/%Y" }}</p>
           </div>
 
           <div class="post-excerpt">{{ post.excerpt }}</div>
