@@ -28,12 +28,22 @@ order: 4
 </section>
 
 <section id="contact-form">
+  <div id="success-send">
+    <h3>Votre message a été envoyé avec succès !</h3>
+  </div>
+
   <div class="container">
     <div class="row">
       <h1 class="section-heading">Contactez-nous</h1>
     </div>
 
-    <form name="contact-form" method="post" class="col-md-10 offset-md-1 col-sm-12" netlify>
+    <form
+      class="col-md-10 offset-md-1 col-sm-12"
+      name="contact-form"
+      method="post"
+      action="/contact?success=true"
+      netlify
+    >
       <!-- Nom -->
       <div class="mb-3">
         <label class="form-label" for="name">Vos prénom et nom :</label>
@@ -82,3 +92,16 @@ order: 4
     </div>
   </div>
 </section>
+
+<script>
+  /**
+   * Script pour afficher le msg quand le formulaire a bien été envoyé. 
+   */
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const success = urlParams.get('success') === 'true';
+
+  if (success) {
+    document.getElementById("success-send").style.display = 'flex';
+  }
+</script>
