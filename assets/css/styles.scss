@@ -116,6 +116,7 @@ h1.section-heading {
   font-weight: 900;
   font-size: 3rem;
   margin: 1.5rem 0;
+  font-family: 'Nunito Bold', 'Nunito';
   
   @media (max-width: $sm-size) {
     font-size: 2rem;
@@ -124,12 +125,12 @@ h1.section-heading {
 
 h2.section-subheading {
   color: $third;
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 800;
   margin-bottom: 2rem;
 
   @media (max-width: $sm-size) {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 }
 
