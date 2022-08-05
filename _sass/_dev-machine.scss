@@ -6,7 +6,7 @@ section#dm-intro {
 
 section#dm-force {
   div.dm-item {
-    padding: 1rem 0;
+    padding: 2rem 0;
 
     h2 {
       font-weight: 800;
@@ -23,6 +23,14 @@ section#dm-force {
       }
     }
   }
+}
+
+// SEPARATION IMAGE
+section#dm-separate {
+  padding: 0;
+  height: 1rem;
+  background-image: url('/assets/images/website/page-offre/separation/Wall.svg');
+  background-repeat: repeat-x;
 }
 
 section#dm-servir {
