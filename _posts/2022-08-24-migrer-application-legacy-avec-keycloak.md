@@ -18,12 +18,12 @@ Comment faire évoluer une application legacy sans exploser mon budget et atten
 
 Nous devions faire évoluer une application du service public réalisée avec des **technologies  obsolètes** (framework et dépendances non mis à jour, nombreuses CVE) pour y ajouter de **nouvelles fonctionnalités**. Pour des raisons de priorité et de moyens, il a été décidé de ne pas tout refaire en premier lieu. Cette application est server-side : la génération des pages est réalisée côté serveur.
 
-![Architecture initiale](/assets/images/migrer-application-legacy-avec-keycloak/architecture-V1.drawio.png)
+[![Architecture initiale](/assets/images/migrer-application-legacy-avec-keycloak/architecture-V1.drawio.png)](/assets/images/migrer-application-legacy-avec-keycloak/architecture-V1.drawio.png)
 *Architecture initiale*
 
 Nous avons choisi de réaliser les nouvelles fonctionnalités dans un **socle technique plus pérenne.** Il y aura donc 2 applications et il faudra passer de l'une à l'autre de manière transparente afin de maintenir la **simplicité de navigation** pour un utilisateur. Il nous fallait donc mettre en place un **service d'authentification SSO** pour n'avoir à se connecter qu'une seule fois et faire en sorte d'avoir la même charte graphique sur les nouveaux services (nouvelle application). Cette nouvelle application sera client-side : les pages seront créées côté client et les requêtes seront envoyées sur le serveur quand cela sera nécessaire.
 
-![Architecture cible avec serveur SSO](/assets/images/migrer-application-legacy-avec-keycloak/architecture-V2.drawio.png)
+[![Architecture cible avec serveur SSO](/assets/images/migrer-application-legacy-avec-keycloak/architecture-V2.drawio.png)](/assets/images/migrer-application-legacy-avec-keycloak/architecture-V2.drawio.png)
 *Architecture cible avec serveur SSO*
 
 Cette stratégie permettra de basculer les fonctionnalités déjà réalisées dans la nouvelle application à terme.
@@ -32,7 +32,7 @@ Cette stratégie permettra de basculer les fonctionnalités déjà réalisées d
 
 Nous avons choisi d'utiliser la solution **Keycloak Server**, un serveur de gestion des identités et des accès open-source qui permet de gérer **l'authentification unique** avec plusieurs protocoles (OpenID Connect, OAuth 2.0 et SAML2.0). Il prend en charge la connexion à des annuaires externes type LDAP ou Active Directory. Nous allons créer un **domaine** (ou royaume) pour définir l'ensemble des utilisateurs, leurs rôles et les applications auxquelles ils auront accès.
 
-![Ajouter un domaine](/assets/images/migrer-application-legacy-avec-keycloak/domaine.png)
+[![Ajouter un domaine](/assets/images/migrer-application-legacy-avec-keycloak/domaine.png)](/assets/images/migrer-application-legacy-avec-keycloak/domaine.png)
 *Ajouter un domaine*
 
 Nous choisirons le protocole **OpenID Connect** pour l'ensemble des clients définis par la suite. 
@@ -45,7 +45,7 @@ L'application existante fournit son propre système d'authentification :
 
 Pour migrer le système d'authentification dans Keycloak, nous allons commencer par créer le  client dans le domaine :
 
-![Création du client legacy](/assets/images/migrer-application-legacy-avec-keycloak/create-legacy.png)
+[![Création du client legacy](/assets/images/migrer-application-legacy-avec-keycloak/create-legacy.png)](/assets/images/migrer-application-legacy-avec-keycloak/create-legacy.png)
 *Création du client legacy*
 
 Nous le laissons Actif avec le flow Standard, désactivons "Direct access grants enabled" qui ne sera pas utile dans notre cas, saisissons les URLs de redirections valides et choisissons l'Access Type **confidential** :  c'est le type à utiliser pour les applications server-side. Il permet d'autoriser seulement l'application à initier la demande de login pour le client ID donné. Cela nécessite un secret partagé entre le serveur d'authentification et l'application non visible par les utilisateurs (OAuth2).
@@ -84,12 +84,12 @@ Le client Keycloak "service-public.legacy" doit avoir avoir accès aux API d'Adm
 
 **Note** : Il faut éviter d'exposer l'API admin de Keycloak sur internet pour des raisons de sécurité. Seul le service doit pouvoir y accéder.
 
-![Activation du Service Accounts](/assets/images/migrer-application-legacy-avec-keycloak/service-account-enabled.png)
+[![Activation du Service Accounts](/assets/images/migrer-application-legacy-avec-keycloak/service-account-enabled.png)](/assets/images/migrer-application-legacy-avec-keycloak/service-account-enabled.png)
 *Activation du Service Accounts*
 
 Puis, il faut assigner les rôles "manage-users", "view-authorization", "view-users" du client "realm-management" dans la partie "Service Account Roles" :
 
-![Rôles à assigner](/assets/images/migrer-application-legacy-avec-keycloak/service-account-roles.png)
+[![Rôles à assigner](/assets/images/migrer-application-legacy-avec-keycloak/service-account-roles.png)](/assets/images/migrer-application-legacy-avec-keycloak/service-account-roles.png)
 *Rôles à assigner*
 
 Keycloak fournit une bibliothèque Java pour utiliser son API : **keycloak-admin-client** dans la même version que celle du service pour garantir la compatibilité.
@@ -135,7 +135,7 @@ La documentation est accessible ici :
 
 Le point d’entrée de l’application se fera sur le nouveau service. Il est composé d’une partie frontend : l’application web et d’une partie backend, l’API. Pour la partie frontend, nous devrons déclarer un nouveau client dans le même domaine Keycloak :
 
-![Création du nouveau client](/assets/images/migrer-application-legacy-avec-keycloak/create-nouveau.png)
+[![Création du nouveau client](/assets/images/migrer-application-legacy-avec-keycloak/create-nouveau.png)](/assets/images/migrer-application-legacy-avec-keycloak/create-nouveau.png)
 *Création du nouveau client*
 
 Nous le laissons Actif avec le flow Standard, désactivons « Direct access grants enabled » qui ne sera pas utile dans notre cas, saisissons les URLs de redirections valides et choisissons l’Access Type public: c’est le type à utiliser pour les applications client-side. Il n’est pas utile de partager un secret car il serait vu par l’utilisateur (embarqué dans l’application téléchargée). N’importe quelle application qui a une URL validée (Valid redirect URI) pourra initier la demande de login.
