@@ -80,7 +80,7 @@ http://<client-host>/callback?logoutendpoint=true
 ### 2ème étape : provisionnement des utilisateurs dans le service d'authentification <a class="anchor" name="provisionnement-utilisateurs"></a>
 
 À présent, le service d'authentification vérifie l'accès aux utilisateurs (email et mot de passe) depuis sa base de données. Il faut donc adapter la gestion utilisateurs existante pour que la base de données soit provisionnée sur l'**ajout d'un utilisateur** et supprimer l'**authentification** et la modification du mot de passe. Pour cela, nous utilisons l'**API Admin de Keycloak**.
-Le client Keycloak "service-public.legacy" doit avoir avoir accès aux API d'Admin et avoir les rôles de gestion des utilisateurs. Nous devons donc activer "Service Accounts Enabled" dans la configuration Keycloak du client. 
+Le client Keycloak "service-public.legacy" doit avoir accès aux API d'Admin et avoir les rôles de gestion des utilisateurs. Nous devons donc activer "Service Accounts Enabled" dans la configuration Keycloak du client. 
 
 **Note** : Il faut éviter d'exposer l'API admin de Keycloak sur internet pour des raisons de sécurité. Seul le service doit pouvoir y accéder.
 
@@ -138,7 +138,7 @@ Le point d’entrée de l’application se fera sur le nouveau service. Il est c
 [![Création du nouveau client](/assets/images/migrer-application-legacy-avec-keycloak/create-nouveau.png)](/assets/images/migrer-application-legacy-avec-keycloak/create-nouveau.png)
 *Création du nouveau client*
 
-Nous le laissons Actif avec le flow Standard, désactivons « Direct access grants enabled » qui ne sera pas utile dans notre cas, saisissons les URLs de redirections valides et choisissons l’Access Type public: c’est le type à utiliser pour les applications client-side. Il n’est pas utile de partager un secret car il serait vu par l’utilisateur (embarqué dans l’application téléchargée). N’importe quelle application qui a une URL validée (Valid redirect URI) pourra initier la demande de login.
+Nous le laissons Actif avec le flow Standard, désactivons « Direct access grants enabled » qui ne sera pas utile dans notre cas, saisissons les URLs de redirections valides et choisissons l’Access Type public : c’est le type à utiliser pour les applications client-side. Il n’est pas utile de partager un secret car il serait vu par l’utilisateur (embarqué dans l’application téléchargée). N’importe quelle application qui a une URL validée (Valid redirect URI) pourra initier la demande de login.
 
 Cette nouvelle application est réalisée avec le framework Angular. Nous utilisons donc la dépendance keycloak-angular ([https://github.com/mauriciovigolo/keycloak-angular](https://github.com/mauriciovigolo/keycloak-angular)) qui nous permet de s’interfacer simplement avec le service. Nous utilisons la configuration suivante :
 
@@ -191,7 +191,7 @@ keycloak:
   bearer-only: true
 ```
 
-Nous précisons ici `bearer-only: true` pour indiquer que l'accès à l'API se fait seulement après une vérification du Bearer Token. Cela permet d'éviter les rédirections pour que l'utilisateur s'authentifie.
+Nous précisons ici `bearer-only: true` pour indiquer que l'accès à l'API se fait seulement après une vérification du Bearer Token. Cela permet d'éviter les redirections pour que l'utilisateur s'authentifie.
 
 **Note**: Depuis la réalisation de la migration, l'adapter Keycloak est passé deprecated [https://www.keycloak.org/2022/02/adapter-deprecation](https://www.keycloak.org/2022/02/adapter-deprecation). Il faut donc préférer l'utilisation de Spring Security avec OpenID Connect.
 
