@@ -129,7 +129,7 @@ try (Response response = keycloak
 ```
 
 La documentation est accessible ici : 
-[https://www.keycloak.org/docs-api/18.0/javadocs/org/keycloak/admin/client/KeycloakBuilder.html](https://www.keycloak.org/docs-api/18.0/javadocs/org/keycloak/admin/client/KeycloakBuilder.html)](https://www.keycloak.org/docs-api/18.0/javadocs/org/keycloak/admin/client/KeycloakBuilder.html)
+[https://www.keycloak.org/docs-api/18.0/javadocs/org/keycloak/admin/client/KeycloakBuilder.html](https://www.keycloak.org/docs-api/18.0/javadocs/org/keycloak/admin/client/KeycloakBuilder.html)
 
 ### 3ème étape : configuration du nouveau service <a class="anchor" name="configuration-nouveau-service"></a>
 
