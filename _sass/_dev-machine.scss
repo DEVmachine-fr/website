@@ -60,12 +60,52 @@ section#dm-servir {
       width: 50%;
     }
 
+    // Dernières sections : logos des entreprises locales
+    div.local-item {
+      margin: 2rem 0;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      column-gap: 3rem;
+
+      ul, li {
+        margin-bottom: 0;
+      }
+
+      div.logos-container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem 2rem;
+
+        img {
+          max-width: 8rem;
+          max-height: 5rem;
+        }
+      }
+
+      // on met les logos en dessous
+      @media (max-width: $md-size) {
+        flex-direction: column;
+        align-items: flex-start;
+        div.logos-container {
+          justify-content: center;
+          column-gap: 3rem;
+        }
+      }
+    }
+
     // on inverse l'ordre en mode phone pour mettre l' image sous le texte
     @media (max-width: $sm-size) {
       &.sm-reverse {
         flex-direction: column-reverse;
       }
-      // on inverse l'ordre en mode phone pour mettre l' image sous le texte
+      &.sm-remove-img {
+        img.w-100 {
+          display: none;
+        }
+      }
       img {
         max-width: 70%;
       }

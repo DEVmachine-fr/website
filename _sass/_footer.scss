@@ -3,6 +3,7 @@ footer {
 
   div.links-container {
     gap: 1rem 2rem;
+    justify-content: space-between;
     a {
       color: $white;
     }
@@ -24,6 +25,15 @@ footer {
 
   @media (max-width: $sm-size) {
     padding: 0 .5rem;
+    // Centrer le logo
+    div.logo-container {
+      justify-content: center;
+    }
+
+    div.links-container {
+      justify-content: center;
+    }
+
     div.bottom-container {
       flex-direction: column;
       text-align: center;
