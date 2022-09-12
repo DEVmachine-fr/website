@@ -231,27 +231,95 @@ section#offre-prestations {
       }
 
       div.logo-entreprise {
+        position: relative;
         display: inline-flex;
         align-items: center;
         column-gap: .4rem;
         justify-content: space-evenly;
         border: 1px solid $third;
         border-radius: 10px;
-        padding: .3rem .8rem;
+        padding: .2rem .8rem;
         min-height: 4rem;
 
         img {
-          width: 6rem;
+          max-width: 6rem;
+          max-height: 5rem;
         }
 
         // pour que les logos ressortent bien
         &.bg-blue {
           background-color: $secondary;
           border: 1px solid $secondary;
+          span.info-icon {
+            color: $white;
+            border-color: $white;
+          }
         }
         &.bg-white {
           background-color: $white;
-          border: 1px solid $white
+          border: 1px solid $white;
+          span.info-icon {
+            color: $secondary;
+            border-color: $secondary;
+          }
+        }
+
+        span.info-icon {
+          flex-shrink: 0; // on ne modifie pas la taille du i
+          $size: 1.5rem;
+          font-size: 18px;
+          width: $size;
+          height: $size;
+          justify-content: center;
+          display: inline-flex;
+          align-items: center;
+          border-radius: 50%;
+          margin-left: .4rem;
+        }
+
+        // POPUP
+        &:hover {
+          color: $primary;
+          cursor: help;
+          span.info-icon {
+            color: $primary;
+            border-color: $primary;
+          }
+
+          & > div.desc-on-hover {
+            display: initial;
+          }
+        }
+
+        // Description popup des clients
+        div.desc-on-hover {
+          display: none;
+          position: absolute;
+          left: -50%;
+          top: 100%;
+          width: 100vw; // pour le sortir du div parent
+          max-width: calc(min(50vw, 30rem)); // pour limiter la taille
+  
+          z-index: 2;
+  
+          font-size: initial;
+          background-color: white;
+          color: $secondary;
+          text-align: left;
+  
+          box-shadow: 4px 4px 10px rgba(0, 0, 0, .3);
+          border-radius: 8px;
+          padding: 1rem 2rem;
+        }
+
+        // Pas de popup en mode mobile
+        @media (max-width: $sm-size) {
+          span.info-icon {
+            display: none;
+          }
+          div.desc-on-hover {
+            visibility: hidden;
+          }
         }
       }
     }
@@ -275,6 +343,10 @@ section#offre-prestations {
       div.illustration {
         margin-left: 10%;
       }
+      span.info-icon {
+        border: 1px solid $white ;
+        color: $white ;
+      }
     }
 
     // FOND BLANC
@@ -290,6 +362,10 @@ section#offre-prestations {
       }
       div.illustration {
         margin-right: 10%;
+      }
+      span.info-icon {
+        border: 1px solid $secondary;
+        color: $secondary;
       }
     }
 
