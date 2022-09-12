@@ -4,6 +4,26 @@ section#dm-intro {
   background-color: $green-bg;
 }
 
+section#dm-genese {
+  div.row {
+    row-gap: 2rem;
+    div.fondateurs {
+      background-color: black;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: auto;
+      $size: 20rem;
+      width: $size;
+      height: $size;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
 section#dm-force {
   div.dm-item {
     padding: 2rem 0;
