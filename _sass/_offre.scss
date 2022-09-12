@@ -310,6 +310,14 @@ section#offre-prestations {
           box-shadow: 4px 4px 10px rgba(0, 0, 0, .3);
           border-radius: 8px;
           padding: 1rem 2rem;
+
+          // Lien vers articles de blog
+          a.link-article {
+            color: $primary;
+            span.fas {
+              margin-left: .5rem;
+            }
+          }
         }
 
         // Pas de popup en mode mobile
