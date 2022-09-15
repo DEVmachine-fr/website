@@ -31,6 +31,12 @@ article.post-content {
     margin-right: auto;
   }
 
+  // légende sous images
+  img+em {
+    display: block;
+    text-align: center;
+  }
+
   h1 {
     color: $primary;
     font-family: 'Poppins', serif;
