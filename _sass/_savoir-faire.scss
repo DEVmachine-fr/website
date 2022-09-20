@@ -1,0 +1,19 @@
+section#savoir-faire-intro {
+  background-color: rgba(252, 229, 106, 0.1);
+}
+
+section#savoir-faire-piliers {
+  p, li {
+    text-align: justify;
+    color: $secondary;
+  }
+}
+
+section#savoir-faire-stack {
+  background-color: #f8f9fa;
+}
+
+section#index-savoir-plus.bg-pink {
+  // CSS de cette section définie dans _index.scss 
+  background-color: $light-pink;
+}

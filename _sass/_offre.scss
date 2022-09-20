@@ -1,0 +1,451 @@
+section#offre-intro {
+  background-color: $light-pink;
+}
+
+// VISION
+section#offre-vision {
+  div.items-container {
+    min-height: 20rem;
+    background-image: url('/assets/images/website/page-offre/vision/rouage.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    div.items-row {
+      // espace entre les lignes d'items
+      &:first-child {
+        margin-top: 2rem;
+      }
+      &:not(:first-child) {
+        margin-top: 6rem;
+        @media (max-width: $sm-size) {
+          margin-top: 2rem;
+        }
+      }
+      &:last-child {
+        @media (max-width: $md-size) {
+          margin-top: 2rem;
+        }
+      }
+      // en mode phone
+      @media (max-width: $sm-size) {
+        // on met une marge entre les deux du même blocs
+        row-gap: 2rem;
+      }
+
+      div.item {
+        width: fit-content;
+        position: relative;
+
+        color: $secondary;
+        font-weight: 600;
+        font-size: 20px;
+
+        // flex pour aligner le texte avec le "i"
+        display: flex;
+        flex-shrink: 1;
+        flex-wrap: nowrap;
+        align-items: center;
+        text-align: right;
+
+        p {
+          margin-bottom: 0;
+        }
+
+        // Custom positions
+        &#item-1 {
+          max-width: 13rem;
+          margin: auto;
+        }
+        &#item-2 {
+          max-width: 18rem;
+          margin: auto;
+        }
+        &#item-3 {
+          max-width: 17rem;
+          margin: 0 12rem 0 4rem;
+        }
+        &#item-4 {
+          margin: 0 3rem 0 13rem;
+        }
+        &#item-5 {
+          margin: 2rem auto 0;
+        }
+
+        span.info-icon {
+          flex-shrink: 0; // on ne modifie pas la taille du i
+          $size: 1.5rem;
+          font-size: 18px;
+          border: 1px solid $primary;
+          color: $primary;
+          width: $size;
+          height: $size;
+          justify-content: center;
+          display: inline-flex;
+          align-items: center;
+          border-radius: 50%;
+          margin-left: .8rem;
+
+          // apparition de l'info bulle au survol du "i"
+          &:hover {
+            cursor: help;
+            & + span.info-data {
+              display: initial;
+            }
+          }
+        }
+
+        // info bulle
+        span.info-data {
+          display: none;
+          background-color: white;
+          color: $secondary;
+          border: 1px solid $secondary;
+          text-align: left;
+          width: fit-content;
+          font-size: 16px;
+        
+          box-shadow: 4px 4px 20px rgba(0, 0, 0, .1);
+          border-radius: 8px;
+          padding: 1rem 1rem .5rem 1rem;
+        
+          position: absolute;
+          left: 0;
+          top: 2rem;
+          z-index: 2;
+
+          ul {
+            margin-bottom: 0;
+            li {
+              font-weight: 100;
+            }
+          }
+
+          &.bigger {
+            min-width: 25rem;
+          }
+          &.center {
+            left: 50%;
+          }
+          &.lower {
+            top: 4rem;
+          }
+        }
+
+        // en mode réduit, on met les items aux extremités
+        @media (max-width: $md-size) {
+          margin: initial !important;
+          &#item-3 {
+            text-align: left;
+            max-width: 14rem;
+          }
+          &#item-5 {
+            // le dernier reste centrée
+            margin: 2rem auto 0 !important;
+          }
+        }
+
+        @media (max-width: $sm-size) {
+          width: 100%;
+          justify-content: space-between;
+          align-items: baseline;
+          text-align: left !important;
+          max-width: initial !important;
+          &#item-5 {
+            margin-top: 0 !important;
+          }
+
+          // Les infos bulles prennent toute la places
+          span.info-data {
+            width: 100% !important;
+            top: 2rem !important;
+            left: 0!important;
+            min-width: 0 !important;
+          }
+        }
+      }
+    }
+
+    // en mode réduit, fond + petit
+    @media (max-width: $md-size) {
+      background-size: 25%;
+      background-position: 45% 40%;
+    }
+
+    // en mode phone, fond au dessus des items
+    @media (max-width: $sm-size) {
+      background-size: 12rem;
+      background-position: 50% 0%;
+      padding: 8rem 1rem;
+    }
+  }
+}
+
+// SEPARATION IMAGE
+section#offre-separate {
+  padding: 0;
+  height: 1rem;
+  background-image: url('/assets/images/website/page-offre/separation/Wall.svg');
+  background-repeat: repeat-x;
+}
+
+// PRESTATIONS
+section#offre-prestations {
+  background-color: $lighter-blue;
+
+  div.prestation {
+    position: relative;
+    // Trick: remonter un peu les anchor sinon pbm avec la sticky navbar
+    a.anchor {
+      position: absolute;
+      // taille de la navbar (4rem) + margin des blocs (2rem)
+      top: -6rem;
+      visibility: hidden;
+    }
+
+    padding: 2rem 0;
+    border-radius: 32px;
+    align-items: center;
+    margin: 2rem auto 0;
+
+    div.info {
+      width: 70%;
+    }
+    div.illustration {
+      width: 20%;
+    }
+    h1.title {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+    p.description {
+      font-weight: 500;
+    }
+
+    div.logo-entreprise-container {
+      gap: .6rem;
+      margin: 0;
+      justify-content: start;
+      
+      @media (max-width: $sm-size) {
+        justify-content: center;
+      }
+
+      div.logo-entreprise {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        column-gap: .4rem;
+        justify-content: space-evenly;
+        border: 1px solid $third;
+        border-radius: 10px;
+        padding: .2rem .8rem;
+        min-height: 4rem;
+
+        img {
+          max-width: 6rem;
+          max-height: 3rem;
+        }
+
+        // pour que les logos ressortent bien
+        &.bg-blue {
+          background-color: $secondary;
+          border: 1px solid $secondary;
+          span.info-icon {
+            color: $white;
+            border-color: $white;
+          }
+        }
+        &.bg-white {
+          background-color: $white;
+          border: 1px solid $white;
+          span.info-icon {
+            color: $secondary;
+            border-color: $secondary;
+          }
+        }
+
+        span.info-icon {
+          flex-shrink: 0; // on ne modifie pas la taille du i
+          $size: 1.5rem;
+          font-size: 18px;
+          width: $size;
+          height: $size;
+          justify-content: center;
+          display: inline-flex;
+          align-items: center;
+          border-radius: 50%;
+          margin-left: .4rem;
+        }
+
+        // POPUP
+        &:hover {
+          color: $primary;
+          cursor: help;
+          span.info-icon {
+            color: $primary;
+            border-color: $primary;
+          }
+
+          & > div.desc-on-hover {
+            display: initial;
+          }
+        }
+
+        // Description popup des clients
+        div.desc-on-hover {
+          display: none;
+          position: absolute;
+          left: -50%;
+          top: 100%;
+          width: 100vw; // pour le sortir du div parent
+          max-width: calc(min(50vw, 30rem)); // pour limiter la taille
+  
+          z-index: 2;
+  
+          font-size: initial;
+          background-color: white;
+          color: $secondary;
+          text-align: left;
+  
+          box-shadow: 4px 4px 10px rgba(0, 0, 0, .3);
+          border-radius: 8px;
+          padding: 1rem 2rem;
+
+          // Lien vers articles de blog
+          a.link-article {
+            color: $primary;
+            span.fas {
+              margin-left: .5rem;
+            }
+          }
+        }
+
+        // Pas de popup en mode mobile
+        @media (max-width: $sm-size) {
+          span.info-icon {
+            display: none;
+          }
+          div.desc-on-hover {
+            visibility: hidden;
+          }
+        }
+      }
+    }
+
+    // FOND BLEU
+    &.bg-blue {
+      padding-left: 3rem;
+      padding-right: 3rem;
+      background-color: $secondary;
+      box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.15);
+      
+      h1.title {
+        color: $white;
+      }
+      .description {
+        color: $light-grey;
+      }
+      .logo-entreprise p {
+        color: $white;
+      }
+      div.illustration {
+        margin-left: 10%;
+      }
+      span.info-icon {
+        border: 1px solid $white ;
+        color: $white ;
+      }
+    }
+
+    // FOND BLANC
+    &.bg-transparent {
+      h1.title {
+        color: $secondary;
+      }
+      .description {
+        color: $third;
+      }
+      .logo-entreprise p {
+        color: $secondary;
+      }
+      div.illustration {
+        margin-right: 10%;
+      }
+      span.info-icon {
+        border: 1px solid $secondary;
+        color: $secondary;
+      }
+    }
+
+    // SPECIAL CII
+    &.cii {
+      padding-left: 3rem;
+      padding-right: 3rem;
+      background-color: transparent;
+      justify-content: space-between;
+      img {
+        width: 90%;
+      }
+    }
+
+    // Cas particuliers pour certaines images
+    div.illustration.growing {
+      width: 28%;
+      margin-right: 2%;
+    }
+    div.illustration.time, div.illustration.thinking {
+      width: 28%;
+      margin-left: 2%;
+    }
+
+    @media (max-width: $sm-size) {
+      h1.title {
+        font-size: 1.4rem;
+      }
+      p.description {
+        line-height: 1.2rem;
+      }
+      div.logo-entreprise p {
+        font-size: 1.2rem;
+      }
+      div.info {
+        width: 100%;
+      }
+      div.illustration {
+        display: none;
+      }
+
+      &.cii {
+        flex-direction: column;
+        row-gap: 2rem;
+        div.illustration {
+          width: 40%;
+          display: initial;
+        }
+      }
+    }
+  }
+
+  hr.separate {
+    margin-top: 3rem;
+    border-color: $secondary;
+  }
+}
+
+// MISE EN OEUVRE
+section#offre-mise-oeuvre {
+  h2.title {
+    margin: 1rem auto;
+    font-weight: 800;
+    color: $primary;
+  }
+  p {
+    color: $secondary;
+    text-align: justify;
+
+    // marge minimale
+    @media (max-width: $sm-size) {
+      margin: 0 1.5rem;  
+    }
+  }
+}

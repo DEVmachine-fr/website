@@ -14,20 +14,17 @@
 }
 
 @font-face {
-  font-family: Arciform;
-  src: url(/assets/fonts/ArciformFF/Arciform.otf) format("opentype");
-}
-
-@font-face {
   font-family: Nunito;
   src: url(/assets/fonts/Nunito/Nunito-Regular.ttf) format("truetype");
 }
-
+@font-face {
+  font-family: Nunito Bold;
+  src: url(/assets/fonts/Nunito/Nunito-Bold.ttf) format("truetype");
+}
 @font-face {
   font-family: Poppins;
   src: url(/assets/fonts/Poppins/Poppins-Regular.ttf) format("truetype");
 }
-
 
 // style go top button
 .go-top-button{
@@ -53,10 +50,22 @@ $black: #000 !default;
 /* kalixo*/
 $primary: #fc766a !default; //D26D64
 $secondary: #243252 !default;
-$third: #243252 !default;
+$third: #69779B !default;
+
+$light-blue: #98B7C4 !default;
+$lighter-blue: #F4F6FA !default;
+$light-grey: #C0C6D5 !default;
+
+// BG
+$light-pink: rgba(252, 118, 106, 0.1);
+$light-purple: rgba(106, 121, 252, 0.1);
 
 /* code block variables */
 $code-background: #dddddd;
 $code-border-radius: 0.8rem;
 $code-color: black;
 $code-padding: 1rem;
+
+// SIZE
+$md-size: 991px;
+$sm-size: 767px;

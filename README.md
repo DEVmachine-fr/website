@@ -11,10 +11,14 @@ Avoir Ruby d'installé sur son environnement. ([https://www.ruby-lang.org/](http
 Le site est basé sur le générateur de site statiques [Jekyll](https://jekyllrb.com/).   
 Il est donc nécessaire d'installer Jekyll au préalable.
 
-      gem install bundler jekyll
+    gem install bundler jekyll
     
 
 ## Utilisation
+
+Pour installer les dépendances :
+
+    bundle install
 
 Pour compiler le site il suffit d'exécuter la commande:
 
@@ -25,6 +29,10 @@ Un dossier `_site` est alors créé et contient le site statique généré.
 Il est possible de travailler avec du Live Reload en exécutant la commande 
 
     jekyll serve
+
+ou
+
+    bundle exec jekyll serve
 
 Un serveur démarre sur le port 4000, et le site est visible sur l'adresse : http://127.0.0.1:4000
 

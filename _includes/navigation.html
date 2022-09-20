@@ -1,5 +1,5 @@
 <nav
-      class="navbar navbar-expand-lg navbar-dark fixed-top"
+      class="navbar navbar-expand-lg navbar-dark"
       id="mainNav"
       xmlns="http://www.w3.org/1999/html"
     >
@@ -14,64 +14,33 @@
           aria-label="Toggle navigation"
         >
           Menu
-          <i class="fas fa-bars"></i>
+          <span aria-hidden="true" class="fas fa-bars"></span>
         </button>
         <a href="/">
           <img
-            src="/assets/images/devmachine.svg"
+            src="/assets/images/website/devmachine.svg"
             class="logo-dm"
             width="200"
-            alt="logo devmachine"
+            alt="Logo DEVmachine"
           />
         </a>
         <div
           class="collapse navbar-collapse"
           id="navbarResponsive"
         >
-          <ul class="navbar-nav text-uppercase ml-auto">
-            <li class="nav-item">
-              <a
-                class="nav-link js-scroll-trigger"
-                href="/#competences"
-                >Offre</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link js-scroll-trigger"
-                href="/#demarche"
-                >Démarche</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link js-scroll-trigger"
-                href="/#nous"
-                >Nous</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link js-scroll-trigger"
-                href="/#ref"
-                >Références</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link js-scroll-trigger"
-                href="/#joinus"
-                >Contact</a
-              >
-            </li>
-            <li class="nav-item">
-                <a
-                  class="nav-link"
-                  {% if page.url == "/blog.html" %}style="color: #fc766a; font-weight: bold"{% endif %}
-                  href="/blog">
-                Blog
-                </a>
-            </li>
+          <ul class="navbar-nav ml-auto">
+            {% assign sorted_pages = site.html_pages | sort:"order" %}
+            {% for navPage in sorted_pages %}
+             {% unless navPage.exclude-nav %}
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    {% if page.url == navPage.permalink %} style="color: #fc766a; font-weight: bold" {% endif %}
+                    href="{{ navPage.url }}"
+                  >{{ navPage.title }}</a>
+                </li>
+              {% endunless %}
+            {% endfor %}
           </ul>
         </div>
       </div>

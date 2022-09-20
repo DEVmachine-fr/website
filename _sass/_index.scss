@@ -1,0 +1,379 @@
+// background fondu pour la page d'accueil
+body.main-bg {
+  background: linear-gradient(180deg, rgba(252, 118, 106, 0.1) 0, rgba(252, 118, 106, 0) 30rem);
+}
+
+section#index-intro {
+  div.shape-container {
+    $HEIGHT: 20rem;
+    $SHAPE: polygon(
+      10% .5rem,
+      90% 0,
+      100% 3rem,
+      90% calc(#{$HEIGHT} - 6rem),
+      25% 100%,
+      0 9rem,
+    );
+
+    position: relative;
+    padding: 0;
+    
+    div.bg-orange {
+      z-index: -1;
+      position: absolute;
+      top: 1rem;
+      height: $HEIGHT;
+      width: 100%;
+      background-color: $primary;
+      clip-path: $SHAPE;
+      transform: rotate(-1deg);
+      // max 40vh (comme pour les imgs, définis dans style.scss)
+      max-height: 40vh;
+    }
+    div.image-container {
+      clip-path: $SHAPE;
+      img {
+        height: $HEIGHT;
+        object-fit: cover;
+      }
+    }
+
+    // another shape for phone
+    @media (max-width: $sm-size) {
+      $SM-HEIGHT: 15rem;
+      $SM-SHAPE: polygon(
+        5% .5rem,
+        90% 0,
+        100% 2rem,
+        97% calc(#{$HEIGHT} - 8rem),
+        80% calc(#{$HEIGHT} - 3rem),
+        25% 100%,
+        10% calc(#{$HEIGHT} - 5rem),
+        0 9rem,
+      );
+      div.image-container {
+        clip-path: $SM-SHAPE;
+        img {
+          height: $SM-HEIGHT;
+        }
+      }
+      div.bg-orange {
+        clip-path: $SM-SHAPE;
+        height: $SM-HEIGHT;
+        top: 0.4rem;
+        left: -0.2rem;
+      }
+    }
+  }
+
+  @media (max-width: $md-size) {
+    // pour que l'image avec le clip-path ne soit pas trop petite,
+    // on agrandit le container
+    div.container {
+      max-width: 98vw;
+    }
+  }
+}
+
+// B2B / B2C
+section#index-b2b {
+  color: $secondary;
+  padding-bottom: 0; // pour l'effet avec la feuille
+
+  img.leaf {
+    width: 12rem;
+    margin-top: -4rem;
+    margin-bottom: -.3rem;
+
+    @media (max-width: $sm-size) {
+      display: none;
+    }
+  }
+}
+
+// IMAGES
+$HEIGHT: calc(min(40rem, 80vh));
+$SHAPE: polygon(0 .5rem,
+  30% 2rem,
+  60% 1rem,
+  80% 0,
+  100% 3rem,
+  100% 100%,
+  66% calc(#{$HEIGHT} - 1rem),
+  33% calc(#{$HEIGHT} - 3rem),
+  0 100%
+);
+// PHOTOS
+section#index-images {
+  position: relative;
+  padding: 0;
+
+  div.shape-container {
+    height: $HEIGHT;
+    position: absolute;
+    margin: 0 1%;
+    width: 98%;
+    z-index: 0;
+
+    &.bg-blue {
+      top: -1rem;
+      background-color: $light-blue;
+      clip-path: $SHAPE;
+    }
+    &.bg-pink {
+      bottom: -1rem;
+      background-color: $light-pink;
+      clip-path: $SHAPE;
+    }
+  }
+
+  div.img-container {
+    width: 100vw;
+    clip-path: $SHAPE;
+    display: flex;
+    flex-wrap: wrap;
+    height: $HEIGHT;
+    position: relative;
+    z-index: 1;
+    
+    div {
+      position: relative;
+      width: 33%;
+      height: 50%;
+
+      img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      // Déplacement des img pour ne pas tout aligner
+      &:nth-of-type(4) {
+        top: -5%;
+        left: -5%;
+        img {
+          height: 110%;
+        }
+      }
+      &:nth-of-type(5) {
+        z-index: 1;
+        top: -10%;
+        left: -5%;
+        img {
+          height: 120%;
+          width: 120%;
+        }
+      }
+      &:nth-of-type(6) {
+        top: -3%;
+        img {
+          height: 110%;
+        }
+      }
+
+      // En mode phone on retire 2 images (sinon trop chargé)
+      @media (max-width: $sm-size) {
+        width: 50%;
+        left: 0 !important;
+        &:nth-of-type(3), &:nth-of-type(5) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// PILIERS
+section#index-piliers {
+  color: $secondary;
+
+  div.piliers-item {
+    padding: 2rem;
+    img {
+      width: 25%;
+    }
+    div.piliers-text {
+      margin-left: 1rem;
+      width: 70%;
+      text-align: justify;
+
+      p.title {
+        font-size: 1.75rem
+      }
+    }
+
+    // Bordures en croix quand 2 lignes 2 colonnes (défaut)
+    &:nth-child(odd) {
+      border-right: 1px solid $light-grey;
+    }
+    &:first-child, &:nth-child(2) {
+      border-bottom: 1px solid $light-grey;
+    }
+
+    // Bordure pour séparer les lignes en mode mobile
+    @media (max-width: $md-size) {
+      border-right: none !important;
+      border-bottom: none !important;
+
+      border-top: 1px solid $light-grey;
+      padding-top: 1rem;
+      
+      &:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+    }
+  }
+}
+
+// PRESTATIONS
+section#index-prestations {
+  text-align: center;
+  padding-top: 2rem;
+
+  div.questions {
+    margin-top: 4rem;
+    
+    background-image: url("/assets/images/website/page-index/prestations/woman.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    div.questions-row {
+      margin-top: 4rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: nowrap;
+
+      // effet pyramide
+      &:nth-of-type(1) {
+        column-gap: 10rem;
+      }
+      &:nth-of-type(2) {
+        column-gap: 18rem;
+      }
+      &:nth-of-type(3) {
+        column-gap: 26rem;
+      }
+    }
+
+    a.question-item {
+      background-color: $white;
+      color: $secondary;
+      margin: 0;
+      padding: .3rem 1rem;
+      max-width: 22rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      border: 1px solid $light-grey;
+      border-radius: 8px;
+      box-shadow: 4px 4px 0px rgba(0, 0, 0, .08);
+
+      transition: box-shadow .2s;
+
+      span.fas {
+        color: $primary;
+        font-size: 1.4rem;
+      }
+
+      &:hover {
+        text-decoration: none;
+        box-shadow: 4px 4px 0px rgba(0, 0, 0, .5);
+      }
+    }
+
+    // En mode réduit, on met les items à gauche et l'image à droite
+    @media (max-width: $md-size) {
+      background-position: 100% 50%;
+
+      div.questions-row {
+        flex-direction: column;
+        column-gap: 0;
+        margin-top: 1rem;
+        row-gap: 1rem;
+        align-items: start;
+      }
+    }
+
+    // En mode phone, on retire l'image et on centre
+    @media (max-width: $sm-size) {
+      background: none;
+      div.questions-row {
+        align-items: center;
+      }
+    }
+  }
+
+  a.dm-btn {
+    margin-top: 2rem;
+  }
+
+  div.img-container {
+    text-align: right;
+    margin: -3rem 4rem -3rem 0;
+    
+    img {
+      width: 10rem;
+    }
+    
+    @media (max-width: $sm-size) {
+      margin: initial;
+      img {
+        display: none;
+      }
+    }
+  }
+}
+
+// SAVOIR FAIRE
+section#index-savoir-faire {
+  background-color: $light-pink;
+  text-align: center;
+
+  div.skill-item-container {
+    row-gap: 4rem;
+
+    div.skill-item {
+      img {
+        height: 5rem;
+        margin-bottom: 1rem;
+      }
+
+      h3 {
+        color: $primary;
+        font-weight: 600;
+      }
+
+      p {
+        color: $secondary;
+        font-weight: 600;
+        // pour que le texte soit moins large que le titre
+        max-width: 60%;
+        margin: auto;
+      }
+    }
+
+  }
+  a.dm-btn {
+    margin-top: 2rem;
+  }
+}
+
+section#index-savoir-plus {
+  a.dm-btn {
+    transition: box-shadow .2s;
+
+    &:hover {
+      box-shadow: 4px 4px 0px rgba(0, 0, 0, .5);
+    }
+
+    // pas de texte sur ce btn, on recentre le chevron
+    span {
+      margin-left: 0;
+      font-size: 1.5rem;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+---
+layout: default
+permalink: /blog/
+title: Blog
+order: 5
+---
+
+<section id="blog-intro" class="intro">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div>
+          <h1 class="section-heading">Bienvenue sur le blog de DEVmachine !</h1>
+          <p class="text-grey">Vous trouverez ici des ressources concernant les actualités de développement de l'équipe, et aussi des sujets plus généralistes...</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-sm-12 right-img">
+        <img class="w-100" alt="" src="/assets/images/website/page-blog/On-the-laptop.svg"/>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="blog-posts-container">
+  <div class="container">
+    <div class="col-12 blog-posts">
+      {% for post in site.posts %}
+      <div class="col-lg-6 col-md-12 m-0 p-3">
+        <div class="blog-post h-100">
+          <div class="heading">
+            <p class="title">{{ post.title }}</p>
+            <p class="description">par {{ post.author }}, le {{ post.date | date: "%d/%m/%Y" }}</p>
+          </div>
+
+          <div class="post-excerpt">{{ post.excerpt }}</div>
+
+          <!-- div vide pour pousser le btn en bas -->
+          <div class="empty-space"></div>
+
+          <div class="btn-container">
+            <a class="dm-btn dm-btn-orange" href="{{ post.url }}">
+              Lire la suite<span aria-hidden="true" class="fas fa-chevron-right"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,42 @@
+footer {
+  background-color: $secondary;
+
+  div.links-container {
+    gap: 1rem 2rem;
+    justify-content: space-between;
+    a {
+      color: $white;
+    }
+  }
+
+  div.bottom-container {
+    gap: 1rem;
+    a {
+      color: $light-grey;
+    }
+    #mentions-btn {
+      color: $light-grey;
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  @media (max-width: $sm-size) {
+    padding: 0 .5rem;
+    // Centrer le logo
+    div.logo-container {
+      justify-content: center;
+    }
+
+    div.links-container {
+      justify-content: center;
+    }
+
+    div.bottom-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+}

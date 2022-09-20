@@ -1,0 +1,107 @@
+---
+layout: default
+permalink: /contact/
+title: Contact
+order: 4
+---
+<section id="contact-intro" class="intro">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div>
+          <h1 class="section-heading">Contactez-nous</h1>
+          <p><b>N'hésitez pas, nous sommes toujours ravis de partager sur notre activité, et répondons systématiquement :</b></p>
+          <ul class="arrow-list text-grey">
+            <li>Une étude ou un projet que l’on pourrait accompagner ?</li>
+            <li>L’envie de nous rejoindre ?</li>
+            <li>Ou simplement d’en savoir plus</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-sm-12 right-img">
+        <img class="w-100" alt="" src="/assets/images/website/page-contact/Chat.svg"/>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact-form">
+  <div id="success-send">
+    <h3>Votre message a été envoyé avec succès !</h3>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <h1 class="section-heading">Coordonnées / message</h1>
+    </div>
+
+    <form
+      class="col-md-10 offset-md-1 col-sm-12"
+      name="contact-form"
+      method="post"
+      action="/contact?success=true"
+      netlify
+    >
+      <!-- Nom -->
+      <div class="mb-3">
+        <label class="form-label" for="name">Vos prénom et nom :</label>
+        <input class="form-control" id="name" name="name" required />
+      </div>
+      <!-- Mail -->
+      <div class="mb-3">
+        <label class="form-label" for="email">Votre mail :</label>
+        <input class="form-control" id="email" name="email" type="email" required />
+      </div>
+      <!-- Text -->
+      <div class="mb-3">
+        <label class="form-label" for="question">Votre question, demande ou candidature : </label>
+        <textarea class="form-control" id="question" name="question" rows="5"></textarea>
+      </div>
+      <!-- Envoyer -->
+      <button type="submit" class="dm-btn dm-btn-blue">Envoyer</button>
+    </form>
+  </div>
+</section>
+
+<section id="contact-items">
+  <div class="container">
+    <div class="row contact-items-container">
+      <div class="contact-item">
+        <img class="path" alt="" src="/assets/images/website/page-contact/items/Path.svg" />
+        <div class="contact-data">
+          <p>4F, Avenue des Peupliers<br/>
+          35 510 Cesson-Sévigné</p>
+        </div>
+      </div>
+      
+      <div class="contact-item">
+        <img alt="" src="/assets/images/website/page-contact/items/Mail.svg" />
+        <div class="contact-data">
+          <a class="text-orange" href="mailto:contact@devmachine.fr">contact@devmachine.fr</a>
+        </div>
+      </div>
+      
+      <div class="contact-item">
+        <img alt="" src="/assets/images/website/page-contact/items/linkedin.svg" />
+        <div class="contact-data">
+          <a target="_blank" href="https://www.linkedin.com/company/devmachine/">@devmachine</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  /**
+   * Script pour afficher le msg quand le formulaire a bien été envoyé. 
+   */
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const success = urlParams.get('success') === 'true';
+
+  if (success) {
+    document.getElementById("success-send").style.display = 'flex';
+  }
+</script>

@@ -1,0 +1,97 @@
+section#post-intro {
+  background-color: $light-purple;
+
+  a.dm-btn {
+    background-color: transparent;
+    color: $third;
+    
+    span.fas {
+      color: $third;
+      margin-left: 0;
+      margin-right: .8rem;
+    }
+  }
+}
+
+article.post-content {
+  position: relative;
+  font-family: Poppins, serif;
+  // Pour autoriser les mots (notamment les liens) à revenir à la ligne
+  word-wrap: break-word;
+
+  p {
+    text-align: justify;
+  }
+
+  img {
+    max-width: 75%;
+    max-height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  // légende sous images
+  img+em {
+    display: block;
+    text-align: center;
+  }
+
+  h1 {
+    color: $primary;
+    font-family: 'Poppins', serif;
+  }
+  
+  h2 {
+    margin-top: 30px;
+    font-size: xx-large;
+    font-family: 'Nunito', serif;
+    color: $secondary;
+  }
+  
+  h3 {
+    margin-top: 20px;
+    font-size: larger;
+    font-family: 'Nunito', serif;
+    color: $third;
+  }
+
+  blockquote {
+    border-left: 3px $gray-200 solid;
+    padding-left: 5px;
+    font-style: italic;
+    color: $gray-500;
+  }
+
+  // On style le sommaire (premier ul)
+  & > ul:first-of-type {
+    border: 1px solid $light-grey;
+    border-radius: 8px;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.08);
+    padding: 1rem;
+
+    li a {
+      color: black;
+    }
+  }
+  
+  // En mode grand écran, on met le menu à gauche
+  $margin: 20rem;
+  @media (min-width: $md-size) {
+    margin-left: $margin;
+
+    & > ul:first-of-type {
+      position: absolute;
+      width: $margin;
+      left: calc(-2rem - #{$margin});
+      top: 0;
+    }
+  }
+
+  // Trick: remonter un peu les anchor sinon pbm avec la sticky navbar
+  a.anchor {
+    position: relative;
+    // taille de la navbar
+    top: -4rem;
+  }
+}

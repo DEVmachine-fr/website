@@ -1,0 +1,374 @@
+$green-bg: rgba(106, 252, 138, 0.1);
+
+section#dm-intro {
+  background-color: $green-bg;
+}
+
+section#dm-genese {
+  div.row {
+    row-gap: 2rem;
+    div.fondateurs {
+      background-color: black;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: auto;
+      $size: 20rem;
+      width: $size;
+      height: $size;
+      // pour mode mobile
+      $max-size: 60vw;
+      max-width: $max-size;
+      max-height: $max-size;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+
+  blockquote.dm-quote {
+    position: relative;
+    border-left: .3rem solid $primary;
+    padding: 2rem;
+    background-color: $gray-200;
+    font-style: italic;
+    text-align: justify;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    margin-top: 2rem;
+
+    div.quote-authors {
+      font-style: initial;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    &::before {
+      font-family: Arial;
+      content: "\201C";
+      color: $primary;
+      font-size: 4em;
+      position: absolute;
+      left: 0;
+    }
+  }
+}
+
+section#dm-force {
+  div.dm-item {
+    padding: 2rem 0;
+
+    h2 {
+      font-weight: 800;
+    }
+
+    // on inverse l'ordre en mode phone pour mettre l' image sous le texte
+    @media (max-width: $sm-size) {
+      &.sm-reverse {
+        flex-direction: column-reverse;
+      }
+      // on diminue la taille des img
+      img {
+        max-width: 70%;
+      }
+    }
+  }
+}
+
+// SEPARATION IMAGE
+section#dm-separate {
+  padding: 0;
+  height: 1rem;
+  background-image: url('/assets/images/website/page-offre/separation/Wall.svg');
+  background-repeat: repeat-x;
+}
+
+section#dm-servir {
+  h2.section-subheading {
+    font-size: 1.6rem;
+
+    @media (max-width: $sm-size) {
+      font-size: 1.3rem;
+    }
+  }
+
+  div.dm-item {
+    padding: 2rem 0;
+
+    h2 {
+      color: $secondary;
+      font-weight: 600;
+    }
+    p, ul > li {
+      color: $third;
+    }
+
+    img.bretagne {
+      width: 60%;
+    }
+    img.produit-bretagne {
+      width: 50%;
+    }
+
+    // Dernières sections : logos des entreprises locales
+    div.local-item {
+      margin: 2rem 0;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      column-gap: 3rem;
+
+      ul, li {
+        margin-bottom: 0;
+      }
+
+      div.logos-container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem 2rem;
+
+        img {
+          max-width: 7rem;
+          max-height: 4rem;
+        }
+      }
+
+      // on met les logos en dessous
+      @media (max-width: $md-size) {
+        flex-direction: column;
+        align-items: flex-start;
+        div.logos-container {
+          justify-content: center;
+          column-gap: 3rem;
+        }
+      }
+    }
+
+    // on inverse l'ordre en mode phone pour mettre l' image sous le texte
+    @media (max-width: $sm-size) {
+      &.sm-reverse {
+        flex-direction: column-reverse;
+      }
+      &.sm-remove-img {
+        img.w-100 {
+          display: none;
+        }
+      }
+      img {
+        max-width: 70%;
+      }
+    }
+  }
+}
+
+section#dm-rse {
+  background-color: $green-bg;
+  h2.section-subheading {
+    font-size: 1.6rem;
+
+    @media (max-width: $sm-size) {
+      font-size: 1.3rem;
+    }
+  }
+
+  div.rse-item {
+    background-color: $secondary;
+    color: $white;
+    padding: 2rem 3rem;
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 32px;
+    margin: 3rem 0;
+
+    p.title {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    img.leaf {
+      width: 3rem;
+    }
+
+    img.circle {
+      position: absolute;
+      top: -0.5rem;
+      left: -2rem;
+    }
+
+    span.info {
+      position: relative;
+      font-size: 1.4rem;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+      p {
+        margin-bottom: 0;
+      }
+      
+      span.info-icon {
+        border: 1px solid $white;
+        flex-shrink: 0; // on ne modifie pas la taille du i
+        $size: 1.5rem;
+        font-size: 18px;
+        width: $size;
+        height: $size;
+        justify-content: center;
+        display: inline-flex;
+        align-items: center;
+        border-radius: 50%;
+        margin-left: .4rem;
+      }
+
+      // POPUP
+      &:hover {
+        color: $primary;
+        cursor: help;
+        span.info-icon {
+          border-color: $primary;
+        }
+
+        & > div.rse-onhover-items {
+          display: initial;
+        }
+      }
+
+      div.rse-onhover-items {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        width: 200%;
+        max-width: 35rem;
+
+        z-index: 2;
+
+        font-size: initial;
+        background-color: white;
+        color: $secondary;
+        text-align: left;
+
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, .3);
+        border-radius: 8px;
+        padding: 1rem 2rem;
+
+        // Certaines popup dépassent à droite
+        &.shift-left {
+          left: -50%;
+        }
+
+        ul {
+          margin-bottom: 0;
+          li:not(:last-child) {
+            margin-bottom: 1rem;
+          }
+        }
+
+        // En mode moyen, on réduit la taille
+        @media (max-width: $md-size) {
+          max-width: 25rem;
+          &.shift-left {
+            left: 0;
+          }
+        }
+
+        // En mode phone, on centre
+        @media (max-width: $sm-size) {
+          max-width: 100%;
+        }
+
+        // image: utopi, Time Planet, FACE
+        & > div.with-img {
+          display: flex;
+          flex-wrap: none;
+          align-items: center;
+          justify-content: space-between;
+          column-gap: 1rem;
+          img {
+            max-width: 5rem;
+            max-height: 5rem;
+          }
+        }
+      }
+    }
+
+    &#social {
+      div.rse-subitems {
+        justify-content: space-between;
+        margin: 0 -3rem;
+        span.info {
+          max-width: 16rem;
+        }
+      }
+    }
+
+    &#environnemental {
+      div.rse-subitems {
+        justify-content: space-between;
+        span.info {
+          max-width: 20rem;
+        }
+      }
+    }
+
+    &#societal {
+      position: relative;
+
+      img.confettis {
+        z-index: 0;
+        position: absolute;
+        top: 1rem;
+        left: 0;
+        transform: scaleX(-1);
+      }
+
+      p.title, div.rse-subitems {
+        z-index: 1;
+      }
+    }
+
+    div.rse-subitems {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+
+      text-align: center;
+      margin-top: 1rem;
+      row-gap: 1rem;
+    }
+
+    @media (max-width: $md-size) {
+      &#social, &#environnemental, &#societal {
+        div.rse-subitems {
+          margin: initial;
+          span.info {
+            max-width: initial;
+          }
+        }
+      }
+    }
+
+    @media (max-width: $sm-size) {
+      padding: 2rem .2rem;
+
+      p.title {
+        margin-left: 2rem;
+      }
+      img.circle {
+        left: .1rem;
+      }
+      
+      &#social, &#environnemental, &#societal {
+        div.rse-subitems span.info {
+          justify-content: space-between;
+          text-align: left;
+        }
+      }
+    }
+  }
+}
