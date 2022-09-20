@@ -31,8 +31,8 @@ article.post-content {
     margin-right: auto;
   }
 
-  // légende sous images
-  img+em {
+  // légende sous images et sous les liens qui contiennent une image
+  img+em, a:has(img)+em {
     display: block;
     text-align: center;
   }
