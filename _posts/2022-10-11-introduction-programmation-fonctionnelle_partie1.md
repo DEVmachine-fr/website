@@ -1,14 +1,9 @@
-<!-- 
+
 ---
 author: Fabien
-title: Introduction à la programmation fonctionnelle en JavaScript
-categories: js fp functional programing ramda node
+title: Introduction à la programmation fonctionnelle en JavaScript, partie I
+categories: js fp functional programming ramda node
 ---
--->
-
-| author | title | categories |
-|-|-|-|
-| *Fabien Le Houëdec* | Introduction à la programmation fonctionnelle en **JavaScript** | `js fp functional programing ramda node` |
 
 # Introduction à la programmation fonctionnelle en JS, partie I
 
@@ -138,9 +133,7 @@ const addCurry = R.curry(add)
 
 La composition est un autre concept important de la programmation fonctionnelle. L'idée est la même qu'en mathématique :
 
-$$
-(f \circ g)(x) = f(g(x))
-$$
+![equation composition](/assets/images/prog-fonctionnelle-js/composition.svg)
 
 Voyons un exemple en composant 3 fonctions :
 
