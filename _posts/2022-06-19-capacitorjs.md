@@ -4,8 +4,8 @@ title: Application multi plateformes et marque blanche avec Capacitor
 categories: capacitor js angular ci cd
 ---
 
-Pour les besoins d'un de nos clients, nous devions réaliser une application en **marque blanche**, disponible sur **iOS**, **Android** et en version **Web**.
-Il s'agisssait d'une refonte d'un projet historique découpé en 2, un projet web responsive, et un projet hybrid (Apache Cordova) quasi-identique au projet web.   
+Pour les besoins d'un de nos clients, nous devions réaliser une application disponible sur **iOS**, **Android** et en version **Web**. Celle-ci doit être déclinable en marque blanche, c'est à dire être personnalisable selon l'identité d'un client.
+Il s'agisssait d'une refonte d'un projet historique découpé en 2 parties : un projet web responsive et un projet hybride quasi-identique au projet web, mais transformé en application iOS/Android grâce à Apache Cordova.
 Pour cette refonte, nous avons choisi un concurrent du projet Apache Cordova, nommé CapacitorJS (ou plus sobrement **Capacitor**).
 
 - [Capacitor en bref](#capacitor)
@@ -59,9 +59,9 @@ npx cap sync # synchronisation des plateformes détectées
 ### Tout est plugin
 
 Pour intéragir avec les APIs natives, il faut passer par des plugins.
-L'équipe Capacitor maintient une liste de plugins officiels, couvrant les cas d'utilisation les plus courant, de la gestion de la **Status Bar** aux **Push Notifications** en passant par le **Splash Screen**.
+L'équipe Capacitor maintient une liste de plugins officiels, couvrant les cas d'utilisation les plus courants, de la gestion de la **Status Bar** aux **Push Notifications** en passant par le **Splash Screen**.
 
-Certains de ces plugins vont même pouvoir être configuré via le fichier de configuration (`capacitor.config.(json|ts)`). D'autres, par contre vont demander (via leur documentation), d'aller ajouter manuellement certaines permissions dans les fichiers de configuration `AndroidManifest.xml` ou `Info.plist`.
+Certains de ces plugins vont même pouvoir être configurés via le fichier de configuration (`capacitor.config.(json|ts)`). D'autres, par contre vont demander (via leur documentation) d'aller ajouter manuellement certaines permissions dans les fichiers de configuration `AndroidManifest.xml` ou `Info.plist`.
 
 Voici un exemple d'utilisation du plugin **Local Notifications** qui donne accès, comme son nom l'indique, aux notifications locales afin de pouvoir en programmer. 
 
@@ -211,10 +211,10 @@ On voit bien dans cet exemple que l'ajout de propriétés simples comme les vers
 
 Malheureusement, tout ne peux pas être fait. L'ajout de fichiers sources dans les workspaces n'est pas encore supporté dans ces outils.
 
- Car ce qu'on ne voit pas dans les exemples précédents, c'est que pour ajouter le support des **PushNotification**, il faut ajouter un fichier dans le workspace XCode (et Android, mais c'est plus simple). Pour cela, il ne suffit pas de copier le fichier dans le bon répertoire... Non, non, non! Dans XCode chaque fichier est indexé dans le workspace (qui se fait automatiquement via l'ajout en drag & drop par exemple, difficile à automatiser). 
+Ce qu'on ne voit pas dans les exemples précédents, c'est que pour ajouter le support des **PushNotification**, il faut ajouter un fichier dans le workspace XCode (et Android, mais c'est plus simple). Pour cela, il ne suffit pas de copier le fichier dans le bon répertoire... Non, non, non! Dans XCode chaque fichier est indexé dans le workspace (qui se fait automatiquement via l'ajout en drag & drop par exemple, difficile à automatiser). 
  
- Heureusement, il existe une libraire **nodejs** au nom bien choisi de `xcode` !    
- Malheureusement, la documentation est très pauvre, et il faudra progresser à taton pour arriver à ses fins...
+Heureusement, il existe une libraire **nodejs** au nom bien choisi de `xcode` !    
+Malheureusement, la documentation est très pauvre, et il faudra progresser à taton pour arriver à ses fins...
 
  ```javascript
  let xcode = require('xcode'),
