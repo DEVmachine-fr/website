@@ -1,21 +1,31 @@
-
 ---
 author: Fabien
 title: Introduction à la programmation fonctionnelle en JavaScript, partie I
 categories: js fp functional programming ramda node
 ---
 
+
+Dans cette série d'article, nous allons voir ce qu'est la programmation fonctionnelle, comment elle peut nous permettre d'écrire de meilleurs programmes et enfin comment en faire en JavaScript.
+
 # Introduction à la programmation fonctionnelle en JS, partie I
 
-## Contenu de l'article
-
-Dans cet article, nous allons voir comment on peut faire de la programmation fonctionnelle en JavaScript.
-
-- [Introduction](#introduction)
-- [La programmation fonctionnelle, c'est quoi ?](#la-programmation-fonctionnelle-cest-quoi-)
-- [Grands principes](#grands-principes)
-- [Concepts](#concepts-majeures)
-- Un exemple pour illustrer : une API basique
+- [Introduction à la programmation fonctionnelle en JS, partie I](#introduction-à-la-programmation-fonctionnelle-en-js-partie-i)
+  - [Introduction](#introduction)
+  - [La programmation fonctionnelle, c'est quoi ?](#la-programmation-fonctionnelle-cest-quoi-)
+  - [Grands principes](#grands-principes)
+    - [Limiter les effets de bord](#limiter-les-effets-de-bord)
+    - [Écrire des fonctions pures](#écrire-des-fonctions-pures)
+    - [Implications](#implications)
+  - [Concepts majeures](#concepts-majeures)
+    - [La currification (ou *currying*)](#la-currification-ou-currying)
+    - [La composition de fonctions](#la-composition-de-fonctions)
+    - [Les fonctions d'ordre supérieur](#les-fonctions-dordre-supérieur)
+    - [Map, filter et reduce](#map-filter-et-reduce)
+      - [Filter](#filter)
+      - [Map](#map)
+      - [Reduce](#reduce)
+      - [Et pourquoi pas forEach ?](#et-pourquoi-pas-foreach-)
+  - [Dans le prochain épisode ...](#dans-le-prochain-épisode-)
 
 **Note importante avant de commencer** : Il est important de garder à l'esprit que je ne fais pas de programmation fonctionnelle habituellement dans mon métier, et que ceci est davantage une retranscription de ma découverte qu'un guide exhaustif. L'idée de l'article est davantage de proposer une introduction adressée à des gens totalement novices à ce type de programmation.
 
