@@ -18,7 +18,7 @@ Pour cette refonte, nous avons choisi un concurrent du projet Apache Cordova, no
 
 Capacitor est une librairie permettant de transformer une application Web, et ce quelque soit le framework choisi (Angular, React, Vue, etc.), en une application native hybride. Le coeur de Capacitor réside dans une librairie embarquée dans une WebView permettant de faire le pont entre l'application Web et les APIs natives des différentes plateformes.
 
-![Capacitor Native runtime](/assets/images/capacitor/capacitor.png)
+[![Capacitor Native runtime](/assets/images/capacitor/capacitor.png)](/assets/images/capacitor/capacitor.png)
 *source: https://capacitorjs.com/blog/how-capacitor-works*
 
 Cet outil, développé et maintenu par l'équipe d'Ionic Framework, est fourni avec une CLI. Côté installation, rien de plus simple :
