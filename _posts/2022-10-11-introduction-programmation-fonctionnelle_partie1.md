@@ -112,7 +112,7 @@ Si on prend l'exemple de l'addition :
 const add = (a, b) => a + b
 ```
 
-La version currifiée serait défini comme suit en JavaScript :
+La version currifiée serait définie comme ceci en JavaScript :
 
 ```js
 const addCurry = a => b => a + b
