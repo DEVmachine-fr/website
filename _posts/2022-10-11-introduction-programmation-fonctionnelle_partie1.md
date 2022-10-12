@@ -21,8 +21,8 @@ Dans cette série d'article, nous allons voir ce qu'est la programmation fonctio
     - [La composition de fonctions](#la-composition-de-fonctions)
     - [Les fonctions d'ordre supérieur](#les-fonctions-dordre-supérieur)
     - [Map, filter et reduce](#map-filter-et-reduce)
-      - [Filter](#filter)
       - [Map](#map)
+      - [Filter](#filter)
       - [Reduce](#reduce)
       - [Et pourquoi pas forEach ?](#et-pourquoi-pas-foreach-)
   - [Dans le prochain épisode ...](#dans-le-prochain-épisode-)
@@ -60,10 +60,10 @@ Par effet de bord, on peut notamment citer :
 
 - la modification de variables globales/locales partagées entre plusieurs fonctions
 - la mutation des objets
-- la modification de la valeurs des arguments 
+- la modification de la valeur des arguments 
 - les opérations d'entrées/sorties (I/O)
 
-On comprend vite ici pourquoi qu'on ne pourra que limiter ces effets et que l'intégralité de notre programme ne pourra pas être fonctionnellement pur à 100%. Dans la mesure où un programme interagit avec l'extérieur via les appels I/O (saisie utilisateur, base de données, fichiers), il introduit et/ou subit inévitablement des effets de bords.
+On comprend vite ici pourquoi on ne pourra que limiter ces effets et que l'intégralité de notre programme ne pourra pas être fonctionnellement pur à 100%. Dans la mesure où un programme interagit avec l'extérieur via les appels I/O (saisie utilisateur, base de données, fichiers), il introduit et/ou subit inévitablement des effets de bords.
 
 Toutefois, en programmation fonctionnelle on essaie d'identifier explicitement ces effets, et de les déplacer vers l'extérieur de notre architecture, de sorte que nos traitements métiers, au centre de l'application, en soient exempts le plus possible.
 
@@ -71,7 +71,7 @@ Toutefois, en programmation fonctionnelle on essaie d'identifier explicitement c
 
 La pureté d'une fonction est déterminée par les critères suivants : 
 
-- **le déterminisme** : une fonction appelée avec la même combinaison d'argument doit toujours renvoyer le même résultat. Ce comportement permet notamment d'introduire des mécanismes de mémoïsation, permettant de mettre en cache le résultat d'un traitement coûteux.
+- **le déterminisme** : une fonction appelée avec la même combinaison d'argument doit toujours renvoyer le même résultat. Ce comportement permet notamment d'introduire des mécanismes de [mémoïsation](https://fr.wikipedia.org/wiki/M%C3%A9mo%C3%AFsation), permettant de mettre en cache le résultat d'un traitement coûteux.
 - **la transparence référentielle** : une fonction doit être entièrement remplaçable par le résultat de son évaluation
 - **la totalité** : une fonction prenant un argument de type `A` (on parle de *domaine*) et renvoyant un résultat de type `B` (*codomaine*) doit renvoyer systématiquement un résultat de type `B` pour l'ensemble du domaine (toute les valeurs possibles portées par le type `A`).
 
@@ -81,7 +81,7 @@ Notons que l'impureté dans un programme est contaminante : toute fonction suppo
 
 ### Implications
 
-Toutes ces règles apportent leur lot de restriction, ce qui amène à éviter au maximum l'emploi de beaucoup d'instructions fourni par JavaScript, notamment : 
+Toutes ces règles apportent leur lot de restrictions, ce qui amène à éviter au maximum l'emploi de beaucoup d'instructions fournies par JavaScript, notamment : 
 
 * **la déclaration de variable** (`var` et `let`) : on préfère utiliser `const` pour prévenir la réaffectation, même si cela n'empêche pas la mutation des objets.
 * **les boucles** (`while`, `for`, `for…of`, etc.) : dans la mesure où leur fonctionnement repose sur des variables locales pouvant induire des effets de bords, on préfère utiliser la récursivité ou les fonctions d'ordre supérieur `map`, `filter` et `reduce`.
@@ -141,7 +141,7 @@ const addCurry = R.curry(add)
 
 ### La composition de fonctions
 
-La composition est un autre concept important de la programmation fonctionnelle. L'idée est la même qu'en mathématique :
+La composition est un autre concept important de la programmation fonctionnelle. L'idée est la même qu'en mathématiques :
 
 ![equation composition](/assets/images/prog-fonctionnelle-js/composition.svg)
 
@@ -157,7 +157,8 @@ const inc = add(1)
 const square = pow(2)
 
 const fn = R.compose(square, inc, double)
-const fn = n => ((n * 2) + 1) ** 2
+// fn équivaut à cette fonction : 
+// const fn = n => ((n * 2) + 1) ** 2
 
 fn(5) // => 121
 ```
@@ -180,56 +181,6 @@ Les fonctions currifiées ainsi que les méthodes `map()`, `filter()` et `reduce
 Ces trois fonctions sont typiques de la programmation fonctionnelle et agissent sur les tableaux ou autres itérables.
 
 En JavaScript, le prototype de l'objet `Array` disposent de ces méthodes, mais nous allons utiliser les équivalents proposées par la bibliothèque **Ramda**.
-
-#### Filter
-
-La fonction `filter()` prend en paramètre un **prédicat**, c'est-à-dire une fonction prenant en paramètre un objet de la collection et renvoyant un booléen.
-
-Elle renverra une nouvelle collection ne contenant que les éléments ayant satisfait le prédicat.
-
-Prenons un exemple :
-
-```js
-const students = [
-  { name: 'Karine Deckow', age: 31 },
-  { name: 'Pansy Predovic', age: 23 },
-  { name: 'Noe Medhurst', age: 20 },
-  { name: 'Vidal Metz', age: 17 },
-  { name: 'Cayla Streich', age: 42 }
-]
-```
-
-On veut filter les étudiants pour ne garder uniquement que ceux âgés de plus de 2 ans. Il nous faut un prédicat à passer à `filter()`.
-
-```js
-const olderThan25 = student => student.age > 25
-```
-
-Mais on peut faire mieux ! On peut définir une fonction d'ordre supérieure qui permet de rendre le prédicat générique vis à vis de l'âge.
-
-```js
-const olderThan = age => student => student.age > age
-```
-
-Ensuite, je peux appliquer `filter()`. On choisit d'utiliser Ramda, ce qui nous permet de créer notre fonction finale qui filtre les étudiants ayant plus de 25 ans.
-
-```js
-const keepOlderThan25 = R.filter(olderThan(25))
-
-keepOlderThan25(students) // ->
-[ 
-  { name: 'Karine Deckow', age: 31 },
-  { name: 'Cayla Streich', age: 42 }
-]
-```
-
-La fonction `R.filter()` de **Ramda** est currifiée automatiquement, ce qui permet de réaliser l'application partielle du traitement : notre fonction `keepOlderThan25()` attends donc son argument final, qui est la collection.
-
-Note : les fonctions proposées par les bibliothèques de programmation fonctionnelle adoptent volontairement les caractéristiques suivantes :
-
-- elles sont currifiées automatiquement
-- l'argument correspondant à la donnée est positionné en dernier dans leur signature
-  De cette façon, on peut composer notre traitement en une fonction qui acceptera la donnée comme dernier argument.
 
 #### Map
 
@@ -292,7 +243,7 @@ const getStudentOlderThan25Names = R.pipe(
 
 Et voilà ! Notre fonction composée n'attend plus que la collection d'étudiants en paramètre, sur laquelle elle va appliquer les deux fonctions successivement.
 
-Ici, on utilise `R.pipe()` qui est semblable à `R.compose()` mais qui appliquera les fonctions de gauche à droite (de haut en bas suivant notre indentation).
+Ici, on utilise `R.pipe()` qui est semblable à `R.compose()` mais qui appliquera les fonctions de gauche à droite.
 
 Si on retire les variables intermédiaires, on obtient ceci :
 
@@ -304,6 +255,57 @@ const getStudentOlderThan25Names = R.pipe(
 ```
 
 **Rappel** : L'ordre a une importance dans la composition, car si on essaie de filtrer sur l'âge après avoir extrait les prénoms, le prédicat ne fonctionnera pas.
+
+#### Filter
+
+La fonction `filter()` prend en paramètre un **prédicat**, c'est-à-dire une fonction prenant en paramètre un objet de la collection et renvoyant un booléen.
+
+Elle renverra une nouvelle collection ne contenant que les éléments ayant satisfait le prédicat.
+
+Prenons un exemple :
+
+```js
+const students = [
+  { name: 'Karine Deckow', age: 31 },
+  { name: 'Pansy Predovic', age: 23 },
+  { name: 'Noe Medhurst', age: 20 },
+  { name: 'Vidal Metz', age: 17 },
+  { name: 'Cayla Streich', age: 42 }
+]
+```
+
+On veut filter les étudiants pour ne garder uniquement que ceux âgés de plus de 25 ans. Il nous faut un prédicat à passer à `filter()`.
+
+```js
+const olderThan25 = student => student.age > 25
+```
+
+Mais on peut faire mieux ! On peut définir une fonction d'ordre supérieure qui permet de rendre le prédicat générique vis à vis de l'âge.
+
+```js
+const olderThan = age => student => student.age > age
+```
+
+Ensuite, je peux appliquer `filter()`. On choisit d'utiliser Ramda, ce qui nous permet de créer notre fonction finale qui filtre les étudiants ayant plus de 25 ans.
+
+```js
+const keepOlderThan25 = R.filter(olderThan(25))
+
+keepOlderThan25(students) // ->
+[ 
+  { name: 'Karine Deckow', age: 31 },
+  { name: 'Cayla Streich', age: 42 }
+]
+```
+
+La fonction `R.filter()` de **Ramda** est currifiée automatiquement, ce qui permet de réaliser l'application partielle du traitement : notre fonction `keepOlderThan25()` attends donc son argument final, qui est la collection.
+
+Note : les fonctions proposées par les bibliothèques de programmation fonctionnelle adoptent volontairement les caractéristiques suivantes :
+
+- elles sont currifiées automatiquement
+- l'argument correspondant à la donnée est positionné en dernier dans leur signature
+
+De cette façon, on peut composer notre traitement en une fonction qui acceptera la donnée comme dernier argument.
 
 #### Reduce
 
@@ -370,7 +372,7 @@ const totalStudentsAge = R.reduce(aggregateStudentAge, 0)
 totalStudentsAge(students) // -> 133
 ```
 
-On peut encore améliorer ça, en combinant avec le `map()` de toute à l'heure, on récupère d'abord les âges que l'on additionne ensuite, découplant ainsi la récupération de l'âge de la somme.
+On peut encore améliorer ça, en combinant avec le `map()` de tout à l'heure, on récupère d'abord les âges que l'on additionne ensuite, découplant ainsi la récupération de l'âge de la somme.
 
 ```js
 const sumStudentAges = R.pipe(
