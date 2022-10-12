@@ -23,6 +23,11 @@ article.post-content {
     text-align: justify;
   }
 
+  // Police à pas fixe pour les blocs de code
+  pre.highlight code * {
+    font-family: monospace;
+  }
+
   img {
     max-width: 75%;
     max-height: 300px;
