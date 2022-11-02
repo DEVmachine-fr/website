@@ -163,7 +163,7 @@ const fn = R.compose(square, inc, double)
 fn(5) // => 121
 ```
 
-À noter que comme en mathématique, l'application des composantes se fait de droite à gauche. Ici, on doublera d'abord la valeur avant de l'incrémenter, puis de l'élever au carré.
+À noter que comme en mathématique, l'application des fonctions à composer se fait de droite à gauche. Ici par exemple, on doublera d'abord la valeur avant de l'incrémenter, puis de l'élever au carré.
 
 **Important** : la composition de fonction n'est pas commutative, l'ordre a son importance.
 
