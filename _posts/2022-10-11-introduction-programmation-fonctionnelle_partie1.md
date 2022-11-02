@@ -17,7 +17,7 @@ Dans cette série d'article, nous allons voir ce qu'est la programmation fonctio
     - [Écrire des fonctions pures](#écrire-des-fonctions-pures)
     - [Implications](#implications)
   - [Concepts majeures](#concepts-majeures)
-    - [La currification (ou *currying*)](#la-currification-ou-currying)
+    - [La currification (ou currying)](#la-currification-ou-currying)
     - [La composition de fonctions](#la-composition-de-fonctions)
     - [Les fonctions d'ordre supérieur](#les-fonctions-dordre-supérieur)
     - [Map, filter et reduce](#map-filter-et-reduce)
@@ -98,7 +98,7 @@ On va également éviter autant que possible d'intégrer certains éléments imp
 
 ## Concepts majeures
 
-### La currification (ou *currying*)
+### La currification (ou currying)
 
 La currification est un concept clé de la programmation fonctionnelle, qui consiste à transformer une fonction à **n** arguments en **n** fonctions à **un** argument.
 
@@ -188,7 +188,7 @@ La fonction `map()` prend en paramètre une **projection**, c'est-à-dire une fo
 
 Elle renverra une nouvelle collection contenant le résultat de l'application de la projection sur chaque élément du tableau source.
 
-Reprenons notre exemple précédent :
+Prenons un exemple avec une liste d'étudiants :
 
 ```js
 const students = [
@@ -262,7 +262,7 @@ La fonction `filter()` prend en paramètre un **prédicat**, c'est-à-dire une f
 
 Elle renverra une nouvelle collection ne contenant que les éléments ayant satisfait le prédicat.
 
-Prenons un exemple :
+Reprenons en exemple nos étudiants :
 
 ```js
 const students = [
@@ -274,7 +274,7 @@ const students = [
 ]
 ```
 
-On veut filter les étudiants pour ne garder uniquement que ceux âgés de plus de 25 ans. Il nous faut un prédicat à passer à `filter()`.
+On veut filter ces étudiants pour ne garder uniquement que ceux âgés de plus de 25 ans. Il nous faut un prédicat à passer à `filter()`.
 
 ```js
 const olderThan25 = student => student.age > 25
