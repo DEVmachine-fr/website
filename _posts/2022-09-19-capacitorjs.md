@@ -43,7 +43,7 @@ Ces 2 dernières commandes vont créer les workspaces natifs de chaque environne
 
 A partir de cette étape, Capacitor ne nous fournit plus d'outil pour builder ou déployer les applications natives. **Capacitor ne nous dispense pas d'avoir des connaissances de ces différents environnements.** Il faudra recourir à des modifications dans les fichiers `AndroidManifest.xml` ou encore `Info.plist` pour modifier le comportement des applications. Capacitor encourage à utiliser l'outillage dédié de chaque plateforme.
 
-La CLI nous permet néanmoins de lancer les applications en local (en ayant au préalable configurer les environnments de développement desdites plateforme).
+La CLI nous permet néanmoins de lancer les applications en local (en ayant au préalable configuré les environnments de développement desdites plateforme).
 
 ```bash
 npx cap run android # Test de l'apk sur un device virtuel ou physique
@@ -99,9 +99,9 @@ Auto-proclamé successeur du projet Apache Cordova, Capacitor est de fait compat
 
 ## Marque blanche et automatisation <a class="anchor" name="automatisation"></a>
 
-Jusqu'ici, nous avons vu que l'on peut très facilement gérer une application et synchroniser les workspaces natifs. Mais rappelez-vous, il nous faut une application marque blanche (plus de 5 dans notre cas), et de plus testables sur plusieurs environnement (dev, recette et prod par exemple). On dénombre alors 30 livrables ! (2 plateformes (Android/iOS) * 5 marques blanches * 3 environnements)
+Jusqu'ici, nous avons vu que l'on peut très facilement gérer une application et synchroniser les workspaces natifs. Mais rappelez-vous, il nous faut une application marque blanche (plus de 5 dans notre cas), et de plus testable sur plusieurs environnements (dev, recette et prod par exemple). On dénombre alors 30 livrables ! (2 plateformes (Android/iOS) * 5 marques blanches * 3 environnements)
 
-On comprends alors qu'il va être difficile de synchroniser tous ces workspaces, avec leur configurations et leur assets qui diffèrent bien souvent d'une marque à l'autre.
+On comprends alors qu'il va être difficile de synchroniser tous ces workspaces, avec leurs configurations et leurs assets qui diffèrent bien souvent d'une marque à l'autre.
 
 ### Automatisation manuelle
 
@@ -211,7 +211,7 @@ On voit bien dans cet exemple que l'ajout de propriétés simples comme les vers
 
 Malheureusement, tout ne peux pas être fait. L'ajout de fichiers sources dans les workspaces n'est pas encore supporté dans ces outils.
 
-Ce qu'on ne voit pas dans les exemples précédents, c'est que pour ajouter le support des **PushNotification**, il faut ajouter un fichier dans le workspace XCode (et Android, mais c'est plus simple). Pour cela, il ne suffit pas de copier le fichier dans le bon répertoire... Non, non, non! Dans XCode chaque fichier est indexé dans le workspace (qui se fait automatiquement via l'ajout en drag & drop par exemple, difficile à automatiser). 
+Par exemple, pour le support des **PushNotification**, il faut ajouter un fichier dans chaque workspace. On copie alors ce fichier au bon endroit et le tour est joué. Pour Android, oui ! Sauf que pour XCode... ça ne marche pas comme ça. Chaque fichier est indexé dans le workspace (qui se fait automatiquement via l'ajout en drag & drop par exemple, difficile à automatiser). 
  
 Heureusement, il existe une libraire **nodejs** au nom bien choisi de `xcode` !    
 Malheureusement, la documentation est très pauvre, et il faudra progresser à taton pour arriver à ses fins...
@@ -246,11 +246,11 @@ xcodeProject.parse(function (err) {
 
 ## En conclusion <a class="anchor" name="bilan"></a>
 
-Capacitor nous apporte une facilité pour produire des applications hybrides, qui pourront être rendues disponibles via les "Stores" officiels, plus accessibles aux utilisateurs lambda. Et ce, avec une seule base de code (vraiment !) pour les cibles (web, android, iOS).
+Capacitor nous apporte une facilité pour produire des applications hybrides, qui pourront être rendues disponibles via les "Stores" officiels, plus accessible aux utilisateurs lambda. Et ce, avec une seule base de code (vraiment !) pour les cibles Web, Android et iOS.
 
 Cela ne nous dispense pas d'une connaissance des plateformes cibles. Il faudra faire attention au comportement des plugins selon les plateformes (firebase par défaut pour les push notifications Android, contre ajout d'un plugin pour iOS).
 
-Enfin les outils d'automatisations sont encore jeunes et un peu capricieux, mais nous accordent de reproduire la génération d'applications sans devoir persister nos workspaces. Il faudra cependant jongler avec les différents outils pour couvrir l'ensemble de la configuration. 
+Enfin les outils d'automatisation sont encore jeunes et un peu capricieux, il faudra jongler avec différents outils pour couvrir l'ensemble de la configuration. 
 
 ## Sources et liens utiles <a class="anchor" name="ressources"></a>
 
