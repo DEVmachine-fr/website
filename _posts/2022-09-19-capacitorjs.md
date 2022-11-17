@@ -5,6 +5,7 @@ categories: capacitor js angular ci cd
 ---
 
 Pour les besoins d'un de nos clients, nous devions réaliser une application disponible sur **iOS**, **Android** et en version **Web**. Celle-ci doit être déclinable en marque blanche, c'est à dire être personnalisable selon l'identité d'un client.
+
 Il s'agisssait d'une refonte d'un projet historique découpé en 2 parties : un projet web responsive et un projet hybride quasi-identique au projet web, mais transformé en application iOS/Android grâce à Apache Cordova.
 Pour cette refonte, nous avons choisi un concurrent du projet Apache Cordova, nommé CapacitorJS (ou plus sobrement **Capacitor**).
 
