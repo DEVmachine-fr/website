@@ -4,7 +4,6 @@ title: Introduction à la programmation fonctionnelle en JavaScript, partie I
 categories: js fp functional programming ramda node
 ---
 
-
 Dans cette série d'article, nous allons voir ce qu'est la programmation fonctionnelle, comment elle peut nous permettre d'écrire de meilleurs programmes et enfin comment en faire en JavaScript.
 
 # Introduction à la programmation fonctionnelle en JS, partie I
@@ -180,7 +179,7 @@ Les fonctions currifiées ainsi que les méthodes `map()`, `filter()` et `reduce
 
 Ces trois fonctions sont typiques de la programmation fonctionnelle et agissent sur les tableaux ou autres itérables.
 
-En JavaScript, le prototype de l'objet `Array` disposent de ces méthodes, mais nous allons utiliser les équivalents proposées par la bibliothèque **Ramda**.
+En JavaScript, le prototype de l'objet `Array` disposent de ces méthodes, mais nous allons utiliser les équivalents proposés par la bibliothèque **Ramda**.
 
 #### Map
 
