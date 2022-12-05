@@ -5,7 +5,7 @@ categories: js fp functional programming ramda node
 ---
 
 
-Dans la suite de cette série d'article, nous continuerons d'aborder la suite de concepts importants de la programmation fonctionnelle JavaScript.
+Dans la suite de cette série d'articles, nous continuerons d'aborder les concepts importants de la programmation fonctionnelle JavaScript.
 
 # Introduction à la programmation fonctionnelle en JS, partie II <!-- omit in toc -->
 
@@ -30,7 +30,7 @@ Cette semaine, nous continuons à aborder d'autres concepts importants de la pro
 
 ### Les structures algébriques
 
-En programmation fonctionnelle, les structures algébriques sont des outils permettant de résoudre des problèmes particuliers, de la même manière que le font les *designs patterns* en programmation orienté objet. 
+En programmation fonctionnelle, les structures algébriques sont des outils permettant de résoudre des problèmes particuliers, de la même manière que le font les *designs patterns* en programmation orientée objet. 
 Mais contrairement à ces derniers, leurs bases sont définies par les mathématiques et non par la seule observation : elles sont définies plus formellement et possèdent leurs lois propres.
 
 **En pratique, on peut considérer les structures algébriques comme des types conteneurs de données proposant des opérations permettant de la traiter en fonction du contexte.**
@@ -157,9 +157,7 @@ chain :: Monad m => m a ~> (a -> m b) -> m b
 Voici ce que cela donne :
 
 ```js
-const half = n => n % 2 !== 0 ? 
-  S.Nothing : 
-  S.Just(n / 2) 
+const half = n => (n % 2 !== 0) ? S.Nothing : S.Just(n / 2) 
 
 const compute = S.pipe([
   S.chain(half), // --> Just(10)
@@ -196,9 +194,7 @@ D'une manière un peu similaire à `Maybe` avec `Nothing`, une valeur de type `L
 Voici un exemple très semblable à celui exposé ci-dessus pour `Maybe` :
 
 ```js
-const half = n => n % 2 !== 0 ? 
-  S.Left(`${n} is not an even number`) :
-  S.Right(n / 2) 
+const half = (n => n % 2 !== 0) ? S.Left(`${n} is not an even number`) : S.Right(n / 2) 
 
 const compute = S.pipe([
   S.chain(half), // --> Right(10)
