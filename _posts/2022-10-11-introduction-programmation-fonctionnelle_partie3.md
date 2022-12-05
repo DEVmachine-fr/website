@@ -252,7 +252,7 @@ export const getDatabase = mongoUrl =>
 
 On utilise ici la fonction `go` de *fluture.js* ([documentation](https://github.com/fluture-js/Fluture#go)) : elle prend en paramètre une [fonction génératrice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*) qui va émettre des instances de `Future` via le mot-clé `yield`, ce qui va nous permettre de grouper plusieurs opérations asynchrones dans une seule `Future`.
 
-La valeur retournée dans cette fonction correspondra à celle encapsulée par la `Future` que va nous retournée `go()`.
+La valeur retournée dans cette fonction correspondra à celle encapsulée par la `Future` que va nous retourner `go()`.
 
 Ce concept reprend le principe des *Promises coroutines*, dont certaines bibliothèques fournissent une implémentation (comme [Bluebird](http://bluebirdjs.com/docs/api/promise.coroutine.html)).
 
