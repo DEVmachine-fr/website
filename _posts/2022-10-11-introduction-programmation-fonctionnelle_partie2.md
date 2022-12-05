@@ -22,7 +22,7 @@ Dans la suite de cette série d'article, nous continuerons d'aborder la suite de
 
 ## Précédemment ...
 
-Dans la première partie de cet article, nous avons introduit ce qu'était la programmation fonctionnelle et expliquer ses grands principes, puis nous avons abordé certains de ses concepts, comme la composition de fonctions et les fonctions d'ordre supérieur.
+[Dans la première partie de cet article](https://www.devmachine.fr/js/fp/functional/programming/ramda/node/2022/10/11/introduction-programmation-fonctionnelle_partie1.html), nous avons introduit ce qu'était la programmation fonctionnelle et expliquer ses grands principes, puis nous avons abordé certains de ses concepts, comme la composition de fonctions et les fonctions d'ordre supérieur.
 
 Cette semaine, nous continuons à aborder d'autres concepts importants de la programmation fonctionnelle : ***les structures et les types algébriques***.
 
