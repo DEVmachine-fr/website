@@ -9,8 +9,19 @@ Avec 19$ par mois par utilisateur, la facture peut très vite devenir salée. Ch
 Cet article vous présente l'installation de Gitlab sur un envrionnement Google Cloud Platform (GCP), la migration depuis gitlab.com et dresse le bilan de l'effort.
 
 - [Tutoriel d'installation](#tutoriel-installation)
+    - [Prérequis](#prerequis)
+    - [Que va-t-on installer ?](#installer-quoi)
+    - [Installation de Gitlab sur une VM](#installation-gitlab-sur-vm)
+    - [Configuration SMTP](#configuration-smtp)
+    - [Cloud SQL](#cloud-sql)
+    - [OAuth 2](#oauth)
+    - [Runners dans Kubernetes](#runners-dans-kubernetes)
+    - [Pense-bête](#pense-bete)
 - [Migration depuis gitlab.com](#migration-gitlab)
-    - [Titre](#lien-titre)
+    - [Migration des groupes](#migration-groupes)
+    - [Migration des projets](#migration-projets)
+    - [Création des utilisateurs](#creation-des-utilisateurs)
+    - [Archivage gitlab.com](#archivage)
 - [Bilan](#bilan)
 
 
@@ -101,7 +112,7 @@ Dans notre cas, ça donne ça :
 postgresql['enable'] = false
 postgres_exporter['enable'] = false
 
-# Fill in the connection details for database.yml
+# Cloud SQL configuration
 gitlab_rails['db_adapter'] = 'postgresql'
 gitlab_rails['db_encoding'] = 'utf8'
 gitlab_rails['db_host'] = '${ip-interne-instance-cloud-sql}'
@@ -110,44 +121,190 @@ gitlab_rails['db_username'] = 'gitlab'
 gitlab_rails['db_password'] = '${password-tres-tres-secure}'
 ```
 
-### Oauth
+### OAuth 2 <a class="anchor" name="oauth"></a>
 
-TODO
-Setup OAUTH (https://docs.gitlab.com/ee/integration/google.html)
+Pour activer l'OAuth avec votre compte Google, la documentation de Gitlab est très claire, vous pouvez la retrouver ici : https://docs.gitlab.com/ee/integration/google.html. Veillez à remplacer `http` par `https` dans les redirect URI fournis. 
 
+Pour simplifier la mise en place de l'OAuth 2, nous avons choisi de réserver cette authentification aux personnes de DEVmachine, en gardant le type d'utilisateur à interne. Ainsi les personnes externes à l'entreprise qui seront ajoutées au Gitlab DEVmachine ne bénéficieront pas de la possibilité de s'identifier par OAuth 2.
 
-### Gitlab runners dans Kubernetes
+Vous devrez retrouver ces paramètres dans votre configuration Gitlab après la mise en place de l'OAuth 2 :
 
-Setup runners (voir fichier helmfile, avec cloud storage pour le cache, création du cluster avec option spot)
+```
+gitlab_rails['omniauth_providers'] = [
+  {
+    name: "google_oauth2",
+    # label: "Provider name", # optional label for login button, defaults to "Google"
+    app_id: "YOUR_APP_ID",
+    app_secret: "YOUR_APP_SECRET",
+    args: { access_type: "offline", approval_prompt: "" }
+  }
+]
+```
 
+### Runners dans Kubernetes <a class="anchor" name="runners-dans-kubernetes"></a>
 
+Nous avons fait le choix de déployer les runners dans Kubernetes. Plutôt que de monter des VM puissantes qui tourneraient en permanence et qui limiteraient le nombre d'exécutions de job en parallèle par leurs ressources, Kubernetes permet d'adapter le nombre de noeuds en fonction du nombre de jobs. C'est à dire que si aucun job ne tourne à un instant T, le nombre de noeuds dédié aux runners tombe à 0 et n'engendre donc aucun coût. Si 8 jobs doivent tourner en parallèle, Kubernetes va adapter le nombre de noeuds nécessaires pour que ces jobs puissent tourner en parallèle.
+
+Toutefois, cette configuration nécessite d'avoir un runner qui tourne toujours dans le cluster Kubernetes. Ce runner est en charge de poller Gitlab pour dépiler les jobs en attente d'exécution et déclencher la création des pods d'exécution des jobs. Nous avons placé ce runner sur un noeud déjà existant, sur lequel d'autres outils sont déployés.
+
+Pour plus de détails sur le fonctionnement des runners dans Kubernetes, vous pouvez consulter la documentation officielle : https://docs.gitlab.com/runner/executors/kubernetes.html.
+
+Concrètement, nous avons déployé ces runners à l'aide du chart fourni par Gitlab : https://gitlab.com/gitlab-org/charts/gitlab-runner.
+
+Nous avons utilisé helmfile et voici le contenu du fichier de values associé au chart :
+
+```
+concurrent: 10
+
+gitlabUrl: https://gitlab.devmachine.fr
+
+rbac:
+  create: true
+
+runnerRegistrationToken: ${registration-token}
+
+runners:
+  config: |
+    [[runners]]
+      [runners.kubernetes]
+        namespace = "{{.Release.Namespace}}"
+        image = "alpine:latest"
+        privileged = true
+        poll_timeout = 600
+        cpu_request = "500m"
+        cpu_limit = "1"
+        memory_request = "2Gi"
+        memory_request_overwrite_max_allowed = "4Gi"
+        memory_limit = "4Gi"
+        memory_limit_overwrite_max_allowed = "6Gi"
+        service_cpu_request = "100m"
+        service_cpu_limit = "500m"
+        service_memory_request = "512Mi"
+        service_memory_limit = "1Gi"
+        helper_cpu_request = "100m"
+        helper_cpu_limit = "500m"
+        helper_memory_request = "512Mi"
+        helper_memory_limit = "1Gi"
+        [runners.kubernetes.node_selector]
+          type = "gitlab-runner"
+        [runners.kubernetes.node_tolerations]
+          "type=gitlab-runner" = "NoSchedule"
+        [runners.cache]
+          Type = "gcs"
+          Path = "gitlab-runner"
+          Shared = false
+          [runners.cache.gcs]
+            AccessID = "${dedicated-service-account}"
+            PrivateKey = "${service-account-private-key}"
+            BucketName = "dm-gitlab-runners-cache"
+
+```
+
+L'option `concurrent: 10` permet de limiter le nombre de jobs en parallèle que ce runner fera tourner à 10.
+
+Le `runnerRegistrationToken` correspond au token qui permet d'enregistrer ce runner aurpès de Gitlab, ce token est généré côté Gitlab.
+
+Comme vous pouvez le constater, les runners vont tourner sur un pool de noeuds spécifique de `type=gitlab-runner`, ce pool de noeuds a été créé avec l'option `spot` pour limiter les coûts des runners au maximum. Les VM spot sont des VM moins chères qui ne garantissent aucune disponibilité, vous trouverez plus de détails ici : https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms. Un point à noter est la possibilité d'augmenter les `memory_request` et `memory_limit` dans les fichiers `.gitlab.ci.yml`, respectivement jusqu'à 4Gi et 6Gi. Cela laisse la possibilité d'utiliser plus de mémoire pour des jobs nécessitant plus de mémoire, sans avoir à définir un nouveau runner accompagné d'un pool de noeuds plus puissants par exemple.
+
+Enfin le cache est configuré sur le bucket Cloud Storage `dm-gitlab-runners-cache`.
+
+### Pense-bête <a class="anchor" name="pense-bete"></a>
+
+J'ai noté ici quelques commandes utiles qui pourront vous aider pendant l'installation de votre instance Gitlab :
+
+* Pour suivre les logs des différents composants de gitlab
+
+```
+sudo gitlab-ctl tail
+```
+
+* Pour redémarrer gitlab après la modification du fichier de configuration
+
+```
+sudo gitlab-ctl reconfigure
+```
+
+* Pour tester la connexion sur le port d'une machine avec une ip
+
+```
+nc -vz ip port
+```
+
+* Pour réinitialiser le mot de passe de l'utilisateur root (mais vous n'en aurez pas besoin car vous l'aurez précieusement stocké quelque part 😇)
+
+```
+sudo gitlab-rake "gitlab:password:reset[root]"
+```
 
 ## Migration depuis gitlab.com <a class="anchor" name="migration-gitlab"></a>
 
-Migrate groups : https://docs.gitlab.com/ee/user/group/import/
--> attention, pas de migration des projets ni des utilisateurs, juste l'arbo des groupes/sous-groupes
-Ajout app côté gitlab.com (https://gitlab.devmachine.fr/help/integration/gitlab) https au lieu de http dans les redirect uris (nécessaire pour faire le transfert)
-Migrate projects : https://docs.gitlab.com/ee/user/project/import/gitlab_com.html
+Avant d'entamer la migration, il est nécessaire de permettre à votre instance Gitlab de se connecter à gitlab.com en suivant cette procédure : https://{your-gitlab-domain}/help/integration/gitlab. Veillez à remplacer `http` par `https` dans les redirect URI fournis.
 
-### Création des utilisateurs
+À la fin de la procédure, vous aurez la configuration suivante :
 
-Création de tous les utilisateurs + leur demander d'associer à leurs comptes GOOGLE
+```
+gitlab_rails['omniauth_providers'] = [
+  {
+    name: "gitlab",
+    # label: "Provider name", # optional label for login button, defaults to "GitLab.com"
+    app_id: "YOUR_APP_ID",
+    app_secret: "YOUR_APP_SECRET",
+    args: { scope: "read_user" } # optional: defaults to the scopes of the application
+  },
+  {
+    name: "google_oauth2",
+    # label: "Provider name", # optional label for login button, defaults to "Google"
+    app_id: "YOUR_APP_ID",
+    app_secret: "YOUR_APP_SECRET",
+    args: { access_type: "offline", approval_prompt: "" }
+  }
+]
+```
 
-### Pense-bêtes <a class="anchor" name="pense-betes"></a>
+### Migration des groupes <a class="anchor" name="migration-groupes"></a>
 
-tail
-reconfigure
-nv -vz ip port
-sudo gitlab-rake "gitlab:password:reset[root]"
+Pour commencer à migrer depuis gitlab.com, il faut commencer par migrer les groupes et les sous-groupes. Si tous vos projets sont dans le même groupe et qu'aucun sous-groupe n'existe, vous pouvez passer cette étape.
+
+Le processus de migration des groupes est décrit ici : https://docs.gitlab.com/ee/user/group/import/.
+
+[![Import des groupes](/assets/images/blog/gitlab/import-groups.png)](/assets/images/blog/gitlab/import-groups.png)
+
+Seuls les groupes et les sous-groupes seront migrés, les variables définies pour la CI/CD ne sont pas migrées, il faut les recréer manuellement. Les utilisateurs et les projets ne sont pas migrés.
+
+### Migration des projets <a class="anchor" name="migration-projets"></a>
+
+La migration des projets est assez fastidieuse si vous avez beaucoup de projets à migrer. La procédure est décrite ici : https://docs.gitlab.com/ee/user/project/import/gitlab_com.html. Il va falloir replacer chaque projet dans son groupe/sous-groupe de destination.
+
+[![Import des projets](/assets/images/blog/gitlab/import-projects.png)](/assets/images/blog/gitlab/import-projects.png)
+
+De la même façon que pour les groupes, les variables définies pour la CI/CD ne sont pas migrées et il faut les recréer manuellement.
+
+### Création des utilisateurs <a class="anchor" name="creation-des-utilisateurs"></a>
+
+Vous allez maintenant pouvoir créer les comptes des utilisateurs depuis l'interface d'administration de votre Gitlab. Il est également possible d'ouvrir l'inscription publique à votre gitlab. En tant qu'administrateur, vous pourrez choisir d'accepter ces nouveaux utilisateurs. 
+
+Les nouveaux utilisateurs recevront un mail pour valider la création de leur compte et configurer leur mot de passe.
+
+[![Import des projets](/assets/images/blog/gitlab/mail-creation.png)](/assets/images/blog/gitlab/mail-creation.png)
+
+### Archivage gitlab.com <a class="anchor" name="archivage"></a>
+
+Une fois l'opération de migration terminée, vous allez pouvoir archiver les projets côté gitlab.com pour que les utilisateurs ne poussent pas par inadvertance sur le mauvais gitlab.
+
+Je vous conseille également de fournir un script à tous les utilisateurs pour modifier le remote origin de tous leurs repositories.
+
+```
+TODO SCRIPT A AJOUTER
+```
 
 ## Bilan <a class="anchor" name="bilan"></a>
 
+Installer un gitlab auto-hebergé et migrer depuis gitlab.com n'est pas une mince affaire. Au delà du temps d'installation et de migration, il vous faudra sans doute passer du temps pour ajuster les ressources allouées à vos runners, monitorer et superviser les différents composants etc.
 
-Coûts : vm + kubernetes
-VS
-19$ par mois par user
+Le coût d'infrastructure n'est pas négligeable non plus, avec notamment les coûts de : la base de données Cloud SQL, la VM Compute Engine, le pool de noeuds des runners dans Kubernetes.
 
-Avantages/Inconvénients
-+ autant d'users qu'on le souhaite (besoin d'upgrader la VM si besoin)
-- upgrade manuel (semble bien géré dans omnibus)
-- maintenance à assurer
+De plus, Gitlab publie régulièrement des versions correctives qui nécessitent la mise à jour de Gitlab avec un arrêt de service.
+
+Avoir un gitlab auto-hebergé présente son lot d'inconvénients. Cependant, une fois installée et configurée correctement, vous êtes libres d'ajouter autant d'utilisateurs que vous le souhaitez, en accordant les ressources de l'infrastructure à ce nombre d'utilisateurs bien entendu, sans avoir à payer 19$ par mois pour chaque nouvel utilisateur.
+
+En terme de coûts, l'installation d'un gitlab auto-hebergé ne semble être rentable qu'à partir d'un certain nombre d'utilisateurs. Si vous avez moins de 20 utilisateurs, il est sans doute préférable de rester sur gitlab.com. Les coûts d'infrastructure et le temps investi seront à peu près équivalents sur le moyen terme. Toutefois, si vous n'utilisez pas la CI de Gitlab, il existe des alternatives moins onéreuses pour héberger votre code et gérer vos merge/pull requests.
