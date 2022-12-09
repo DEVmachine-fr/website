@@ -35,7 +35,7 @@ Je vais donc vous présenter un petit exemple d'API basique écrite avec **Node.
 
 ### Présentation rapide de l'API
 
-Cet API de démonstration est volontairement simple et ne propose qu'une seule route,  `POST /import`, qui permet d'envoyer un fichier CSV contenant des informations sur différents modèles de voitures.
+Cette API de démonstration est volontairement simple et ne propose qu'une seule route,  `POST /import`, qui permet d'envoyer un fichier CSV contenant des informations sur différents modèles de voitures.
 
 Voici un exemple de fichier de données que l'API peut consommer :
 
