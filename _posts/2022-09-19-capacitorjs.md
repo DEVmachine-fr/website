@@ -44,7 +44,7 @@ Ces 2 dernières commandes vont créer les workspaces natifs de chaque environne
 
 A partir de cette étape, Capacitor ne nous fournit plus d'outil pour builder ou déployer les applications natives. **Capacitor ne nous dispense pas d'avoir des connaissances de ces différents environnements.** Il faudra recourir à des modifications dans les fichiers `AndroidManifest.xml` ou encore `Info.plist` pour modifier le comportement des applications. Capacitor encourage à utiliser l'outillage dédié de chaque plateforme.
 
-La CLI nous permet néanmoins de lancer les applications en local (en ayant au préalable configuré les environnments de développement desdites plateforme).
+La CLI nous permet néanmoins de lancer les applications en local (en ayant au préalable configuré les environnements de développement desdites plateformes).
 
 ```bash
 npx cap run android # Test de l'apk sur un device virtuel ou physique
@@ -78,8 +78,8 @@ public transferNotification(schema: PushNotificationSchema): void {
     LocalNotifications.schedule({
       notifications: [
         {
-          body: schema.body!,
-          title: schema.title!,
+          body: schema.body,
+          title: schema.title,
           id: 0,
           schedule: {
             at: new Date(notifTime),
@@ -92,7 +92,7 @@ public transferNotification(schema: PushNotificationSchema): void {
   }
 ```
 
-Capacitor permet également de développer ses propres plugins et fournit pour cela un outillage dans chaque environnement pour faire **le pont** entre la plateforme retenue et les informations transitant en javascript.
+Capacitor permet également de développer ses propres plugins et fournit pour cela un outillage dans chaque environnement pour faire **le pont** entre la plateforme retenue et les informations transitant en JavaScript.
 
 Le dépôt [capacitor-community](https://github.com/capacitor-community) référence un grand nombre de plugins non officiels et non maintenus par l'équipe Capacitor. 
 
@@ -104,7 +104,7 @@ Jusqu'ici, nous avons vu que l'on peut très facilement gérer une application e
 
 On comprends alors qu'il va être difficile de synchroniser tous ces workspaces, avec leurs configurations et leurs assets qui diffèrent bien souvent d'une marque à l'autre.
 
-### Automatisation manuelle
+### Automatisation par script
 
 La première étape assez naturelle a été de reproduire les étapes citées plus haut par des scripts bashs. Ce qui ressemblerait à l'ensemble de ces commandes (mises bout à bout): 
 
