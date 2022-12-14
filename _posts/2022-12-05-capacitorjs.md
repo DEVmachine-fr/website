@@ -1,12 +1,12 @@
 ---
 author: Marc
-title: Application multi plateformes et marque blanche avec Capacitor
+title: Application multi-plateformes et marque blanche avec Capacitor
 categories: capacitor js angular ci cd
 ---
 
-Pour les besoins d'un de nos clients, nous devions réaliser une application disponible sur **iOS**, **Android** et en version **Web**. Celle-ci doit être déclinable en marque blanche, c'est à dire être personnalisable selon l'identité d'un client.
+Pour les besoins d'un de nos clients, nous devions réaliser une application disponible sur **iOS**, **Android** et en version **Web**. Elle doit être déclinable en marque blanche, c'est à dire être personnalisable selon l'identité des clients (de notre client), et déployée sur plusieurs environnements.
 
-Il s'agisssait d'une refonte d'un projet historique découpé en 2 parties : un projet web responsive et un projet hybride quasi-identique au projet web, mais transformé en application iOS/Android grâce à Apache Cordova.
+Il s'agissait de la refonte d'une plateforme composée de 2 briques : une application web responsive et une application hybride quasi-identique au projet web, mais transformé en application iOS/Android grâce à Apache Cordova.
 Pour cette refonte, nous avons choisi un concurrent du projet Apache Cordova, nommé CapacitorJS (ou plus sobrement **Capacitor**).
 
 - [Capacitor en bref](#capacitor)
@@ -100,9 +100,9 @@ Auto-proclamé successeur du projet Apache Cordova, Capacitor est de fait compat
 
 ## Marque blanche et automatisation <a class="anchor" name="automatisation"></a>
 
-Jusqu'ici, nous avons vu que l'on peut très facilement gérer une application et synchroniser les workspaces natifs. Mais rappelez-vous, il nous faut une application marque blanche (plus de 5 dans notre cas), et de plus testable sur plusieurs environnements (dev, recette et prod par exemple). On dénombre alors 30 livrables ! (2 plateformes (Android/iOS) * 5 marques blanches * 3 environnements)
+Jusqu'ici, nous avons vu que l'on peut très facilement gérer une application et synchroniser les workspaces natifs. Mais rappelez-vous, il nous faut une application marque blanche (plus de 5 dans notre cas), et de plus testable sur plusieurs environnements (dev, recette et prod par exemple). On dénombre alors au moins 30 livrables ! (2 plateformes (Android/iOS) x 5 marques blanches x 3 environnements)
 
-On comprends alors qu'il va être difficile de synchroniser tous ces workspaces, avec leurs configurations et leurs assets qui diffèrent bien souvent d'une marque à l'autre.
+On comprend alors qu'il va être difficile de synchroniser tous ces workspaces, avec leurs configurations et leurs assets qui diffèrent bien souvent d'une marque à l'autre.
 
 ### Automatisation par script
 
@@ -210,12 +210,12 @@ On voit bien dans cet exemple que l'ajout de propriétés simples comme les vers
 
 ### Cas particuliers
 
-Malheureusement, tout ne peux pas être fait. L'ajout de fichiers sources dans les workspaces n'est pas encore supporté dans ces outils.
+Malheureusement, tout ne peut pas être fait. L'ajout de fichiers sources dans les workspaces n'est pas encore supporté dans ces outils.
 
 Par exemple, pour le support des **PushNotification**, il faut ajouter un fichier dans chaque workspace. On copie alors ce fichier au bon endroit et le tour est joué. Pour Android, oui ! Sauf que pour XCode... ça ne marche pas comme ça. Chaque fichier est indexé dans le workspace (qui se fait automatiquement via l'ajout en drag & drop par exemple, difficile à automatiser). 
  
 Heureusement, il existe une libraire **nodejs** au nom bien choisi de `xcode` !    
-Malheureusement, la documentation est très pauvre, et il faudra progresser à taton pour arriver à ses fins...
+Malheureusement, la documentation est très pauvre, et il faudra progresser à tâtons pour arriver à ses fins...
 
  ```javascript
  let xcode = require('xcode'),
@@ -251,7 +251,7 @@ Capacitor nous apporte une facilité pour produire des applications hybrides, qu
 
 Cela ne nous dispense pas d'une connaissance des plateformes cibles. Il faudra faire attention au comportement des plugins selon les plateformes (firebase par défaut pour les push notifications Android, contre ajout d'un plugin pour iOS).
 
-Enfin les outils d'automatisation sont encore jeunes et un peu capricieux, il faudra jongler avec différents outils pour couvrir l'ensemble de la configuration. 
+Enfin, les outils d'automatisation sont encore jeunes et un peu capricieux, il faudra jongler avec différents outils pour couvrir l'ensemble de la configuration. 
 
 ## Sources et liens utiles <a class="anchor" name="ressources"></a>
 
