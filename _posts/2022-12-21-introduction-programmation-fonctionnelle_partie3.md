@@ -25,7 +25,7 @@ Dans la dernière partie de cette série d'article, nous allons enfin pouvoir il
 
 ## Précédemment ...
 
-Dans la première et la seconde partie de cet article, nous avons pu présenter et aborder une grande partie des concepts de la programmation fonctionnelle.
+Dans la [première](https://www.devmachine.fr/js/fp/functional/programming/ramda/node/2022/10/11/introduction-programmation-fonctionnelle_partie1.html) et la [seconde partie](https://www.devmachine.fr/js/fp/functional/programming/ramda/node/2022/12/09/introduction-programmation-fonctionnelle_partie2.html) de cet article, nous avons pu présenter et aborder une grande partie des concepts de la programmation fonctionnelle.
 
 Pour terminer cet article, il est temps pour moi de vous montrer comment ces concepts peuvent être appliqués à travers un exemple simple d'API.
 
