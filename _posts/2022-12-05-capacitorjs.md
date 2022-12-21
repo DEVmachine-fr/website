@@ -4,7 +4,7 @@ title: Application multi-plateformes et marque blanche avec Capacitor
 categories: capacitor js angular ci cd
 ---
 
-Pour les besoins d'un de nos clients, nous devions réaliser une application disponible sur **iOS**, **Android** et en version **Web**. Elle doit être déclinable en marque blanche, c'est à dire être personnalisable selon l'identité des clients (de notre client), et déployée sur plusieurs environnements.
+Pour les besoins d'un de nos clients, nous devions réaliser une application disponible sur **iOS**, **Android** et en version **Web**. Elle devait être déclinable en marque blanche, c'est à dire être personnalisable selon l'identité des clients (de notre client), et déployée sur plusieurs environnements.
 
 Il s'agissait de la refonte d'une plateforme composée de 2 briques : une application web responsive et une application hybride quasi-identique au projet web, mais transformé en application iOS/Android grâce à Apache Cordova.
 Pour cette refonte, nous avons choisi un concurrent du projet Apache Cordova, nommé CapacitorJS (ou plus sobrement **Capacitor**).
