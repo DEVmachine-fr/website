@@ -2,7 +2,6 @@
 author: Sébastien
 title: Maintenance corrective versus maintenance prédictive
 categories: blog
-published: false
 tags: mco maintenance préventive prédictive corrective budget
 ---
 
