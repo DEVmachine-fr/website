@@ -1,6 +1,6 @@
 ---
 author: Sébastien
-title: Maintenance corrective versus maintenance prédictive
+title: Quels sont les enjeux d'une bonne maintenance applicative ?
 categories: blog
 tags: mco maintenance préventive prédictive corrective budget
 ---
