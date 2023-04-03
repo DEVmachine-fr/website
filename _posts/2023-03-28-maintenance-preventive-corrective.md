@@ -152,4 +152,4 @@ Cette décision entraine souvent beaucoup de frilosité car il faut engager beau
 
 ## Notes
 
-[1] - [https://fr.wikipedia.org/wiki/%C3%89l%C3%A9vation_des_privil%C3%A8ges]
+1. [1] - [https://fr.wikipedia.org/wiki/%C3%89l%C3%A9vation_des_privil%C3%A8ges](https://fr.wikipedia.org/wiki/%C3%89l%C3%A9vation_des_privil%C3%A8ges)
