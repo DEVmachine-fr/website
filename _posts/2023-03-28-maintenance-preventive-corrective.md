@@ -7,8 +7,9 @@ tags: mco maintenance préventive prédictive corrective budget
 
 
 La maintenance des applications informatiques consiste à assurer la disponibilité du logiciel.
-Nous pouvons intervenir avant qu'un dysfonctionnement intervienne : il s'agit de maintenance préventive.
+La maintenance peut être effectuée à différents stades de l'application : avant ou après l'apparition d'un problème.
 
+Nous pouvons intervenir avant qu'un dysfonctionnement intervienne : il s'agit de maintenance préventive.
 Nous pouvons également intervenir après qu'un dysfonctionnement intervienne: il s'agit de maintenance corrective.
 
 Les dysfonctionnements évoqués dans cet article sont ceux qui n'ont pas été détectés dans la phase de tests/recette de l'application avant sa mise en production. 
