@@ -45,8 +45,7 @@ Cela peut concerner le remplacement d'une version d'une ou plusieurs dépendance
 Cela peut concerner du code spécifique à l'application qui est lié à une mauvaise pratique ou un mauvais usage.
 Par exemple, l'absence de contrôle des données d'entrée d'un webservice peut entrainer une alteration non désirée des données dans la base de données.
 
-_Le cas le plus courant d'un manque de contrôle est l'[élévation de privilège]._ (https://fr.wikipedia.org/wiki/%C3%89l%C3%A9vation_des_privil%C3%A8ges)
-
+_Le cas le plus courant d'un manque de contrôle est l'élévation de privilège._ [1] 
 ## Prévenir avec la maintenance préventive
 
 Comme son nom l'indique, la maintenance préventive intervient **_avant_** qu'un problème ne surgisse.
@@ -151,3 +150,6 @@ Dans le calcul de la maintenance, ces couts indirects sont rarement pris en comp
 La limite extreme est, qu'au bout d'un moment, la décision soit prise de refaire complétement l'application car elle n'est plus maintenable ou que le cout de maintenance soit trop élevé. 
 Cette décision entraine souvent beaucoup de frilosité car il faut engager beaucoup d'argent pour cette refonte.
 
+## Notes
+
+[1] - [https://fr.wikipedia.org/wiki/%C3%89l%C3%A9vation_des_privil%C3%A8ges]
