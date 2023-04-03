@@ -16,7 +16,20 @@ Les dysfonctionnements évoqués dans cet article sont ceux qui n'ont pas été 
 Je prends comme hypothèse que l'application a été testée avant sa mise en production.
 Même si la recette est bien faite, il est toujours possible qu'un dysfonctionnement intervienne en production.
 
-# En quoi consiste la maintenance ?
+<!-- TOC -->
+  * [En quoi consiste la maintenance ?](#en-quoi-consiste-la-maintenance-)
+  * [Prévenir avec la maintenance préventive](#prévenir-avec-la-maintenance-préventive)
+    * [Se tenir informé ...](#se-tenir-informé-)
+    * [... et prendre la bonne décision](#-et-prendre-la-bonne-décision)
+    * [Quel est l'intérêt d'une maintenance préventive ?](#quel-est-lintérêt-d--une-maintenance-préventive-)
+  * [Guérir avec la maintenance corrective](#guérir-avec-la-maintenance-corrective)
+    * [Quand sait-on qu'il y a un problème ?](#quand-sait-on-quil-y-a-un-problème-)
+  * [Ce qu'il faut en retenir](#ce-quil-faut-en-retenir)
+    * [L'absence de prévention, c'est accumuler de la dette...](#labsence-de-prévention-cest-accumuler-de-la-dette)
+    * [...Qu'il faudra bien payer un jour](#quil-faudra-bien-payer-un-jour)
+<!-- TOC -->
+
+## En quoi consiste la maintenance ?
 
 La maintenance consiste à modifier une partie du code du logiciel pour en corriger les dysfonctionnements ou en améliorer son efficacité.
 Cette partie du code peut être dans une dépendance (ou bibliothèque) externe.
@@ -37,13 +50,13 @@ Par exemple, l'absence de contrôle des données d'entrée d'un webservice peut 
 
 _Le cas le plus courant d'un manque de contrôle est l'élévation de privilège._ (https://fr.wikipedia.org/wiki/%C3%89l%C3%A9vation_des_privil%C3%A8ges)
 
-# Prévenir avec la maintenance préventive
+## Prévenir avec la maintenance préventive
 
 Comme son nom l'indique, la maintenance préventive intervient **_avant_** qu'un problème ne surgisse.
 
 Il s'agit d'anticiper d'éventuels dysfonctionnements en remplaçant certains composants du logiciel.
 
-## Se tenir informé ...
+### Se tenir informé ...
 
 Pour anticiper d'éventuels problèmes, il est important de se tenir informé.
 Pour cela, il est important de faire de la veille. 
@@ -52,7 +65,7 @@ On peut également s'abonner à différentes sources d'informations afin d'être
 
 <img alt="Configuration des notifications sur un projet github" height="300" src="/assets/images/maintenance/github_notifications.png" title="Configuration des notifications sur un projet github"/>
 
-## ... et prendre la bonne décision
+### ... et prendre la bonne décision
 
 Lorsque nous sommes informés d'un dysfonctionnement d'un composant du logiciel, il ne faut pas forcément se précipiter.
 En effet, une mise à jour de composant peux corriger un problème mais peut également entrainer un autre dysfonctionnement.
@@ -62,7 +75,7 @@ Il est donc important d'évaluer les risques avant de faire le changement.
 De plus, selon le type de mise à jour, les impacts sur le code existant peut être plus ou moins important.
 Il faut donc estimer les impacts de la mise à jour et le temps à passer pour faire cette mise à jour.
 
-## Quel est l'intérêt d'une maintenance préventive ?
+### Quel est l'intérêt d'une maintenance préventive ?
 
 Il est important de consacrer du temps pour la maintenance préventive. 
 Du temps pour faire la veille et évaluer les risques et du temps pour faire les modifications nécessaires.
@@ -73,13 +86,13 @@ Car lorsque les problèmes arrivent, les conséquences peuvent être importantes
 Pour faire une analogie : la maintenance préventive, c'est un peu comme le monde automobile. 
 En effet, si l'entretien de votre voiture est fait régulièrement vous éviterez le plus possible les gros problèmes et les conséquences qui en découlent.
 
-# Guérir avec la maintenance corrective
+## Guérir avec la maintenance corrective
 
 La maintenance corrective intervient **_après_** qu'un problème soit détecté.
 
 Encore faut-il que le problème soit détecté.
 
-## Quand sait-on qu'il y a un problème ?
+### Quand sait-on qu'il y a un problème ?
 
 Il peut y avoir plusieurs types de problème. Les problèmes visibles et les problèmes invisibles.
 La majorité des problèmes sont détectés par une action directe. 
@@ -101,7 +114,7 @@ Cela peut passer par plusieurs mécanismes :
 - ... 
 
 
-# Ce qu'il faut en retenir
+## Ce qu'il faut en retenir
 
 La majorité du temps, pour des décideurs, la maintenance informatique n'est pas un sujet prioritaire.
 C'est un sujet difficilement quantifiable.
@@ -111,7 +124,7 @@ C'est malheureusement une vision à court terme.
 
 L'absence de maintenance préventive entraine des conséquences techniques et financières à moyen et long terme.
 
-## L'absence de prévention, c'est accumuler de la dette...
+### L'absence de prévention, c'est accumuler de la dette...
 
 A moyen terme, si on ne met pas à jour le code ou les dépendances régulièrement, le projet va accumuler une dette technique.
 Avec l'accumulation de la dette technique, il faut prendre en compte le cout du maintien des compétences sur le projet.
@@ -128,7 +141,7 @@ Ex: Implémenter des requêtes en base de données réalisées avec l'API Criter
 En effet, spring data permet (dans la grande majorité des cas) de ne pas implementer les requêtes mais seulement en définir la signature. 
 C'est donc un gain en productivité pour les futures évolutions.
 
-## ...Qu'il faudra bien payer un jour
+### ...Qu'il faudra bien payer un jour
 
 La maintenance corrective est une obligation puisqu'il s'agit de traiter les problèmes qui sont présent.
 Mais ne faire que de la maintenance corrective n'est pas suffisant pour garantir une longévité efficace à une application.
