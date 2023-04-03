@@ -2,7 +2,7 @@
 author: Sébastien
 title: Quels sont les enjeux d'une maintenance applicative ?
 categories: blog
-tags: mco maintenance préventive prédictive corrective budget
+tags: mco maintenance préventive corrective budget
 ---
 
 
