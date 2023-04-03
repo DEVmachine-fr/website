@@ -45,7 +45,7 @@ Cela peut concerner le remplacement d'une version d'une ou plusieurs dépendance
 Cela peut concerner du code spécifique à l'application qui est lié à une mauvaise pratique ou un mauvais usage.
 Par exemple, l'absence de contrôle des données d'entrée d'un webservice peut entrainer une alteration non désirée des données dans la base de données.
 
-_Le cas le plus courant d'un manque de contrôle est l'élévation de privilège._ (https://fr.wikipedia.org/wiki/%C3%89l%C3%A9vation_des_privil%C3%A8ges)
+_Le cas le plus courant d'un manque de contrôle est l'élévation de privilège._ [Elévation de privilèges](https://fr.wikipedia.org/wiki/%C3%89l%C3%A9vation_des_privil%C3%A8ges)
 
 ## Prévenir avec la maintenance préventive
 
