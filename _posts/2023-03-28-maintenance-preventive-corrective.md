@@ -50,7 +50,7 @@ Pour cela, il est important de faire de la veille.
 Cette veille peut être manuelle par de lecture de sites spécialisés.
 On peut également s'abonner à différentes sources d'informations afin d'être notifié (par mail, flux RSS, ...) lorsqu'un problème est rencontré.
 
-<img alt="Configuration des notifications sur un projet github" height="300" src="../assets/images/maintenance/github_notifications.png" title="Configuration des notifications sur un projet github"/>
+<img alt="Configuration des notifications sur un projet github" height="300" src="/assets/images/maintenance/github_notifications.png" title="Configuration des notifications sur un projet github"/>
 
 ## ... et prendre la bonne décision
 
