@@ -31,7 +31,7 @@ Même si la recette est bien faite, il est toujours possible qu'un dysfonctionne
 La maintenance consiste à modifier une partie du code du logiciel pour en corriger les dysfonctionnements ou en améliorer son efficacité.
 Cette partie du code peut être dans une dépendance (ou bibliothèque) externe.
 Cela peut également venir du langage d'exécution en lui-même.
-Pour regrouper ces 3 notions je parlerais ici de _composant_.
+Pour regrouper ces 3 notions je parlerai ici de _composant_.
 
 Il existe plusieurs types de maintenance que nous allons voir dans la suite de cet article.
 Chaque type de maintenance à son lot d'avantages et d'inconvénients.
@@ -64,11 +64,11 @@ On peut également s'abonner à différentes sources d'informations afin d'être
 ### ... et prendre la bonne décision
 
 Lorsque nous sommes informés d'un dysfonctionnement d'un composant du logiciel, il ne faut pas forcément se précipiter.
-En effet, une mise à jour de composant peux corriger un problème mais peut également entrainer un autre dysfonctionnement.
+En effet, une mise à jour de composant peut corriger un problème mais peut également entraîner un autre dysfonctionnement.
 
 Il est donc important d'évaluer les risques avant de faire le changement.
 
-De plus, selon le type de mise à jour, les impacts sur le code existant peut être plus ou moins important.
+De plus, selon le type de mise à jour, les impacts sur le code existant peuvent être plus ou moins importants.
 Il faut donc estimer les impacts de la mise à jour et le temps à passer pour faire cette mise à jour.
 
 ### Quel est l'intérêt d'une maintenance préventive ?
@@ -93,9 +93,9 @@ Encore faut-il que le problème soit détecté.
 Il peut y avoir plusieurs types de problème. Les problèmes visibles et les problèmes invisibles.
 La majorité des problèmes sont détectés par une action directe. 
 Cela peut être une action utilisateur ou un appel de webservice.
-Dans ce cas la detection est assez rapide, voir immédiate.
+Dans ce cas la détection est assez rapide, voire immédiate.
 
-Mais il peut aussi y avoir des actions plus discrete qui ne permettent pas de détecter rapidement le dysfonctionnement.
+Mais il peut aussi y avoir des actions plus discrètes qui ne permettent pas de détecter rapidement le dysfonctionnement.
 Il peut s'agir d'un batch ou d'une action automatique qui met à jour la base de données mais avec un mauvais comportement.
 Il peut s'agir d'une suppression de données (totale ou partielle) ou d'une modification de données non désirée.
 
@@ -115,7 +115,7 @@ Cela peut passer par plusieurs mécanismes :
 La majorité du temps, pour des décideurs, la maintenance informatique n'est pas un sujet prioritaire.
 C'est un sujet difficilement quantifiable.
 
-Il est donc plus facile de prévoir une enveloppe budgetaire pour gérer les problèmes quand ils arriveront (maintenance corrective) que de prévoir un budget pour prévenir les éventuels futurs problèmes (maintenance préventive).
+Il est donc plus facile de prévoir une enveloppe budgétaire pour gérer les problèmes quand ils arriveront (maintenance corrective) que de prévoir un budget pour prévenir les éventuels futurs problèmes (maintenance préventive).
 C'est malheureusement une vision à court terme.
 
 L'absence de maintenance préventive entraine des conséquences techniques et financières à moyen et long terme.
@@ -126,15 +126,15 @@ A moyen terme, si on ne met pas à jour le code ou les dépendances régulièrem
 Avec l'accumulation de la dette technique, il faut prendre en compte le cout du maintien des compétences sur le projet.
 Ce cout n'est souvent pas pris en compte dans le budget de maintenance des applications.
 
-Ex: Aujourd'hui, maintenir un projet en JSF (pour ceux qui connaissent :) ) coutera plus cher à maintenir qu'un projet en SpringBoot angular. 
-Car il faut trouver des compétences capables d'intervenir sur un projet en JSF. Ces compétences sont rares sur le marché. 
+Ex: Aujourd'hui, maintenir un projet en JSF (pour ceux qui connaissent :) ) coûtera plus cher à maintenir qu'un projet en SpringBoot/Angular. 
+Car il faut déjà trouver des compétences capables d'intervenir sur un projet en JSF, ces compétences sont rares sur le marché. 
 
 L'évolution des frameworks modernes permet, de plus en plus, de s'abstraire des couches techniques pour se concentrer sur le métier.
 Ils permettent donc de gagner du temps lors du développement des fonctionnalités.
 Ce gain de temps n'est pas réalisable pour des projets qui ne sont pas maintenus régulièrement.
 
-Ex: Implémenter des requêtes en base de données réalisées avec l'API Criteria prendra plus de temps qu'avec un framework de type spring data.
-En effet, spring data permet (dans la grande majorité des cas) de ne pas implementer les requêtes mais seulement en définir la signature. 
+Ex: implémenter des requêtes en base de données réalisées avec l'API Criteria prendra plus de temps qu'avec un framework de type Spring Data.
+En effet, Spring Data permet (dans la grande majorité des cas) de ne pas implementer les requêtes mais seulement en définir la signature. 
 C'est donc un gain en productivité pour les futures évolutions.
 
 ### ...Qu'il faudra bien payer un jour
@@ -144,11 +144,11 @@ Mais ne faire que de la maintenance corrective n'est pas suffisant pour garantir
 
 Il est important de faire aussi de la maintenance préventive afin de réduire les risques d'avoir des problèmes en production.
 
-L'absence de maintenance régulière, va entrainer des couts indirects (de maintien des compétences, de temps de correction, ...).
+L'absence de maintenance régulière, va entrainer des coûts indirects (de maintien des compétences, de temps de correction, ...).
 Dans le calcul de la maintenance, ces couts indirects sont rarement pris en compte, par les décideurs, dans le cout global d'une application.
 
-La limite extreme est, qu'au bout d'un moment, la décision soit prise de refaire complétement l'application car elle n'est plus maintenable ou que le cout de maintenance soit trop élevé. 
-Cette décision entraine souvent beaucoup de frilosité car il faut engager beaucoup d'argent pour cette refonte.
+La limite extrême est, qu'au bout d'un moment, la décision soit prise de refaire complétement l'application car elle n'est plus maintenable ou que le coût de maintenance est trop élevé. 
+Cette décision entraîne souvent beaucoup de frilosité car il faut engager un budget significatif pour cette refonte: **maintenir c'est aussi investir**!
 
 ## Notes
 
