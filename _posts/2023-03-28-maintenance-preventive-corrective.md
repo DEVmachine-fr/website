@@ -101,7 +101,7 @@ Il peut s'agir d'une suppression de données (totale ou partielle) ou d'une modi
 Selon la nature du dysfonctionnement, il peut y avoir un certain délai entre le dysfonctionnement et sa détection.
 Il peut y avoir un délai encore plus grand entre le moment où le problème est détecté et sa correction.
 
-Une fois le dysfonctionnement détecté, il faut que l'information circule afin qu'elle soit transmise à l'équipe de développement
+Une fois le dysfonctionnement détecté, il faut que l'information circule afin qu'elle soit transmise à l'équipe de développement.
 Cela peut passer par plusieurs mécanismes :
 - un outil de gestion de ticket (JIRA, Redmine, ...)
 - le gestionnaire de ticket du projet (github, gitlab)
