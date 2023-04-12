@@ -69,7 +69,7 @@ En effet, une mise à jour de composant peut corriger un problème mais peut ég
 Il est donc important d'évaluer les risques avant de faire le changement.
 
 De plus, selon le type de mise à jour, les impacts sur le code existant peuvent être plus ou moins importants.
-Il faut donc estimer les impacts de la mise à jour et le temps à passer pour faire cette mise à jour.
+Il faut donc les estimer ainsi que le temps à passer pour faire cette mise à jour.
 
 ### Quel est l'intérêt d'une maintenance préventive ?
 
