@@ -13,6 +13,8 @@ Les dysfonctionnements évoqués dans cet article sont ceux qui n'ont pas été 
 Je prends comme hypothèse que l'application a été testée avant sa mise en production.
 Même si la recette est bien faite, il est toujours possible qu'un dysfonctionnement intervienne en production.
 
+Cet article est destiné en premier lieu aux managers ou décisionnaires qui ont une connaissance sommaire des enjeux du développement logiciel.
+
 <!-- TOC -->
   * [En quoi consiste la maintenance ?](#en-quoi-consiste-la-maintenance-)
   * [Prévenir avec la maintenance préventive](#prévenir-avec-la-maintenance-préventive)
@@ -45,7 +47,11 @@ Cela peut concerner le remplacement d'une version d'une ou plusieurs dépendance
 Cela peut concerner du code spécifique à l'application qui est lié à une mauvaise pratique ou un mauvais usage.
 Par exemple, l'absence de contrôle des données d'entrée d'un webservice peut entrainer une alteration non désirée des données dans la base de données.
 
+Cette absence de contrôle peut entrainer une alteration involontaire ou volontaire.
+Cela peut venir d'erreurs fonctionnelles telles qu'une inversion sur la date de début et de fin d'un intervalle.
+Cela peut également venir d'un manque (ou d'une faille)  de sécurité.
 _Le cas le plus courant d'un manque de contrôle est l'élévation de privilège._ [1] 
+
 ## Prévenir avec la maintenance préventive
 
 Comme son nom l'indique, la maintenance préventive intervient **_avant_** qu'un problème ne surgisse.
