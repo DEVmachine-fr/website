@@ -132,7 +132,7 @@ L'évolution des frameworks modernes permet, de plus en plus, de s'abstraire des
 Ils permettent donc de gagner du temps lors du développement des fonctionnalités.
 Ce gain de temps n'est pas réalisable pour des projets qui ne sont pas maintenus régulièrement.
 
-Ex: implémenter des requêtes en base de données réalisées avec l'API Criteria prendra plus de temps qu'avec un framework de type Spring Data.
+Par exemple, implémenter des requêtes en base de données réalisées avec l'API Criteria prendra plus de temps qu'avec un framework de type Spring Data.
 En effet, Spring Data permet (dans la grande majorité des cas) de ne pas implementer les requêtes mais seulement en définir la signature. 
 C'est donc un gain en productivité pour les futures évolutions.
 
