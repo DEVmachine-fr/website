@@ -150,7 +150,7 @@ Mais ne faire que de la maintenance corrective n'est pas suffisant pour garantir
 Il est important de faire aussi de la maintenance préventive afin de réduire les risques d'avoir des problèmes en production.
 
 L'absence de maintenance régulière, va entrainer des coûts indirects (de maintien des compétences, de temps de correction, ...).
-Dans le calcul de la maintenance, ces couts indirects sont rarement pris en compte, par les décideurs, dans le cout global d'une application.
+Dans le calcul de la maintenance, ces couts indirects sont rarement pris en compte, par les décideurs, dans le coût global d'une application.
 
 La limite extrême est, qu'au bout d'un moment, la décision soit prise de refaire complétement l'application car elle n'est plus maintenable ou que le coût de maintenance est trop élevé. 
 Cette décision entraîne souvent beaucoup de frilosité car il faut engager un budget significatif pour cette refonte: **maintenir c'est aussi investir**!
