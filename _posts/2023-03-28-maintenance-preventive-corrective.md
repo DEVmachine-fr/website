@@ -128,7 +128,7 @@ L'absence de maintenance préventive entraine des conséquences techniques et fi
 ### L'absence de prévention, c'est accumuler de la dette...
 
 A moyen terme, si on ne met pas à jour le code ou les dépendances régulièrement, le projet va accumuler une dette technique.
-Avec l'accumulation de la dette technique, il faut prendre en compte le cout du maintien des compétences sur le projet.
+Avec l'accumulation de la dette technique, il faut prendre en compte le coût du maintien des compétences sur le projet.
 Ce cout n'est souvent pas pris en compte dans le budget de maintenance des applications.
 
 Ex: Aujourd'hui, maintenir un projet en JSF (pour ceux qui connaissent :) ) coûtera plus cher à maintenir qu'un projet en SpringBoot/Angular. 
