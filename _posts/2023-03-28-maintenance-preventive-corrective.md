@@ -5,27 +5,27 @@ categories: blog
 tags: mco maintenance préventive corrective budget
 ---
 
-
 La maintenance des applications informatiques consiste à assurer la disponibilité du logiciel.
 La maintenance peut être effectuée à différents stades de l'application : avant ou après l'apparition d'un problème.
 
-Les dysfonctionnements évoqués dans cet article sont ceux qui n'ont pas été détectés dans la phase de tests/recette de l'application avant sa mise en production. 
+Les problèmes évoqués dans cet article sont ceux qui n'ont pas été détectés dans la phase de tests/recette de l'application avant sa mise en production. 
 Je prends comme hypothèse que l'application a été testée avant sa mise en production.
-Même si la recette est bien faite, il est toujours possible qu'un dysfonctionnement intervienne en production.
+Même si la recette est bien faite, il est toujours possible qu'un problème intervienne en production.
 
-Cet article est destiné en premier lieu aux managers ou décisionnaires qui ont une connaissance sommaire des enjeux du développement logiciel.
+Cet article est destiné en premier lieu aux managers ou décisionnaires qui ont une connaissance restreinte des enjeux du développement logiciel.
 
 <!-- TOC -->
   * [En quoi consiste la maintenance ?](#en-quoi-consiste-la-maintenance-)
   * [Prévenir avec la maintenance préventive](#prévenir-avec-la-maintenance-préventive)
     * [Se tenir informé ...](#se-tenir-informé-)
     * [... et prendre la bonne décision](#-et-prendre-la-bonne-décision)
-    * [Quel est l'intérêt d'une maintenance préventive ?](#quel-est-lintérêt-d--une-maintenance-préventive-)
+    * [Quel est l'intérêt d'une maintenance préventive ?](#quel-est-lintérêt-dune-maintenance-préventive-)
   * [Guérir avec la maintenance corrective](#guérir-avec-la-maintenance-corrective)
     * [Quand sait-on qu'il y a un problème ?](#quand-sait-on-quil-y-a-un-problème-)
   * [Ce qu'il faut en retenir](#ce-quil-faut-en-retenir)
     * [L'absence de prévention, c'est accumuler de la dette...](#labsence-de-prévention-cest-accumuler-de-la-dette)
     * [...Qu'il faudra bien payer un jour](#quil-faudra-bien-payer-un-jour)
+  * [Notes](#notes)
 <!-- TOC -->
 
 ## En quoi consiste la maintenance ?
@@ -85,7 +85,8 @@ Du temps pour faire la veille et évaluer les risques et du temps pour faire les
 Le temps passé à prévenir les problèmes permet d'en économiser beaucoup par la suite.
 En effet, l’apparition d'un problème non anticipé entraine des conséquences importantes qui peuvent avoir un coût non négligeable. Ce coût pouvant être technique (temps de correction) ou en terme d'image (faille de sécurité, fuite de données, bug).
 Pour faire une analogie : la maintenance préventive, c'est un peu comme le monde automobile. 
-En effet, si l'entretien de votre voiture est fait régulièrement vous éviterez le plus possible les gros problèmes et les conséquences qui en découlent.
+En effet, si l'entretien de votre voiture est fait régulièrement, vous éviterez le plus possible les gros problèmes et les conséquences qui en découlent.
+Vous pourrez ainsi faire durer plus longtemps votre voiture.
 
 ## Guérir avec la maintenance corrective
 
