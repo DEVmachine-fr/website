@@ -155,7 +155,7 @@ L'absence de maintenance régulière, va entraîner des coûts indirects (de mai
 Dans le calcul de la maintenance, ces couts indirects sont rarement pris en compte, par les décideurs, dans le coût global d'une application.
 
 La limite extrême est, qu'au bout d'un moment, la décision soit prise de refaire complétement l'application car elle n'est plus maintenable ou que le coût de maintenance est trop élevé. 
-Cette décision entraîne souvent beaucoup de frilosité car il faut engager un budget significatif pour cette refonte: <u>_**maintenir c'est aussi investir**_</u>!
+Cette décision entraîne souvent beaucoup de frilosité car il faut engager un budget significatif pour cette refonte: <u><b>maintenir c'est aussi investir</b></u>!
 
 ## Notes
 
