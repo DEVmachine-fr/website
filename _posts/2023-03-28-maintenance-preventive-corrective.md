@@ -84,6 +84,7 @@ Du temps pour faire la veille et évaluer les risques et du temps pour faire les
 
 Le temps passé à prévenir les problèmes permet d'en économiser beaucoup par la suite.
 En effet, l’apparition d'un problème non anticipé entraine des conséquences importantes qui peuvent avoir un coût non négligeable. Ce coût pouvant être technique (temps de correction) ou en terme d'image (faille de sécurité, fuite de données, bug).
+
 Pour faire une analogie : la maintenance préventive, c'est un peu comme le monde automobile. 
 En effet, si l'entretien de votre voiture est fait régulièrement, vous éviterez le plus possible les gros problèmes et les conséquences qui en découlent.
 Vous pourrez ainsi faire durer plus longtemps votre voiture.
