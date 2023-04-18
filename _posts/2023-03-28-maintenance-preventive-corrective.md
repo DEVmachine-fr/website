@@ -82,7 +82,7 @@ Le temps passé à prévenir les problèmes permet d'en économiser beaucoup par
 En effet, l’apparition d'un problème non anticipé entraine des conséquences importantes qui peuvent avoir un coût non négligeable. Ce coût pouvant être technique (temps de correction) ou en terme d'image (faille de sécurité, fuite de données, bug).
 
 La maintenance préventive, c'est un peu comme le monde automobile: si l'entretien de votre voiture est fait régulièrement, vous éviterez le plus possible les gros problèmes et les conséquences qui en découlent.
-Il vaut mieux changer régulièrement ses plaquettes de freins **avant** qu'elles ne soient usées.
+Il vaut mieux changer, par exemple, régulièrement ses plaquettes de freins **avant** qu'elles ne soient usées.
 Vous pourrez ainsi faire durer plus longtemps votre voiture.
 
 ## Guérir avec la maintenance corrective
