@@ -29,7 +29,7 @@ Cet article est destiné en premier lieu aux managers ou décisionnaires qui ont
 La maintenance consiste à modifier une partie du code du logiciel pour en corriger les dysfonctionnements ou en améliorer son efficacité.
 Cette partie du code peut être dans une dépendance (ou bibliothèque) externe.
 Cela peut également venir du langage d'exécution en lui-même.
-Pour regrouper ces 3 notions je parlerai ici de _composant_.
+Pour regrouper ces 3 notions, je parlerai ici de _composant_.
 
 Il existe plusieurs types de maintenance que nous allons voir dans la suite de cet article.
 Chaque type de maintenance à son lot d'avantages et d'inconvénients.
@@ -45,7 +45,7 @@ Par exemple, l'absence de contrôle des données d'entrée d'un webservice peut 
 
 Cette absence de contrôle peut entrainer une alteration involontaire ou volontaire.
 Cela peut venir d'erreurs fonctionnelles telles qu'une inversion sur la date de début et de fin d'un intervalle.
-Cela peut également venir d'un manque (ou d'une faille)  de sécurité.
+Cela peut également venir d'un manque (ou d'une faille) de sécurité.
 _Le cas le plus courant d'un manque de contrôle est l'élévation de privilège._ [1] 
 
 ## Prévenir avec la maintenance préventive
@@ -81,8 +81,8 @@ Du temps pour faire la veille et évaluer les risques et du temps pour faire les
 Le temps passé à prévenir les problèmes permet d'en économiser beaucoup par la suite.
 En effet, l’apparition d'un problème non anticipé entraine des conséquences importantes qui peuvent avoir un coût non négligeable. Ce coût pouvant être technique (temps de correction) ou en terme d'image (faille de sécurité, fuite de données, bug).
 
-La maintenance préventive, c'est un peu comme le monde automobile: si l'entretien de votre voiture est fait régulièrement, vous éviterez le plus possible les gros problèmes et les conséquences qui en découlent.
-Il vaut mieux changer, par exemple, régulièrement ses plaquettes de freins **avant** qu'elles ne soient usées.
+La maintenance préventive, c'est un peu comme le monde automobile : si l'entretien de votre voiture est fait régulièrement, vous éviterez le plus possible les gros problèmes et les conséquences qui en découlent.
+Il vaut mieux changer, par exemple, ses plaquettes de freins **avant** qu'elles ne soient usées.
 Vous pourrez ainsi faire durer plus longtemps votre voiture.
 
 ## Guérir avec la maintenance corrective
@@ -99,7 +99,7 @@ Cela peut être une action utilisateur ou un appel de webservice.
 Dans ce cas la détection est assez rapide, voire immédiate.
 
 Mais il peut aussi y avoir des actions plus discrètes qui ne permettent pas de détecter rapidement le dysfonctionnement.
-Il peut s'agir d'un batch ou d'une action automatique qui met à jour la base de données mais avec un mauvais comportement.
+Il peut s'agir d'un batch ou d'une action automatique qui met à jour la base de données, mais avec un mauvais comportement.
 Il peut s'agir d'une suppression de données (totale ou partielle) ou d'une modification de données non désirée.
 
 Selon la nature du dysfonctionnement, il peut y avoir un certain délai entre le dysfonctionnement et sa détection.
@@ -129,7 +129,7 @@ A moyen terme, si on ne met pas à jour le code ou les dépendances régulièrem
 Avec l'accumulation de la dette technique, il faut prendre en compte le coût du maintien des compétences sur le projet.
 Ce coût n'est souvent pas pris en compte dans le budget de maintenance des applications.
 
-Ex: Aujourd'hui, maintenir un projet en JSF (pour ceux qui connaissent :) ) coûtera plus cher à maintenir qu'un projet en SpringBoot/Angular. 
+Ex : Aujourd'hui, maintenir un projet en JSF (pour ceux qui connaissent :) ) coûtera plus cher à maintenir qu'un projet en SpringBoot/Angular. 
 Car il faut déjà trouver des compétences capables d'intervenir sur un projet en JSF, ces compétences sont rares sur le marché. 
 
 L'évolution des frameworks modernes permet, de plus en plus, de s'abstraire des couches techniques pour se concentrer sur le métier.
