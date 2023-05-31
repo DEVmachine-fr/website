@@ -2,4 +2,4 @@
     commande = "JEKYLL_ENV=production jekyll build"
 
 [context.deploy-preview]
-    command = "jekyll build"
+    command = "jekyll build --drafts"
