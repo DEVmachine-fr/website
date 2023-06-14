@@ -78,7 +78,7 @@ dependencies {
 
 Deux notions apparaissent ici: 
 * nous activons le plugin `java-platform` à la ligne 2
-* nous autorisons la déclaration de dépendances à la ligne 10. Par défaut ce comportement est désactivé pour éviter d'ajouter des dépendances de manière involontaire. Sans cette option, seule la déclaration de contrainte n'est possible.
+* nous autorisons la déclaration de dépendances à la ligne 10. Par défaut ce comportement est désactivé pour éviter d'ajouter des dépendances de manière involontaire. Sans cette option, seule la déclaration de contrainte est possible.
 
 Ce module sera publié (généralement sur un dépôt maven) afin d'être consommé par les applications. Il contiendra un fichier ***.pom*** au format [Maven BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms) et également un fichier ***.module*** au format [Gradle Metadata](https://github.com/gradle/gradle/blob/master/subprojects/docs/src/docs/design/gradle-module-metadata-latest-specification.md). Il est donc possible de l'utiliser dans les deux types de projets (Maven ou Gradle, cet article ne couvrant que le cas de Gradle).
 
