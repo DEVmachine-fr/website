@@ -135,7 +135,7 @@ Vous voyez ici que les trois déclarations différent légèrement:
 ## Définir des contraintes de versions <a class="anchor" name="constraints"></a>
 
 Maintenant, imaginons que vous ayez une dépendance optionnelle, mais dont vous voulez exposer une version recommandée car vous l'avez validée en interne, par exemple Mapstruct.
-Vous allez simplement pouvoir le faire en définissant cet version dans le bloc ***constraints***:
+Vous allez simplement pouvoir le faire en définissant cette version dans le bloc ***constraints***:
 ```java
 plugins {
   id 'java-platform'
