@@ -17,9 +17,9 @@ Si vous développez des microservices en Java avec Gradle, utilisez le plugin Gr
 
 ## Introduction <a class="anchor" name="introduction"></a>
 
-En développant des microservices Java, vous allez probablement avoir un ensemble de dépendances communes à tous vos projets. Par exemple, si vous utilisez Spring Boot, tous vos projets inclueront probablement le [BOM Spring Boot](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies). De même, vous utilisez peut-être mapstruct ou des bibliothèques similaires dans chaque projets.
+En développant des microservices Java, vous allez probablement avoir un ensemble de dépendances communes à tous vos projets. Par exemple, si vous utilisez Spring Boot, tous vos projets inclueront probablement le [BOM Spring Boot](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies). De même, vous utilisez peut-être mapstruct ou des bibliothèques similaires dans chaque projet.
 
-Vous vous retrouverez avec un fichier build.gradle de ce type dupliqué dans chaque application: 
+Vous vous retrouverez avec un fichier build.gradle de ce type dupliqué dans chaque application : 
 ```java
 plugins {
 	id 'java'
@@ -43,11 +43,11 @@ dependencies {
 
 Plusieurs problèmes apparaissent déjà : 
 * les versions sont dupliquées un peu partout, ce qui rend les mises à jour un peu compliquées
-* les versions étant définies pour chaque projet, vous avez de grandes chances d'utilisez autant de versions différentes que de projets
+* les versions étant définies pour chaque projet, vous avez de grandes chances d'utiliser autant de versions différentes que de projets
 * en complément du précédent point, si vous avez validé des versions d'une dépendance pour votre contexte, vous aimeriez n'utilisez que ces versions
 * pour les dépendances que vous souhaitez inclure obligatoirement, vous avez beaucoup de risques que les développeurs en oublient lors de la création de nouveau projets (notamment des bibliothèques de monitoring et/ou tracing telles que micrometer).
 
-Le plugin [Gradle Java Platform Plugin](https://docs.gradle.org/current/userguide/java_platform_plugin.html) va vous aider à résoudre ces problématiques. Il s'agit d'un plugin officiel fournit dans la distribution standard de gradle.
+Le plugin [Gradle Java Platform Plugin](https://docs.gradle.org/current/userguide/java_platform_plugin.html) va vous aider à résoudre ces problématiques. Il s'agit d'un plugin officiel fourni dans la distribution standard de gradle.
 
 Il permet de déclarer les dépendances sous forme de : 
 * ***constraint***: si une dépendance est ajoutée dans une application utilisant la ***Platform*** la version déclarée par la contrainte sera utilisée
@@ -76,7 +76,7 @@ dependencies {
 
 ```
 
-Deux notions apparaissent ici: 
+Deux notions apparaissent ici : 
 * nous activons le plugin `java-platform` à la ligne 2
 * nous autorisons la déclaration de dépendances à la ligne 10. Par défaut ce comportement est désactivé pour éviter d'ajouter des dépendances de manière involontaire. Sans cette option, seule la déclaration de contrainte est possible.
 
@@ -84,9 +84,8 @@ Ce module sera publié (généralement sur un dépôt maven) afin d'être consom
 
 ## Publier la Java Platform <a class="anchor" name="publish"></a>
 
-Pour publier le module, il faut ajouter la configuration de la tâche `publishing` comme ceci:
+Pour publier le module, il faut ajouter la configuration de la tâche `publishing` comme ceci :
 ```java
-
 publishing {
   publications {
     myPlatform(MavenPublication) {
@@ -96,7 +95,7 @@ publishing {
 }
 ```
 
-Il suffit ensuite d'executer la commande suivante (nous publions ici dans le dépôt maven local mais il est bien entendu possible de le publier, et recommandé, sur un dépôt distant): 
+Il suffit ensuite d'exécuter la commande suivante (nous publions ici dans le dépôt maven local mais il est bien entendu possible de le publier, et recommandé, sur un dépôt distant) : 
 ```shell
 ./gradlew publishToMavenLocal
 ```
@@ -127,7 +126,7 @@ dependencies {
 
 ```
 
-Vous voyez ici que les trois déclarations différent légèrement:
+Vous voyez ici que les trois déclarations différent légèrement :
 * `commons-lang3` est déclaré avec simplement la configuration `api`, qui permet d'exposer une dépendance
 * `spring-boot-dependencies` est déclaré avec la configuration `api` mais également avec `platform`, qui permet d'importer les dépendances elles-mêmes définies dans une `Platform` ou un `Maven BOM`. Nous reviendrons sur l'utilisation d'une `Platform` dans la section [Utiliser la Java Platform](#consuming)
 * `spring-boot-starter-web` est quant à lui déclaré avec la configuration `api` mais sans version pour importer ce module en utilisant la version déclaré dans le BOM `spring-boot-dependencies`
@@ -184,7 +183,7 @@ dependencies {
 
 Vous aurez remarqué que nous avons supprimé les dépendances explicites à `spring-boot` et `commons-lang3` car elles sont définies dans notre module `gradle-java-platform-sample`.
 
-Pour vérifier le comportement, affichons le graphe de dépendances du projet:
+Pour vérifier le comportement, affichons le graphe de dépendances du projet :
 ```
 $ ./gradlew dependencies --configuration compileClasspath
 
