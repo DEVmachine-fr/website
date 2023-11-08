@@ -8,6 +8,25 @@ Dans cet article, on va voir ce que sont les &laquo; tagged templates &raquo; en
 
 # Les *tagged template* en JavaScript
 
+- [Introduction](#introduction)
+- [Un petit rappel sur les *template literals*](#un-petit-rappel-sur-les-template-literals)
+  - [Chaînes de caractères multi-lignes](#chaînes-de-caractères-multi-lignes)
+  - [Interpolation d'expressions](#interpolation-dexpressions)
+- [Un _tagged template_, c’est quoi ?](#un-tagged-template-cest-quoi-)
+- [À quoi ça sert ?](#à-quoi-ça-sert-)
+- [Une _tag function_ de base : `String.raw`](#une-tag-function-de-base--stringraw)
+- [Comment ça marche ?](#comment-ça-marche-)
+  - [Reconstruire une chaîne à partir des fragments et des valeurs](#reconstruire-une-chaîne-à-partir-des-fragments-et-des-valeurs)
+  - [Manipulation des valeurs](#manipulation-des-valeurs)
+  - [Rendre une _tag function_ paramétrable](#manipulation-des-valeurs)
+- [Cas d’usage](#cas-dusage)
+  - [Requêtes préparées](#requêtes-préparées)
+  - [Internationalisation (i18n)](#internationalisation-i18n)
+  - [Formatage de valeurs](#formatage-de-valeurs)
+  - [Bibliothèques reposant sur les _tags functions_](#bibliothèques-reposant-sur-les-tags-functions)
+- [Conclusion](#conclusion)
+- [Bibliographie](#bibliographie)
+
 ## Introduction
 
 Il y n'a pas longtemps, un de mes collègues est venu me poser cette question :
