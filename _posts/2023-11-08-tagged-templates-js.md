@@ -4,6 +4,7 @@ title: Les tagged templates en JavaScript
 categories: javascript js string template tags literals templating
 ---
 
+Dans cet article, on va voir ce que sont les &laquo; tagged templates &raquo; en JavaScript et comment on peut les utiliser pour faciliter la manipulation de chaînes en contrôlant la façon dont elles sont interprétées.
 
 # Les *tagged template* en JavaScript
 
