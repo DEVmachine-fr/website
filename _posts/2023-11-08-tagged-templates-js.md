@@ -138,7 +138,7 @@ On voit ici qu'une _tag function_ est appelée avec deux arguments :
 - un tableau de chaîne de caractères contenant les **fragments** du *template literal*, c'est-à-dire les **parties statiques** entourant les expressions
 - une liste d'arguments variables (_varargs_) contenant les **valeurs des expressions**, qui constituent les parties dynamiques du littéral
 
-![diagramme illustrant la séparation entre fragments et valeur](/assets/images/tagged-templates-js/fragments.png)
+![diagramme illustrant la séparation entre fragments et valeurs](/assets/images/tagged-templates-js/fragments.png)
 
 > **Note** : Le tableau `values` contient les valeurs avant leur conversion en chaîne, donc il est possible d'y retrouver des valeurs de tout type.
 
@@ -339,7 +339,7 @@ On voit que notre requête est séparée en 2 composantes :
 prepareQuery`INSERT INTO users(name, email) VALUES(${name}, ${email})`
 ```
 
-Grâce à cette _tag function_, on écrit la requête de façon plus naturelle, dans un seul _template literal_, mais on va quand même maintenir la séparation **fragments**/**valeurs** sous la capot. 
+Grâce à cette _tag function_, on écrit la requête de façon plus naturelle, dans un seul _template literal_, mais on va quand même maintenir la séparation **fragments**/**valeurs** sous le capot. 
 
 Voici ce que pourrait donner son implémentation :
 
@@ -408,7 +408,7 @@ console.log(translate`Hello ${name}, how are you?`)
 ```
 
 Avouez que c'est nettement plus sympa de l'écrire comme ça. 😍
-Maintenons, voyons comment cela se matérialise sous le capot de notre _tag_ `translate` :
+Maintenant, voyons comment cela se matérialise sous le capot de notre _tag_ `translate` :
 
 ```js
 function translate(fragments, values...) {
