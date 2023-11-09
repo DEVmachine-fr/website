@@ -6,30 +6,28 @@ categories: javascript js string template tags literals templating
 
 Dans cet article, on va voir ce que sont les &laquo; tagged templates &raquo; en JavaScript et comment on peut les utiliser pour faciliter la manipulation de chaînes en contrôlant la façon dont elles sont interprétées.
 
-# Les *tagged template* en JavaScript
-
 - [Introduction](#introduction)
 - [Un petit rappel sur les *template literals*](#un-petit-rappel-sur-les-template-literals)
   - [Chaînes de caractères multi-lignes](#chaînes-de-caractères-multi-lignes)
   - [Interpolation d'expressions](#interpolation-dexpressions)
-- [Un _tagged template_, c’est quoi ?](#un-tagged-template-cest-quoi-)
+  - [Un *tagged template*, c'est quoi ?](#un-tagged-template-cest-quoi-)
 - [À quoi ça sert ?](#à-quoi-ça-sert-)
 - [Une _tag function_ de base : `String.raw`](#une-tag-function-de-base--stringraw)
 - [Comment ça marche ?](#comment-ça-marche-)
   - [Reconstruire une chaîne à partir des fragments et des valeurs](#reconstruire-une-chaîne-à-partir-des-fragments-et-des-valeurs)
   - [Manipulation des valeurs](#manipulation-des-valeurs)
-  - [Rendre une _tag function_ paramétrable](#manipulation-des-valeurs)
-- [Cas d’usage](#cas-dusage)
+  - [Rendre une _tag function_ paramétrable](#rendre-une-tag-function-paramétrable)
+- [Cas d'usage](#cas-dusage)
   - [Requêtes préparées](#requêtes-préparées)
   - [Internationalisation (i18n)](#internationalisation-i18n)
   - [Formatage de valeurs](#formatage-de-valeurs)
   - [Bibliothèques reposant sur les _tags functions_](#bibliothèques-reposant-sur-les-tags-functions)
 - [Conclusion](#conclusion)
-- [Bibliographie](#bibliographie)
+- [Bibliographie :](#bibliographie-)
 
-# Introduction
+## Introduction
 
-Il y n'a pas longtemps, un de mes collègues est venu me poser cette question :
+Il n'y a pas longtemps, un de mes collègues est venu me poser cette question :
 
 > &laquo; Ah tiens j'ai vu une syntaxe bizarre dans mon tuto sur Deno, je voulais te demander ce que c'était ? 
 > Ils préfixent une _template string_ avec un nom de fonction, et je ne sais pas à quoi ça correspond dans le langage 🤔 &raquo;
@@ -48,7 +46,7 @@ C'est parti ! 💪
 > **Note** : Le [MDN](https://developer.mozilla.org) propose dans sa documentation des traductions françaises pour [cette fonctionnalité](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Template_literals), mais je préfère conserver les termes anglais pour la suite de cet article.
 > Sachez toutefois pour votre culture qu'on parle respectivement de _gabarits étiquetés_ et de _littéraux de gabarits_ pour les termes _tagged template_ et _template literals_.
 
-# Un petit rappel sur les *template literals*
+## Un petit rappel sur les *template literals*
 
 Introduite avec la norme ES2015, cette fonctionnalité très attendue a enfin permis aux développeurs de construire des chaînes de caractères en y incorporant directement des expressions du langage.
 
@@ -70,7 +68,7 @@ Les *template literals* (ou _template strings_) sont délimités par des _backti
 > **Attention !** Il s'agit d'une &laquo; _touche morte_ &raquo;, il faudra presser la touche **Espace** à la suite pour l'obtenir à la place d'une combinaison avec une voyelle (à, è, ì, etc.)
 > Ça paraît compliqué, mais l'habitude viens vite, rassurez-vous 😉
 
-## Chaînes de caractères multi-lignes
+### Chaînes de caractères multi-lignes
 
 Autre fonctionnalité intéressante, les *templates literals* peuvent s'étaler sur plusieurs lignes, comme ceci :
 
@@ -88,7 +86,7 @@ chez moi`
 // -> "Bienvenue chez moi"
 ```
 
-## Interpolation d'expressions
+### Interpolation d'expressions
 
 On l'a dit, on peut maintenant appeler des expressions du langage à l'intérieur de la chaîne, via la syntaxe `${<expression>}` :
 
@@ -110,7 +108,7 @@ console.log(`Le contenu de l'objet est ${o}`)
 
 Il est possible dans ce cas de définir sur l'objet une surcharge de la méthode `toString()`.
 
-## Un *tagged template*, c'est quoi ?
+### Un *tagged template*, c'est quoi ?
 
 Il est possible de &laquo; taguer &raquo; un _template literal_ à l'aide d'une _tag function_.
 
@@ -155,7 +153,7 @@ const message = privacy`Bonjour ${name}, vous pouvez me contacter au ${phone}. B
 
 D'ailleurs, il n'est absolument pas obligatoire de renvoyer une chaîne, on peut renvoyer ce que l'on veut.
 
-#  À quoi ça sert ?
+##  À quoi ça sert ?
 
 Les tags permettent de personnaliser la façon dont les littéraux sont interprétés. 
 
@@ -165,7 +163,7 @@ On peut par exemple :
 
 Cela va s'avérer particulièrement utile et puissant, en particulier lorsque l'on fait du **templating** pour un autre langage au sein du code JavaScript, pour du HTML, du CSS, du SQL, etc.
 
-# Une _tag function_ de base : `String.raw`
+## Une _tag function_ de base : `String.raw`
 
 Toujours depuis ES2015, il existe un _tag_ de base dans le langage : `String.raw`.
 
@@ -186,9 +184,9 @@ const filename = String.raw"C:\Users\machin\Documents"
 On peut aussi les utiliser pour éviter l'échappement de caractères spéciaux dans une `RegExp` créée dynamiquement à partir d'une chaîne.
 
 
-# Comment ça marche ?
+## Comment ça marche ?
 
-## Reconstruire une chaîne à partir des fragments et des valeurs
+### Reconstruire une chaîne à partir des fragments et des valeurs
 
 On a vu plus haut que la _tag function_ reçoit à la fois les fragments et les valeurs des expressions contenus dans les _template strings_.
 
@@ -258,7 +256,7 @@ function noopTag(fragments, values...) {
 }
 ```
 
-## Manipulation des valeurs 
+### Manipulation des valeurs 
 
 Prenons un exemple simple avec la _tag function_ `highlight` :
 
@@ -285,7 +283,7 @@ On applique la transformation sur nos valeurs, en entourant chaque valeur avec l
 
 Rien ne nous empêche d'ailleurs d'appliquer une transformation sur les fragments statiques de la chaîne.
 
-## Rendre une _tag function_ paramétrable
+### Rendre une _tag function_ paramétrable
 
 On peut vouloir fournir un ou plusieurs paramètres supplémentaires à une _tag function_, pour pouvoir modifier son comportement. 
 
@@ -315,9 +313,9 @@ translate('fr')`Hello ${name}`
 La chaîne est taguée par la fonction que retourne l'appel à `translate` . Celle-ci est paramétrée grâce à l'argument du paramètre `lang` qui vaut ici `"fr"`.
 
 
-# Cas d'usage
+## Cas d'usage
 
-## Requêtes préparées
+### Requêtes préparées
 
 Les requêtes préparées sont un mécanisme que l'on retrouve couramment lorsque l'on communique avec une base de données relationnelle. 
 Elles permettent entre autres d'écarter les risques d'injection de code malveillant dans des requêtes SQL.
@@ -376,7 +374,7 @@ await conn.queryArray`
 
 Pas mal, non ? 😎
 
-## Internationalisation (i18n)
+### Internationalisation (i18n)
 
 Un autre exemple est le support de l'internationalisation (*i18n*) dans nos chaînes de caractères.
 
@@ -452,7 +450,7 @@ translate('es')`Hello ${name}, how are you?`
 // "Hola Fabien, ¿qué tal?"
 ```
 
-## Formatage de valeurs 
+### Formatage de valeurs 
 
 On peut aussi imaginer des _tags functions_ permettant de personnaliser le formatage des valeurs passées dans une chaîne.
 
@@ -487,7 +485,7 @@ function currency(fragments, ...values) {
 
 > *On pourrait améliorer ce tag en le rendant paramétrable pour spécifier des options de formatage, comme par exemple un identifiant de langue ou de monnaie.*
 
-## Bibliothèques reposant sur les _tags functions_
+### Bibliothèques reposant sur les _tags functions_
 
  - La bibliothèque **lit-html** intégrée au framework **Lit** permet de définir des *templates* HTML de composants grâce à la _tag function_ `html`.
 
@@ -515,7 +513,7 @@ render(<Title>Titre de la page</Title>)
 
 🌎 Lien du projet : [Site web](https://styled-components.com)
 
-# Conclusion 
+## Conclusion 
 
 Dans cet article, on a vu ce que sont les _tags functions_ et comment elles peuvent se combiner au _template literal_ pour adresser certaines problématiques de _templating_.
 
@@ -527,7 +525,7 @@ J'espère que j'ai pu éclairé vos lanternes sur ce sujet.
 
 Je vous remercie de votre attention ! 🙏 😊
 
-# Bibliographie : 
+## Bibliographie : 
 
 J'adresse mes remerciements aux auteurs de ces articles et de ces bibliothèques qui m'ont inspiré pour la rédaction de cet article :
 * [*Template Literals and a Practical Use of Tagged Templates in JavaScript*  par **Sanjay Bhavnani**](https://javascript.plainenglish.io/template-literals-and-a-practical-use-of-tagged-templates-58526d525d72)
