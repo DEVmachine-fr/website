@@ -62,7 +62,7 @@ Après :
 const welcome = `Mon nom est ${name}, j'ai ${age} ans et aujourd'hui, je vais vous parler de ${topic}`
 ```
 
-Les *template literals* (ou _template strings_) sont délimités par des _backticks_ ` (ou _backquote_). 
+Les *template literals* (ou _template strings_) sont délimités par des _backticks_ <code>`</code> (ou _backquote_). 
 
 > **Note** :  Sur les claviers de PC, le _backtick_ s'écrit à l'aide de la combinaison de touches `AltGr+7`. 
 > **Attention !** Il s'agit d'une &laquo; _touche morte_ &raquo;, il faudra presser la touche **Espace** à la suite pour l'obtenir à la place d'une combinaison avec une voyelle (à, è, ì, etc.)
@@ -78,7 +78,7 @@ chez moi, je m'appelle ${name},
 je vous en prie, prenez place.`
 // -> "Bienvenue\nchez moi, je m'appelle Fabien,\nje vous en prie, prenez place."
 ```
-Bien entendu, le caractère de saut de ligne (`\n`) est ajouté automatiquement, mais on peut l'échapper comme n'importe quel autre caractère :
+Bien entendu, le caractère de saut de ligne `\n` est ajouté automatiquement, mais on peut l'échapper comme n'importe quel autre caractère :
 
 ```js
 const message = `Bienvenue \
@@ -134,13 +134,13 @@ function myTag(fragments, ...values) {
 }
 ```
 
-On voit ici qu'une _tag function_ est appelé avec deux arguments :
+On voit ici qu'une _tag function_ est appelée avec deux arguments :
 - un tableau de chaîne de caractères contenant les **fragments** du *template literal*, c'est-à-dire les **parties statiques** entourant les expressions
 - une liste d'arguments variables (_varargs_) contenant les **valeurs des expressions**, qui constituent les parties dynamiques du littéral
 
 ![diagramme illustrant la séparation entre fragments et valeur](/assets/images/tagged-templates-js/fragments.png)
 
-🚩 Le tableau `values` contient les valeurs avant leur conversion en chaîne, donc il est possible d'y retrouver des valeurs de tout type.
+> **Note** : Le tableau `values` contient les valeurs avant leur conversion en chaîne, donc il est possible d'y retrouver des valeurs de tout type.
 
 Le *template literal* n'est pas traité au moment où le _tag function_ est appelée : c'est la valeur de retour de celle-ci qui détermine la chaîne résultante.
 
@@ -167,7 +167,7 @@ Cela va s'avérer particulièrement utile et puissant, en particulier lorsque l'
 
 Toujours depuis ES2015, il existe un _tag_ de base dans le langage : `String.raw`.
 
-Celui-ci permet de définir des chaînes textuelles (aussi appelée _verbatim strings_), dans lesquelles les caractères de contrôle ne sont pas interprétés, et qui ne nécessitent donc aucun échappement. 
+Celui-ci permet de définir des chaînes textuelles (aussi appelées _verbatim strings_), dans lesquelles les caractères de contrôle ne sont pas interprétés, et qui ne nécessitent donc aucun échappement. 
 
 C'est particulièrement utile pour les chemins d'accès sous Windows par exemple, car cette déclaration : 
 
@@ -175,7 +175,7 @@ C'est particulièrement utile pour les chemins d'accès sous Windows par exemple
 const filename = "C:\\Users\\machin\\Documents"
 ```
 
-peut être remplacé par celui-ci :
+peut être remplacé par celle-ci :
 
 ```js
 const filename = String.raw"C:\Users\machin\Documents"
@@ -190,9 +190,9 @@ On peut aussi les utiliser pour éviter l'échappement de caractères spéciaux 
 
 On a vu plus haut que la _tag function_ reçoit à la fois les fragments et les valeurs des expressions contenus dans les _template strings_.
 
-Dans la plupart des cas, on va vouloir reconstruire une chaîne en recombinant ces éléments, après avoir apporté nos modifications. 
+Dans la plupart des cas, on va vouloir reconstruire une chaîne en recombinant ces éléments, après y avoir apporté nos modifications. 
 
-On va créé ici le _tag_ `noopTag` qui n'apporte pas de modifications et retourne le même résultat qu'un _template literal_ normal.
+On va créer ici le _tag_ `noopTag` qui n'apporte pas de modifications et retourne le même résultat qu'un _template literal_ normal.
 
 ```js
 function noopTag(fragments, values...) {
@@ -320,7 +320,7 @@ La chaîne est taguée par la fonction que retourne l'appel à `translate` . Cel
 Les requêtes préparées sont un mécanisme que l'on retrouve couramment lorsque l'on communique avec une base de données relationnelle. 
 Elles permettent entre autres d'écarter les risques d'injection de code malveillant dans des requêtes SQL.
 
-Un exemple d'exécution d'une requête préparée en **Node.js** connecté à une base **PostgreSQL**
+Voici un exemple d'exécution de requête préparée avec le driver `pg` (documentation [ici](https://node-postgres.com/)):
 
 ```js
 const sql = 'INSERT INTO users(name, email) VALUES($1, $2)'
@@ -330,7 +330,7 @@ await client.query(text, values)
 ```
 
 On voit que notre requête est séparée en 2 composantes : 
-* Le texte SQL de la requête, dans lequel l'emplacement des valeurs à injecter sont balisées par des marqueurs de substitution (`$1`, `$2`)
+* Le texte SQL de la requête, dans lequel les emplacements des valeurs à injecter sont balisés par des marqueurs de substitution (`$1`, `$2`)
 * Les valeurs que l'on veut injecter dans l'ordre à l'emplacement de ces marqueurs
 
 **C'est parfait !** Séparer et rassembler les parties statiques et dynamiques d'une chaîne, c'est le principal intérêt des _tags functions_ :
@@ -445,9 +445,9 @@ Ce qui nous permet de l'utiliser comme ceci :
 
 ```js
 translate('fr')`Hello ${name}, how are you?`
-// "Bonjour Fabien, comment allez-vous ?"
+// -> "Bonjour Fabien, comment allez-vous ?"
 translate('es')`Hello ${name}, how are you?`
-// "Hola Fabien, ¿qué tal?"
+// -> "Hola Fabien, ¿qué tal?"
 ```
 
 ### Formatage de valeurs 
@@ -457,15 +457,13 @@ On peut aussi imaginer des _tags functions_ permettant de personnaliser le forma
 ```js
 const totalAmount = 3415.63
 currency`Valeur totale du panier : ${totalAmount}`
-// "Valeur totale du panier : 3 415,637 €"
+// -> "Valeur totale du panier : 3 415,637 €"
 ```
 
 Ici, on veut formater les valeurs monétaires grâce à notre _tag function_ `currency`
 
 ```js
 function formatCurrency(value, locale = 'fr-FR', currency = 'EUR') {
-  // 💡 Le saviez-vous ? ECMAScript propose une API d'internationalisation normalisée
-  // qui permet notamment de gérer les problématiques de formatage de nombres
   return new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR' }).format(
     value,
   ),
@@ -473,7 +471,7 @@ function formatCurrency(value, locale = 'fr-FR', currency = 'EUR') {
 
 function currency(fragments, ...values) {
   const formattedValues = values.map(value => {
-    // Formatage personnalisée pour tous les valeurs de type nombres
+    // Formatage personnalisé pour tous les valeurs de type nombres
     if (typeof value === 'number' && !Number.isNaN(value)) {
       return formatCurrency(value)
     }
@@ -482,6 +480,8 @@ function currency(fragments, ...values) {
   return cook(fragments, formattedValues)
 }
 ```
+
+> 💡 **Le saviez-vous ?** ECMAScript propose une API d'internationalisation normalisée, l'API Intl, qui permet notamment de gérer les problématiques de formatage de nombres de manière standardisée et compatibles entre les différents navigateurs et runtimes.
 
 > *On pourrait améliorer ce tag en le rendant paramétrable pour spécifier des options de formatage, comme par exemple un identifiant de langue ou de monnaie.*
 
@@ -501,7 +501,7 @@ render(todoListTemplate(todos), document.body)
 
 🌎 Lien du projet : [Github](https://github.com/lit/lit/tree/main/packages/lit-html)
 
- - La bibliothèque **styled-component** permet aux développeurs React de créer des composants et des éléments du DOM en leur attribuant directement du code de style CSS.
+ - La bibliothèque **styled-component** permet aux développeurs React de créer des composants et des éléments du DOM en leur attribuant directement du code CSS.
 
 ```js
 const Title = styled.h1`
@@ -517,11 +517,11 @@ render(<Title>Titre de la page</Title>)
 
 Dans cet article, on a vu ce que sont les _tags functions_ et comment elles peuvent se combiner au _template literal_ pour adresser certaines problématiques de _templating_.
 
-On a d'abord replacer un peu le contexte en rappelant ce qu'étaient les _templates literals_ en JavaScript. Puis on a expliqué l'utilité des _tags functions_ et détailler leur fonctionnement à l'aide de nombreux exemples.
+On a d'abord replacé un peu le contexte en rappelant ce qu'étaient les _templates literals_ en JavaScript. Puis on a expliqué l'utilité des _tags functions_ et détailler leur fonctionnement à l'aide de quelques exemples.
 
-On a enfin présenté des cas d'usages dans lesquels cette fonctionnalité peut s'illustrer et comment cela est mis en place dans certaines bibliothèques de fonctions JavaScript.
+On a enfin présenté des cas d'usages dans lesquels cette fonctionnalité peut s'illustrer et comment celle-ci est mise en place dans certaines bibliothèques de fonctions JavaScript.
 
-J'espère que j'ai pu éclairé vos lanternes sur ce sujet.
+J'espère que j'ai pu éclairer vos lanternes sur ce sujet.
 
 Je vous remercie de votre attention ! 🙏 😊
 
