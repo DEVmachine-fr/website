@@ -517,7 +517,7 @@ render(<Title>Titre de la page</Title>)
 
 Dans cet article, on a vu ce que sont les _tags functions_ et comment elles peuvent se combiner au _template literal_ pour adresser certaines problématiques de _templating_.
 
-On a d'abord replacé un peu le contexte en rappelant ce qu'étaient les _templates literals_ en JavaScript. Puis on a expliqué l'utilité des _tags functions_ et détailler leur fonctionnement à l'aide de quelques exemples.
+On a d'abord replacé un peu le contexte en rappelant ce qu'étaient les _templates literals_ en JavaScript. Puis on a expliqué l'utilité des _tags functions_ et détaillé leur fonctionnement à l'aide de quelques exemples.
 
 On a enfin présenté des cas d'usages dans lesquels cette fonctionnalité peut s'illustrer et comment celle-ci est mise en place dans certaines bibliothèques de fonctions JavaScript.
 
