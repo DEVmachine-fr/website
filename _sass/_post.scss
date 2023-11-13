@@ -14,6 +14,12 @@ section#post-intro {
 }
 
 article.post-content {
+  // Hide lines number if parameter "code_no_lines" is set to true on post
+  &.no_lines {
+    pre.highlight code .lineno {
+      display: none;
+    }
+  }
   position: relative;
   font-family: Poppins, serif;
   // Pour autoriser les mots (notamment les liens) à revenir à la ligne
@@ -24,9 +30,16 @@ article.post-content {
   }
 
   // Police à pas fixe pour les blocs de code
-  pre.highlight code * {
-    font-family: monospace;
+  pre.highlight code {
+    .lineno {
+      margin-right: 0.75rem;
+    }
+    * {
+      font-family: JetBrains Mono, monospace;
+      line-height: 1.5rem;
+    }
   }
+
 
   img {
     max-width: 75%;
@@ -43,13 +56,19 @@ article.post-content {
   }
 
   h1 {
+    margin-bottom: 1rem;
+    &:not(:first-of-type) {
+      margin-top: 2.5rem;
+    }
     color: $primary;
+    font-size: xx-large;
     font-family: 'Poppins', serif;
   }
   
   h2 {
+    margin-bottom: 1rem;
     margin-top: 30px;
-    font-size: xx-large;
+    font-size: x-large;
     font-family: 'Nunito', serif;
     color: $secondary;
   }
@@ -62,10 +81,15 @@ article.post-content {
   }
 
   blockquote {
-    border-left: 3px $gray-200 solid;
-    padding-left: 5px;
+    padding: 0.75rem;
+    border-left: 5px $gray-200 solid;
+    background: #f5f5f5;
+    border-radius: 0.6rem;
     font-style: italic;
-    color: $gray-500;
+    color: $gray-600;
+    p {
+      margin-bottom: 0;
+    }
   }
 
   // On style le sommaire (premier ul)
@@ -98,5 +122,52 @@ article.post-content {
     position: relative;
     // taille de la navbar
     top: -4rem;
+  }
+
+  @media (min-width: 768px) {
+    table:not(.rouge-table) {   
+      th, td {
+        padding: 0.5rem;
+      }
+      th {
+        background-color: #ddd;
+      }
+      tr:nth-child(2n) td {
+        background-color: #eee;
+      }
+    }
+  }
+  
+
+  @media (max-width: 768px){
+    table:not(.rouge-table) {
+      thead {
+        display: none;
+      }
+      tr {
+        display: block;
+
+        &:nth-child(2n) td {
+          background-color: #eee;
+        }
+      }
+      td {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        display: block;
+        text-align: right;
+        &:before {
+          content: attr(data-label) ' :';
+          float: left;
+          font-weight: bold;
+        }
+        &:first-child {
+          padding-top: 1rem;
+        }
+        &:last-child {
+          padding-bottom: 1rem;
+        }
+      }
+    }
   }
 }

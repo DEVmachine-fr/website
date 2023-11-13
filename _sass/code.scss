@@ -1,6 +1,6 @@
 div.highlighter-rouge {
   background-color: $code-background;
-  border-radius: $code-border-radius 0 $code-border-radius $code-border-radius;
+  border-radius: $code-border-radius;
   padding: $code-padding;
   box-sizing: border-box;
   margin-bottom: 1rem;
@@ -9,6 +9,12 @@ div.highlighter-rouge {
     color: $code-color;
     margin: 0;
   }
+}
+
+/* Inline code */
+code {
+  font-family: 'JetBrains Mono';
+  font-size: 0.8rem;
 }
 
 .code-header {

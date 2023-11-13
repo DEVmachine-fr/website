@@ -16,8 +16,9 @@ layout: default
 
 <section>
   <div class="container">
-    <article class="post-content">{{ page.content | remove: page.excerpt }}</article>
+    <article class="post-content {% if page.code_no_lines %}no_lines{% endif %}">{{ page.content | remove: page.excerpt }}</article>
   </div>
 </section>
 
 <script src="/assets/scripts/copy-code.js"></script>
+<script src="/assets/scripts/responsive-tables.js"></script>

@@ -25,6 +25,30 @@
   font-family: Poppins;
   src: url(/assets/fonts/Poppins/Poppins-Regular.ttf) format("truetype");
 }
+@font-face {
+  font-family: JetBrains Mono;
+  src: url(/assets/fonts/JetBrains-Mono/JetBrainsMono-Regular.woff2) format("woff2");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: JetBrains Mono;
+  src: url(/assets/fonts/JetBrains-Mono/JetBrainsMono-Bold.woff2) format("woff2");
+  font-style: normal;
+  font-weight: bold;
+}
+@font-face {
+  font-family: JetBrains Mono;
+  src: url(/assets/fonts/JetBrains-Mono/JetBrainsMono-Italic.woff2) format("woff2");
+  font-style: italic;
+  font-weight: normal;
+}
+@font-face {
+  font-family: JetBrains Mono;
+  src: url(/assets/fonts/JetBrains-Mono/JetBrainsMono-BoldItalic.woff2) format("woff2");
+  font-style: italic;
+  font-weight: bold;
+}
 
 // style go top button
 .go-top-button{
@@ -61,8 +85,8 @@ $light-pink: rgba(252, 118, 106, 0.1);
 $light-purple: rgba(106, 121, 252, 0.1);
 
 /* code block variables */
-$code-background: #dddddd;
-$code-border-radius: 0.8rem;
+$code-background: #eeeeee;
+$code-border-radius: 0.6rem;
 $code-color: black;
 $code-padding: 1rem;
 
