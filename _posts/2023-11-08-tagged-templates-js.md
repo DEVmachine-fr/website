@@ -2,11 +2,10 @@
 author: Fabien
 title: Les tagged templates en JavaScript
 categories: javascript js string template tags literals templating
+code_no_lines: true
 ---
 
 Dans cet article, on va voir ce que sont les &laquo; tagged templates &raquo; en JavaScript et comment on peut les utiliser pour faciliter la manipulation de chaînes en contrôlant la façon dont elles sont interprétées.
-
-# Les *tagged template* en JavaScript
 
 - [Introduction](#introduction)
 - [Un petit rappel sur les *template literals*](#un-petit-rappel-sur-les-template-literals)
@@ -206,31 +205,31 @@ Avant de rentrer dans le détail de cet algorithme, il faut noter que :
 
 ```js
 tag`Je m'appelle ${prenom}, j'ai ${age} ans.`
-// fragments : "Je m'appelle "  |          | ", j'ai " |    | " ans."  <-- 3 fragments
-//    values :                  | "Fabien" |           | 32 |          <-- 2 valeurs
+// fragments : "Je m'appelle " |          | ", j'ai " |    | " ans."
+//    values :                 | "Fabien" |           | 32 |
 ```
 - ce postulat est toujours vrai, même aux cas limites :
 
 ```js
-// En fin de chaîne
+// Valeur en fin de chaîne
 tag`Je m'appelle ${prenom}`
-// fragments : "Je m'appelle "  |          | ""   <-- 2 fragments
-//    values :                  | "Fabien" |      <-- 1 valeur
+// fragments : "Je m'appelle "  |          | ""
+//   values  :                  | "Fabien" |
 
-// En début de chaîne
+// Valeur en début de chaîne
 tag`${nbarticles} articles trouvés`
-// fragments : "" |    | " articles trouvés"      <-- 2 fragments
-//    values :    | 13 |                          <-- 1 valeur
+// fragments : "" |    | " articles trouvés"
+//    values :    | 13 |
 
-// une seule valeur sans fragment
+// Une seule valeur sans fragment
 tag`${nombre}`
-// fragments : "" |    | ""                       <-- 2 fragments
-//    values :    | 42 |                          <-- 1 valeur 
+// fragments : "" |    | ""
+//    values :    | 42 |
 
 // Aucune valeur
 tag`Ceci est une phrase banal`
-// fragments : "Ceci est une phrase banal"        <-- 1 fragment
-//    values :                                    <-- 0 valeur 
+// fragments : "Ceci est une phrase banal"
+//    values : []
 ```
 
 On peut donc recombiner la chaîne comme suit :
