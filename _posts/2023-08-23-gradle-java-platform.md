@@ -20,10 +20,10 @@ Si vous développez des microservices en Java avec Gradle, utilisez le plugin Gr
 En développant des microservices Java, vous allez probablement avoir un ensemble de dépendances communes à tous vos projets. Par exemple, si vous utilisez Spring Boot, tous vos projets inclueront probablement le [BOM Spring Boot](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies). De même, vous utilisez peut-être mapstruct ou des bibliothèques similaires dans chaque projet.
 
 Vous vous retrouverez avec un fichier build.gradle de ce type dupliqué dans chaque application : 
-```java
+```gradle
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.1.0'
+  id 'java'
+  id 'org.springframework.boot' version '3.1.0'
   id 'io.spring.dependency-management' version '1.1.0'
 }
 
@@ -58,7 +58,7 @@ Il permet de déclarer les dépendances sous forme de :
 La structure de base d'une ***Java Platform*** n'est autre qu'un projet avec simplement un fichier build.gradle. Il ne servira qu'à déclarer les dépendances et contraintes *presque* comme vous avez l'habitude de le faire.
 
 Nous allons commencer par déclarer un module qui sera publiable, même si dans un premier temps il ne déclare aucune dépendance.
-```java
+```gradle
 plugins {
   id 'java-platform'
 }
@@ -73,7 +73,6 @@ javaPlatform {
 dependencies {
 
 }
-
 ```
 
 Deux notions apparaissent ici : 
@@ -85,7 +84,7 @@ Ce module sera publié (généralement sur un dépôt maven) afin d'être consom
 ## Publier la Java Platform <a class="anchor" name="publish"></a>
 
 Pour publier le module, il faut ajouter la configuration de la tâche `publishing` comme ceci :
-```java
+```gradle
 publishing {
   publications {
     myPlatform(MavenPublication) {
@@ -96,7 +95,7 @@ publishing {
 ```
 
 Il suffit ensuite d'exécuter la commande suivante (nous publions ici dans le dépôt maven local mais il est bien entendu possible de le publier, et recommandé, sur un dépôt distant) : 
-```shell
+```bash
 ./gradlew publishToMavenLocal
 ```
 
@@ -106,7 +105,7 @@ Dans notre exemple, nous souhaitons que `commons-lang3` soit inclus dans tous no
 
 Il suffit de déclarer ces dépendances dans la section `dependencies` de votre ***Platform***, comme ceci:
 
-```java
+```gradle
 plugins {
   id 'java-platform'
 }
@@ -123,7 +122,6 @@ dependencies {
   api 'org.springframework.boot:spring-boot-starter-web'
   api 'org.apache.commons:commons-lang3:3.12.0'
 }
-
 ```
 
 Vous voyez ici que les trois déclarations différent légèrement :
@@ -135,7 +133,7 @@ Vous voyez ici que les trois déclarations différent légèrement :
 
 Maintenant, imaginons que vous ayez une dépendance optionnelle, mais dont vous voulez exposer une version recommandée car vous l'avez validée en interne, par exemple Mapstruct.
 Vous allez simplement pouvoir le faire en définissant cette version dans le bloc ***constraints***:
-```java
+```gradle
 plugins {
   id 'java-platform'
 }
@@ -154,14 +152,13 @@ dependencies {
     api 'org.mapstruct:mapstruct:1.5.5.Final'
   }
 }
-
 ```
 
 ## Utiliser la Java Platform <a class="anchor" name="consuming"></a>
 
 Une fois publiée, il ne reste plus qu'à utiliser cette ***Platform***.
 Dans votre projet applicatif, changez le `build.gradle` comme ceci: 
-```
+```gradle
 plugins {
   id 'java'
 }
@@ -178,13 +175,12 @@ repositories {
 dependencies {
   implementation platform('fr.devmachine.gradle:gradle-java-platform-sample:0.0.1')
 }
-
 ```
 
 Vous aurez remarqué que nous avons supprimé les dépendances explicites à `spring-boot` et `commons-lang3` car elles sont définies dans notre module `gradle-java-platform-sample`.
 
 Pour vérifier le comportement, affichons le graphe de dépendances du projet :
-```
+```bash
 $ ./gradlew dependencies --configuration compileClasspath
 
 compileClasspath - Compile classpath for source set 'main'.
@@ -297,14 +293,13 @@ compileClasspath - Compile classpath for source set 'main'.
      |         +--- org.springframework:spring-expression:6.0.9 (*)
      |         \--- org.springframework:spring-web:6.0.9 (*)
      \--- org.apache.commons:commons-lang3:3.12.0
-
 ```
 
 Nous voyons bien ici que `org.springframework.boot:spring-boot-starter-web` est importé dans notre projet avec la version 3.1.0 comme déclaré dans notre ***Platform***, ainsi que les dépendances transitives.
 De même `org.apache.commons:commons-lang3` est bien présent en version 3.12.0. Mais `org.mapstruct:mapstruct` n'apparait pas car il n'est pas explicitement déclaré dans notre application, et n'était qu'en contrainte dans la ***Platform***.
 
 Ajoutons maintenant `org.mapstruct:mapstruct` dans notre application comme ceci: 
-```java
+```gradle
 plugins {
   id 'java'
 }
@@ -322,11 +317,10 @@ dependencies {
   implementation platform('fr.devmachine.gradle:gradle-java-platform-sample:0.0.1')
   implementation "org.mapstruct:mapstruct"
 }
-
 ```
 
 Et affichons de nouveau le graphe de dépendances: 
-```
+```bash
 ./gradlew dependencies --configuration compileClasspath
 
 
@@ -442,7 +436,6 @@ compileClasspath - Compile classpath for source set 'main'.
 |    +--- org.apache.commons:commons-lang3:3.12.0
 |    \--- org.mapstruct:mapstruct:1.5.5.Final (c)
 \--- org.mapstruct:mapstruct -> 1.5.5.Final
-
 ```
 
 Dorénavant, `org.mapstruct:mapstruct` est lui aussi importé en version 1.5.5.Final même s'il n'a pas été nécessaire de définir cette version dans notre application.
