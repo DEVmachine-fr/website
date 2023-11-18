@@ -480,7 +480,7 @@ function currency(fragments, ...values) {
 }
 ```
 
-> 💡 **Le saviez-vous ?** ECMAScript propose une API d'internationalisation normalisée, l'API Intl, qui permet notamment de gérer les problématiques de formatage de nombres de manière standardisée et compatibles entre les différents navigateurs et runtimes.
+> 💡 **Le saviez-vous ?** ECMAScript propose une API d'internationalisation normalisée, l'**API Intl**, qui permet notamment de gérer les problématiques de formatage de nombres de manière standardisée et compatible avec les différents navigateurs et runtimes.
 
 > *On pourrait améliorer ce tag en le rendant paramétrable pour spécifier des options de formatage, comme par exemple un identifiant de langue ou de monnaie.*
 
