@@ -434,7 +434,7 @@ function translate(lang) {
   return (fragments, values...) => {
     // ...
     // lang n'est plus une variable globale mais fait partie de la portée englobante
-    const translation = translations[lang][cooked]
+    const translation = translations[cooked][lang]
     // ...
   }
 }
