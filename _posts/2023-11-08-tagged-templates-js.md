@@ -387,11 +387,9 @@ const lang = 'fr'
 
 // Définition des traductions
 const translations = {
-  fr: {
-    "Hello {0}, how are you?": "Bonjour {0}, comment allez-vous ?"
-  },
-  es: {
-    "Hello {0}, how are you?": "Hola {0}, ¿qué tal?"
+  "Hello {0}, how are you?": {
+    fr: "Bonjour {0}, comment allez-vous ?",
+    es: "Hola {0}, ¿qué tal?",
   }
 }
 
@@ -415,7 +413,7 @@ Maintenant, voyons comment cela se matérialise sous le capot de notre _tag_ `tr
 function translate(fragments, values...) {
   const placeholders = values.map((_, index) => `{${index}}`)   // (1)
   const cooked = cook(fragments, placeholders)                  // (2)
-  const translation = translations[lang][cooked]                // (3)
+  const translation = translations[cooked][lang]                // (3)
   const translatedFragments = translation.split(/{\d+}/)        // (4)
   return cook(translatedFragments, values)                      // (5)
 }
