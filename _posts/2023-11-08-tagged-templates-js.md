@@ -24,7 +24,7 @@ Dans cet article, on va voir ce que sont les &laquo; tagged templates &raquo; en
   - [Formatage de valeurs](#formatage-de-valeurs)
   - [Bibliothèques reposant sur les _tags functions_](#bibliothèques-reposant-sur-les-tags-functions)
 - [Conclusion](#conclusion)
-- [Bibliographie :](#bibliographie-)
+- [Bibliographie](#bibliographie)
 
 ## Introduction
 
@@ -143,7 +143,7 @@ On voit ici qu'une _tag function_ est appelée avec deux arguments :
 
 > **Note** : Le tableau `values` contient les valeurs avant leur conversion en chaîne, donc il est possible d'y retrouver des valeurs de tout type.
 
-Le *template literal* n'est pas traité au moment où le _tag function_ est appelée : c'est la valeur de retour de celle-ci qui détermine la chaîne résultante.
+Le *template literal* n'est pas traité au moment où la _tag function_ est appelée : c'est la valeur de retour de celle-ci qui détermine la chaîne résultante.
 
 On pourrait très bien imaginer un tag `privacy` qui cache toutes les données passées dans la chaîne : 
 
@@ -524,9 +524,9 @@ J'espère que j'ai pu éclairer vos lanternes sur ce sujet.
 
 Je vous remercie de votre attention ! 🙏 😊
 
-## Bibliographie : 
+## Bibliographie
 
-J'adresse mes remerciements aux auteurs de ces articles et de ces bibliothèques qui m'ont inspiré pour la rédaction de cet article :
+J'adresse mes remerciements aux auteurs de ces articles et de ces bibliothèques qui m'ont inspirés pour la rédaction de cet article :
 * [*Template Literals and a Practical Use of Tagged Templates in JavaScript*  par **Sanjay Bhavnani**](https://javascript.plainenglish.io/template-literals-and-a-practical-use-of-tagged-templates-58526d525d72)
 * [*Advanced String Manipulation with Tagged Templates In JavaScript* par **Alex Khomenko**](https://claritydev.net/blog/javascript-advanced-string-manipulation-tagged-templates)
 * [Dépôt Github de la bibliothèque **lit-html**](https://github.com/lit/lit/tree/main/packages/lit-html)
