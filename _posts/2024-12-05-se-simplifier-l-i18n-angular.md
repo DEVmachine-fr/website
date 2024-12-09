@@ -1,8 +1,15 @@
 ---
 author: Fabien
-title: Se simplifier la vie avec Angular et @ngx-translate
-categories: ts, angular, js, ngx-translate
+title: Se simplifier l'i18n avec Angular et ngx-translate
+categories: 
+  - ts
+  - angular
+  - js
+  - ngx-translate
+  - standalone
 ---
+
+Dans ce bref article, je vous montre comment on peut définir pour chacun de nos composants un préfixe pour nos clés de traductions grâce à l'injection de dépendances d'Angular.
 
 # Se simplifier l'i18n avec Angular et @ngx-translate
 
@@ -62,13 +69,13 @@ On constate qu'en plus d'être longues, ces clés sont redondantes, la première
 
 **Et si on structurait nos traductions par composant ?**
 
-Cela permettrait d'associer à chacun de nos composants un nœud contenant les traductions qui leurs sont propres.
+Cela permettrait d'associer à chacun de nos composants un nœud contenant les traductions qui leur sont propres.
 
-Dans cet article, on va tenter d'apporter une solution simple au problème de la longueur des clés de traductions.
+Dans cet article, on va tenter d'apporter une solution simple ce problème en utilisant l'injection de dépendance.
 
 **C'est parti !**
 
-**Attention** : cette solution n'a été testée que pour des applications Angular en mode *standalone*.
+**Attention** : cette solution ne fonctionne que pour des applications Angular en mode *standalone*.
 
 ### Première proposition
 
@@ -131,17 +138,17 @@ Et si on utilisait le mécanisme d'injection de dépendances d'Angular ?
 
 ### Proposition finale
 
-On s'en sert déjà sans forcément sans rendre compte, mais quand on va appeler notre pipe dans notre composant, c'est bien l'injection de dépendances qui va l'instancier et nous le fournir, en fonction du contexte du composant.
+On s'en sert déjà sans forcément sans rendre compte, mais quand on va appeler le pipe dans notre composant, c'est bien l'injection de dépendances qui va l'instancier et nous le fournir, en fonction du contexte du composant.
 
-**1ère étape** : on va créer un token d'injection, qui va permettre d'identifier de manière unique la ressource à injecter, ici notre préfixe
+1. on va créer un jeton d'injection, qui va permettre d'identifier de manière unique la ressource à injecter, ici notre préfixe
 
 Dans le fichier de configuration de l'app `app.config.ts`, on définit notre token :
 
 ```ts
-export const I18N_PREFIX = new InjectionToken<string>('I18N_NAMESPACE')
+export const I18N_PREFIX = new InjectionToken<string>('I18N_PREFIX')
 ```
 
-**2ème étape** : dans le composant, on va créer un **provider** qui va fournir une valeur pour ce token.
+1. dans le composant, on va créer un **provider** qui va fournir une valeur pour ce jeton.
 
 ```ts
 @Component({
@@ -151,7 +158,7 @@ export const I18N_PREFIX = new InjectionToken<string>('I18N_NAMESPACE')
 export class PollsCreateFormComponent { ... }
 ```
 
-**3ème étape** : Dans notre pipe, on va demander à injecter le préfixe en se servant de notre token
+1. Dans notre pipe, on va demander à injecter le préfixe en se servant de notre token
 
 ```ts
 private readonly prefix = inject(I18N_PREFIX, { optional: true })
@@ -173,7 +180,7 @@ export class TranslateNsPipe extends TranslatePipe implements PipeTransform {
   private readonly prefix = inject(I18N_PREFIX, { optional: true })
 
   override transform(query: string, ...args: unknown[]): any {
-    const key = this.namespace ? `${this.namespace}.${query}` : query;
+    const key = this.prefix ? `${this.prefix}.${query}` : query;
     return super.transform(key, ...args);
   }
 }
@@ -181,13 +188,13 @@ export class TranslateNsPipe extends TranslatePipe implements PipeTransform {
 
 On surcharge la méthode `transform`, et on ajoute le préfixe à la clé s'il existe, puis on appelle la fonction du parent.
 
-Note 1 : Vous aurez peut-être noté le `pure: false` dans le décorateur du pipe ? Je ne rentre pas dans le détail mais étant donné que `TranslatePipe` est impur, il faut que notre pipe le soit aussi. Sans ce paramètre, le pipe ne fonctionnera pas correctement.
+**Note 1** : Vous aurez peut-être noté le `pure: false` dans le décorateur du pipe ? Je ne rentre pas dans le détail mais étant donné que `TranslatePipe` est lui aussi impur, il faut que notre pipe le soit aussi. Sans ce paramètre, le pipe ne fonctionnera pas correctement.
 
-Note 2 : J'ai choisi d'utiliser `inject()` et non le constructeur ici car cela m'aurait obligé à injecter aussi les dépendances du parent pour pouvoir appeler son constructeur.
+**Note 2** : J'ai choisi d'utiliser `inject()` et non le constructeur ici car cela m'aurait obligé à injecter aussi les dépendances du parent pour pouvoir appeler son constructeur.
 
 **Voilà, notre pipe est prêt !**
 
-Maintenant il nous reste plus qu'à mettre à jour notre template  :
+Maintenant, il nous reste plus qu'à mettre à jour notre template :
 
 {% raw %}
 ```html
@@ -202,8 +209,12 @@ Maintenant il nous reste plus qu'à mettre à jour notre template  :
     <!-- ... -->
   </select>
 
-  <!-- D'autres champs ... -->
+  <!-- D'autres champs… -->
 </form>
 ```
 {% endraw %}
 
+Et voilà, le tour est joué. Maintenant, toutes les clés de traductions sont préfixées automatiquement par notre pipe `translateNs`.
+Si on utilise un composant enfant dans le template, il est tout à fait possible de définir un nouveau préfixe pour celui-ci, car c'est toujours la valeur fournie en dernier dans l'ordre de la hiérarchie qui prévaut.
+
+À bientôt pour de nouvelles astuces avec Angular ! 👋
