@@ -30,14 +30,17 @@ Avec elle, on définit pour chaque langue un fichier de traduction au format JSO
 
 Et dans nos templates, on utilise le pipe `translate` pour afficher la traduction :
 
+{% raw %}
 ```html
 <header>
   <h1>{{ 'home.greetings' | translate: { name: 'Fabien' } }}</h1>
 </header>
 ```
+{% endraw %}
 
 Au fur et à mesure que l'application grossit, on veut davantage structurer notre fichier de traductions. Le niveau d'imbrication commence à augmenter et avec lui, la longueur de nos clés de traductions. Hélas, cela va finir par altérer la lisibilité de nos templates.
 
+{% raw %}
 ```html
 <!-- poll-create-form.component.html -->
 <form>
@@ -53,6 +56,7 @@ Au fur et à mesure que l'application grossit, on veut davantage structurer notr
 
 </form>
 ```
+{% endraw %}
 
 On constate qu'en plus d'être longues, ces clés sont redondantes, la première partie `polls.create.form` étant toujours la même pour notre composant.
 
@@ -100,6 +104,7 @@ On créé le nœud correspondant à notre composant dans le fichier de traductio
 
 Et ensuite on ajoute le préfixe à chacune de nos clés de traductions
 
+{% raw %}
 ```html
 <form>
   <input type="text"
@@ -114,6 +119,7 @@ Et ensuite on ajoute le préfixe à chacune de nos clés de traductions
     
 </form>
 ```
+{% endraw %}
 
 Pas mal, mais je pense qu'on peut faire mieux.
 
@@ -183,6 +189,7 @@ Note 2 : J'ai choisi d'utiliser `inject()` et non le constructeur ici car cela m
 
 Maintenant il nous reste plus qu'à mettre à jour notre template  :
 
+{% raw %}
 ```html
 <form>
   <input type="text"
@@ -198,4 +205,5 @@ Maintenant il nous reste plus qu'à mettre à jour notre template  :
   <!-- D'autres champs ... -->
 </form>
 ```
+{% endraw %}
 
