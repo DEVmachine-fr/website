@@ -77,6 +77,8 @@ Dans cet article, on va tenter d'apporter une solution simple ce problème en ut
 
 **Attention** : cette solution ne fonctionne que pour des applications Angular en mode *standalone*.
 
+---
+
 ### Première proposition
 
 On choisit de définir une constante contenant le préfixe dans la logique métier de notre composant
