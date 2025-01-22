@@ -75,7 +75,7 @@ Dans cet article, on va tenter d'apporter une solution simple ce problème en ut
 
 **C'est parti !**
 
-**Attention** : cette solution ne fonctionne que pour des applications Angular en mode *standalone*.
+> **Attention** : cette solution ne fonctionne que pour des applications Angular en mode *standalone*.
 
 ---
 
