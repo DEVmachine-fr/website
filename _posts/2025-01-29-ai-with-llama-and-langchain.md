@@ -4,12 +4,15 @@ title: Comment faire tourner une IA en local avec langchain, Llama, Nodejs et Vu
 categories: langchain vue3 node llama ollama
 ---
 
-Nous partageons ici un tutoriel pour faire fonctionner simplement une **intelligence artificielle** avec **langchain**, **Llama**, **Node.js** et **Vue 3**.
+Nous partageons ici un tutoriel pour faire fonctionner simplement une **intelligence artificielle** avec **langchain**, **Llama**/**Deepseek**, **Node.js** et **Vue 3**.
 
 - [Introduction](#introduction)
 - [Installation](#installation)
   - [Création d'un environnement virtuel python](#python)
-  - [Installation de Llama](#llama)
+  - [Installation du modèle d'IA](#ia)
+    - [Installation d'Ollama](#ollama)
+    - [Installation de Llama](#llama)
+    - [Installation de Deepseek](#deepseek)
 - [Création du chat](#chat)
   - [Mise en place du serveur Node](#node)
   - [Mise en place du client Vue3](#vue3)
@@ -37,21 +40,29 @@ Pour pouvoir faire tourner Llama, il nous faudra tout d'abord un environnement a
   - On installe **python3.10**: `sudo apt install python3.10 -y`.
 - Naviguez ensuite dans le dossier dans lequel vous souhaitez créer votre environnement virtuel et lancez la commande : `python3.10 -m venv ./`.
 
-### Installation de Llama <a class="anchor" name="llama"></a>
+### Installation du modèle d'IA <a class="anchor " name="ia"></a>
 
-Nous utiliserons dans notre cas la version Llama 3.2 lightweight 1B.
+#### Installation d'Ollama <a class="anchor" name="ollama"></a>
 
-Nous allons également installer Ollama qui est une surcouche de Llama qui simplifie le déploiement et la gestion des modèles.
-Ollama permet aussi d'utiliser des modèles Gemini ou Mistral si vous le souhaitez.
+Nous allons installer Ollama qui simplifie le déploiement et la gestion des modèles.
+Ollama permet de télécharger et d'éxécuter un nombre important de modèle LLM, notamment les LLM Llama et Deepseek que nous détaillerons dans ce tutoriel.
 Ollama permet également de créer son propre modèle mais cette fonctionnalité ne sera pas abordée dans ce tutoriel.
 
 Nous allons activer notre environnement virtuel puis télécharger le modèle:
 
 - À la racine du dossier de votre environnement virtuel lancez la commande: `source bin/activate`.
 - Installez Ollama: `curl -fsSL https://ollama.com/install.sh | sh`.
+
+#### Installation de Llama <a class="anchor" name="llama"></a>
+
+Nous utiliserons dans notre cas la version Llama 3.2 lightweight 1B:
 - Téléchargez et lancez la version Llama qui correspond à votre demande sur le site de [Llama](https://www.llama.com/): `ollama run llama3.2:1b` dans notre exemple. Le modèle sera lancé par défaut sur `localhost:11434`.
 
 Nous avons maintenant notre modèle Llama opérationnel dans notre environnement virtuel, nous pouvons désormais créer notre chat et le connecter à notre modèle.
+
+#### Installation de Deepseek <a class="anchor" name="deepseek"></a>
+
+Pour utiliser Deepseek, c'est encore plus simple ! Pas besoin de faire de demande de téléchargement ici, lancez simplement **ollama** avec la version **Deepseek** que vous souhaitez. Attention tout de même, la version lightweight de **Deepseek** est plus conséquente que celle d'Ollama (pour notre version **deepseek-v2:lite** il vous faudra compter 8,9Gb par exemple): `ollama run deepseek-v2:lite`
 
 ## Création du chat <a class="anchor" name="chat"></a>
 
@@ -94,6 +105,7 @@ import { Ollama } from "@langchain/ollama";
 
 export class IA {
   iaModel;
+  // remplacer llama3.2:1b par votre modèle, deepseek-v2:lite dans notre exemple avec Deepseek
   constructor(model = "llama3.2:1b", baseUrl = "localhost:11434") {
     this.iaModel = new Ollama({ model, baseUrl });
   }
