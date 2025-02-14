@@ -98,16 +98,16 @@ Pour faciliter la communication, nous allons installer **cors**:
 npm i --save cors
 ```
 
-Créons le fichier **ia-model.js** dans lequel nous aurons le fonctionnement pour requêter le service **Ollama**:
+Créons le fichier **ai-model.js** dans lequel nous aurons le fonctionnement pour requêter le service **Ollama**:
 {% include code-header.html %}
 ```js
 import { Ollama } from "@langchain/ollama";
 
-export class IA {
-  iaModel;
+export class AI {
+  aiModel;
   // remplacer llama3.2:1b par votre modèle, deepseek-v2:lite dans notre exemple avec Deepseek
   constructor(model = "llama3.2:1b", baseUrl = "localhost:11434") {
-    this.iaModel = new Ollama({ model, baseUrl });
+    this.aiModel = new Ollama({ model, baseUrl });
   }
   async chatMessage(req, res) {
     try {
@@ -115,7 +115,7 @@ export class IA {
       const message = req.body.message;
       // La réponse complète d'une IA peut être streamée pour éviter un trop long temps d'attente
       // On pourra ainsi afficher côté client la réponse de l'IA au fur et à mesure de sa complétion
-      const responseStream = await this.iaModel.stream(message);
+      const responseStream = await this.aiModel.stream(message);
       // Pour chaque morceau de réponse reçu, on écrit ce morceau
       for await (const chunk of responseStream) {
         res.write(chunk);
@@ -133,21 +133,21 @@ export class IA {
 Ensuite dans le fichier **index.js** déjà créé à l'initialisation, nous allons créer une route pour appeler notre fonction **chatMessage**:
 {% include code-header.html %}
 ```js
-import { IA } from "./ia-model.js";
+import { AI } from "./aa-model.js";
 import cors from "cors";
 import express from "express";
 
 const app = express();
 app.use(cors());
 const port = 3000;
-const iaModel = new IA();
+const aiModel = new AI();
 
 app.get("/", (req, res) => {
   res.send("Node server is running");
 });
 
 app.post("/message", (req, res) => {
-  return iaModel.chatMessage(req, res);
+  return aiModel.chatMessage(req, res);
 });
 
 app.listen(port, () => {
@@ -320,7 +320,7 @@ const currentIAResponse = ref("");
 // On initialise un premier message de l'IA
 const chatHistory = ref([
   {
-    sender: "IA",
+    sender: "AI",
     message: "Hello, How can i help you ?",
   },
 ]);
@@ -346,13 +346,13 @@ Nous complètons maintenant le template pour afficher **chatHistory** et **curre
           class="response"
           :class="{
             'user-response': chatResponse.sender === 'User',
-            'ia-response': chatResponse.sender === 'IA',
+            'ai-response': chatResponse.sender === 'AI',
           }"
           v-html="marked.parse(chatResponse.message)"
         ></div>
       </template>
       <div
-        class="response ia-response"
+        class="response ai-response"
         v-if="currentIAResponse"
         v-html="marked.parse(currentIAResponse)"
       ></div>
@@ -390,7 +390,7 @@ On ajoute des styles sur ces nouvelles classes:
   background-color: white;
   color: #243252;
 }
-.ia-response {
+.ai-response {
   margin-left: auto;
   background-color: #fc766a;
   color: white;
@@ -446,7 +446,7 @@ async function sendMessage() {
     }
   }
   // Une fois le stream terminé, on ajoute la réponse complète dans l'historique et l'on vide la réponse courante de l'IA
-  chatHistory.value.push({ sender: 'IA', message: partialResponse })
+  chatHistory.value.push({ sender: 'AI', message: partialResponse })
   currentIAResponse.value = ''
 }
 ...
