@@ -48,3 +48,18 @@ Au préalable, vérifier que les dossiers `.jekyll-cache` et `_site` sont dispon
 ```shell
 docker run --rm --volume="$PWD:/srv/jekyll" -p 4000:4000 -it jekyll/builder:4.0 jekyll serve --trace --drafts --watch
 ```
+
+
+## Via nix
+
+Le projet est compatible avec nix. Pour installer les dépendances, il suffit de lancer la commande suivante :
+
+```shell
+nix develop --experimental-features 'nix-command flakes'
+```
+
+> [!TIP]
+> Il est possible d'utiliser directement `nix develop` si vous avez activé l'option `experimental-features` dans votre configuration nix. Pour plus d'information, voir [ici](https://nixos.wiki/wiki/Flakes).
+
+> [!WARNING]
+> Si vous êtes passé par votre package manager pour installer `nix`, il est possible que vous ayez besoin de lancer la commande avec `sudo`.
