@@ -80,6 +80,10 @@ article.post-content {
     color: $third;
   }
 
+  h4, h5, h6 {
+    font-size: large;
+  }
+
   blockquote {
     padding: 0.75rem;
     border-left: 5px $gray-200 solid;
