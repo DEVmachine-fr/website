@@ -21,6 +21,10 @@
 // PLUGINS
 @import "_accordion";
 
+html {
+  scroll-behavior: smooth;
+}
+
 // Global styling for this template
 body {
   overflow-x: hidden;
@@ -206,5 +210,12 @@ ul.arrow-list, article.post-content ul, article.post-content ol {
   html.scrolled & {
     opacity: 1;
     visibility: visible;
+  }
+
+  &.over-footer {
+    background-color: $white;
+    span.fas {
+      color: $secondary;
+    }
   }
 }

@@ -27,3 +27,14 @@ const storeScroll = () => {
 document.addEventListener('scroll', debounce(storeScroll), { passive: true });
 // Update scroll position for first time
 storeScroll();
+
+// Change scroll-to-top button style when footer is visible
+document.addEventListener('DOMContentLoaded', () => {
+  const footer = document.querySelector('footer');
+  if (footer) {
+    new IntersectionObserver((entries) => {
+      document.getElementById('scroll-top')
+        ?.classList.toggle('over-footer', entries[0].isIntersecting);
+    }).observe(footer);
+  }
+});
