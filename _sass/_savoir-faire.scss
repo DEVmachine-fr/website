@@ -14,6 +14,87 @@ section#savoir-faire-stack {
 }
 
 section#index-savoir-plus.bg-pink {
-  // CSS de cette section définie dans _index.scss 
+  // CSS de cette section définie dans _index.scss
   background-color: $light-pink;
+}
+
+.skill-card {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: center;
+  padding: 0.0rem 1rem;
+  gap: 2rem;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+}
+
+.skills-grid .tech-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.skills-grid .tech-logo[alt="Ollama"] {
+  width: 80px;
+  height: 80px;
+}
+
+.skills-grid .tech-logo[alt="Atlassian"],
+.skills-grid .tech-logo[alt="iOS"] {
+  width: 35px;
+  height: 35px;
+}
+
+.skills-grid .tech-logo.angular,
+.skills-grid .tech-logo.flutter,
+.skills-grid .tech-logo.ionic,
+.skills-grid .tech-logo.liquibase,
+.skills-grid .tech-logo.azure,
+.skills-grid .tech-logo.googlecloud,
+.skills-grid .tech-logo.alibaba {
+  width: 90px;
+  height: 90px;
+}
+
+.skills-grid .tech-logo.couchbase,
+.skills-grid .tech-logo.swagger,
+.skills-grid .tech-logo.rabbit,
+.skills-grid .tech-logo.keycloak,
+.skills-grid .tech-logo.capacitor,
+.skills-grid .tech-logo.ai {
+  width: 120px;
+  height: 120px;
+}
+
+@media (max-width: 1200px) and (min-width: 769px) {
+  /* Tablet breakpoint */
+  .skill-card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .arrow-list {
+    text-align: left;
+    margin-bottom: 0.5rem;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  /* mobile breakpoint */
+  .skill-card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .skills-grid {
+    justify-content: start;
+    gap: 1.5rem;
+  }
 }
