@@ -29,10 +29,6 @@
           id="navbarResponsive"
         >
           <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                  <a class="nav-link {% if page.url == '/' %}active{% endif %}" href="/">Accueil</a>
-              </li>
-
             {% assign sorted_pages = site.html_pages | sort:"order" %}
             {% for navPage in sorted_pages %}
              {% unless navPage.exclude-nav %}

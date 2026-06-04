@@ -21,6 +21,7 @@ const debounce = (fn) => {
 // so we can use it in our stylesheets
 const storeScroll = () => {
   document.documentElement.dataset.scroll = window.scrollY;
+  document.documentElement.classList.toggle('scrolled', window.scrollY > 300);
 }
 // Listen for new scroll events, here we debounce our `storeScroll` function
 document.addEventListener('scroll', debounce(storeScroll), { passive: true });
