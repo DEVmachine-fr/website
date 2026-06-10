@@ -1,54 +1,60 @@
 footer {
   background-color: $secondary;
 
-  div.links-container {
-    gap: 1rem 2rem;
+  div.footer-inner {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    a {
-      color: $white;
-    }
+    padding: 2rem 0;
   }
 
-  div.bottom-container {
-    gap: 1rem;
+  div.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
     a {
       color: $light-grey;
-    }
-    #mentions-btn {
-      color: $light-grey;
       &:hover {
-        cursor: pointer;
-        text-decoration: underline;
+        color: $white;
+        text-decoration: none;
       }
     }
   }
 
   @media (max-width: $sm-size) {
-    padding: 0 .5rem;
-    // Centrer le logo
-    div.logo-container {
-      justify-content: center;
-    }
-
-    div.links-container {
-      justify-content: center;
-    }
-
-    div.bottom-container {
+    div.footer-inner {
       flex-direction: column;
+      gap: 1.5rem;
       text-align: center;
     }
+    div.footer-links {
+      flex-direction: column;
+      gap: 1rem;
+    }
   }
-
 }
 
 // MENTIONS LEGALES
-.mentions-legales {
-  div.modal-body {
-    p {
-      font-size: .9rem;
-      line-height: 1.1rem;
-      text-align: justify;
+section#mentions-legales {
+  h2 {
+    color: $secondary;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin: 2rem 0 1rem;
+  }
+  table.mentions-table {
+    th {
+      color: $third;
+      font-weight: 700;
+      width: 40%;
+      padding: 0.4rem 1rem 0.4rem 0;
+    }
+    td {
+      color: $secondary;
+      padding: 0.4rem 0;
+    }
+    tr {
+      border-bottom: 1px solid $light-grey;
     }
   }
 }

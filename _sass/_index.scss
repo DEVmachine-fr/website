@@ -4,6 +4,10 @@ body.main-bg {
 }
 
 section#index-intro {
+  div.container > div.row {
+    align-items: flex-start;
+  }
+
   div.shape-container {
     $HEIGHT: 20rem;
     $SHAPE: polygon(
@@ -18,12 +22,15 @@ section#index-intro {
     position: relative;
     padding: 0;
     
+    $OFFSET: 2rem;
+
     div.bg-orange {
       z-index: -1;
       position: absolute;
       top: 1rem;
+      left: $OFFSET;
       height: $HEIGHT;
-      width: 100%;
+      width: calc(100% - #{$OFFSET});
       background-color: $primary;
       clip-path: $SHAPE;
       transform: rotate(-1deg);
@@ -31,6 +38,7 @@ section#index-intro {
       max-height: 40vh;
     }
     div.image-container {
+      margin-left: $OFFSET;
       clip-path: $SHAPE;
       img {
         height: $HEIGHT;
@@ -75,20 +83,30 @@ section#index-intro {
   }
 }
 
-// B2B / B2C
+div.index-logos {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 0.75rem;
+  img {
+    width: 6.75rem;
+    height: 6.75rem;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  img.logo-no-padding {
+    width: 8.7rem;
+    height: 8.7rem;
+  }
+  img:last-child {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+}
+
 section#index-b2b {
   color: $secondary;
-  padding-bottom: 0; // pour l'effet avec la feuille
-
-  img.leaf {
-    width: 12rem;
-    margin-top: -4rem;
-    margin-bottom: -.3rem;
-
-    @media (max-width: $sm-size) {
-      display: none;
-    }
-  }
 }
 
 // IMAGES
@@ -186,6 +204,7 @@ section#index-images {
 
 // PILIERS
 section#index-piliers {
+  background-color: $light-pink;
   color: $secondary;
 
   div.piliers-item {
@@ -229,7 +248,7 @@ section#index-piliers {
 
 // PRESTATIONS
 section#index-prestations {
-  background-color: $light-pink;
+  background-color: $white;
   text-align: center;
   padding-top: 2rem;
 
@@ -329,39 +348,6 @@ section#index-prestations {
   }
 }
 
-// SAVOIR FAIRE
-section#index-savoir-faire {
-  background-color: $light-pink;
-  text-align: center;
-
-  div.skill-item-container {
-    row-gap: 4rem;
-
-    div.skill-item {
-      img {
-        height: 5rem;
-        margin-bottom: 1rem;
-      }
-
-      h3 {
-        color: $primary;
-        font-weight: 600;
-      }
-
-      p {
-        color: $secondary;
-        font-weight: 600;
-        // pour que le texte soit moins large que le titre
-        max-width: 60%;
-        margin: auto;
-      }
-    }
-
-  }
-  a.dm-btn {
-    margin-top: 2rem;
-  }
-}
 
 section#index-savoir-plus {
   a.dm-btn {

@@ -12,10 +12,11 @@
   </head>
   <body
     {% if page.url == "/" %} class="main-bg" {% endif %}
+    style="min-height: 100vh; display: flex; flex-direction: column;"
   >
     {% include navigation.html %}
 
-    {{ content }}
+    <main style="flex: 1;">{{ content }}</main>
 
     {% include footer.html %}
 

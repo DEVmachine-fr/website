@@ -10,7 +10,7 @@ section#savoir-faire-piliers {
 }
 
 section#savoir-faire-stack {
-  background-color: #f8f9fa;
+  background-color: $light-purple;
 }
 
 section#index-savoir-plus.bg-pink {
@@ -61,14 +61,61 @@ section#index-savoir-plus.bg-pink {
   height: 90px;
 }
 
+// Logos carrés (icônes)
 .skills-grid .tech-logo.couchbase,
 .skills-grid .tech-logo.swagger,
-.skills-grid .tech-logo.rabbit,
 .skills-grid .tech-logo.keycloak,
-.skills-grid .tech-logo.capacitor,
-.skills-grid .tech-logo.ai {
+.skills-grid .tech-logo.capacitor {
   width: 120px;
   height: 120px;
+}
+
+// RabbitMQ réduit
+.skills-grid .tech-logo.rabbit {
+  width: 70px;
+  height: 70px;
+}
+
+// .NET réduit
+.skills-grid .tech-logo[alt=".NET"] {
+  width: 40px;
+  height: 40px;
+}
+
+// Logos LLM carrés
+.skills-grid .tech-logo[alt="Claude"],
+.skills-grid .tech-logo[alt="Hugging Face"] {
+  width: 90px;
+  height: 90px;
+}
+
+// Logos LLM larges (wordmarks) — hauteur fixe, largeur libre
+.skills-grid .tech-logo[alt="OpenAI"] {
+  width: 90px;
+  height: auto;
+}
+.skills-grid .tech-logo[alt="LangChain"] {
+  width: 110px;
+  height: auto;
+}
+.skills-grid .tech-logo[alt="GitHub Copilot"] {
+  width: 130px;
+  height: auto;
+}
+
+// Logos wordmarks larges
+.skills-grid .tech-logo[alt="GitLab"] {
+  width: 90px;
+  height: auto;
+}
+.skills-grid .tech-logo[alt="InfluxDB"] {
+  width: 150px;
+  height: auto;
+}
+
+.skills-grid .tech-logo[alt="Supabase"] {
+  width: 110px;
+  height: auto;
 }
 
 @media (max-width: 1200px) and (min-width: 769px) {

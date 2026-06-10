@@ -432,20 +432,3 @@ section#offre-prestations {
   }
 }
 
-// MISE EN OEUVRE
-section#offre-mise-oeuvre {
-  h2.title {
-    margin: 1rem auto;
-    font-weight: 800;
-    color: $primary;
-  }
-  p {
-    color: $secondary;
-    text-align: justify;
-
-    // marge minimale
-    @media (max-width: $sm-size) {
-      margin: 0 1.5rem;  
-    }
-  }
-}

@@ -37,7 +37,7 @@
                     class="nav-link"
                     {% if page.url == navPage.url %} style="color: #fc766a; font-weight: bold" {% endif %}
                     href="{{ navPage.url }}"
-                  >{{ navPage.title }}</a>
+                  >{{ navPage.nav-title | default: navPage.title }}</a>
                 </li>
               {% endunless %}
             {% endfor %}
