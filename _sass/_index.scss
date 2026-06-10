@@ -8,6 +8,11 @@ section#index-intro {
     align-items: flex-start;
   }
 
+  div.intro-bg p span {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
   div.shape-container {
     $HEIGHT: 20rem;
     $SHAPE: polygon(

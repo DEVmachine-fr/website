@@ -80,6 +80,20 @@ section#index-savoir-plus.bg-pink {
   border-radius: 6px;
 }
 
+.skills-grid .tech-logo[alt="Google Cloud"],
+.skills-grid .tech-logo[alt="Couchbase"],
+.skills-grid .tech-logo[alt="InfluxDB"] {
+  padding: 2px;
+}
+
+.skills-grid .tech-logo[alt="AWS"],
+.skills-grid .tech-logo[alt="Git"],
+.skills-grid .tech-logo[alt="Atlassian"],
+.skills-grid .tech-logo[alt="iOS"],
+.skills-grid .tech-logo[alt=".NET"] {
+  padding: 12px;
+}
+
 @media (max-width: 1200px) and (min-width: 769px) {
   /* Tablet breakpoint */
   .skill-card {

@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git branch:*)",
+      "Bash(git reset:*)",
+      "Bash(git checkout *)",
+      "Bash(file /Users/alexandre/Sites/website/assets/images/website/page-index/logos/*.png)",
+      "Bash(convert /Users/alexandre/Sites/website/assets/images/website/page-index/logos/rse.png -trim +repage /Users/alexandre/Sites/website/assets/images/website/page-index/logos/rse.png)",
+      "Bash(python3 -c \"from PIL import Image; print\\('ok'\\)\")",
+      "Bash(python3 *)",
+      "Bash(bash *)",
+      "Bash(export PATH=\"/Users/alexandre/.nvm/versions/node/v20.19.3/bin:$PATH\")"
+    ]
+  }
+}
