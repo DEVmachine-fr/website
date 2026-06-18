@@ -404,7 +404,7 @@ section#index-b2b-cta {
   div.b2b-cta {
     display: flex;
     align-items: center;
-    background: linear-gradient(90deg, $secondary 0%, #3d5270 100%);
+    background: linear-gradient(90deg, $secondary 0%, $secondary-light 100%);
     border-radius: 12px;
     padding: 1.2rem 2rem;
     margin: 0 auto;
