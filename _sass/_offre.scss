@@ -225,10 +225,16 @@ section#offre-prestations {
       gap: .6rem;
       margin: 0;
       justify-content: start;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
 
-      @media (max-width: $md-size) {
-        flex-wrap: wrap;
+      &.nowrap {
+        flex-wrap: nowrap;
+        @media (max-width: $md-size) {
+          flex-wrap: wrap;
+        }
+      }
+
+      @media (max-width: $sm-size) {
         justify-content: center;
       }
 
@@ -372,7 +378,6 @@ section#offre-prestations {
         margin-right: 10%;
       }
       div.logo-entreprise img {
-        // Filtre vers #243252 (bleu DM)
         filter: brightness(0) saturate(100%) invert(13%) sepia(52%) saturate(586%) hue-rotate(189deg) brightness(96%) contrast(95%);
       }
     }
