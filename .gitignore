@@ -3,3 +3,6 @@
 _site
 .gems/*
 .superpowers/
+vendor/
+.bundle/
+.ruby-version
