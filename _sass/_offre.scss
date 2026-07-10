@@ -242,16 +242,18 @@ section#offre-prestations {
         position: relative;
         display: inline-flex;
         align-items: center;
-        column-gap: .4rem;
-        justify-content: space-evenly;
+        justify-content: center;
         border: 1px solid $third;
         border-radius: 10px;
         padding: .2rem .8rem;
-        min-height: 4rem;
+        width: 8rem;
+        height: 4rem;
+        flex-shrink: 0;
 
         img {
-          max-width: 6rem;
-          max-height: 3rem;
+          width: 6rem;
+          height: 3rem;
+          object-fit: contain;
         }
 
         // pour que les logos ressortent bien
