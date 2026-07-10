@@ -225,7 +225,15 @@ section#offre-prestations {
       gap: .6rem;
       margin: 0;
       justify-content: start;
-      
+      flex-wrap: wrap;
+
+      &.nowrap {
+        flex-wrap: nowrap;
+        @media (max-width: $md-size) {
+          flex-wrap: wrap;
+        }
+      }
+
       @media (max-width: $sm-size) {
         justify-content: center;
       }
@@ -280,7 +288,6 @@ section#offre-prestations {
         // POPUP
         &:hover {
           color: $primary;
-          cursor: help;
           span.info-icon {
             color: $primary;
             border-color: $primary;
@@ -338,7 +345,7 @@ section#offre-prestations {
       padding-right: 3rem;
       background-color: $secondary;
       box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.15);
-      
+
       h1.title {
         color: $white;
       }
@@ -351,9 +358,8 @@ section#offre-prestations {
       div.illustration {
         margin-left: 10%;
       }
-      span.info-icon {
-        border: 1px solid $white ;
-        color: $white ;
+      div.logo-entreprise img {
+        filter: brightness(0) invert(1);
       }
     }
 
@@ -371,9 +377,8 @@ section#offre-prestations {
       div.illustration {
         margin-right: 10%;
       }
-      span.info-icon {
-        border: 1px solid $secondary;
-        color: $secondary;
+      div.logo-entreprise img {
+        filter: brightness(0) saturate(100%) invert(13%) sepia(52%) saturate(586%) hue-rotate(189deg) brightness(96%) contrast(95%);
       }
     }
 
@@ -394,7 +399,7 @@ section#offre-prestations {
       margin-right: 2%;
     }
     div.illustration.time, div.illustration.thinking {
-      width: 28%;
+      width: 26%;
       margin-left: 2%;
     }
 
@@ -432,20 +437,3 @@ section#offre-prestations {
   }
 }
 
-// MISE EN OEUVRE
-section#offre-mise-oeuvre {
-  h2.title {
-    margin: 1rem auto;
-    font-weight: 800;
-    color: $primary;
-  }
-  p {
-    color: $secondary;
-    text-align: justify;
-
-    // marge minimale
-    @media (max-width: $sm-size) {
-      margin: 0 1.5rem;  
-    }
-  }
-}

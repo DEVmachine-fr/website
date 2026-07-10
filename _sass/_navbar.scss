@@ -56,6 +56,12 @@
   }
 }
 
+@media (max-width: $sm-size) {
+  #mainNav img[alt="Marque Bretagne"] {
+    display: none;
+  }
+}
+
 // data-scroll ajouté grâce au script "scroll-listener.js"
 html[data-scroll='0'] {
   // Pas d'ombre quand le scroll est en haut

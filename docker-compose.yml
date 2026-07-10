@@ -1,0 +1,10 @@
+services:
+  jekyll:
+    image: jekyll/builder:4.0
+    command: jekyll serve --trace --drafts --livereload --watch --host 0.0.0.0
+    ports:
+      - "4000:4000"      # site accessible sur http://127.0.0.1:4000
+      - "35729:35729"    # livereload
+    volumes:
+      - .:/srv/jekyll
+    working_dir: /srv/jekyll

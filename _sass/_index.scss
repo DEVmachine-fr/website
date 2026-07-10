@@ -4,6 +4,15 @@ body.main-bg {
 }
 
 section#index-intro {
+  div.container > div.row {
+    align-items: flex-start;
+  }
+
+  div.intro-bg p span {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
   div.shape-container {
     $HEIGHT: 20rem;
     $SHAPE: polygon(
@@ -18,12 +27,15 @@ section#index-intro {
     position: relative;
     padding: 0;
     
+    $OFFSET: 2rem;
+
     div.bg-orange {
       z-index: -1;
       position: absolute;
       top: 1rem;
+      left: $OFFSET;
       height: $HEIGHT;
-      width: 100%;
+      width: calc(100% - #{$OFFSET});
       background-color: $primary;
       clip-path: $SHAPE;
       transform: rotate(-1deg);
@@ -31,6 +43,7 @@ section#index-intro {
       max-height: 40vh;
     }
     div.image-container {
+      margin-left: $OFFSET;
       clip-path: $SHAPE;
       img {
         height: $HEIGHT;
@@ -52,6 +65,7 @@ section#index-intro {
         0 9rem,
       );
       div.image-container {
+        margin-left: 0;
         clip-path: $SM-SHAPE;
         img {
           height: $SM-HEIGHT;
@@ -62,6 +76,7 @@ section#index-intro {
         height: $SM-HEIGHT;
         top: 0.4rem;
         left: -0.2rem;
+        width: 100%;
       }
     }
   }
@@ -73,23 +88,385 @@ section#index-intro {
       max-width: 98vw;
     }
   }
+
+  @media (max-width: $sm-size) {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
 }
 
-// B2B / B2C
+div.index-logos {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 0.75rem;
+  img {
+    width: 6.75rem;
+    height: 6.75rem;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  img.logo-no-padding {
+    width: 8.7rem;
+    height: 8.7rem;
+  }
+  img:last-child {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+
+  @media (max-width: $sm-size) {
+    justify-content: center;
+  }
+}
+
+section#index-ia {
+  background: linear-gradient(180deg, $lighter-blue 0%, $lighter-blue 70%, $white 100%);
+
+  div.ia-section {
+    max-width: 980px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  div.ia-group {
+    border-radius: 12px;
+    padding: 1.5rem 0;
+
+    h3.ia-title {
+      font-family: 'Nunito Bold', 'Nunito';
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: $secondary;
+      margin-bottom: 0.3rem;
+    }
+    p.ia-subtitle {
+      color: $third;
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+    }
+  }
+
+  div.ia-cards {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  div.ia-cards--grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  div.ia-card {
+    flex: 1;
+    background-color: $white;
+    border-radius: 8px;
+    padding: 1.2rem;
+    border: 1px solid rgba(192, 198, 213, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    img.ia-icon {
+      width: 3rem;
+      height: 3rem;
+      object-fit: contain;
+      margin-bottom: 0.6rem;
+      flex-shrink: 0;
+    }
+
+    img.ia-icon[src*="choix"] {
+      width: 2.5rem;
+      height: 2.5rem;
+      margin-bottom: 1.1rem;
+    }
+
+
+    p.ia-card-title {
+      font-family: 'Nunito Bold', 'Nunito';
+      font-weight: 800;
+      color: $secondary;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    p.ia-card-desc {
+      color: $third;
+      font-size: 0.85rem;
+      margin: 0;
+    }
+  }
+}
+
 section#index-b2b {
   color: $secondary;
-  padding-bottom: 0; // pour l'effet avec la feuille
+  padding-top: 1rem;
+  position: relative;
 
-  img.leaf {
-    width: 12rem;
-    margin-top: -4rem;
-    margin-bottom: -.3rem;
+  img.b2b-leaves {
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+    height: 120px;
+    width: auto;
 
     @media (max-width: $sm-size) {
       display: none;
     }
   }
+
+  div.vision-cards {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    margin: 0 auto 2rem;
+    max-width: 980px;
+  }
+
+  .vision-card {
+    border-radius: 12px;
+    padding: 2rem;
+    width: 50%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    h3 {
+      font-family: 'Nunito Bold', 'Nunito';
+      font-size: 30px;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    ul.arrow-list {
+      flex: 1;
+      li {
+        margin-bottom: 0.6rem;
+        text-align: left;
+      }
+    }
+
+    .vision-subtitle {
+      font-size: 0.85rem;
+      opacity: 0.75;
+    }
+  }
+
+  @media (max-width: $md-size) {
+    div.vision-cards {
+      flex-direction: column;
+      max-width: 540px;
+    }
+    .vision-card {
+      width: 100%;
+      flex-shrink: 1;
+    }
+    .vision-card--light {
+      margin-left: 0;
+      margin-top: 1.5rem;
+    }
+    .vision-card--dark img.vision-etoiles {
+      bottom: 3.5rem;
+    }
+  }
+
+  @media (max-width: $sm-size) {
+    div.vision-cards {
+      max-width: 100%;
+    }
+    .vision-card {
+      width: 100% !important;
+      margin-left: 0 !important;
+      margin-top: 0 !important;
+    }
+    .vision-card + .vision-card {
+      margin-top: 1rem !important;
+    }
+    .vision-card h3 {
+      font-size: 22px;
+    }
+    div.ia-section {
+      width: 100%;
+      max-width: 100%;
+      margin: 0.5rem 0;
+    }
+    div.ia-group {
+      padding: 1rem 0;
+      width: 100%;
+    }
+    div.ia-cards,
+    div.ia-cards--grid {
+      width: 100%;
+    }
+    div.ia-cards,
+    div.ia-cards--grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    div.ia-card {
+      flex-direction: row;
+      align-items: center;
+      text-align: left;
+      gap: 0.75rem;
+      img.ia-icon {
+        flex-shrink: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .vision-card {
+    border: 1px solid rgba(192, 198, 213, 0.4);
+  }
+
+  .vision-card--dark {
+    z-index: 2;
+    background-color: $secondary;
+    border-color: rgba(255, 255, 255, 0.1);
+
+    img.vision-etoiles {
+      position: absolute;
+      right: 1rem;
+      bottom: 5rem;
+      height: 80px;
+      width: auto;
+      z-index: 3;
+    }
+    h3 { color: $white; }
+    ul.arrow-list li { color: $white; }
+    .vision-subtitle { color: $white; }
+  }
+
+  .vision-card--light {
+    z-index: 1;
+    margin-left: -2%;
+    margin-top: 2.5rem;
+    padding-left: 2.6rem;
+    background-color: $lighter-blue;
+    h3 { color: $primary; }
+    ul.arrow-list li { color: $secondary; }
+    ul.arrow-list b { color: $secondary; }
+  }
+
+  .vision-card-header {
+    position: relative;
+    margin-bottom: 1.8rem;
+    h3 { margin-bottom: 0; }
+    img.vision-shield {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 80px;
+      width: auto;
+    }
+  }
+
+  .vision-expertises {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-top: 1.5rem;
+    overflow: hidden;
+
+    .vision-expertises-title {
+      font-family: 'Nunito Bold', 'Nunito';
+      font-weight: 800;
+      color: $white;
+      margin: 0 0 0.2rem;
+    }
+    .vision-expertises-desc {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.85rem;
+      margin: 0;
+    }
+
+  }
+
+  .vision-expertises--light {
+    background-color: rgba(36, 50, 82, 0.08);
+    .vision-expertises-title { color: $secondary; }
+    .vision-expertises-desc { color: $third; }
+  }
+
 }
+
+section#index-b2b-cta {
+  padding-top: 0;
+  div.b2b-cta {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, $secondary 0%, $secondary-light 100%);
+    border-radius: 12px;
+    padding: 1.2rem 2rem;
+    margin: 0 auto;
+    max-width: 980px;
+    gap: 1rem;
+
+    img.b2b-cta-img {
+      height: 50px;
+      width: auto;
+      flex-shrink: 0;
+      filter: brightness(0) invert(1);
+    }
+
+    div.b2b-cta-text {
+      p { margin: 0; color: $white; }
+
+      p.b2b-cta-title {
+        font-size: 1.3rem;
+        font-family: 'Nunito Bold', 'Nunito';
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 0.4rem;
+      }
+
+      p.b2b-cta-body {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        opacity: 0.85;
+      }
+    }
+
+    a.dm-btn {
+      flex-shrink: 0;
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    img.btn-arrow {
+      filter: brightness(0) invert(1);
+      vertical-align: middle;
+    }
+
+    @media (max-width: $sm-size) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1.5rem;
+
+      a.dm-btn {
+        margin-left: 0;
+      }
+
+      p.b2b-cta-title {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+
 
 // IMAGES
 $HEIGHT: calc(min(40rem, 80vh));
@@ -162,7 +539,7 @@ section#index-images {
         left: -5%;
         img {
           height: 120%;
-          width: 120%;
+          width: 120%; 
         }
       }
       &:nth-of-type(6) {
@@ -186,6 +563,7 @@ section#index-images {
 
 // PILIERS
 section#index-piliers {
+  background-color: $light-pink;
   color: $secondary;
 
   div.piliers-item {
@@ -229,15 +607,21 @@ section#index-piliers {
 
 // PRESTATIONS
 section#index-prestations {
+  background-color: $white;
   text-align: center;
   padding-top: 2rem;
 
+  h2.section-subheading {
+    margin-bottom: 0;
+  }
+
   div.questions {
-    margin-top: 4rem;
+    margin-top: 0;
     
     background-image: url("/assets/images/website/page-index/prestations/woman.svg");
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top center;
+    background-size: contain;
 
     div.questions-row {
       margin-top: 4rem;
@@ -263,6 +647,8 @@ section#index-prestations {
       margin: 0;
       padding: .3rem 1rem;
       max-width: 22rem;
+      position: relative;
+      z-index: 1;
 
       display: flex;
       align-items: center;
@@ -272,7 +658,11 @@ section#index-prestations {
       border-radius: 8px;
       box-shadow: 4px 4px 0px rgba(0, 0, 0, .08);
 
-      transition: box-shadow .2s;
+      transition: box-shadow .2s, border-color .2s, transform .2s;
+
+      span.fas {
+        transition: transform .2s;
+      }
 
       span.fas {
         color: $primary;
@@ -281,7 +671,13 @@ section#index-prestations {
 
       &:hover {
         text-decoration: none;
-        box-shadow: 4px 4px 0px rgba(0, 0, 0, .5);
+        border-color: $secondary;
+        box-shadow: 6px 6px 0px rgba(0, 0, 0, .2);
+        transform: translateY(-2px);
+
+        span.fas {
+          transform: translateX(3px);
+        }
       }
     }
 
@@ -314,11 +710,13 @@ section#index-prestations {
   div.img-container {
     text-align: right;
     margin: -3rem 4rem -3rem 0;
-    
+    position: relative;
+    z-index: 0;
+
     img {
       width: 10rem;
     }
-    
+
     @media (max-width: $sm-size) {
       margin: initial;
       img {
@@ -328,39 +726,6 @@ section#index-prestations {
   }
 }
 
-// SAVOIR FAIRE
-section#index-savoir-faire {
-  background-color: $light-pink;
-  text-align: center;
-
-  div.skill-item-container {
-    row-gap: 4rem;
-
-    div.skill-item {
-      img {
-        height: 5rem;
-        margin-bottom: 1rem;
-      }
-
-      h3 {
-        color: $primary;
-        font-weight: 600;
-      }
-
-      p {
-        color: $secondary;
-        font-weight: 600;
-        // pour que le texte soit moins large que le titre
-        max-width: 60%;
-        margin: auto;
-      }
-    }
-
-  }
-  a.dm-btn {
-    margin-top: 2rem;
-  }
-}
 
 section#index-savoir-plus {
   a.dm-btn {

@@ -21,6 +21,10 @@
 // PLUGINS
 @import "_accordion";
 
+html {
+  scroll-behavior: smooth;
+}
+
 // Global styling for this template
 body {
   overflow-x: hidden;
@@ -171,4 +175,47 @@ ul.arrow-list, article.post-content ul, article.post-content ol {
   margin-top: -0.2rem;
   height: 0.8rem;
   width: auto;
+}
+
+#scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: $secondary;
+  color: $white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, visibility 0.25s, box-shadow 0.2s;
+  z-index: 999;
+
+  span.fas {
+    font-size: 1rem;
+    margin: 0;
+    color: $white;
+  }
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+  }
+
+  html.scrolled & {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.over-footer {
+    background-color: $white;
+    span.fas {
+      color: $secondary;
+    }
+  }
 }

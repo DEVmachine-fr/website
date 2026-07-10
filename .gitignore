@@ -2,3 +2,7 @@
 .jekyll-cache
 _site
 .gems/*
+.superpowers/
+vendor/
+.bundle/
+.ruby-version

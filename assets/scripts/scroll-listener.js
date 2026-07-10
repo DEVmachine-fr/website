@@ -21,8 +21,20 @@ const debounce = (fn) => {
 // so we can use it in our stylesheets
 const storeScroll = () => {
   document.documentElement.dataset.scroll = window.scrollY;
+  document.documentElement.classList.toggle('scrolled', window.scrollY > 300);
 }
 // Listen for new scroll events, here we debounce our `storeScroll` function
 document.addEventListener('scroll', debounce(storeScroll), { passive: true });
 // Update scroll position for first time
 storeScroll();
+
+// Change scroll-to-top button style when footer is visible
+document.addEventListener('DOMContentLoaded', () => {
+  const footer = document.querySelector('footer');
+  if (footer) {
+    new IntersectionObserver((entries) => {
+      document.getElementById('scroll-top')
+        ?.classList.toggle('over-footer', entries[0].isIntersecting);
+    }).observe(footer);
+  }
+});
