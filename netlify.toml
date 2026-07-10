@@ -1,5 +1,8 @@
+[build.environment]
+  RUBY_VERSION = "3.2.2"
+
 [context.production]
-    commande = "JEKYLL_ENV=production jekyll build"
+    command = "bundle exec jekyll build"
 
 [context.deploy-preview]
-    command = "jekyll build --drafts"
+    command = "bundle exec jekyll build --drafts"
