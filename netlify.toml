@@ -6,3 +6,9 @@
 
 [context.deploy-preview]
     command = "bundle exec jekyll build --drafts"
+
+[[redirects]]
+  from = "https://devmachine.fr/*"
+  to = "https://www.devmachine.fr/:splat"
+  status = 301
+  force = true
