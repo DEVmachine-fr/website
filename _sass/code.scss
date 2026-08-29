@@ -20,9 +20,15 @@ code {
 .code-header {
   display: flex;
   justify-content: flex-end;
+  position: relative;
 }
 
 .copy-code-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
   display: grid;
   grid-auto-flow: column;
   align-items: center;
@@ -32,29 +38,18 @@ code {
   font-size: 1rem;
   padding: 4px 8px;
   background-color: $code-background;
-  border-radius: $code-border-radius $code-border-radius 0 0;
   color: $code-color;
-  border-bottom: 1px solid #666666;
-
-  &::before {
-    content: "Copier";
-  }
-
-  &::after {
-    content: "📋";
-    display: block;
-  }
+  background-image: url('/assets/images/copy-icon.svg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 
   // This class will be toggled via JavaScript
   &.copied {
-      background-color: #dddddd;
+      background-image: none;
       color: black;
-    &::before {
-      content: "Copié!";
-    }
-
-    &::after {
-      content: "✔️";
-    }
+      &:after {
+        content: "✔️";
+      }
   }
 }
