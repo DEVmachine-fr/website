@@ -169,6 +169,10 @@ section#recrutement-posts {
           &.collapsed span.fas {
             transform: none;
           }
+
+          &:focus:not(:focus-visible) {
+            outline: none;
+          }
         }
 
         a.postuler {
