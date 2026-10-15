@@ -9,6 +9,7 @@ section#recrutement-posts {
   div.recrutement-posts {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 
     div.recrutement-post {
       border: 1px solid $light-grey;
@@ -27,9 +28,84 @@ section#recrutement-posts {
         }
       }
 
-      div.contract-data, span.description {
+      div.contract-data, div.description {
         padding: 1rem;
         padding-bottom: 0;
+      }
+
+      div.description, div.competences {
+        color: $secondary;
+
+        p.accroche {
+          margin-bottom: .3rem;
+          font-size: 1.1rem;
+          font-weight: 700;
+          color: $secondary;
+        }
+
+        p.subtitle {
+          margin: 1.5rem 0 .8rem;
+          font-family: 'Nunito Bold', 'Nunito';
+          font-size: 1.2rem;
+          font-weight: 800;
+          color: $secondary;
+        }
+
+        ul.arrow-list {
+          margin-bottom: 0;
+          li {
+            text-align: left;
+          }
+          b {
+            color: $secondary;
+          }
+        }
+      }
+
+      div.competences {
+        margin-top: 1.5rem;
+        padding: .5rem 1rem 1.5rem;
+        background-color: $lighter-blue;
+        border-top: 1px solid $light-grey;
+        border-bottom: 1px solid $light-grey;
+
+        p.subtitle:first-child {
+          margin-top: 1rem;
+        }
+
+        div.stack {
+          display: flex;
+          align-items: baseline;
+          padding: .3rem 0;
+
+          span.stack-label {
+            flex: 0 0 110px;
+            font-weight: 700;
+          }
+
+          div.stack-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .3rem;
+
+            span {
+              padding: .1rem .6rem;
+              border: 1px solid $light-grey;
+              border-radius: 10px;
+              background-color: $white;
+              font-size: .9rem;
+            }
+          }
+
+          @media (max-width: $sm-size) {
+            flex-direction: column;
+            row-gap: .4rem;
+
+            span.stack-label {
+              flex-basis: auto;
+            }
+          }
+        }
       }
 
       div.contract-data {
@@ -78,6 +154,27 @@ section#recrutement-posts {
         justify-content: end;
         column-gap: 1rem;
 
+        button.dm-btn {
+          cursor: pointer;
+          white-space: nowrap;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          span.fas {
+            transform: rotate(180deg);
+            transition: transform .2s;
+          }
+
+          &.collapsed span.fas {
+            transform: none;
+          }
+
+          &:focus:not(:focus-visible) {
+            outline: none;
+          }
+        }
+
         a.postuler {
           display: flex;
           align-items: center;
@@ -96,7 +193,7 @@ section#recrutement-posts {
           flex-direction: column;
           row-gap: 1rem;
 
-          a {
+          a, button {
             width: 80%;
             justify-content: center;
           }
